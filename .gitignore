@@ -1,5 +1,6 @@
 # User defined
 results/
+**/fastq_files/
 **/scratch/
 **/Cell_Ranger_Output/
 **/Perturbation_information/
