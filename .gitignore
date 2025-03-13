@@ -4,7 +4,8 @@ results/
 **/scratch/
 **/Cell_Ranger_Output/
 **/Perturbation_information/
-**/Preliminary_Analysis/
+**/Transcriptome_Analysis/
+**/Differential_Expression/
 **/slurm_logs
 
 # Byte-compiled / optimized / DLL files
