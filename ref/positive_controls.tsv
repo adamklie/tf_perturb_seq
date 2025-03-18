@@ -1,0 +1,20 @@
+Gene	Photospacer (represent 10 times)	Reference
+CD81 strong	GGAGAGCGAGCGCGCAACGG	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. sgRNA from James Nuñez.
+CD81 weak	GGAGAGCCAGCGCGCAACGG	Jost et al. 2020 "Titrating gene expression using libraries of systematically attenuated..." Nat Biotechnology.
+CD151 strong	GCCGGACTCGGACGCGTGGT	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. sgRNA from James Nuñez.
+CD151 weak	GCCGCTCGGCCGAGCTGTCG	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+CD55 strong	GCTGCGACTCGGCGGAGTCC	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+CD29 (ITGB1)	GAGAGGCCCAGCGGGAGTCG	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+B2M	GGCGAGCACAGCTAAGGCCA	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+AARS sgRNA main	GTCTGCGGGAATAGGTGCAG	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+AARS sgRNA B	GCGGCGACCCTAGGAGAGGT	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+AARS sgRNA C	GCCGCCCTCGGAGAGCTCTG	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+POLR1D sgRNA main	GTGTCCCATAGCGCGAGGCG	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+POLR1D sgRNA B	GGGAAGCAAGGACCGACCGA	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+POLR1D sgRNA C	GGGAAGGCGCGGAGGACGGA	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+DNAJC19 sgRNA main	GTCATGGACTCGGAGATTAG	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+DNAJC19 sgRNA B	GGGAACTCCTGTAAGGTCAG	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+DNAJC19 sgRNA C	GGGATGAGCCGTGCTCCCGG	Horlbeck et al. 2016 "Compact and highly active next-generation libraries..." eLife. Supp file 3. hCRISPRi-v2.1 library table.
+MALAT1	GGCGCTGCGCTTAAGAGGGC	Armendariz et al, 2023, "CHD-associated enhancers shape human cardiomyocyte lineage commitment"
+NGFRAP1	GAGGACCGAGAAGAGTGACA	Armendariz et al, 2023, "CHD-associated enhancers shape human cardiomyocyte lineage commitment"
+TFRC	GCTCAGAGCGTCGGGATATC	Tian et al, 2019, "CRISPR interference-based platform for multimodal genetic screens in human iPSC-derived neurons"

@@ -6,6 +6,7 @@ results/
 **/Perturbation_information/
 **/Transcriptome_Analysis/
 **/Differential_Expression/
+**/*.h5mu
 **/slurm_logs
 
 # Byte-compiled / optimized / DLL files

@@ -26,7 +26,7 @@ def setup_gpu():
     )
     cp.cuda.set_allocator(rmm_cupy_allocator)
 
-def perform_qc(input_path, output_path, plot_dir=None, max_genes=5000, max_mt_pct=20, min_gene_count=3):
+def perform_qc(input_path, output_path, plot_dir=None, min_genes=500, max_mt_pct=20, min_gene_count=3):
     start_time = time.time()
     logging.info("Starting quality control on AnnData file.")
     
@@ -45,10 +45,10 @@ def perform_qc(input_path, output_path, plot_dir=None, max_genes=5000, max_mt_pc
     rsc.pp.calculate_qc_metrics(adata, qc_vars=["MT", "RIBO"])
     
     # Filtering
-    adata = adata[adata.obs["n_genes_by_counts"] < max_genes]
-    adata = adata[adata.obs["pct_counts_MT"] < max_mt_pct]
+    adata = adata[adata.obs["n_genes_by_counts"] >= min_genes]
+    adata = adata[adata.obs["pct_counts_MT"] <= max_mt_pct]
     rsc.pp.filter_genes(adata, min_count=min_gene_count)
-    logging.info(f"Filtered cells with >{max_genes} genes and >{max_mt_pct}% mitochondrial content.")
+    logging.info(f"Filtered cells with >{min_genes} genes and >{max_mt_pct}% mitochondrial content.")
     logging.info(f"Filtered genes with <{min_gene_count} counts.")
     
     if plot_dir:
@@ -84,14 +84,14 @@ def main():
     parser.add_argument("--input", type=str, required=True, help="Path to input AnnData file.")
     parser.add_argument("--output", type=str, required=True, help="Path to save output AnnData file.")
     parser.add_argument("--plot_dir", type=str, default=None, help="Directory to save QC plots.")
-    parser.add_argument("--max_genes", type=int, default=5000, help="Maximum number of genes per cell.")
+    parser.add_argument("--min_genes", type=int, default=500, help="Minimum number of genes detected per cell.")
     parser.add_argument("--max_mt_pct", type=float, default=20, help="Maximum mitochondrial gene percentage.")
     parser.add_argument("--min_gene_count", type=int, default=3, help="Minimum count threshold for genes.")
     parser.add_argument("--log_file", type=str, default="qc.log", help="Path to log file.")
     
     args = parser.parse_args()
     setup_logging(args.log_file)
-    perform_qc(args.input, args.output, args.plot_dir, args.max_genes, args.max_mt_pct, args.min_gene_count)
+    perform_qc(args.input, args.output, args.plot_dir, args.min_genes, args.max_mt_pct, args.min_gene_count)
 
 if __name__ == "__main__":
     main()
