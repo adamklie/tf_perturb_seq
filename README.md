@@ -69,8 +69,8 @@ Each lab did there own guide assignment
 
 * `Perturbation_information`
     * Two types of output matrix are generated here depending on the tool (should be sparse matrices in the future)
-        * `cell_x_sgrna_matrix.pkl`– guide_id x cell_id assignment matrix from PySpade. This is a pickled pandas dataframe that takes a long time to load in
-        * `sgrna_design_matrix_filtered_combined_control_final.csv` -- guide_id x gene_id assignment matrix from SCEPTRE. This is a csv file that also takes a long time to load in
+        * `cell_x_sgrna_matrix.pkl`– guide_id x cell_id assignment matrix from PySpade
+        * `sgrna_design_matrix_filtered_combined_control_final.csv` -- guide_id x gene_id assignment matrix from SCEPTRE
 
 
 ## More details on the pipeline

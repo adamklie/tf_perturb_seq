@@ -48,7 +48,7 @@ def perform_qc(input_path, output_path, plot_dir=None, min_genes=500, max_mt_pct
     adata = adata[adata.obs["n_genes_by_counts"] >= min_genes]
     adata = adata[adata.obs["pct_counts_MT"] <= max_mt_pct]
     rsc.pp.filter_genes(adata, min_count=min_gene_count)
-    logging.info(f"Filtered cells with >{min_genes} genes and >{max_mt_pct}% mitochondrial content.")
+    logging.info(f"Filtered cells with >={min_genes} genes and <={max_mt_pct}% mitochondrial content.")
     logging.info(f"Filtered genes with <{min_gene_count} counts.")
     
     if plot_dir:
