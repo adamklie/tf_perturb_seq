@@ -13,4 +13,4 @@
 `target_genes.tsv` (Target genes + sgRNAs (with alt prom) sheet) -- 13,260 targeting guides, 1983 targets (some with multiple promoters), 6 guides per target
 
 # Master generated from merging files
-`sgRNA_id_master.tsv` -- merged guides from Hon and Huangfu labs (see `guide_mapping.ipynb`)
+`sgRNA_id_master.tsv` -- 14,364 total guides, merged guides from Hon and Huangfu labs (see `guide_mapping.ipynb`)
