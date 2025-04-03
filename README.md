@@ -15,7 +15,7 @@ Code for processing and analysis of CRISPR screening data targeting a large set 
 This repository contains multiple (`datasets/`) each with its own folder:
 
 1. `Hon_TF_Perturb_Seq_Pilot` -- A pilot set of 55 TFs introduced transfected into WTC11 iPSCs and differentiated to cardiomyocytes (12 days)
-2. [`Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq`](https://docs.google.com/presentation/d/1FDr7KE873Er1CezXQNqvqPKecoNEfOrBd8ixoTUsOSE/edit#slide=id.p) -- Pools ABCD transfected into WTC11 iPSCs and differentiated to cardiomyocytes (11 days)
+2. [`Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq`](https://docs.google.com/presentation/d/1FDr7KE873Er1CezXQNqvqPKecoNEfOrBd8ixoTUsOSE/edit#slide=id.p) -- Pools ABCD transfected into WTC11 iPSCs and differentiated to cardiomyocytes (12 days)
 3. [`Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq`](https://docs.google.com/presentation/d/1anFVk5SsNikMiVymgnp2283khwRSh6V5dMlTs4m_V0M/edit#slide=id.p) -- Pools ABCD transfected into HUES8 hESCs and differentiated to defenitive endoderm (?? days)
 4. [`Huangfu_HUES8-embryonic-stemcell_TF-Perturb-seq`](https://docs.google.com/presentation/d/13mw1IA4diHEHsFRSyK25IoGjpMXCQ12bvPJ2-tt73Ek/edit#slide=id.p) -- Pools ABCD transfected into HUES8 hESCs
 5. `Hon_H9-neuron-differentiation_TF-Perturb-seq` --
