@@ -2,14 +2,19 @@
 Code for processing and analysis of CRISPR screening data targeting a large set of known transcription factors and epigenetic modifiers across multiple cell states
 
 ## TODO
+
+### Prep for CRISPR pipeline
 - [ ] [Organize and facilitate participating labs to upload data to the portal](https://github.com/adamklie/tf_perturb_seq/issues/1)
 - [ ] [Run CRISPR FG pipeline on pilot TF data](https://github.com/adamklie/tf_perturb_seq/issues/2)
 - [ ] [Generate guide metadata files and determine whether one single file can be used for all of them](https://github.com/adamklie/tf_perturb_seq/issues/3)
-- [ ] [Decide how we want to run inference with the CRISPR pipeline (local, global, pairwise, other?)](https://github.com/adamklie/tf_perturb_seq/issues/4)
+- [ ] [Harmonized pipeline config for CRISPR pipeline](https://github.com/adamklie/tf_perturb_seq/issues/4)
+
+### Run processing pipeline
 - [ ] [Run CRISPR FG pipeline on all datasets](https://github.com/adamklie/tf_perturb_seq/issues/6)
-- [ ] [Implement PySpade for global inference at target level](https://github.com/adamklie/tf_perturb_seq/issues/5)
+
+### Downstream analysis
 - [ ] [Run energy distance analysis](https://github.com/adamklie/tf_perturb_seq/issues/7)
-- [ ] [Run cNMF](https://github.com/adamklie/tf_perturb_seq/issues/8)
+- [ ] [Run cNMF and gene program evaluations on each dataset](https://github.com/adamklie/tf_perturb_seq/issues/8)
 
 ## Datasets
 This repository contains multiple (`datasets/`) each with its own folder:
