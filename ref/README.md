@@ -24,6 +24,7 @@ UpSet plot of mismatching sgRNA sequences:
 
 # Harmonized files generated across all 4 labs, in finalized_annotation_files directory (Sara)
 See `explore_sgRNA_annot.ipynb` for exploration of guide intersections with reference, `create_harmonized_sgRNA_annot.ipynb` for creation of harmonized guide files.
+
 `harmonized_guide_file_poolabcd.csv` -- sgRNAs from Pools A-D, using only 1 version of each sgRNA (from reference)
 
 `harmonized_guide_file_poolf.csv` -- sgRNAs from Pool F
