@@ -23,8 +23,11 @@ UpSet plot of mismatching sgRNA sequences:
 `sgRNA_id_master.tsv` -- 14,364 total guides, merged guides from Hon and Huangfu labs (see `guide_mapping.ipynb`)
 
 # Harmonized files generated across all 4 labs, in finalized_annotation_files directory (Sara)
+See `explore_sgRNA_annot.ipynb` for exploration of guide intersections with reference, `create_harmonized_sgRNA_annot.ipynb` for creation of harmonized guide files.
 `harmonized_guide_file_poolabcd.csv` -- sgRNAs from Pools A-D, using only 1 version of each sgRNA (from reference)
+
 `harmonized_guide_file_poolf.csv` -- sgRNAs from Pool F
+
 `harmonized_guide_file_poolabcd_inclMismatches.csv` -- sgRNAs from Pools A-D, including multiple copies of certain guides for which sgRNA sequences do not match between labs (some fields for mismatches that deviate from the reference will be empty)
 
 
