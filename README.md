@@ -3,13 +3,7 @@ Code for processing and analysis of CRISPR screening data targeting a large set 
 
 ## TODO
 
-### Prep for CRISPR pipeline
-- [ ] [Organize and facilitate participating labs to upload data to the portal](https://github.com/adamklie/tf_perturb_seq/issues/1)
-- [ ] [Run CRISPR FG pipeline on pilot TF data](https://github.com/adamklie/tf_perturb_seq/issues/2)
-- [ ] [Generate guide metadata files and determine whether one single file can be used for all of them](https://github.com/adamklie/tf_perturb_seq/issues/3)
-- [ ] [Harmonized pipeline config for CRISPR pipeline](https://github.com/adamklie/tf_perturb_seq/issues/4)
-
-### Run processing pipeline
+### Run processing pipeline on all datasets
 - [ ] [Run CRISPR FG pipeline on all datasets](https://github.com/adamklie/tf_perturb_seq/issues/6)
 
 ### Downstream analysis
