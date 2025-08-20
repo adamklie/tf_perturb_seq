@@ -1,14 +1,14 @@
+# CHANGE
+PROJECT=igvf-pertub-seq-pipeline
+base_dir=/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq  # Base directory
+script=/cellar/users/aklie/opt/CRISPR_Pipeline/download_development/download_igvf.py  # IGVF CRISPR Pipeline script for retrieving fastqs and uploading to GCS
 
-# 
+# Authenticate and set project
 gcloud auth login
-gcloud config set project igvf-pertub-seq-pipeline
+gcloud config set project $PROJECT
 gcloud config list
 
-
-base_dir=/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq
-script=/cellar/users/aklie/opt/CRISPR_Pipeline/download_development/download_igvf.py
-
-
+# Run it
 python3 $script \
   --sample $base_dir/sample_metadata.tsv \
   --gcs-upload \
