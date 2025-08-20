@@ -8,6 +8,7 @@ results/
 **/Differential_Expression/
 **/*.h5mu
 **/slurm_logs
+**/downloads
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
