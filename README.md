@@ -2,20 +2,25 @@
 Code for processing and analysis of CRISPR screening data targeting a large set of known transcription factors and epigenetic modifiers across multiple cell states
 
 ## TODO
+
+### Prep for CRISPR pipeline
 - [ ] [Organize and facilitate participating labs to upload data to the portal](https://github.com/adamklie/tf_perturb_seq/issues/1)
 - [ ] [Run CRISPR FG pipeline on pilot TF data](https://github.com/adamklie/tf_perturb_seq/issues/2)
 - [ ] [Generate guide metadata files and determine whether one single file can be used for all of them](https://github.com/adamklie/tf_perturb_seq/issues/3)
-- [ ] [Decide how we want to run inference with the CRISPR pipeline (local, global, pairwise, other?)](https://github.com/adamklie/tf_perturb_seq/issues/4)
+- [ ] [Harmonized pipeline config for CRISPR pipeline](https://github.com/adamklie/tf_perturb_seq/issues/4)
+
+### Run processing pipeline
 - [ ] [Run CRISPR FG pipeline on all datasets](https://github.com/adamklie/tf_perturb_seq/issues/6)
-- [ ] [Implement PySpade for global inference at target level](https://github.com/adamklie/tf_perturb_seq/issues/5)
+
+### Downstream analysis
 - [ ] [Run energy distance analysis](https://github.com/adamklie/tf_perturb_seq/issues/7)
-- [ ] [Run cNMF](https://github.com/adamklie/tf_perturb_seq/issues/8)
+- [ ] [Run cNMF and gene program evaluations on each dataset](https://github.com/adamklie/tf_perturb_seq/issues/8)
 
 ## Datasets
 This repository contains multiple (`datasets/`) each with its own folder:
 
 1. `Hon_TF_Perturb_Seq_Pilot` -- A pilot set of 55 TFs introduced transfected into WTC11 iPSCs and differentiated to cardiomyocytes (12 days)
-2. [`Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq`](https://docs.google.com/presentation/d/1FDr7KE873Er1CezXQNqvqPKecoNEfOrBd8ixoTUsOSE/edit#slide=id.p) -- Pools ABCD transfected into WTC11 iPSCs and differentiated to cardiomyocytes (11 days)
+2. [`Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq`](https://docs.google.com/presentation/d/1FDr7KE873Er1CezXQNqvqPKecoNEfOrBd8ixoTUsOSE/edit#slide=id.p) -- Pools ABCD transfected into WTC11 iPSCs and differentiated to cardiomyocytes (12 days)
 3. [`Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq`](https://docs.google.com/presentation/d/1anFVk5SsNikMiVymgnp2283khwRSh6V5dMlTs4m_V0M/edit#slide=id.p) -- Pools ABCD transfected into HUES8 hESCs and differentiated to defenitive endoderm (?? days)
 4. [`Huangfu_HUES8-embryonic-stemcell_TF-Perturb-seq`](https://docs.google.com/presentation/d/13mw1IA4diHEHsFRSyK25IoGjpMXCQ12bvPJ2-tt73Ek/edit#slide=id.p) -- Pools ABCD transfected into HUES8 hESCs
 5. `Hon_H9-neuron-differentiation_TF-Perturb-seq` --
@@ -26,32 +31,49 @@ This repository contains multiple (`datasets/`) each with its own folder:
 Dataset details and status is tracked here: https://docs.google.com/spreadsheets/d/1ThGCNsxa2KUfboRweK1p_55GlgwaX1D19O5MTB6MbSs/edit?gid=0#gid=0
 
 ## Data upload
-Fastq files should be uploaded to the IGVF data portal by relevant data producing groups. This needs to be done systematically to ensure that data can be properly processed. 
+Fastq files should be uploaded to the [IGVF data portal](https://data.igvf.org/) by relevant data producing groups. This analysis set for `Hon_TF_Perturb_Seq_Pilot` is a good example of the expected structure: https://data.igvf.org/analysis-sets/IGVFDS4389OUWU/.
 
-TODO
+1. One or more measurement sets associated with the single-cell RNA-sequencing (likely split by cellular sub pools)
+2. One associated auxiliary set for each of measurement set for gRNA-sequencing
+3. Optionally a second auxiliary set for each measurement set for HTO-sequencing
+
+Each measurement and auxiliary set needs a set of fastqs in it, as well as seqspecs for each type of sequencing.
 
 ## Processing
-Each dataset will be run through the [IGVF CRISPR Pipeline](https://github.com/pinellolab/CRISPR_Pipeline)
+Each dataset will be processed through the [IGVF CRISPR Pipeline](https://github.com/pinellolab/CRISPR_Pipeline)
 
 Follow the instructions at the link above to run the pipeline. Briefly, the required inputs are:
 
-1. Fastq files need to be downloaded to the machine where the pipeline will be run. If downloading you can use the `download_fastq.py` file. You will need to create a TSV file matching `per-sample_file.tsv`. Once downloaded, they should be in a folder titled `fastq_files`.
+1. Fastq files
+First create an `analysis_sets.tsv` file that looks like this:
+```
+analysis_set_id	input_file_sets	measurement_sets	associated_auxiliary_sets
+IGVFDS4389OUWU	IGVFDS3231RKUL	IGVFDS4852MAUM	/auxiliary-sets/IGVFDS6861GRJI/,/auxiliary-sets/IGVFDS5228AHGR/
+IGVFDS4389OUWU	IGVFDS2378SIVI	IGVFDS7733OTCA	/auxiliary-sets/IGVFDS0997MTQA/,/auxiliary-sets/IGVFDS7027VRZT/
+IGVFDS4389OUWU	IGVFDS7715GHKL	IGVFDS2628PYOH	/auxiliary-sets/IGVFDS8139DLEM/,/auxiliary-sets/IGVFDS0109SCQO/
+IGVFDS4389OUWU	IGVFDS8280DBSV	IGVFDS7834BXBN	/auxiliary-sets/IGVFDS8280AMDA/,/auxiliary-sets/IGVFDS6231TYIS/
+```
+You can then use the `download_fastq.py` script to download all the fastqs to a `fastq_files` directory.
 
-2. `guide_metadata.tsv` -- THIS SHOULD BE THE SAME FOR EVERY DATASET.
+2. YAML Configuration Files:
+ - `rna_seqspec.yml`: Defines RNA sequencing structure and parameters
+ - `guide_seqspec.yml`: Specifies guide RNA detection parameters
+ - `hash_seqspec.yml`: Defines cell hashing structure (required if using cell hashing)
+ - `whitelist.txt`: List of valid cell barcodes
 
-3. `hash_metadata.tsv` -- include only if your protocol used HTOs
+3. Metadata files
+ - `guide_metadata.tsv` -- See https://github.com/adamklie/tf_perturb_seq/issues/3
+ - `hash_metadata.tsv` -- include only if your protocol used HTOs
 
-4. An updated configuration file `pipeline_input.config`
-
-TODO
+4. Pipeline configuration file: see https://github.com/adamklie/tf_perturb_seq/issues/4
 
 ## Downstream analysis
 
-### PySpade differential expression inference
+### Basic transcriptomic analysis
 
-### Energy distance analysis
+### E-distance analysis
 
-### cNMF gene proggram analysis
+### cNMF gene program analysis
 
 ## Preliminary TF Perturb-seq processing and analysis
 A preliminary version of 3 processed datasets is available in the following Synapse folder: https://www.synapse.org/Synapse:syn64423137
