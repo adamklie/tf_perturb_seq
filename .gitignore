@@ -1,6 +1,7 @@
 # User defined
 results/
 .DS_Store
+._*
 **/fastq_files/
 **/scratch/
 **/Cell_Ranger_Output/
