@@ -3,6 +3,7 @@
 ## TODO
 - [ ] Update guide metadata to latest spec
 - [ ] Rerun through pipeline 
+- [ ] Get CellRanger and PySpade output from Mpathi
 - [ ]
 
 ## Experimental design

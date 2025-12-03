@@ -1,123 +1,0 @@
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/cnmf/cnmf.py:1030: UserWarning: 50 runs already appear completed. If this is unexpected, consider
-            re-initializing the cnmf object with a different run name or output directory
-  warnings.warn(message, UserWarning)
-Running cNMF:   0%|          | 0/15 [00:00<?, ?it/s]Running cNMF:   7%|▋         | 1/15 [02:49<39:30, 169.34s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  13%|█▎        | 2/15 [10:06<1:10:53, 327.17s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  20%|██        | 3/15 [21:54<1:40:07, 500.64s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  27%|██▋       | 4/15 [34:05<1:48:29, 591.74s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  33%|███▎      | 5/15 [46:39<1:48:21, 650.20s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  40%|████      | 6/15 [1:00:40<1:47:16, 715.12s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  47%|████▋     | 7/15 [1:15:07<1:41:57, 764.68s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  53%|█████▎    | 8/15 [1:31:34<1:37:28, 835.57s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  60%|██████    | 9/15 [1:52:23<1:36:29, 964.87s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/cnmf/cnmf.py:1532: RuntimeWarning: More than 20 figures have been opened. Figures created through the pyplot interface (`matplotlib.pyplot.figure`) are retained until explicitly closed and may consume too much memory. (To control this warning, see the rcParam `figure.max_open_warning`). Consider using `matplotlib.pyplot.close()`.
-  fig = plt.figure(figsize=(sum(width_ratios), sum(height_ratios)))
-Running cNMF:  67%|██████▋   | 10/15 [2:26:01<1:47:29, 1289.82s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  73%|███████▎  | 11/15 [3:07:09<1:50:02, 1650.67s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  80%|████████  | 12/15 [3:58:18<1:44:06, 2082.12s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  87%|████████▋ | 13/15 [5:32:06<1:45:12, 3156.14s/it]/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/decomposition/_nmf.py:1742: ConvergenceWarning: Maximum number of iterations 1000 reached. Increase it to improve convergence.
-  warnings.warn(
-Running cNMF:  93%|█████████▎| 14/15 [7:31:34<1:12:47, 4367.81s/it]Running cNMF:  93%|█████████▎| 14/15 [7:31:42<32:15, 1935.92s/it]  
-Traceback (most recent call last):
-  File "/project/GCRB/Hon_lab/s223695/Data_project/jamboree_2025/processing_Hon_benchmark/slurm/torch-cNMF_inference_pipeline.py", line 109, in <module>
-    run_cnmf_consensus(cnmf_obj,
-  File "/project/GCRB/Hon_lab/s223695/Data_project/jamboree_2025/cNMF_benchmarking/cNMF_benchmarking_pipeline/Inference/src/torch_cNMF.py", line 28, in run_cnmf_consensus
-    cnmf_obj.consensus(k=k, density_threshold=thresh, show_clustering=True)
-  File "/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/cnmf/cnmf.py", line 1424, in consensus
-    kmeans_model.fit(l2_spectra)
-  File "/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/base.py", line 1389, in wrapper
-    return fit_method(estimator, *args, **kwargs)
-  File "/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py", line 1464, in fit
-    self._check_params_vs_input(X)
-  File "/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py", line 1404, in _check_params_vs_input
-    super()._check_params_vs_input(X, default_n_init=10)
-  File "/project/GCRB/Hon_lab/s223695/anaconda3/envs/torch-cNMF/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py", line 871, in _check_params_vs_input
-    raise ValueError(
-ValueError: n_samples=121 should be >= n_clusters=200.
-/cm/local/apps/slurm/var/spool/job5665016/slurm_script: line 127: 57285 Terminated              monitor_resources

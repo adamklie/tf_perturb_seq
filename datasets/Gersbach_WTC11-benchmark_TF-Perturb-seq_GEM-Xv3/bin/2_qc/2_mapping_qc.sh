@@ -29,7 +29,7 @@ H5MU="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-b
 OUT="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2025_12_01"
 
 # Location of scripts
-SCRIPTS="/cellar/users/aklie/data/datasets/tf_perturb_seq/scripts/qc"
+SCRIPTS="/cellar/users/aklie/data/datasets/tf_perturb_seq/scripts/CRISPR_pipeline_qc"
 
 # Conda envs
 ENV_QC="scverse-lite-py39"

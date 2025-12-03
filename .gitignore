@@ -2,6 +2,10 @@
 results/
 .DS_Store
 ._*
+*.gtf
+*.gtf.gz
+datasets/ENCODE_WTC11_ChIP-seq/
+
 **/fastq_files/
 **/scratch/
 **/Cell_Ranger_Output/

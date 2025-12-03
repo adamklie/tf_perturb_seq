@@ -1,0 +1,7 @@
+dataset_colors:
+  Hon_WTC11-benchmark_TF-Perturb-seq:        "#5B8FF9"  # cool blue
+  Huangfu_WTC11-benchmark_TF-Perturb-seq:    "#F6BD16"  # golden yellow
+  Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3: "#5AD8A6"  # mint green
+  Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2:   "#E86452"  # coral
+
+dataset_order: ["Hon_WTC11-benchmark_TF-Perturb-seq", "Huangfu_WTC11-benchmark_TF-Perturb-seq", "Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3", "Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2"]

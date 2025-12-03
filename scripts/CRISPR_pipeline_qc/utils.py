@@ -629,6 +629,7 @@ def compute_metrics(
     guide_umi_col: str = "total_guide_umis",
     guides_per_cell_col: str = "n_guides_per_cell",
     cells_per_guide_col: str = "n_cells_per_guide",
+    batch_label: str = "all",
 ) -> pd.DataFrame:
     """
     Compute summary metrics for one (gene, guide) pair and one filter_stage.
@@ -636,6 +637,7 @@ def compute_metrics(
     Returns a one-row DataFrame with:
       - sample_name
       - filter_stage ('pre' or 'post' or custom)
+      - batch (e.g. 'all' or specific batch name)
       - n_cells_gene
       - median_total_gene_umis
       - median_num_expressed_genes
@@ -649,6 +651,7 @@ def compute_metrics(
     metrics = {
         "sample_name": sample_name if sample_name is not None else "",
         "filter_stage": filter_stage,
+        "batch": batch_label,
         "n_cells_gene": gene.n_obs,
         "n_cells_guide": guide.n_obs,
     }

@@ -257,7 +257,10 @@ def main() -> None:
     )
 
     # Pre-filter metrics (joint)
-    metrics_pre = compute_metrics(
+    metrics_pre_list = []
+
+    # Global (cross-batch) metrics: batch = "all"
+    metrics_pre_all = compute_metrics(
         gene=gene,
         guide=guide,
         filter_stage="pre",
@@ -267,7 +270,32 @@ def main() -> None:
         mito_col=args.mito_col,
         guide_umi_col=args.guide_umi_col,
         guides_per_cell_col=args.guides_per_cell_col,
+        batch_label="all",
     )
+    metrics_pre_list.append(metrics_pre_all)
+
+    # Per-batch metrics (if batch_col exists)
+    if args.batch_col in gene.obs.columns:
+        for b in sorted(gene.obs[args.batch_col].unique()):
+            mask_b = gene.obs[args.batch_col] == b
+            gene_b = gene[mask_b].copy()
+            guide_b = guide[mask_b].copy()
+
+            metrics_pre_b = compute_metrics(
+                gene=gene_b,
+                guide=guide_b,
+                filter_stage="pre",
+                sample_name=args.sample_name,
+                umi_col=args.umi_col,
+                genes_col=args.genes_col,
+                mito_col=args.mito_col,
+                guide_umi_col=args.guide_umi_col,
+                guides_per_cell_col=args.guides_per_cell_col,
+                batch_label=str(b),
+            )
+            metrics_pre_list.append(metrics_pre_b)
+
+    metrics_pre = pd.concat(metrics_pre_list, ignore_index=True)
 
     # -----------------------------------------------------------------
     # FILTERING (joint gene + guide)
@@ -353,7 +381,10 @@ def main() -> None:
     )
 
     # Post-filter metrics
-    metrics_post = compute_metrics(
+    metrics_post_list = []
+
+    # Global (cross-batch) metrics: batch = "all"
+    metrics_post_all = compute_metrics(
         gene=gene_filt,
         guide=guide_filt,
         filter_stage="post",
@@ -363,7 +394,32 @@ def main() -> None:
         mito_col=args.mito_col,
         guide_umi_col=args.guide_umi_col,
         guides_per_cell_col=args.guides_per_cell_col,
+        batch_label="all",
     )
+    metrics_post_list.append(metrics_post_all)
+
+    # Per-batch metrics (if batch_col exists)
+    if args.batch_col in gene_filt.obs.columns:
+        for b in sorted(gene_filt.obs[args.batch_col].unique()):
+            mask_b = gene_filt.obs[args.batch_col] == b
+            gene_b = gene_filt[mask_b].copy()
+            guide_b = guide_filt[mask_b].copy()
+
+            metrics_post_b = compute_metrics(
+                gene=gene_b,
+                guide=guide_b,
+                filter_stage="post",
+                sample_name=args.sample_name,
+                umi_col=args.umi_col,
+                genes_col=args.genes_col,
+                mito_col=args.mito_col,
+                guide_umi_col=args.guide_umi_col,
+                guides_per_cell_col=args.guides_per_cell_col,
+                batch_label=str(b),
+            )
+            metrics_post_list.append(metrics_post_b)
+
+    metrics_post = pd.concat(metrics_post_list, ignore_index=True)
 
     # -----------------------------------------------------------------
     # Write combined metrics TSV (single file)
