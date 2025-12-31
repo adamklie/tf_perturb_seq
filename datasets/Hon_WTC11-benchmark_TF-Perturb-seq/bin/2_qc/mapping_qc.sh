@@ -23,10 +23,10 @@ set -euo pipefail
 SAMPLE="Hon_WTC11-benchmark_TF-Perturb-seq"
 
 # Input MuData from CRISPR pipeline
-H5MU="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/1_CRISPR_pipeline/2025_10_29/work_99_304b545580e299107b2429dd55a968_inference_mudata.h5mu"
+H5MU="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/1_CRISPR_pipeline/2025_12_17/inference_mudata.h5mu"
 
 # Output directory
-OUT="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_01"
+OUT="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17"
 
 # Location of scripts
 SCRIPTS="/cellar/users/aklie/data/datasets/tf_perturb_seq/scripts/CRISPR_pipeline_qc"
