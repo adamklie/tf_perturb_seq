@@ -20,8 +20,7 @@ from typing import Optional
 import matplotlib
 matplotlib.use("Agg")  # ensure non-interactive backend
 
-import muon as mu
-from mudata import MuData
+import mudata
 from anndata import AnnData
 
 import pandas as pd  # noqa: E402
@@ -161,7 +160,7 @@ def parse_args() -> argparse.Namespace:
 # Main
 # ---------------------------------------------------------------------
 def extract_modalities(
-    data: MuData,
+    data: mudata.MuData,
     gene_mod_key: str,
     guide_mod_key: str,
 ) -> tuple[AnnData, AnnData]:
@@ -178,7 +177,7 @@ def main() -> None:
 
     # --- Load MuData ---
     logger.info(f"Loading MuData from {args.input_h5mu}")
-    data = mu.read_h5mu(args.input_h5mu)
+    data = mudata.read_h5mu(args.input_h5mu)
     describe_mudata(data)
 
     # Optional: prefix barcodes once on the MuData (propagates to all modalities)

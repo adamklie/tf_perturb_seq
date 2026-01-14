@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2_mapping_qc
+#SBATCH --job-name=Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3_mapping_qc
 #SBATCH --partition=carter-gpu
 #SBATCH --account=carter-gpu
 #SBATCH --gpus=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=128G
 #SBATCH --time=14-00:00:00
-#SBATCH --output=/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/bin/2_qc/%x.%A.out
+#SBATCH --output=/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/bin/2_qc/%x.%A.out
 
 #####
 # USAGE:
@@ -20,19 +20,19 @@ set -euo pipefail
 ###############################################
 
 # Dataset name
-SAMPLE="Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2"
+SAMPLE="Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3"
 
 # Input MuData from CRISPR pipeline
-H5MU="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/results/1_CRISPR_pipeline/2025_11_26/inference_mudata.h5mu"
+H5MU="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/1_CRISPR_pipeline/2026_01_06/inference_mudata.h5mu"
 
 # Output directory
-OUT="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/results/2_qc/2025_12_01"
+OUT="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06"
 
 # Location of scripts
 SCRIPTS="/cellar/users/aklie/data/datasets/tf_perturb_seq/scripts/CRISPR_pipeline_qc"
 
 # Conda envs
-ENV_QC="scverse-lite-py39"
+ENV_QC="scverse-lite-py311"
 ENV_GPU="rapids_singlecell"
 
 ###############################################

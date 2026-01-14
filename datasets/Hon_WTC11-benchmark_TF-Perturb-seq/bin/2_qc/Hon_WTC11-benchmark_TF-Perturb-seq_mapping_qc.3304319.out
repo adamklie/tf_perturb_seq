@@ -1,0 +1,56 @@
+=============================================
+ Running TF Perturb-seq QC Pipeline
+ SAMPLE: Hon_WTC11-benchmark_TF-Perturb-seq
+ OUTDIR: /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17
+=============================================
+---- [1/3] Running mapping_qc.py ----
+2025-12-17 08:13:14,791 - __main__ - INFO - Loading MuData from /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/1_CRISPR_pipeline/2025_12_17/inference_mudata.h5mu
+/cellar/users/aklie/opt/miniconda3/envs/scverse-lite-py39/lib/python3.9/site-packages/anndata/_core/anndata.py:522: FutureWarning: The dtype argument is deprecated and will be removed in late 2024.
+  warnings.warn(
+/cellar/users/aklie/opt/miniconda3/envs/scverse-lite-py39/lib/python3.9/site-packages/anndata/_core/anndata.py:522: FutureWarning: The dtype argument is deprecated and will be removed in late 2024.
+  warnings.warn(
+/cellar/users/aklie/opt/miniconda3/envs/scverse-lite-py39/lib/python3.9/site-packages/anndata/_core/anndata.py:522: FutureWarning: The dtype argument is deprecated and will be removed in late 2024.
+  warnings.warn(
+2025-12-17 08:13:25,228 - utils - INFO - MuData: 81887 cells total, modalities=['gene', 'guide', 'hashing']
+2025-12-17 08:13:25,228 - utils - INFO -   Modality 'gene': 81887 cells, 9345 features
+2025-12-17 08:13:25,228 - utils - INFO -   Modality 'guide': 81887 cells, 416 features
+2025-12-17 08:13:25,228 - utils - INFO -   Modality 'hashing': 81887 cells, 12 features
+2025-12-17 08:13:25,228 - utils - INFO - Adding sample name 'Hon_WTC11-benchmark_TF-Perturb-seq' to barcodes
+2025-12-17 08:13:25,228 - utils - INFO -   Example before: ATAACGCGTGCCTGTG_0
+2025-12-17 08:13:25,233 - utils - INFO -   Example after:  Hon_WTC11-benchmark_TF-Perturb-seq#ATAACGCGTGCCTGTG_0
+2025-12-17 08:13:25,259 - utils - INFO - Guide modality: computed n_guides_per_cell (obs) and n_cells_per_guide (var) from layer 'guide_assignment'
+2025-12-17 08:13:25,261 - __main__ - INFO - Running pre-filter QC
+2025-12-17 08:13:25,795 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/pre_filter_gene_knee_plot.png
+2025-12-17 08:13:25,795 - utils - INFO - Gene knee plot (UMIs per cell) - min count: 525, max count: 19308
+2025-12-17 08:13:26,728 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/pre_filter_gene_qc_histograms_by_batch.png
+2025-12-17 08:13:26,963 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/pre_filter_cells_per_batch.png
+2025-12-17 08:13:27,352 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/pre_filter_guide_knee_plot.png
+2025-12-17 08:13:27,352 - utils - INFO - Guide knee plot (guide UMIs per cell) - min count: 2, max count: 10100
+2025-12-17 08:13:28,074 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/pre_filter_guide_qc.png
+2025-12-17 08:13:28,490 - __main__ - INFO - Applying joint filters (gene + guide)
+2025-12-17 08:13:28,492 - utils - INFO - Cells before filtering: 81887
+2025-12-17 08:13:28,492 - utils - INFO - Cells after filtering:  81887
+2025-12-17 08:13:28,844 - __main__ - INFO - Running post-filter QC
+2025-12-17 08:13:29,263 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/post_filter_gene_knee_plot.png
+2025-12-17 08:13:29,263 - utils - INFO - Gene knee plot (UMIs per cell, filtered) - min count: 525, max count: 19308
+2025-12-17 08:13:30,061 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/post_filter_gene_qc_histograms_by_batch.png
+2025-12-17 08:13:30,292 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/post_filter_cells_per_batch.png
+2025-12-17 08:13:30,683 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/post_filter_guide_knee_plot.png
+2025-12-17 08:13:30,684 - utils - INFO - Guide knee plot (guide UMIs per cell, filtered) - min count: 2, max count: 10100
+2025-12-17 08:13:31,405 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/post_filter_guide_qc.png
+2025-12-17 08:13:31,794 - __main__ - INFO - Wrote combined metrics TSV to: /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/qc_metrics.tsv
+2025-12-17 08:13:31,794 - __main__ - INFO - Writing filtered gene AnnData to /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/gene.filtered.h5ad
+2025-12-17 08:13:34,212 - __main__ - INFO - Writing filtered guide AnnData to /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/guide.filtered.h5ad
+2025-12-17 08:13:34,407 - __main__ - INFO - QC script finished.
+QC complete → /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/mapping_qc/gene.filtered.h5ad
+
+---- [2/3] Running preprocess.py ----
+Preprocessing complete → /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/preprocess/gene.preprocessed.h5ad
+
+---- [3/3] Running cluster.py ----
+Clustering complete → /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17/clustering/gene.clustered.h5ad
+
+=============================================
+  Pipeline finished for sample: Hon_WTC11-benchmark_TF-Perturb-seq
+  Outputs written to: /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_17
+=============================================
