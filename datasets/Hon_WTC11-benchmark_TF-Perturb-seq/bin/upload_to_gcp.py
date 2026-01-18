@@ -190,13 +190,21 @@ def compute_gcs_paths(
     gcs_bucket: str,
     gcs_prefix: str,
 ) -> None:
-    """Compute GCS destination paths for all files."""
+    """Compute GCS destination paths for all files.
+
+    For IGVF files, the full S3 prefix is preserved (this matches how gcloud
+    transfer jobs copy files). For local files, only the filename is used.
+    """
     # Ensure prefix ends with /
     if gcs_prefix and not gcs_prefix.endswith("/"):
         gcs_prefix += "/"
 
     for ref, info in file_refs.items():
-        if info.filename:
+        if info.source_type == "igvf" and info.s3_prefix:
+            # IGVF files: include full S3 prefix (matches gcloud transfer behavior)
+            info.gcs_path = f"gs://{gcs_bucket}/{gcs_prefix}{info.s3_prefix}"
+        elif info.filename:
+            # Local files: just use filename
             info.gcs_path = f"gs://{gcs_bucket}/{gcs_prefix}{info.filename}"
 
 
