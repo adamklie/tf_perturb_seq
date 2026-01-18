@@ -19,4 +19,5 @@ dependencies = [
     "seaborn>=0.13.2",
     "synapseclient>=4.10.0",
     "torch>=2.9.1",
+    "requests>=2.31.0",
 ]
