@@ -7,7 +7,6 @@ ACCESSION=IGVFDS4761PYUO  # Analysis set ID in IGVF portal
 python3 $script \
   --accession $ACCESSION \
   --output $base_dir/sample_metadata.tsv \
-  --hash_seqspec $base_dir/yaml_files/hash_seq_spec.yaml \
-  --rna_seqspec $base_dir/yaml_files/rna_seq_spec.yaml \
-  --sgrna_seqspec $base_dir/yaml_files/sgrna_seq_spec.yaml
-  
+  --hash_seqspec $base_dir/bin/1_CRISPR_pipeline/seqspec/yaml_files/hash_seqspec.yml \
+  --rna_seqspec $base_dir/bin/1_CRISPR_pipeline/seqspec/yaml_files/rna_seqspec.yml \
+  --sgrna_seqspec $base_dir/bin/1_CRISPR_pipeline/seqspec/yaml_files/guide_seqspec.yml
