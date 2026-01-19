@@ -2,34 +2,21 @@
 #
 # Upload files from IGVF portal and local paths to GCP
 #
-# This script wraps upload_to_gcp.py with dataset-specific configuration.
-# It handles both IGVF accessions (transferred directly from S3 to GCS)
-# and local files (uploaded via gsutil).
-#
-# Prerequisites:
-#   - gcloud CLI authenticated and configured
-#   - gsutil available
-#   - Python 3.8+ with requests library
-#   - Access to IGVF portal API
-#
 # Usage:
-#   ./2b_upload_to_gcp.sh
+#   ./2_upload_to_gcp.sh              # Normal run
+#   DRY_RUN=true ./2_upload_to_gcp.sh # Dry run
 #
 set -euo pipefail
 
 # =============================================================================
-# CONFIGURATION - Modify these values as needed
+# CONFIGURATION - Only change BASE_DIR for your environment
 # =============================================================================
 
-# Base directory for the dataset
-BASE_DIR=/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq
+# Base directory (change this for local vs remote)
+BASE_DIR=/Users/adamklie/Desktop/projects/tf_perturb_seq
 
-# Input sample metadata file
-INPUT_FILE=${BASE_DIR}/sample_metadata.tsv
-
-# Output file with updated GCS paths
-# Tip: Use a date suffix to track versions
-OUTPUT_FILE=${BASE_DIR}/sample_metadata_gcp_$(date +%Y_%m_%d).tsv
+# Dataset name
+DATASET_NAME=TEMPLATE_DATASET  # <-- CHANGE THIS
 
 # GCP project ID
 PROJECT=igvf-pertub-seq-pipeline
@@ -37,18 +24,21 @@ PROJECT=igvf-pertub-seq-pipeline
 # GCS bucket (without gs:// prefix)
 GCS_BUCKET=igvf-pertub-seq-pipeline-data
 
+# =============================================================================
+# DERIVED PATHS (no need to change)
+# =============================================================================
+
+DATASET_DIR=${BASE_DIR}/datasets/${DATASET_NAME}
+UPLOAD_SCRIPT=${BASE_DIR}/scripts/upload_to_gcp.py
+
+# Input sample metadata file (CSV format)
+INPUT_FILE=${DATASET_DIR}/sample_metadata.csv
+
+# Output file with updated GCS paths
+OUTPUT_FILE=${DATASET_DIR}/sample_metadata_gcp_$(date +%Y_%m_%d).csv
+
 # GCS prefix/folder path within the bucket
-# Tip: Include a date to organize uploads
-GCS_PREFIX=Hon_WTC11-benchmark_TF-Perturb-seq/$(date +%Y_%m_%d)/
-
-# Columns to process for file references
-# Default: R1_path,R2_path,seqspec,barcode_onlist,guide_design,barcode_hashtag_map
-# Uncomment to customize:
-# COLUMNS="R1_path R2_path"
-
-# Path to the upload script
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-UPLOAD_SCRIPT="${SCRIPT_DIR}/../upload_to_gcp.py"
+GCS_PREFIX=${DATASET_NAME}/$(date +%Y_%m_%d)/
 
 # =============================================================================
 # EXECUTION
@@ -101,11 +91,6 @@ CMD=(
     --gcs-prefix "${GCS_PREFIX}"
     --project "${PROJECT}"
 )
-
-# Add columns if specified
-if [[ -n "${COLUMNS:-}" ]]; then
-    CMD+=(--columns ${COLUMNS})
-fi
 
 # Add dry-run flag if DRY_RUN is set
 if [[ "${DRY_RUN:-false}" == "true" ]]; then

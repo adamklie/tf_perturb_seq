@@ -74,11 +74,19 @@ def get_auth(keypair_path=None):
     raise RuntimeError('No credentials provided. Set IGVF_API_KEY and IGVF_SECRET_KEY or provide a keypair JSON.')
 
 
-def write_tsv(data_list, output_path):
+# Mapping from IGVF modality names to pipeline modality names
+MODALITY_MAP = {
+    "scRNA sequencing": "scRNA",
+    "gRNA sequencing": "gRNA",
+    "cell hashing barcode sequencing": "hash",
+}
+
+
+def write_csv(data_list, output_path):
     if not data_list:
-        raise ValueError("No data provided for TSV output.")
+        raise ValueError("No data provided for CSV output.")
     with open(output_path, 'w', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=data_list[0].keys(), delimiter='\t')
+        writer = csv.DictWriter(f, fieldnames=data_list[0].keys())
         writer.writeheader()
         writer.writerows(data_list)
 
@@ -227,22 +235,18 @@ def generate_per_sample_tsv(analysis_set_accession, output_path, auth, hash_seqs
             if not(onlist_method):
                 raise ValueError(f'Missing an associated onlist method on {file_set_object["@id"]}. Please submit to the onlist_method property on the data portal under the measurement set.')
 
+            # Map modality to pipeline format (scRNA, gRNA, hash)
+            pipeline_modality = MODALITY_MAP.get(modality, modality)
+
             row = {
                 'R1_path': read1['@id'].split('/')[-2],
-                'R1_md5sum': read1['content_md5sum'],
                 'R2_path': read2['@id'].split('/')[-2],
-                'R2_md5sum': read2['content_md5sum'],
-                'file_modality': modality,
-                'file_set': accession,
+                'file_modality': pipeline_modality,
                 'measurement_sets': measurement_sets,
                 'sequencing_run': key[0],
                 'lane': key[1],
-                'flowcell_id': key[2],
-                'index': key[3],
                 'seqspec': seqspec_path,
                 'barcode_onlist': barcode_onlist[0].split('/')[-2] if barcode_onlist else '',
-                'onlist_method': onlist_method,
-                'strand_specificity': strand_specificity,
                 'guide_design': guide_rna_sequences,
                 'barcode_hashtag_map': barcode_to_hashtag_map
             }
@@ -253,23 +257,23 @@ def generate_per_sample_tsv(analysis_set_accession, output_path, auth, hash_seqs
     if any(not row['seqspec'] for row in per_sample_rows):
         raise ValueError("At least one row is missing a seqspec path – aborting.")
 
-    write_tsv(per_sample_rows, output_path)
+    write_csv(per_sample_rows, output_path)
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Generate per-sample TSV for Perturb-seq pipeline. Example usage:\n"
+    parser = argparse.ArgumentParser(description="Generate per-sample CSV for Perturb-seq pipeline. Example usage:\n"
                                                  "python3 generate_per_sample.py --keypair igvf_key.json --accession IGVFDS7340YDHF "
-                                                 "--output test_fetch.tsv --hash_seqspec hash_seq_spec.yaml "
+                                                 "--output test_fetch.csv --hash_seqspec hash_seq_spec.yaml "
                                                  "--rna_seqspec rna_seq_spec.yaml --sgrna_seqspec sgrna_seq_spec.yaml")
     parser.add_argument("--accession", required=True, help="Analysis set accession")
-    parser.add_argument("--output", required=True, help="Output TSV file path")
+    parser.add_argument("--output", required=True, help="Output CSV file path")
     parser.add_argument("--keypair", help="Optional path to keypair JSON file")
     parser.add_argument("--hash_seqspec", help="Fallback path to hash seqspec")
     parser.add_argument("--rna_seqspec", help="Fallback path to RNA seqspec")
     parser.add_argument("--sgrna_seqspec", help="Fallback path to sgRNA seqspec")
     args = parser.parse_args()
 
-    print(f"Generating per-sample TSV from analysis set '{args.accession}'...")
+    print(f"Generating per-sample CSV from analysis set '{args.accession}'...")
     auth = get_auth(args.keypair)
     generate_per_sample_tsv(
         args.accession,

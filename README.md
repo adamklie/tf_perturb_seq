@@ -1,17 +1,70 @@
 # IGVF TF Perturb-seq Pillar Project
-Code for processing and analysis of CRISPR screening data targeting a large set of known transcription factors and epigenetic modifiers across multiple cell states
+
+Code for processing and analysis of CRISPR screening data targeting a large set of known transcription factors and epigenetic modifiers across multiple cell states.
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/adamklie/tf_perturb_seq.git
+cd tf_perturb_seq
+
+# Install dependencies (using uv)
+uv sync
+
+# Set up a new dataset
+python scripts/setup_dataset.py --name "Lab_CellLine-state_TF-Perturb-seq" --accession IGVFDSXXXXXX
+
+# Follow the pipeline steps in docs/CRISPR_PIPELINE.md
+```
+
+## Repository Structure
+
+```
+tf_perturb_seq/
+├── datasets/                    # Dataset directories (one per experiment)
+│   └── <dataset_name>/
+│       ├── bin/                 # Analysis scripts
+│       │   ├── 1_CRISPR_pipeline/
+│       │   ├── 2_qc/
+│       │   └── 3_gene_program_discovery/
+│       ├── dataset_config.yaml  # Dataset-specific parameters
+│       └── sample_metadata.csv  # Generated sample sheet
+├── docs/                        # Documentation
+│   └── CRISPR_PIPELINE.md      # Pipeline workflow guide
+├── scripts/                     # Shared Python scripts
+│   ├── generate_per_sample.py  # Query IGVF portal for metadata
+│   ├── upload_to_gcp.py        # Upload files to GCS
+│   ├── setup_dataset.py        # Bootstrap new dataset
+│   └── validate_gcp_paths.py   # Verify GCS uploads
+├── src/                         # Python modules
+├── ref/                         # Reference files (guide metadata, etc.)
+└── templates/                   # Dataset templates
+```
+
+## Pipeline Overview
+
+The processing pipeline consists of three main steps:
+
+1. **Generate Sample Metadata** - Query IGVF portal for dataset files and create sample sheet
+2. **Upload to GCP** - Transfer files from IGVF/S3 to Google Cloud Storage
+3. **Run CRISPR Pipeline** - Execute Nextflow pipeline on Google Cloud Batch
+
+See [docs/CRISPR_PIPELINE.md](docs/CRISPR_PIPELINE.md) for detailed instructions.
 
 ## TODO
 
 ### Run processing pipeline on all datasets
 - [ ] [Run CRISPR FG pipeline on all datasets](https://github.com/adamklie/tf_perturb_seq/issues/6)
+- [ ] [Harmonized pipeline config](https://github.com/adamklie/tf_perturb_seq/issues/4)
 
 ### Downstream analysis
 - [ ] [Run energy distance analysis](https://github.com/adamklie/tf_perturb_seq/issues/7)
 - [ ] [Run cNMF and gene program evaluations on each dataset](https://github.com/adamklie/tf_perturb_seq/issues/8)
 
 ## Datasets
-This repository contains multiple (`datasets/`) each with its own folder:
+
+This repository contains multiple datasets in `datasets/`, each with its own folder:
 
 1. `Hon_TF_Perturb_Seq_Pilot` -- A pilot set of 55 TFs introduced transfected into WTC11 iPSCs and differentiated to cardiomyocytes (12 days)
 2. [`Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq`](https://docs.google.com/presentation/d/1FDr7KE873Er1CezXQNqvqPKecoNEfOrBd8ixoTUsOSE/edit#slide=id.p) -- Pools ABCD transfected into WTC11 iPSCs and differentiated to cardiomyocytes (12 days)
@@ -34,32 +87,30 @@ Fastq files should be uploaded to the [IGVF data portal](https://data.igvf.org/)
 Each measurement and auxiliary set needs a set of fastqs in it, as well as seqspecs for each type of sequencing.
 
 ## Processing
-Each dataset will be processed through the [IGVF CRISPR Pipeline](https://github.com/pinellolab/CRISPR_Pipeline)
 
-Follow the instructions at the link above to run the pipeline. Briefly, the required inputs are:
+Each dataset is processed through the [IGVF CRISPR Pipeline](https://github.com/pinellolab/CRISPR_Pipeline) running on Google Cloud.
 
-1. Fastq files
-First create an `analysis_sets.tsv` file that looks like this:
+**For detailed instructions, see [docs/CRISPR_PIPELINE.md](docs/CRISPR_PIPELINE.md).**
+
+### Quick Reference
+
+```bash
+# 1. Generate sample metadata from IGVF portal
+./bin/1_CRISPR_pipeline/1_generate_per_sample_metadata.sh
+
+# 2. Upload files to GCP
+./bin/1_CRISPR_pipeline/2_upload_to_gcp.sh
+
+# 3. Run the pipeline
+./bin/1_CRISPR_pipeline/3_run_CRISPR_pipeline.sh
 ```
-analysis_set_id	input_file_sets	measurement_sets	associated_auxiliary_sets
-IGVFDS4389OUWU	IGVFDS3231RKUL	IGVFDS4852MAUM	/auxiliary-sets/IGVFDS6861GRJI/,/auxiliary-sets/IGVFDS5228AHGR/
-IGVFDS4389OUWU	IGVFDS2378SIVI	IGVFDS7733OTCA	/auxiliary-sets/IGVFDS0997MTQA/,/auxiliary-sets/IGVFDS7027VRZT/
-IGVFDS4389OUWU	IGVFDS7715GHKL	IGVFDS2628PYOH	/auxiliary-sets/IGVFDS8139DLEM/,/auxiliary-sets/IGVFDS0109SCQO/
-IGVFDS4389OUWU	IGVFDS8280DBSV	IGVFDS7834BXBN	/auxiliary-sets/IGVFDS8280AMDA/,/auxiliary-sets/IGVFDS6231TYIS/
-```
-You can then use the `download_fastq.py` script to download all the fastqs to a `fastq_files` directory.
 
-2. YAML Configuration Files:
- - `rna_seqspec.yml`: Defines RNA sequencing structure and parameters
- - `guide_seqspec.yml`: Specifies guide RNA detection parameters
- - `hash_seqspec.yml`: Defines cell hashing structure (required if using cell hashing)
- - `whitelist.txt`: List of valid cell barcodes
+### Required Inputs
 
-3. Metadata files
- - `guide_metadata.tsv` -- See https://github.com/adamklie/tf_perturb_seq/issues/3
- - `hash_metadata.tsv` -- include only if your protocol used HTOs
-
-4. Pipeline configuration file: see https://github.com/adamklie/tf_perturb_seq/issues/4
+1. **IGVF Analysis Set** - Accession ID for your dataset on the IGVF portal
+2. **Seqspec YAML files** - Read structure definitions for RNA, guide, and hash (if applicable)
+3. **Guide metadata** - See [Issue #3](https://github.com/adamklie/tf_perturb_seq/issues/3)
+4. **Pipeline config** - Dataset-specific parameters in `dataset_config.yaml`
 
 ## Downstream analysis
 

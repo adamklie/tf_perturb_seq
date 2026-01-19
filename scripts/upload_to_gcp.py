@@ -2,15 +2,15 @@
 """
 Upload files from IGVF portal and local paths to GCP.
 
-This script reads a sample metadata TSV file, identifies file references
+This script reads a sample metadata CSV file, identifies file references
 (both IGVF accessions and local paths), and uploads them to GCP.
 IGVF accessions are transferred directly from S3 to GCS using gcloud transfer jobs.
 Local files are uploaded using gsutil.
 
 Usage:
     python upload_to_gcp.py \
-        --input sample_metadata.tsv \
-        --output sample_metadata_gcp.tsv \
+        --input sample_metadata.csv \
+        --output sample_metadata_gcp.csv \
         --gcs-bucket igvf-pertub-seq-pipeline-data \
         --gcs-prefix WTC11_CM_TF_PerturbSeq/2025_01_18/
 """
@@ -115,7 +115,7 @@ def collect_file_references(
     file_columns: list[str],
 ) -> tuple[dict[str, FileInfo], list[dict]]:
     """
-    Read the input TSV and collect all unique file references.
+    Read the input CSV and collect all unique file references.
 
     Returns:
         - Dictionary mapping original reference to FileInfo
@@ -125,7 +125,7 @@ def collect_file_references(
     rows = []
 
     with open(input_file, "r", newline="") as f:
-        reader = csv.DictReader(f, delimiter="\t")
+        reader = csv.DictReader(f)  # CSV format (comma-separated)
         fieldnames = reader.fieldnames
 
         for row in reader:
@@ -390,7 +390,7 @@ def update_metadata_file(
     """Update the metadata file with GCS paths."""
     # Get fieldnames from input file
     with open(input_file, "r") as f:
-        reader = csv.DictReader(f, delimiter="\t")
+        reader = csv.DictReader(f)  # CSV format
         fieldnames = reader.fieldnames
 
     updated_rows = []
@@ -410,9 +410,9 @@ def update_metadata_file(
 
         updated_rows.append(new_row)
 
-    # Write output file
+    # Write output file (CSV format)
     with open(output_file, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t")
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(updated_rows)
 
@@ -427,12 +427,12 @@ def main():
     parser.add_argument(
         "--input", "-i",
         required=True,
-        help="Input sample metadata TSV file",
+        help="Input sample metadata CSV file",
     )
     parser.add_argument(
         "--output", "-o",
         required=True,
-        help="Output sample metadata TSV file with updated GCS paths",
+        help="Output sample metadata CSV file with updated GCS paths",
     )
     parser.add_argument(
         "--gcs-bucket",

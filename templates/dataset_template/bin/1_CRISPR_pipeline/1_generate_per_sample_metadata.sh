@@ -9,10 +9,10 @@ set -euo pipefail
 BASE_DIR=/Users/adamklie/Desktop/projects/tf_perturb_seq
 
 # Dataset name
-DATASET_NAME=Hon_WTC11-benchmark_TF-Perturb-seq
+DATASET_NAME=TEMPLATE_DATASET  # <-- CHANGE THIS
 
 # Analysis set ID in IGVF portal
-ACCESSION=IGVFDS4761PYUO
+ACCESSION=IGVFDSXXXXXXXX  # <-- CHANGE THIS
 
 # =============================================================================
 # DERIVED PATHS (no need to change)

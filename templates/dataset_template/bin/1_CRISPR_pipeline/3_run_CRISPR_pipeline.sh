@@ -6,19 +6,19 @@ set -euo pipefail
 # =============================================================================
 
 # Dataset name (used for log file naming)
-DATASET_NAME=Hon_WTC11-benchmark_TF-Perturb-seq
+DATASET_NAME=TEMPLATE_DATASET  # <-- CHANGE THIS
 
 # Base directory for the dataset (local path)
 BASE_DIR=/Users/adamklie/Desktop/projects/tf_perturb_seq/datasets/${DATASET_NAME}
 
-# Sample metadata with GCS paths
-SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_01_18.csv
+# Sample metadata with GCS paths (update date as needed)
+SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_YYYY_MM_DD.csv  # <-- CHANGE DATE
 
 # CRISPR Pipeline path
 PIPELINE_PATH=/Users/adamklie/Desktop/projects/CRISPR_Pipeline
 
-# Output directory on GCS
-OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_01_18/outs
+# Output directory on GCS (update date as needed)
+OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/YYYY_MM_DD/outs  # <-- CHANGE DATE
 
 # Log file with dataset name and timestamp
 LOG_FILE=$BASE_DIR/logs/${DATASET_NAME}_crispr_pipeline_$(date +%Y%m%d_%H%M%S).log
@@ -36,8 +36,10 @@ mkdir -p $BASE_DIR/logs
 cd $PIPELINE_PATH
 
 # Build the nextflow command
-# -params-file loads dataset-specific parameters from YAML
-# Add -with-tower if you have TOWER_ACCESS_TOKEN set
+# -profile google: Use Google Cloud Batch for execution
+# --input: Sample metadata CSV with GCS paths
+# --outdir: Output directory on GCS
+# -with-tower: Enable Nextflow Tower monitoring (requires TOWER_ACCESS_TOKEN)
 NF_CMD="nextflow run main.nf \
     -profile google \
     --input $SAMPLE_METADATA \
