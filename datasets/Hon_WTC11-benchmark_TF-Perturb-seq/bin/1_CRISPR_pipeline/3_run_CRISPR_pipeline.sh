@@ -12,7 +12,7 @@ DATASET_NAME=Hon_WTC11-benchmark_TF-Perturb-seq
 BASE_DIR=/Users/adamklie/Desktop/projects/tf_perturb_seq/datasets/${DATASET_NAME}
 
 # Sample metadata with GCS paths
-SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_01_18.csv
+SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_01_18_patched.csv
 
 # CRISPR Pipeline path
 PIPELINE_PATH=/Users/adamklie/Desktop/projects/CRISPR_Pipeline
