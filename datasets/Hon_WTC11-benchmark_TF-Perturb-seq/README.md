@@ -16,7 +16,7 @@
 [IGVFDS4761PYUO](https://data.igvf.org/analysis-sets/IGVFDS4761PYUO/)
 
 ## Nextflow samplesheet
-This tooka few iterations to get right. I used Ian's initial download scripts to download the raw fastqs and relevant metadata and upload to GCP (took some iteration). Seqpsecs were not on the portal yet so I grabbed the generic ones from the pipeline repo and uploaded them to GCP manually. There were a couple other manual updates I had to do as there was some funkiness with the first row of the samplesheet. The version actually used can be found here: https://www.synapse.org/Synapse:syn70753575
+This took a few iterations to get right. I used Ian's initial download scripts to download the raw fastqs and relevant metadata and upload to GCP (took some iteration). Seqpsecs were not on the portal yet so I grabbed the generic ones from the pipeline repo and uploaded them to GCP manually. There were a couple other manual updates I had to do as there was some funkiness with the first row of the samplesheet. The version actually used can be found here: https://www.synapse.org/Synapse:syn70753575
 
 ## Guide metadata
 Generated v1 metadata as described [here](https://docs.google.com/presentation/d/1uqnACxqehcuuI2o32ydW8EsVTQ-3j6oiuTxBTPwJM8I/edit?slide=id.p#slide=id.p)
