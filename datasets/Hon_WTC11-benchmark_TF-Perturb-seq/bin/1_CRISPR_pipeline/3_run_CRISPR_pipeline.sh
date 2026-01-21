@@ -18,7 +18,7 @@ SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_01_18_patched.csv
 PIPELINE_PATH=/Users/adamklie/Desktop/projects/CRISPR_Pipeline
 
 # Output directory on GCS
-OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_01_18/outs/harmless_teacher
+OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_01_18/outs/beautiful_tornado
 
 # Log file with dataset name and timestamp
 LOG_FILE=$BASE_DIR/logs/${DATASET_NAME}_crispr_pipeline_$(date +%Y%m%d_%H%M%S).log
