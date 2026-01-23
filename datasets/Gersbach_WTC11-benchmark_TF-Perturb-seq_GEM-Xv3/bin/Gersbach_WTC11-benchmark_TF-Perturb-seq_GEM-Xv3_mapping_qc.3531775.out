@@ -1,0 +1,53 @@
+=============================================
+ Running TF Perturb-seq QC Pipeline
+ SAMPLE: Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3
+ OUTDIR: /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06
+=============================================
+---- [1/3] Running mapping_qc.py ----
+2026-01-06 12:52:20,809 - __main__ - INFO - Loading MuData from /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/1_CRISPR_pipeline/2026_01_06/inference_mudata.h5mu
+/cellar/users/aklie/opt/miniconda3/envs/scverse-lite-py311/lib/python3.11/site-packages/mudata/_core/mudata.py:1598: FutureWarning: From 0.4 .update() will not pull obs/var columns from individual modalities by default anymore. Set mudata.set_options(pull_on_update=False) to adopt the new behaviour, which will become the default. Use new pull_obs/pull_var and push_obs/push_var methods for more flexibility.
+  self._update_attr("var", axis=0, join_common=join_common)
+/cellar/users/aklie/opt/miniconda3/envs/scverse-lite-py311/lib/python3.11/site-packages/mudata/_core/mudata.py:1461: FutureWarning: From 0.4 .update() will not pull obs/var columns from individual modalities by default anymore. Set mudata.set_options(pull_on_update=False) to adopt the new behaviour, which will become the default. Use new pull_obs/pull_var and push_obs/push_var methods for more flexibility.
+  self._update_attr("obs", axis=1, join_common=join_common)
+2026-01-06 12:52:40,629 - utils - INFO - MuData: 57672 cells total, modalities=['gene', 'guide']
+2026-01-06 12:52:40,629 - utils - INFO -   Modality 'gene': 57672 cells, 14012 features
+2026-01-06 12:52:40,629 - utils - INFO -   Modality 'guide': 57672 cells, 416 features
+2026-01-06 12:52:40,629 - utils - INFO - Adding sample name 'Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3' to barcodes
+2026-01-06 12:52:40,629 - utils - INFO -   Example before: ATGACGGAGGGGTAGC_0
+2026-01-06 12:52:40,632 - utils - INFO -   Example after:  Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3#ATGACGGAGGGGTAGC_0
+2026-01-06 12:52:40,635 - utils - INFO - Guide modality: computed n_guides_per_cell (obs) and n_cells_per_guide (var) from layer 'guide_assignment'
+2026-01-06 12:52:40,637 - __main__ - INFO - Running pre-filter QC
+2026-01-06 12:52:41,186 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/pre_filter_gene_knee_plot.png
+2026-01-06 12:52:41,187 - utils - INFO - Gene knee plot (UMIs per cell) - min count: 1048, max count: 166890
+2026-01-06 12:52:42,057 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/pre_filter_gene_qc_histograms_by_batch.png
+2026-01-06 12:52:42,280 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/pre_filter_cells_per_batch.png
+2026-01-06 12:52:42,713 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/pre_filter_guide_knee_plot.png
+2026-01-06 12:52:42,713 - utils - INFO - Guide knee plot (guide UMIs per cell) - min count: 1, max count: 17503
+2026-01-06 12:52:43,495 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/pre_filter_guide_qc.png
+2026-01-06 12:52:44,336 - __main__ - INFO - Applying joint filters (gene + guide)
+2026-01-06 12:52:44,338 - utils - INFO - Cells before filtering: 57672
+2026-01-06 12:52:44,338 - utils - INFO - Cells after filtering:  57672
+2026-01-06 12:52:45,147 - __main__ - INFO - Running post-filter QC
+2026-01-06 12:52:45,682 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/post_filter_gene_knee_plot.png
+2026-01-06 12:52:45,683 - utils - INFO - Gene knee plot (UMIs per cell, filtered) - min count: 1048, max count: 166890
+2026-01-06 12:52:46,548 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/post_filter_gene_qc_histograms_by_batch.png
+2026-01-06 12:52:46,769 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/post_filter_cells_per_batch.png
+2026-01-06 12:52:47,206 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/post_filter_guide_knee_plot.png
+2026-01-06 12:52:47,206 - utils - INFO - Guide knee plot (guide UMIs per cell, filtered) - min count: 1, max count: 17503
+2026-01-06 12:52:48,051 - utils - INFO - Saved /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/post_filter_guide_qc.png
+2026-01-06 12:52:48,910 - __main__ - INFO - Wrote combined metrics TSV to: /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/qc_metrics.tsv
+2026-01-06 12:52:48,910 - __main__ - INFO - Writing filtered gene AnnData to /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/gene.filtered.h5ad
+2026-01-06 12:52:53,075 - __main__ - INFO - Writing filtered guide AnnData to /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/guide.filtered.h5ad
+2026-01-06 12:52:53,169 - __main__ - INFO - QC script finished.
+QC complete → /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/mapping_qc/gene.filtered.h5ad
+
+---- [2/3] Running preprocess.py ----
+Preprocessing complete → /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/preprocess/gene.preprocessed.h5ad
+
+---- [3/3] Running cluster.py ----
+Clustering complete → /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06/clustering/gene.clustered.h5ad
+
+=============================================
+  Pipeline finished for sample: Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3
+  Outputs written to: /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_06
+=============================================

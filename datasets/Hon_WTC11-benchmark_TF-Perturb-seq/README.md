@@ -1,33 +1,88 @@
 # Hon_WTC11-benchmark_TF-Perturb-seq
 
+## Overview
+
+| Attribute | Value |
+|-----------|-------|
+| **Analysis Set** | [IGVFDS4761PYUO](https://data.igvf.org/analysis-sets/IGVFDS4761PYUO/) |
+| **Lab** | Hon |
+| **Contact** | Mpathi |
+| **System** | iPSC (WTC11) |
+| **Technology** | 10x 5' (w/HTO) |
+| **MOI** | High |
+| **Cell Hashing** | Yes |
+| **Modalities** | scRNA, gRNA, hash |
+| **Cells Sequenced** | ~750K |
+| **Pipeline Status** | ✅ Run completed with results |
+
+---
+
+## Pipeline Inputs Status
+
+| File | IGVF Accession | Local | GCS | Status |
+|------|----------------|-------|-----|--------|
+| Seqspecs (3) | - | ✅ | ✅ | Done |
+| Barcode onlist | `IGVFFI9487JPEN` | ✅ | ✅ | Done |
+| Guide metadata | `IGVFFI5765HMZH` | ✅ | ✅ | Done |
+| Hashtag map | `IGVFFI3028BJFI` | ✅ | ✅ | Done |
+
+---
+
+## Key Files
+
+### Sample Metadata
+- **Production CSV**: `sample_metadata_gcp_2026_01_18.csv`
+- **Patched CSV**: `sample_metadata_gcp_2026_01_18_patched.csv`
+- **Synapse**: [syn70753575](https://www.synapse.org/Synapse:syn70753575)
+
+### Seqspecs (on GCS)
+- `gs://igvf-pertub-seq-pipeline-data/Hon_WTC11-benchmark_TF-Perturb-seq/2026_01_18/rna_seqspec.yml`
+- `gs://igvf-pertub-seq-pipeline-data/Hon_WTC11-benchmark_TF-Perturb-seq/2026_01_18/guide_seqspec.yml`
+- `gs://igvf-pertub-seq-pipeline-data/Hon_WTC11-benchmark_TF-Perturb-seq/2026_01_18/hash_seqspec.yml`
+
+### Config
+- **Production**: `harmless_teacher.config`
+- **Key settings**:
+  - `GUIDE_ASSIGNMENT_method = 'sceptre'`
+  - `Multiplicity_of_infection = 'high'`
+  - `ENABLE_DATA_HASHING = true`
+  - `reverse_complement_guides = true`
+  - `spacer_tag = "TTAGCTCTTAAAC"`
+
+---
+
+## Pipeline Results
+
+Results in `results/1_CRISPR_pipeline/`:
+- **2026_01_21/**: Dashboard, inference results
+- **2026_01_22/**: Additional run
+
+**Key outputs**:
+- `pipeline_dashboard/dashboard.html`
+- `inference_mudata.h5mu` ([syn70753405](https://www.synapse.org/Synapse:syn70753405))
+- `perturbo_cis_per_guide_output.tsv.gz`
+- `perturbo_trans_per_guide_output.tsv.gz`
+
+**QC Analysis**: [Slides](https://docs.google.com/presentation/d/1E5aUUtMdyWWutOi9Uj24nlXjYkLPOfgm7N2XbEqjrtE/edit?slide=id.g39e356c57dd_0_11)
+
+---
+
+## Gene Program Discovery
+
+[syn70776514](https://www.synapse.org/Synapse:syn70776514)
+
+---
+
 ## TODO
+
 - [ ] Update guide metadata to latest spec
-- [ ] Rerun through pipeline 
+- [ ] Rerun through pipeline
 - [ ] Get CellRanger and PySpade output from Mpathi
-- [ ]
 
-## Experimental design
+---
 
-| **System** | **Sequencing Tool** | **Lab** | **Contact** | **Technology (3'  , 5')** | **MOI  (HIGH or LOW)** | **Number of cells sequenced** |
-| --- | --- | --- | --- | --- | --- | --- |
-| iPSC (WTC11) | 10x 5' (w/HTO) | Hon | Mpathi | 5' to 3' | HIGH | 750K |
+## Notes
 
-## Data portal 
-[IGVFDS4761PYUO](https://data.igvf.org/analysis-sets/IGVFDS4761PYUO/)
-
-## Nextflow samplesheet
-This took a few iterations to get right. I used Ian's initial download scripts to download the raw fastqs and relevant metadata and upload to GCP (took some iteration). Seqpsecs were not on the portal yet so I grabbed the generic ones from the pipeline repo and uploaded them to GCP manually. There were a couple other manual updates I had to do as there was some funkiness with the first row of the samplesheet. The version actually used can be found here: https://www.synapse.org/Synapse:syn70753575
-
-## Guide metadata
-Generated v1 metadata as described [here](https://docs.google.com/presentation/d/1uqnACxqehcuuI2o32ydW8EsVTQ-3j6oiuTxBTPwJM8I/edit?slide=id.p#slide=id.p)
-Recent edits to metadata spec require that this be updated and the pipeline rerun.
-
-## Uniform processing and inference
-Generated v1 pipeline outputs on GCP. I think the html report failed to generate so the relevant outputs can only be found in the work directory. This is only really something you can navigate if you have access to all the logs of the nextflow run via Seqera Tower (I believe Lucas has this access).
-
-Stored the inference MuData copied over here: https://www.synapse.org/Synapse:syn70753405
-
-QC Analysis slides: https://docs.google.com/presentation/d/1E5aUUtMdyWWutOi9Uj24nlXjYkLPOfgm7N2XbEqjrtE/edit?slide=id.g39e356c57dd_0_11#slide=id.g39e356c57dd_0_11
-
-## Gene program discovery
-https://www.synapse.org/Synapse:syn70776514
+- This dataset serves as the **reference model** for organization (3 seqspecs per modality)
+- Uses same guide metadata (`IGVFFI5765HMZH`) as Gersbach datasets
+- Uses same barcode onlist as Gersbach HTv2 (`IGVFFI9487JPEN`)
