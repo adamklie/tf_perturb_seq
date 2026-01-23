@@ -7,7 +7,13 @@ This script reads a sample metadata CSV file, identifies file references
 IGVF accessions are transferred directly from S3 to GCS using gcloud transfer jobs.
 Local files are uploaded using gsutil.
 
+Environment variables:
+    AWS_ROLE_ARN: AWS IAM role ARN for S3 to GCS transfer (required)
+    IGVF_API_KEY: IGVF portal API key (optional)
+    IGVF_SECRET_KEY: IGVF portal secret key (optional)
+
 Usage:
+    export AWS_ROLE_ARN="arn:aws:iam::ACCOUNT_ID:role/ROLE_NAME"
     python upload_to_gcp.py \
         --input sample_metadata.csv \
         --output sample_metadata_gcp.csv \
@@ -39,6 +45,9 @@ IGVF_API_BASE = "https://api.data.igvf.org"
 # Authentication - can be set via environment variables or command line
 IGVF_API_KEY = os.environ.get("IGVF_API_KEY", "")
 IGVF_SECRET_KEY = os.environ.get("IGVF_SECRET_KEY", "")
+
+# AWS Role ARN for S3 to GCS transfer - set via environment variable or command line
+AWS_ROLE_ARN = os.environ.get("AWS_ROLE_ARN", "")
 
 # Columns that may contain file references
 DEFAULT_FILE_COLUMNS = [
@@ -256,12 +265,10 @@ def confirm_upload() -> bool:
         print("Please enter 'y' or 'n'")
 
 
-def create_role_arn_file(output_dir: str) -> str:
+def create_role_arn_file(output_dir: str, role_arn: str) -> str:
     """Create the role ARN JSON file for S3 access."""
     role_arn_path = os.path.join(output_dir, "role-arn.json")
-    role_arn_data = {
-        "roleArn": "arn:aws:iam::407227577691:role/S3toPertubSeqGoogleCloudTransfer"
-    }
+    role_arn_data = {"roleArn": role_arn}
     with open(role_arn_path, "w") as f:
         json.dump(role_arn_data, f, indent=2)
     return role_arn_path
@@ -450,6 +457,11 @@ def main():
         help="GCP project ID (default: igvf-pertub-seq-pipeline)",
     )
     parser.add_argument(
+        "--role-arn",
+        default=AWS_ROLE_ARN,
+        help="AWS IAM role ARN for S3 access (default: AWS_ROLE_ARN env var)",
+    )
+    parser.add_argument(
         "--columns",
         nargs="+",
         default=DEFAULT_FILE_COLUMNS,
@@ -471,6 +483,11 @@ def main():
     # Validate input file
     if not os.path.exists(args.input):
         print(f"Error: Input file not found: {args.input}")
+        sys.exit(1)
+
+    # Validate role ARN
+    if not args.role_arn:
+        print("Error: AWS role ARN is required. Set AWS_ROLE_ARN env var or use --role-arn")
         sys.exit(1)
 
     # Set GCP project
@@ -509,7 +526,7 @@ def main():
 
     # Create role ARN file in temp directory
     with tempfile.TemporaryDirectory() as tmpdir:
-        role_arn_file = create_role_arn_file(tmpdir)
+        role_arn_file = create_role_arn_file(tmpdir, args.role_arn)
 
         # Upload files
         upload_results = {}

@@ -2,6 +2,10 @@
 results/
 .DS_Store
 ._*
+
+# Credential files
+*_key.json
+*keypair*.json
 *.gtf
 *.gtf.gz
 datasets/ENCODE_WTC11_ChIP-seq/
