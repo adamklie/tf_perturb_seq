@@ -1,0 +1,9 @@
+n_cells,18486.0
+n_guides,415.0
+frac_any_crispr,0.9998377150275884
+frac_any_hon,1.0
+frac_exactly1_crispr,0.5359731688845613
+frac_exactly1_hon,0.631937682570594
+median_guides_per_cell_crispr,1.0
+median_guides_per_cell_hon,1.0
+median_jaccard_per_guide,0.9285714285714286
