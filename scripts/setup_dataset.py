@@ -19,7 +19,6 @@ Example:
 
 import argparse
 import os
-import shutil
 from pathlib import Path
 
 
@@ -40,7 +39,7 @@ def setup_dataset(
 ):
     """Create dataset directory structure from template."""
     repo_root = get_repo_root()
-    template_dir = repo_root / "templates" / "dataset_template"
+    template_dir = repo_root / "docs" / "dataset_template"
     datasets_dir = repo_root / "datasets"
     target_dir = datasets_dir / name
 
@@ -57,11 +56,8 @@ def setup_dataset(
     print(f"Creating dataset: {name}")
     print(f"Target directory: {target_dir}")
 
-    # Directories to create
+    # Create base directories
     dirs_to_create = [
-        "bin/1_CRISPR_pipeline/seqspec/yaml_files",
-        "bin/2_qc",
-        "bin/3_gene_program_discovery",
         "logs",
         "results",
     ]
@@ -69,6 +65,9 @@ def setup_dataset(
     for dir_path in dirs_to_create:
         (target_dir / dir_path).mkdir(parents=True, exist_ok=True)
         print(f"  Created: {dir_path}/")
+
+    # Ensure target dir exists
+    target_dir.mkdir(parents=True, exist_ok=True)
 
     # Determine base_dir for scripts
     if base_dir is None:
@@ -86,13 +85,14 @@ def setup_dataset(
         "/Users/adamklie/Desktop/projects/tf_perturb_seq": base_dir,
     }
 
-    # Copy and process template files
+    # Copy and process template files (flat structure)
     template_files = [
         ("README.md", "README.md"),
         ("dataset_config.yaml", "dataset_config.yaml"),
-        ("bin/1_CRISPR_pipeline/1_generate_per_sample_metadata.sh", "bin/1_CRISPR_pipeline/1_generate_per_sample_metadata.sh"),
-        ("bin/1_CRISPR_pipeline/2_upload_to_gcp.sh", "bin/1_CRISPR_pipeline/2_upload_to_gcp.sh"),
-        ("bin/1_CRISPR_pipeline/3_run_CRISPR_pipeline.sh", "bin/1_CRISPR_pipeline/3_run_CRISPR_pipeline.sh"),
+        ("1_generate_per_sample_metadata.sh", "1_generate_per_sample_metadata.sh"),
+        ("2_upload_to_gcp.sh", "2_upload_to_gcp.sh"),
+        ("3_run_CRISPR_pipeline.sh", "3_run_CRISPR_pipeline.sh"),
+        ("patch_files.sh", "patch_files.sh"),
     ]
 
     for src_rel, dst_rel in template_files:
@@ -112,23 +112,20 @@ def setup_dataset(
             # Make shell scripts executable
             if dst_rel.endswith(".sh"):
                 os.chmod(dst_path, 0o755)
-
-    # Create placeholder seqspec files
-    seqspec_dir = target_dir / "bin/1_CRISPR_pipeline/seqspec/yaml_files"
-    for seqspec_name in ["rna_seqspec.yml", "guide_seqspec.yml", "hash_seqspec.yml"]:
-        seqspec_path = seqspec_dir / seqspec_name
-        if not seqspec_path.exists():
-            seqspec_path.write_text(f"# {seqspec_name}\n# TODO: Add seqspec configuration\n")
-            print(f"  Created placeholder: bin/1_CRISPR_pipeline/seqspec/yaml_files/{seqspec_name}")
+        else:
+            print(f"  Warning: Template file not found: {src_rel}")
 
     print()
     print("Dataset setup complete!")
     print()
     print("Next steps:")
     print(f"  1. cd datasets/{name}")
-    print("  2. Add seqspec YAML files to bin/1_CRISPR_pipeline/seqspec/yaml_files/")
-    print("  3. Review and update dataset_config.yaml")
-    print("  4. Run: ./bin/1_CRISPR_pipeline/1_generate_per_sample_metadata.sh")
+    print("  2. Edit 1_generate_per_sample_metadata.sh with your ACCESSION")
+    print("  3. Run: bash 1_generate_per_sample_metadata.sh")
+    print("  4. Run: DRY_RUN=true bash 2_upload_to_gcp.sh")
+    print("  5. Run: bash 2_upload_to_gcp.sh")
+    print("  6. Edit patch_files.sh with correct source paths, then run it")
+    print("  7. Run: bash 3_run_CRISPR_pipeline.sh")
     print()
     print(f"See docs/CRISPR_PIPELINE.md for detailed instructions.")
 
