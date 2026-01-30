@@ -121,6 +121,6 @@ See [technology-benchmark_WTC11_TF-Perturb-seq/](datasets/technology-benchmark_W
 | Huangfu_HUES8-embryonic-stemcell | Pools ABCD in HUES8 hESCs |
 | Gersbach_WTC11-hepatocyte-differentiation | WTC11 → hepatocytes |
 
-Full tracking: [Google Sheets](https://docs.google.com/spreadsheets/d/1ThGCNsxa2KUfboRweK1p_55GlgwaX1D19O5MTB6MbSs/edit?gid=0#gid=0)
+Full tracking: [Google Sheets]([https://docs.google.com/spreadsheets/d/1ThGCNsxa2KUfboRweK1p_55GlgwaX1D19O5MTB6MbSs/edit?gid=0#gid=0](https://docs.google.com/spreadsheets/d/1UY-MDk-ePMZ2mOzSaj59k53_zo8RnGk9nK8ez_gJFzw/edit))
 
 
