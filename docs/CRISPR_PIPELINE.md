@@ -87,10 +87,6 @@ datasets/{DATASET_NAME}/
 ├── 2_upload_to_gcp.sh                     # Step 2 script
 ├── 3_run_CRISPR_pipeline.sh               # Step 4 script
 ├── patch_files.sh                         # Step 3 script (optional)
-├── rna_seqspec.yml                        # Seqspec for RNA modality
-├── guide_seqspec.yml                      # Seqspec for guide modality
-├── hash_seqspec.yml                       # Seqspec for hash modality
-├── *.config                               # Nextflow config (auto-generated)
 ├── sample_metadata.csv                    # Output of step 1
 ├── sample_metadata_gcp_YYYY_MM_DD.csv     # Output of step 2
 └── sample_metadata_gcp_*_patched.csv      # Output of step 3 (optional)
