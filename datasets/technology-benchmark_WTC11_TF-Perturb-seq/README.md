@@ -6,7 +6,8 @@ Master tracking document for running the CRISPR Pipeline on WTC11 benchmark data
 
 - Gersbach seqspecs not yet validated on portal and may have issues with pipeline?
 - Engreitz seqspecs not yet available on portal
-- Manual modifications to sample sheet(see below)
+- **Seqspec YAML files from portal are gzipped** - Pipeline expects uncompressed `.yaml` files but portal provides `.yaml.gz`. Must decompress to `patch/` directory along with barcode_onlist and guide_design files.
+- Manual modifications to sample sheet (see below)
 The following summarizes what I had to do to the Hon_WTC11-benchmark_TF-Perturb-seq sample sheet to get the pipeline to run successfully on GCP on 2026-01-18.
 
 | Change | Original Value | Patched Value | Reason |

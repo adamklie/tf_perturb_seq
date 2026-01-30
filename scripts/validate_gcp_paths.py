@@ -2,12 +2,12 @@
 """
 Validate that all GCS paths in a sample metadata file exist in GCP.
 
-This script reads a sample metadata TSV file, extracts all GCS paths,
+This script reads a sample metadata CSV file, extracts all GCS paths,
 and verifies each one exists in the bucket.
 
 Usage:
-    python validate_gcp_paths.py --input sample_metadata_gcp.tsv
-    python validate_gcp_paths.py --input sample_metadata_gcp.tsv --columns R1_path R2_path
+    python validate_gcp_paths.py --input sample_metadata_gcp.CSV
+    python validate_gcp_paths.py --input sample_metadata_gcp.CSV --columns R1_path R2_path
 """
 
 import argparse
@@ -35,7 +35,7 @@ def is_gcs_path(value: str) -> bool:
 
 def collect_gcs_paths(input_file: str, file_columns: list[str]) -> dict[str, list[str]]:
     """
-    Read the input TSV and collect all unique GCS paths.
+    Read the input CSV and collect all unique GCS paths.
 
     Returns:
         Dictionary mapping GCS path to list of (row_num, column) tuples where it appears
@@ -43,7 +43,7 @@ def collect_gcs_paths(input_file: str, file_columns: list[str]) -> dict[str, lis
     gcs_paths = defaultdict(list)
 
     with open(input_file, "r", newline="") as f:
-        reader = csv.DictReader(f, delimiter="\t")
+        reader = csv.DictReader(f)
 
         for row_num, row in enumerate(reader, start=2):  # Start at 2 (header is row 1)
             for col in file_columns:
@@ -98,7 +98,7 @@ def main():
     parser.add_argument(
         "--input", "-i",
         required=True,
-        help="Input sample metadata TSV file with GCS paths",
+        help="Input sample metadata CSV file with GCS paths",
     )
     parser.add_argument(
         "--columns",
