@@ -1,0 +1,3 @@
+[submodule "external/energy_dist_pipeline"]
+	path = external/energy_dist_pipeline
+	url = https://github.com/Chikara-Takeuchi/energy_dist_pipeline.git
