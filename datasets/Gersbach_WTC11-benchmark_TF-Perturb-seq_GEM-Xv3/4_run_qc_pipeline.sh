@@ -28,16 +28,16 @@ done
 PROJECT_ROOT="/Users/adamklie/Desktop/projects/tf_perturb_seq"
 
 # Dataset root
-DATASET_ROOT="${PROJECT_ROOT}/datasets/Hon_WTC11-benchmark_TF-Perturb-seq"
+DATASET_ROOT="${PROJECT_ROOT}/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3"
 
 # Input: inference MuData from CRISPR pipeline
-INPUT="${DATASET_ROOT}/runs/elated_almeida/inference_mudata_cleaned.h5mu"
+INPUT="${DATASET_ROOT}/runs/frisky_rabbit/inference_mudata.h5mu"
 
 # Output directory
-OUTDIR="${DATASET_ROOT}/runs/elated_almeida/pipeline_qc"
+OUTDIR="${DATASET_ROOT}/runs/frisky_rabbit/pipeline_qc"
 
 # Run name (used as prefix for output files)
-RUN_NAME="Hon_WTC11-benchmark_TF-Perturb-seq"
+RUN_NAME="Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3"
 
 # Optional: validated trans links file (uncomment if available)
 # VALIDATED_TRANS_LINKS="${DATASET_ROOT}/resources/validated_trans_links.tsv"
@@ -47,7 +47,7 @@ RUN_NAME="Hon_WTC11-benchmark_TF-Perturb-seq"
 ###############################################
 
 echo "============================================="
-echo " Hon Dataset: QC Pipeline"
+echo " Gersbach Dataset: QC Pipeline"
 echo " Input:  ${INPUT}"
 echo " Output: ${OUTDIR}"
 echo "============================================="

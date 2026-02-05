@@ -1,5 +1,6 @@
 # User defined
 results/
+runs/
 .DS_Store
 ._*
 

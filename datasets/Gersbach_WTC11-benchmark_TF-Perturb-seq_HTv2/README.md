@@ -18,4 +18,11 @@ bash datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/2_upload_to_gcp.sh
 
 # Run pipeline on GCP
 RUN_IN_BACKGROUND=true bash datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/3_run_CRISPR_pipeline.sh
+
+# Run QC pipeline
+bash datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/4_run_qc_pipeline.sh
 ```
+
+Pipeline run reference
+
+red_lettuce -- from Synapse (https://www.synapse.org/Synapse:syn73579418) run by Alex Barrera with Sceptre guide inference

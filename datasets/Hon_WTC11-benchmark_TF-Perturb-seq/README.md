@@ -18,4 +18,14 @@ bash datasets/Hon_WTC11-benchmark_TF-Perturb-seq/2_upload_to_gcp.sh
 
 # Run pipeline on GCP
 RUN_IN_BACKGROUND=true bash datasets/Hon_WTC11-benchmark_TF-Perturb-seq/3_run_CRISPR_pipeline.sh
+
+# 
+bash datasets/Hon_WTC11-benchmark_TF-Perturb-seq/4_run_qc_pipeline.sh
 ```
+
+
+Pipeline run reference
+
+distracted_swirles -- my own run with an accompanying tower dashboard at friendly_minsky (Sceptre)
+elated_almeida -- my own run with an accompanying tower dashboard at elated_almeida (CLEANSER)
+honlab_internal -- result from Hon lab internal run

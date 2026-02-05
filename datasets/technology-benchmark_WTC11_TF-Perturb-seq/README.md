@@ -9,6 +9,15 @@ Master tracking document for running the CRISPR Pipeline on WTC11 benchmark data
 - **Seqspec YAML files from portal are gzipped** - Pipeline expects uncompressed `.yaml` files but portal provides `.yaml.gz`. Must decompress to `patch/` directory along with barcode_onlist and guide_design files.
 - Manual modifications to sample sheet (see below)
 The following summarizes what I had to do to the Hon_WTC11-benchmark_TF-Perturb-seq sample sheet to get the pipeline to run successfully on GCP on 2026-01-18.
+- Looks like the onlist associated with the Huangfu benchmark datasets doesn’t match what’s in the seqspec for the sequence files associated with it
+
+https://data.igvf.org/measurement-sets/IGVFDS5642SPLX/?format=json
+
+vs
+
+https://data.igvf.org/configuration-files/IGVFFI6493YTYC/
+
+Based on Gary’s previous pipeline runs, this looks like the proper onlist: https://data.igvf.org/tabular-files/IGVFFI4695IKAL/
 
 | Change | Original Value | Patched Value | Reason |
 |--------|----------------|---------------|--------|

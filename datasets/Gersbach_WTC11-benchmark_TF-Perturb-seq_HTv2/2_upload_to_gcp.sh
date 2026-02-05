@@ -23,10 +23,10 @@ set -euo pipefail
 # =============================================================================
 
 # Base directory (change this for local vs remote)
-BASE_DIR=Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2
+BASE_DIR=/Users/adamklie/Desktop/projects/tf_perturb_seq
 
 # Dataset name
-DATASET_NAME=Hon_WTC11-benchmark_TF-Perturb-seq
+DATASET_NAME=Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2
 
 # GCP project ID
 PROJECT=igvf-pertub-seq-pipeline

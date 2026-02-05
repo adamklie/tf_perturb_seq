@@ -20,4 +20,6 @@ dependencies = [
     "synapseclient>=4.10.0",
     "torch>=2.9.1",
     "requests>=2.31.0",
+    "ipykernel>=7.1.0",
+    "matplotlib-venn>=1.1.2",
 ]

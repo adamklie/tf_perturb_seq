@@ -21,4 +21,14 @@ bash datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/patch_files.sh
 
 # Run pipeline on GCP
 RUN_IN_BACKGROUND=true bash datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/3_run_CRISPR_pipeline.sh
+
+# Run QC pipeline
+bash datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/4_run_qc_pipeline.sh
 ```
+
+
+
+Pipeline run reference
+
+friendly_minksy -- my own run with an accompanying tower dashboard at friendly_minsky
+pipeline_dashboard -- Gary's latest run (https://www.synapse.org/Synapse:syn72299969)
