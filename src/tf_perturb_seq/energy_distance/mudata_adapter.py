@@ -164,24 +164,25 @@ def compute_pca(
     return adata
 
 
-def extract_grna_dict(
+def extract_grna_assignment_matrix(
     guide_adata: sc.AnnData,
     assignment_layer: str = "guide_assignment",
-) -> dict:
+) -> pd.DataFrame:
     """
-    Convert guide assignment matrix to dictionary format.
+    Extract guide assignment matrix as a DataFrame for the energy distance pipeline.
 
-    The energy distance pipeline expects:
-        {cell_barcode: [guide_id1, guide_id2, ...]}
+    The upstream pipeline (util_functions.load_files) expects a pickle containing
+    a DataFrame with guides as rows and cells as columns. It transposes this to
+    (cells x guides), then builds a {gRNA_name: [cell_names]} dict from non-zero entries.
 
     Args:
         guide_adata: Guide modality AnnData
         assignment_layer: Layer containing binary assignment matrix
 
     Returns:
-        Dictionary mapping cell barcodes to list of assigned guide IDs
+        DataFrame with guides as rows, cells as columns (guides x cells)
     """
-    logger.info("Extracting gRNA dictionary from guide_assignment layer")
+    logger.info("Extracting gRNA assignment matrix from guide_assignment layer")
 
     if assignment_layer not in guide_adata.layers:
         raise ValueError(f"Layer '{assignment_layer}' not found. Available: {list(guide_adata.layers.keys())}")
@@ -190,25 +191,22 @@ def extract_grna_dict(
     if issparse(assignment_matrix):
         assignment_matrix = assignment_matrix.toarray()
 
-    cell_barcodes = guide_adata.obs_names.tolist()
-    guide_ids = guide_adata.var_names.tolist()
+    # Create cells x guides DataFrame, then transpose to guides x cells
+    # (upstream pipeline expects guides x cells and transposes it)
+    df = pd.DataFrame(
+        assignment_matrix,
+        index=guide_adata.obs_names,
+        columns=guide_adata.var_names,
+    )
 
-    grna_dict = {}
-    n_cells_with_guide = 0
+    n_cells_with_guide = (df.sum(axis=1) > 0).sum()
+    n_assignments = int((df.values > 0).sum())
+    logger.info(f"Assignment matrix: {df.shape[0]} cells x {df.shape[1]} guides")
+    logger.info(f"Cells with at least one guide: {n_cells_with_guide}/{df.shape[0]}")
+    logger.info(f"Total guide assignments: {n_assignments}")
 
-    for i, cell_bc in enumerate(cell_barcodes):
-        # Find guides assigned to this cell (value > 0)
-        assigned_idx = np.where(assignment_matrix[i, :] > 0)[0]
-        assigned_guides = [guide_ids[j] for j in assigned_idx]
-
-        if assigned_guides:
-            grna_dict[cell_bc] = assigned_guides
-            n_cells_with_guide += 1
-
-    logger.info(f"Created gRNA dict: {n_cells_with_guide}/{len(cell_barcodes)} cells have assigned guides")
-    logger.info(f"Total guide assignments: {sum(len(v) for v in grna_dict.values())}")
-
-    return grna_dict
+    # Transpose to guides x cells (expected by upstream pipeline)
+    return df.T
 
 
 def extract_annotation(
@@ -371,8 +369,8 @@ def prepare_energy_distance_inputs(
             use_harmony=use_harmony,
         )
 
-    # Extract gRNA dictionary
-    grna_dict = extract_grna_dict(guide, assignment_layer=assignment_layer)
+    # Extract gRNA assignment matrix (guides x cells DataFrame)
+    grna_matrix = extract_grna_assignment_matrix(guide, assignment_layer=assignment_layer)
 
     # Extract annotation
     annotation_df = extract_annotation(guide, type_col=type_col, target_col=target_col)
@@ -386,11 +384,10 @@ def prepare_energy_distance_inputs(
     adata.write(adata_path)
     output_paths["adata"] = str(adata_path)
 
-    # 2. Save gRNA dictionary
+    # 2. Save gRNA assignment matrix (guides x cells DataFrame)
     grna_path = outdir / "grna_dict.pkl"
-    logger.info(f"Saving gRNA dict to: {grna_path}")
-    with open(grna_path, "wb") as f:
-        pickle.dump(grna_dict, f)
+    logger.info(f"Saving gRNA assignment matrix to: {grna_path}")
+    grna_matrix.to_pickle(grna_path)
     output_paths["grna_dict"] = str(grna_path)
 
     # 3. Save annotation
@@ -402,7 +399,7 @@ def prepare_energy_distance_inputs(
     logger.info("=" * 50)
     logger.info("Energy distance inputs prepared successfully!")
     logger.info(f"  AnnData: {adata_path} ({adata.shape[0]} cells, {adata.shape[1]} genes)")
-    logger.info(f"  gRNA dict: {grna_path} ({len(grna_dict)} cells with guides)")
+    logger.info(f"  gRNA matrix: {grna_path} ({grna_matrix.shape[0]} guides x {grna_matrix.shape[1]} cells)")
     logger.info(f"  Annotation: {annotation_path} ({len(annotation_df)} guides)")
     logger.info("=" * 50)
 
