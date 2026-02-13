@@ -16,8 +16,9 @@ def build_anndata_from_mudata(
     out_h5ad: str,
     n_pcs: int = 50,
     dense_guide_assignment: bool = True,
+    skip_embeddings: bool = False,
 ) -> None:
-    
+
     # Load MuData
     mdata = md.read_h5mu(mudata_path)
     gene = mdata.mod["gene"]
@@ -50,10 +51,11 @@ def build_anndata_from_mudata(
     adata.uns["guide_names"] = guide_names
     adata.uns["guide_targets"] = guide_targets
 
-    # Compute embeddings
-    sc.tl.pca(adata, n_comps=n_pcs)
-    sc.pp.neighbors(adata)
-    sc.tl.umap(adata)
+    # Compute embeddings (skip for pipelines like cNMF that don't need them)
+    if not skip_embeddings:
+        sc.tl.pca(adata, n_comps=n_pcs)
+        sc.pp.neighbors(adata)
+        sc.tl.umap(adata)
 
     # Save
     adata.write_h5ad(out_h5ad)
@@ -72,6 +74,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="If set, convert guide_assignment to a dense ndarray before storing in .obsm.",
     )
+    p.add_argument(
+        "--skip_embeddings",
+        action="store_true",
+        help="If set, skip PCA/neighbors/UMAP computation (e.g. for cNMF input).",
+    )
     return p.parse_args()
 
 
@@ -82,4 +89,5 @@ if __name__ == "__main__":
         out_h5ad=args.out_h5ad,
         n_pcs=args.n_pcs,
         dense_guide_assignment=args.dense_guide_assignment,
+        skip_embeddings=args.skip_embeddings,
     )

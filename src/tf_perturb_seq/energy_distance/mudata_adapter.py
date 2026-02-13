@@ -244,15 +244,24 @@ def extract_annotation(
     if target_col not in var_df.columns:
         raise ValueError(f"Target column '{target_col}' not found. Available: {list(var_df.columns)}")
 
-    # Standardize type column for pipeline compatibility
-    # Pipeline expects: 'targeting' or 'non-targeting'
+    # Standardize type column for pipeline compatibility.
+    # The upstream pipeline's get_gRNA_region_dict only checks for
+    # type == "non-targeting" to route guides to the background group.
+    # All other types are treated as targeting guides grouped by
+    # intended_target_name.
     def standardize_type(x):
-        x_lower = str(x).lower().strip()
+        x_lower = str(x).lower().strip().replace("_", " ")
         if "non" in x_lower and "target" in x_lower:
             return "non-targeting"
-        elif "negative" in x_lower:
-            return "non-targeting"
-        elif "target" in x_lower or "positive" in x_lower or "control" in x_lower:
+        elif "negative" in x_lower and "control" in x_lower:
+            return "negative control"
+        elif "positive" in x_lower and "control" in x_lower:
+            return "positive control"
+        elif "safe" in x_lower and "target" in x_lower:
+            return "safe-targeting"
+        elif "variant" in x_lower:
+            return "variant"
+        elif "target" in x_lower:
             return "targeting"
         else:
             return "targeting"  # Default to targeting for unknown types
