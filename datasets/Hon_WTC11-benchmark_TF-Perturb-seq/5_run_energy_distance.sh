@@ -12,15 +12,20 @@ set -euo pipefail
 #
 # USAGE (with Harmony batch correction):
 #   ./5_run_energy_distance.sh --use-harmony
+#
+# USAGE (force re-run all steps):
+#   ./5_run_energy_distance.sh --force
 ###############################################
 
 # Parse args
 DRY_RUN_FLAG=""
 HARMONY_FLAG=""
+FORCE_FLAG=""
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --dry-run) DRY_RUN_FLAG="--dry-run"; shift ;;
     --use-harmony) HARMONY_FLAG="--use-harmony"; shift ;;
+    --force) FORCE_FLAG="--force"; shift ;;
     *) echo "Unknown arg: $1"; exit 1 ;;
   esac
 done
@@ -82,6 +87,11 @@ CMD=(
 # Add Harmony flag if requested
 if [[ -n "${HARMONY_FLAG}" ]]; then
   CMD+=(${HARMONY_FLAG})
+fi
+
+# Add force flag if requested
+if [[ -n "${FORCE_FLAG}" ]]; then
+  CMD+=(${FORCE_FLAG})
 fi
 
 # Add dry-run flag if requested

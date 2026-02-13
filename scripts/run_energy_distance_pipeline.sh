@@ -23,6 +23,7 @@ set -euo pipefail
 #     [--use-harmony] \
 #     [--n-top-genes 5000] \
 #     [--n-pcs 50] \
+#     [--force]
 #     [--dry-run]
 #
 ###############################################################################
@@ -37,6 +38,7 @@ BATCH_KEY=""
 USE_HARMONY=""
 N_TOP_GENES=5000
 N_PCS=50
+FORCE=0
 DRY_RUN=0
 
 # Parse arguments
@@ -51,6 +53,7 @@ while [[ $# -gt 0 ]]; do
     --use-harmony)      USE_HARMONY="--use-harmony"; shift 1 ;;
     --n-top-genes)      N_TOP_GENES="$2"; shift 2 ;;
     --n-pcs)            N_PCS="$2"; shift 2 ;;
+    --force)            FORCE=1; shift 1 ;;
     --dry-run)          DRY_RUN=1; shift 1 ;;
     -h|--help)
       sed -n '1,40p' "$0"
@@ -103,6 +106,19 @@ run_cmd() {
   fi
 }
 
+# Check if a step is already done by verifying all its output files exist.
+# Returns 0 (true) if all files exist and --force is not set.
+# Usage: step_done file1 file2 ...
+step_done() {
+  if [[ "${FORCE}" -eq 1 ]]; then
+    return 1
+  fi
+  for f in "$@"; do
+    [[ -f "${f}" ]] || return 1
+  done
+  return 0
+}
+
 ###############################################################################
 # Output Layout
 ###############################################################################
@@ -119,6 +135,7 @@ echo " Project:    ${PROJECT_ROOT}"
 echo " Input:      ${INPUT}"
 echo " Output:     ${OUTDIR}"
 echo " Run name:   ${RUN_NAME}"
+echo " Force:      ${FORCE}"
 echo " Dry-run:    ${DRY_RUN}"
 echo "============================================="
 
@@ -131,28 +148,32 @@ run_cmd mkdir -p "${DIR_INPUTS}" "${DIR_FILTER}" "${DIR_EDIST}" "${DIR_CLUSTER}"
 echo ""
 echo "[1/6] Converting MuData to pipeline inputs..."
 
-ADAPTER_ARGS=(
-  python "${ADAPTER_SCRIPT}"
-  --input "${INPUT}"
-  --outdir "${DIR_INPUTS}"
-  --n-top-genes "${N_TOP_GENES}"
-  --n-pcs "${N_PCS}"
-)
-
-if [[ -n "${BATCH_KEY}" ]]; then
-  ADAPTER_ARGS+=(--batch-key "${BATCH_KEY}")
-fi
-
-if [[ -n "${USE_HARMONY}" ]]; then
-  ADAPTER_ARGS+=(${USE_HARMONY})
-fi
-
-run_cmd "${ADAPTER_ARGS[@]}"
-
 # Paths to generated inputs
 ADATA="${DIR_INPUTS}/adata.h5ad"
 GRNA_DICT="${DIR_INPUTS}/grna_dict.pkl"
 ANNOTATION="${DIR_INPUTS}/annotation.csv"
+
+if step_done "${ADATA}" "${GRNA_DICT}" "${ANNOTATION}"; then
+  echo "  SKIP: Outputs already exist (${DIR_INPUTS})"
+else
+  ADAPTER_ARGS=(
+    python "${ADAPTER_SCRIPT}"
+    --input "${INPUT}"
+    --outdir "${DIR_INPUTS}"
+    --n-top-genes "${N_TOP_GENES}"
+    --n-pcs "${N_PCS}"
+  )
+
+  if [[ -n "${BATCH_KEY}" ]]; then
+    ADAPTER_ARGS+=(--batch-key "${BATCH_KEY}")
+  fi
+
+  if [[ -n "${USE_HARMONY}" ]]; then
+    ADAPTER_ARGS+=(${USE_HARMONY})
+  fi
+
+  run_cmd "${ADAPTER_ARGS[@]}"
+fi
 
 ###############################################################################
 # Step 2: Create Pipeline Config
@@ -240,7 +261,12 @@ EOF"
 echo ""
 echo "[3/6] Running gRNA filtering..."
 
-if [[ "${DRY_RUN}" -eq 0 ]]; then
+TARGETING_OUTLIER="${DIR_EDIST}/targeting_outlier_table.csv"
+NONTARGETING_OUTLIER="${DIR_EDIST}/non_targeting_outlier_table.csv"
+
+if step_done "${TARGETING_OUTLIER}" "${NONTARGETING_OUTLIER}"; then
+  echo "  SKIP: Outputs already exist (${TARGETING_OUTLIER}, ${NONTARGETING_OUTLIER})"
+elif [[ "${DRY_RUN}" -eq 0 ]]; then
   python "${EDIST_PIPELINE}/1_filtereing_gRNA.py" "${CONFIG_FILE}" 2>&1 | tee "${DIR_FILTER}/filtering.log" || {
     echo "WARNING: gRNA filtering step had issues. Check ${DIR_FILTER}/filtering.log"
   }
@@ -255,7 +281,11 @@ fi
 echo ""
 echo "[4/6] Computing energy distances..."
 
-if [[ "${DRY_RUN}" -eq 0 ]]; then
+EDIST_PVALUE="${DIR_EDIST}/pval_edist_full.csv"
+
+if step_done "${EDIST_PVALUE}"; then
+  echo "  SKIP: Output already exists (${EDIST_PVALUE})"
+elif [[ "${DRY_RUN}" -eq 0 ]]; then
   python "${EDIST_PIPELINE}/2_e_distance_nontargeting.py" "${CONFIG_FILE}" 2>&1 | tee "${DIR_EDIST}/edist.log" || {
     echo "WARNING: Energy distance step had issues. Check ${DIR_EDIST}/edist.log"
   }
@@ -270,8 +300,14 @@ fi
 echo ""
 echo "[5/6] Generating plots..."
 
-if [[ "${DRY_RUN}" -eq 0 ]]; then
-  python "${EDIST_PIPELINE}/2_1_Plot_figure.py" "${CONFIG_FILE}" 2>&1 | tee "${DIR_PLOTS}/plots.log" || {
+PLOTS_DONE="${DIR_PLOTS}/plots.done"
+
+if step_done "${PLOTS_DONE}"; then
+  echo "  SKIP: Plots already generated (${PLOTS_DONE})"
+elif [[ "${DRY_RUN}" -eq 0 ]]; then
+  python "${EDIST_PIPELINE}/2_1_Plot_figure.py" "${CONFIG_FILE}" 2>&1 | tee "${DIR_PLOTS}/plots.log" && {
+    touch "${PLOTS_DONE}"
+  } || {
     echo "WARNING: Plot generation had issues. Check ${DIR_PLOTS}/plots.log"
   }
 else
@@ -285,7 +321,12 @@ fi
 echo ""
 echo "[6/6] Running phenotype clustering..."
 
-if [[ "${DRY_RUN}" -eq 0 ]]; then
+CLUSTER_MATRIX="${DIR_EDIST}/target_by_target_matrix.csv"
+CLUSTER_EMBEDDING="${DIR_EDIST}/edist_embedding_info.csv"
+
+if step_done "${CLUSTER_MATRIX}" "${CLUSTER_EMBEDDING}"; then
+  echo "  SKIP: Outputs already exist (${CLUSTER_MATRIX}, ${CLUSTER_EMBEDDING})"
+elif [[ "${DRY_RUN}" -eq 0 ]]; then
   python "${EDIST_PIPELINE}/3_e_distance_among_regions.py" "${CONFIG_FILE}" "${CLUSTER_CONFIG}" 2>&1 | tee "${DIR_CLUSTER}/clustering.log" || {
     echo "WARNING: Clustering step had issues. Check ${DIR_CLUSTER}/clustering.log"
   }
