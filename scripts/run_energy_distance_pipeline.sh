@@ -169,38 +169,50 @@ else
   CONFIG_FILE="${OUTDIR}/config.json"
   run_cmd bash -c "cat > '${CONFIG_FILE}' << 'EOF'
 {
-  \"output_folder\": \"${DIR_EDIST}\",
-  \"output_file\": {
-    \"discordance_table\": \"discordance_table.csv\",
-    \"targeting_outlier_table\": \"targeting_outlier.csv\",
-    \"nontargeting_outlier_table\": \"nontargeting_outlier.csv\",
-    \"pvalue_table\": \"pvalue_table.csv\",
-    \"pvalue_table_median\": \"pvalue_table_median.csv\",
-    \"embedding\": \"embedding.csv\",
-    \"pca_pickle\": \"pca_matrix.pkl\",
-    \"gRNA_dict_pickle\": \"grna_dict.pkl\"
+  \"output_file_name_list\": {
+    \"OUTPUT_FOLDER\": \"${DIR_EDIST}\",
+    \"targeting_outlier_table\": \"targeting_outlier_table.csv\",
+    \"non_targeting_outlier_table\": \"non_targeting_outlier_table.csv\",
+    \"edist_pvalue_table\": \"pval_edist_full.csv\",
+    \"edist_target_by_target_matrix\": \"target_by_target_matrix.csv\",
+    \"edist_embedding_info\": \"edist_embedding_info.csv\",
+    \"pca_table\": \"pca_dataframe.pickle\",
+    \"gRNA_dict\": \"gRNA_dictionary.pickle\",
+    \"discordance_gRNA_table\": \"discordance_gRNA.csv\",
+    \"OVERWRITE_PCA_DICT\": true
   },
   \"input_data\": {
-    \"annotation_file\": \"${ANNOTATION}\",
-    \"concatenate_key\": \"intended_target_name\",
-    \"h5ad_file\": \"${ADATA}\",
-    \"obsm_key\": \"X_pca\",
-    \"sgRNA_file\": \"${GRNA_DICT}\"
+    \"annotation_file\": {
+      \"file_path\": \"${ANNOTATION}\",
+      \"concatenate_key\": \"intended_target_name\"
+    },
+    \"h5ad_file\": {
+      \"file_path\": \"${ADATA}\",
+      \"obsm_key\": \"X_pca\"
+    },
+    \"sgRNA_file\": {
+      \"file_path\": \"${GRNA_DICT}\"
+    }
   },
   \"gRNA_filtering\": {
-    \"min_gRNA\": 6,
-    \"min_combination\": 4,
-    \"n_permute\": 1000,
-    \"batch_num\": 120
+    \"perform_targeting_filtering\": true,
+    \"perform_nontargeting_filtering\": true,
+    \"threshold_gRNA_num\": 6,
+    \"combi_count\": 4,
+    \"total_permute_disco\": 1000,
+    \"combi_cell_num_max\": 1000,
+    \"batch_num_basic\": 120
   },
-  \"permutation\": {
-    \"n_permute\": 1000,
-    \"n_background\": 20,
-    \"non_target_sample_size\": 2000,
-    \"batch_num\": 200
+  \"permutation_test\": {
+    \"permute_per_bg\": 1000,
+    \"num_of_bg\": 20,
+    \"non_target_pick\": 2000,
+    \"target_cell_num_max\": 2000,
+    \"batch_num_basic\": 200,
+    \"use_matched_bg\": false
   },
-  \"aggregation\": {
-    \"downsampling\": 10000
+  \"aggregate\": {
+    \"downsampling_maximum\": 10000
   }
 }
 EOF"
@@ -211,10 +223,13 @@ fi
 CLUSTER_CONFIG="${OUTDIR}/config_clustering.json"
 run_cmd bash -c "cat > '${CLUSTER_CONFIG}' << 'EOF'
 {
-  \"p_value_cutoff\": 0.05,
-  \"e_distance_cutoff\": 0,
-  \"clustering_method\": \"AffinityPropagation\",
-  \"clustering_params\": {}
+  \"cutoff\": {
+    \"pval_cutoff\": 0.05,
+    \"distance_cutoff\": 0
+  },
+  \"clustering\": {
+    \"method\": \"Affinity\"
+  }
 }
 EOF"
 

@@ -137,7 +137,7 @@ def generate_per_sample_tsv(analysis_set_accession, output_path, auth, hash_seqs
             f'Guide libraries are required for running this pipeline.'
         )
     
-    measurement_sets_to_propertes = {}
+    measurement_sets_to_properties = {}
     input_file_sets = sorted([file_set for file_set in analysis_set_object.get('input_file_sets', [])
                             if file_set.startswith('/measurement-sets/') or file_set.startswith('/auxiliary-sets/')],
                             reverse=True) # start with the measurement sets to create a mapping for measurement set-only properties
@@ -155,20 +155,20 @@ def generate_per_sample_tsv(analysis_set_accession, output_path, auth, hash_seqs
             measurement_sets = accession
             barcode_onlist = file_set_object.get('onlist_files', [])
             onlist_method = file_set_object.get('onlist_method', '')
-            if onlist_method and onlist_method != 'no combination':
+            if onlist_method and onlist_method not in ['no combination', 'multi']:
                 raise ValueError(f'Datasets with onlist_method {onlist_method} are not currently supported by the pipeline.')
             strand_specificity = file_set_object.get('strand_specificity', '')
             
-            if file_set_object['@id'] not in measurement_sets_to_propertes:
-                measurement_sets_to_propertes[file_set_object['@id']] = {}
-            measurement_sets_to_propertes[file_set_object['@id']]['barcode_onlist'] = barcode_onlist
-            measurement_sets_to_propertes[file_set_object['@id']]['onlist_method'] = onlist_method
-            measurement_sets_to_propertes[file_set_object['@id']]['strand_specificity'] = strand_specificity
+            if file_set_object['@id'] not in measurement_sets_to_properties:
+                measurement_sets_to_properties[file_set_object['@id']] = {}
+            measurement_sets_to_properties[file_set_object['@id']]['barcode_onlist'] = barcode_onlist
+            measurement_sets_to_properties[file_set_object['@id']]['onlist_method'] = onlist_method
+            measurement_sets_to_properties[file_set_object['@id']]['strand_specificity'] = strand_specificity
         else:
             measurement_sets = file_set_object.get('measurement_sets', [])
-            barcode_onlist = measurement_sets_to_propertes[measurement_sets[0]]['barcode_onlist']
-            onlist_method = measurement_sets_to_propertes[measurement_sets[0]]['onlist_method']
-            strand_specificity = measurement_sets_to_propertes[measurement_sets[0]]['strand_specificity']
+            barcode_onlist = measurement_sets_to_properties[measurement_sets[0]]['barcode_onlist']
+            onlist_method = measurement_sets_to_properties[measurement_sets[0]]['onlist_method']
+            strand_specificity = measurement_sets_to_properties[measurement_sets[0]]['strand_specificity']
             measurement_sets = ', '.join([measurement_set.split('/')[-2] for measurement_set in measurement_sets])
 
 

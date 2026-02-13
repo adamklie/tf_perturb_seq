@@ -28,6 +28,13 @@ bash datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/4_run_qc_pipeline.sh
 
 
 
+## Patch Notes
+
+### 2026-02-13: barcode_onlist update
+- Updated `barcode_onlist` from `IGVFFI9487JPEN` to `IGVFFI4695IKAL` across all rows in `sample_metadata.csv`
+- Uploaded `IGVFFI4695IKAL` to GCS and decompressed to `patch/IGVFFI4695IKAL.tsv`
+- Created `sample_metadata_gcp_2026_01_30_patched_v2.csv` with updated barcode_onlist paths
+
 Pipeline run reference
 
 friendly_minksy -- my own run with an accompanying tower dashboard at friendly_minsky
