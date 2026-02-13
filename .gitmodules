@@ -1,6 +1,6 @@
 [submodule "external/energy_dist_pipeline"]
 	path = external/energy_dist_pipeline
-	url = https://github.com/Chikara-Takeuchi/energy_dist_pipeline.git
+	url = https://github.com/adamklie/energy_dist_pipeline.git
 [submodule "external/cNMF_benchmarking"]
 	path = external/cNMF_benchmarking
-	url = https://github.com/EngreitzLab/cNMF_benchmarking.git
+	url = https://github.com/adamklie/cNMF_benchmarking.git
