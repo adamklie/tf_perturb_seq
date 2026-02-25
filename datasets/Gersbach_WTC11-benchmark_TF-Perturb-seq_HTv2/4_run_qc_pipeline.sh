@@ -31,10 +31,10 @@ PROJECT_ROOT="/Users/adamklie/Desktop/projects/tf_perturb_seq"
 DATASET_ROOT="${PROJECT_ROOT}/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2"
 
 # Input: inference MuData from CRISPR pipeline
-INPUT="${DATASET_ROOT}/runs/red_lettuce/inference_mudata.h5mu"
+INPUT="${DATASET_ROOT}/runs/amber_sparrow/inference_mudata.h5mu"
 
 # Output directory
-OUTDIR="${DATASET_ROOT}/runs/red_lettuce/pipeline_qc"
+OUTDIR="${DATASET_ROOT}/runs/amber_sparrow/pipeline_qc"
 
 # Run name (used as prefix for output files)
 RUN_NAME="Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2"

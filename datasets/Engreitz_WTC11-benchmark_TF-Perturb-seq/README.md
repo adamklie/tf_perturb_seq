@@ -18,4 +18,11 @@ bash datasets/Engreitz_WTC11-benchmark_TF-Perturb-seq/2_upload_to_gcp.sh
 
 # Run pipeline on GCP
 RUN_IN_BACKGROUND=true bash datasets/Engreitz_WTC11-benchmark_TF-Perturb-seq/3_run_CRISPR_pipeline.sh
+
+# Run QC pipeline
+bash datasets/Engreitz_WTC11-benchmark_TF-Perturb-seq/4_run_qc_pipeline.sh
 ```
+
+## Pipeline run reference
+
+cobalt_heron -- downloaded from Synapse (syn73615563) on 2026-02-17

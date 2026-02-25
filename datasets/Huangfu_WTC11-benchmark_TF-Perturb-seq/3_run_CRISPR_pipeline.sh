@@ -12,13 +12,13 @@ DATASET_NAME=Huangfu_WTC11-benchmark_TF-Perturb-seq
 BASE_DIR=/Users/adamklie/Desktop/projects/tf_perturb_seq/datasets/${DATASET_NAME}
 
 # Sample metadata with GCS paths
-SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_01_30_patched.csv
+SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_02_15.csv
 
 # CRISPR Pipeline path
 PIPELINE_PATH=/Users/adamklie/Desktop/projects/CRISPR_Pipeline
 
 # Output directory on GCS
-OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_01_30/outs/rusty_toothpick
+OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_01_30/outs/armored_squirrel
 
 # Log file with dataset name and timestamp
 LOG_FILE=$BASE_DIR/logs/${DATASET_NAME}_crispr_pipeline_$(date +%Y%m%d_%H%M%S).log
@@ -42,7 +42,10 @@ NF_CMD="nextflow run main.nf \
     -profile google \
     --input $SAMPLE_METADATA \
     --outdir $OUTDIR \
-    -with-tower"
+    -with-tower \
+    -resume \
+    --entry 5mtESoHxUyMnon"
+
 
 if [ "$RUN_IN_BACKGROUND" = true ]; then
     echo "Running CRISPR pipeline in background..."

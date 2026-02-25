@@ -31,10 +31,10 @@ PROJECT_ROOT="/Users/adamklie/Desktop/projects/tf_perturb_seq"
 DATASET_ROOT="${PROJECT_ROOT}/datasets/Hon_WTC11-benchmark_TF-Perturb-seq"
 
 # Input: inference MuData from CRISPR pipeline
-INPUT="${DATASET_ROOT}/runs/elated_almeida/inference_mudata_cleaned.h5mu"
+INPUT="${DATASET_ROOT}/runs/golden_falcon/inference_mudata.h5mu"
 
 # Output directory
-OUTDIR="${DATASET_ROOT}/runs/elated_almeida/pipeline_qc"
+OUTDIR="${DATASET_ROOT}/runs/golden_falcon/pipeline_qc"
 
 # Run name (used as prefix for output files)
 RUN_NAME="Hon_WTC11-benchmark_TF-Perturb-seq"
