@@ -2834,9 +2834,12 @@ dependencies = [
     { name = "scanpy" },
     { name = "scikit-learn", version = "1.7.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "scikit-learn", version = "1.8.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "scipy", version = "1.15.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "scipy", version = "1.17.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "seaborn" },
     { name = "synapseclient" },
     { name = "torch" },
+    { name = "tqdm" },
 ]
 
 [package.metadata]
@@ -2854,9 +2857,11 @@ requires-dist = [
     { name = "requests", specifier = ">=2.31.0" },
     { name = "scanpy", specifier = ">=1.11.5" },
     { name = "scikit-learn", specifier = ">=1.7.2" },
+    { name = "scipy", specifier = ">=1.12.0" },
     { name = "seaborn", specifier = ">=0.13.2" },
     { name = "synapseclient", specifier = ">=4.10.0" },
     { name = "torch", specifier = ">=2.9.1" },
+    { name = "tqdm", specifier = ">=4.66.0" },
 ]
 
 [[package]]

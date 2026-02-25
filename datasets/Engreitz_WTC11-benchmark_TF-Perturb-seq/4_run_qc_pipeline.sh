@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ###############################################
-# Hon Dataset: Run QC Pipeline
+# Engreitz Dataset: Run QC Pipeline
 #
 # USAGE (local):
 #   ./4_run_qc_pipeline.sh
@@ -28,16 +28,16 @@ done
 PROJECT_ROOT="/Users/adamklie/Desktop/projects/tf_perturb_seq"
 
 # Dataset root
-DATASET_ROOT="${PROJECT_ROOT}/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3"
+DATASET_ROOT="${PROJECT_ROOT}/datasets/Engreitz_WTC11-benchmark_TF-Perturb-seq"
 
 # Input: inference MuData from CRISPR pipeline
-INPUT="${DATASET_ROOT}/runs/jade_dolphin/inference_mudata.h5mu"
+INPUT="${DATASET_ROOT}/runs/cobalt_heron/inference_mudata.h5mu"
 
 # Output directory
-OUTDIR="${DATASET_ROOT}/runs/jade_dolphin/pipeline_qc"
+OUTDIR="${DATASET_ROOT}/runs/cobalt_heron/pipeline_qc"
 
 # Run name (used as prefix for output files)
-RUN_NAME="Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3"
+RUN_NAME="Engreitz_WTC11-benchmark_TF-Perturb-seq"
 
 # Optional: validated trans links file (uncomment if available)
 # VALIDATED_TRANS_LINKS="${DATASET_ROOT}/resources/validated_trans_links.tsv"
@@ -47,7 +47,7 @@ RUN_NAME="Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3"
 ###############################################
 
 echo "============================================="
-echo " Gersbach Dataset: QC Pipeline"
+echo " Engreitz Dataset: QC Pipeline"
 echo " Input:  ${INPUT}"
 echo " Output: ${OUTDIR}"
 echo "============================================="
