@@ -35,7 +35,7 @@ done
 ###############################################
 
 # Project root (where .venv lives)
-PROJECT_ROOT="/Users/adamklie/Desktop/projects/tf_perturb_seq"
+PROJECT_ROOT="/cellar/users/aklie/data/datasets/tf_perturb_seq"
 
 # Dataset root
 DATASET_ROOT="${PROJECT_ROOT}/datasets/Hon_WTC11-benchmark_TF-Perturb-seq"
