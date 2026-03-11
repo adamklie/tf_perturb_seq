@@ -6,19 +6,19 @@ set -euo pipefail
 # =============================================================================
 
 # Dataset name (used for log file naming)
-DATASET_NAME=Hon_WTC11-benchmark_TF-Perturb-seq
+DATASET_NAME=Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2
 
 # Base directory for the dataset (local path)
 BASE_DIR=/Users/adamklie/Desktop/projects/tf_perturb_seq/datasets/${DATASET_NAME}
 
 # Sample metadata with GCS paths
-SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_02_26.csv
+SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_02_15.csv
 
 # CRISPR Pipeline path
 PIPELINE_PATH=/Users/adamklie/Desktop/projects/CRISPR_Pipeline
 
 # Output directory on GCS
-OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_02_26/outs/golden_falcon
+OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_02_15/outs/amber_sparrow
 
 # Log file with dataset name and timestamp
 LOG_FILE=$BASE_DIR/logs/${DATASET_NAME}_crispr_pipeline_$(date +%Y%m%d_%H%M%S).log

@@ -1,8 +1,11 @@
 # User defined
+memory/
 results/
 runs/
 .DS_Store
 ._*
+_*/
+**/_*/
 
 # Credential files
 *_key.json

@@ -649,13 +649,26 @@ def run_intended_target_qc(
     guide = mdata.mod[guide_mod_key]
     logger.info(f"Guide modality: {guide.n_obs} cells, {guide.n_vars} guides")
 
+    # Normalize guide.var: infer gene_name / label if absent (e.g. newer pipeline h5mu schema)
+    guide_var = guide.var.copy()
+    if "gene_name" not in guide_var.columns:
+        guide_var["gene_name"] = guide_var.index.str.split("#").str[0]
+        guide_var.loc[~guide_var["targeting"], "gene_name"] = np.nan
+        logger.info("Inferred gene_name from guide_id (not present in guide.var)")
+    if "label" not in guide_var.columns:
+        if "type" in guide_var.columns:
+            guide_var["label"] = guide_var["type"].str.replace("-", "_", regex=False)
+        else:
+            guide_var["label"] = np.where(guide_var["targeting"], "targeting", non_targeting_label)
+        logger.info("Inferred label from type column (not present in guide.var)")
+
     # Load trans results (includes all guide-gene pairs)
     trans_results = load_inference_results(mdata, results_key=results_key)
     logger.info(f"Loaded {len(trans_results)} trans test results from '{results_key}'")
 
     # Filter to intended targets (targeting guides only)
     intended = filter_to_intended_targets(
-        trans_results, guide.var,
+        trans_results, guide_var,
         log2fc_col=log2fc_col, pvalue_col=pvalue_col,
     )
     logger.info(f"Filtered to {len(intended)} intended target tests")
@@ -671,7 +684,7 @@ def run_intended_target_qc(
     # Compute AUROC/AUPRC: targeting vs non-targeting discrimination
     # -------------------------------------------------------------------------
     eval_table = build_evaluation_table(
-        trans_results, guide.var,
+        trans_results, guide_var,
         pvalue_col=pvalue_col,
         non_targeting_label=non_targeting_label,
     )
