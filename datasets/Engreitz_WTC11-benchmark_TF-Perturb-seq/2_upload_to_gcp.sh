@@ -26,7 +26,7 @@ set -euo pipefail
 BASE_DIR=/Users/adamklie/Desktop/projects/tf_perturb_seq
 
 # Dataset name
-DATASET_NAME=Hon_WTC11-benchmark_TF-Perturb-seq
+DATASET_NAME=Engreitz_WTC11-benchmark_TF-Perturb-seq
 
 # GCP project ID
 PROJECT=igvf-pertub-seq-pipeline

@@ -61,10 +61,11 @@ Replaced all seqspec paths across the 4 benchmark datasets with new shared seqsp
 
 | Dataset | Source samplesheet | scRNA seqspec | gRNA seqspec | hash seqspec |
 |---------|-------------------|---------------|--------------|--------------|
-| Gersbach GEM-Xv3 | `sample_metadata_gcp_2026_02_04_patched.csv` | `alex_IGVFDS6237URFJ_rna_10x_5_gex.yaml` | `alex_IGVFDS6237URFJ_guide_10x_5_gex.yaml` | - |
-| Gersbach HTv2 | `sample_metadata_gcp_2026_02_04_patched.csv` | `alex_IGVFDS6673ZFFG_rna_chomium5.yaml` | `alex_IGVFDS6673ZFFG_guide_HTV2_chomium5.yaml` | - |
-| Hon | `sample_metadata_gcp_2026_01_18_patched.csv` | `gary_IGVFDS4761PYUO_rna.yaml` | `gary_IGVFDS4761PYUO_guide.yaml` | `gary_IGVFDS4761PYUO_hash.yaml` |
-| Huangfu | `sample_metadata_gcp_2026_01_30_patched_v2.csv` | `huangfu_IGVFDS1889TBEY_rna.yaml` | `huangfu_IGVFDS1889TBEY_guide.yaml` | - |
+| Engreitz | `sample_metadata_gcp_2026_02_26_patched.csv` | - | - | - |
+| Gersbach GEM-Xv3 | `sample_metadata_gcp_2026_02_15.csv` | `alex_IGVFDS6237URFJ_rna_10x_5_gex.yaml` | `alex_IGVFDS6237URFJ_guide_10x_5_gex.yaml` | - |
+| Gersbach HTv2 | `sample_metadata_gcp_2026_02_15.csv` | `alex_IGVFDS6673ZFFG_rna_chomium5.yaml` | `alex_IGVFDS6673ZFFG_guide_HTV2_chomium5.yaml` | - |
+| Hon | `sample_metadata_gcp_2026_02_26.csv` | `gary_IGVFDS4761PYUO_rna.yaml` | `gary_IGVFDS4761PYUO_guide.yaml` | `gary_IGVFDS4761PYUO_hash.yaml` |
+| Huangfu | `sample_metadata_gcp_2026_02_15.csv` | `huangfu_IGVFDS1889TBEY_rna.yaml` | `huangfu_IGVFDS1889TBEY_guide.yaml` | - |
 
 New samplesheets saved as `sample_metadata_gcp_2026_02_15.csv` in each dataset directory (local and GCS).
 

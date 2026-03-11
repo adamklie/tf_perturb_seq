@@ -11,32 +11,45 @@ BASE_DIR=/Users/adamklie/Desktop/projects/tf_perturb_seq
 # Dataset name
 DATASET_NAME=Engreitz_WTC11-benchmark_TF-Perturb-seq
 
-# Analysis set ID in IGVF portal
-ACCESSION=IGVFDS5057HJKP
-
 # =============================================================================
 # DERIVED PATHS (no need to change)
 # =============================================================================
 
 DATASET_DIR=${BASE_DIR}/datasets/${DATASET_NAME}
-SCRIPT=${BASE_DIR}/scripts/generate_per_sample.py
+PATCH_SCRIPT=${BASE_DIR}/scripts/patch_gcp_files.py
+
+# Input: the GCP samplesheet with .gz paths
+INPUT_FILE=${DATASET_DIR}/sample_metadata_gcp_2026_02_26.csv
+
+# Output: patched samplesheet with decompressed paths
+OUTPUT_FILE=${DATASET_DIR}/sample_metadata_gcp_2026_02_26_patched.csv
 
 # =============================================================================
 # RUN
 # =============================================================================
 
 echo "=========================================="
-echo "Generate Per-Sample Metadata"
+echo "Patch GCP Files (decompress .gz)"
 echo "=========================================="
 echo "Dataset:    ${DATASET_NAME}"
-echo "Accession:  ${ACCESSION}"
-echo "Output:     ${DATASET_DIR}/sample_metadata.csv"
+echo "Input:      ${INPUT_FILE}"
+echo "Output:     ${OUTPUT_FILE}"
 echo ""
 
-python3 ${SCRIPT} \
-  --accession ${ACCESSION} \
-  --output ${DATASET_DIR}/sample_metadata.csv \
-  --rna_seqspec /Users/adamklie/Downloads/tf_50genes/all_GEX_sublibraries/IGVFDS2550EQNC.yaml
+CMD=(
+    python3 "${PATCH_SCRIPT}"
+    --input "${INPUT_FILE}"
+    --output "${OUTPUT_FILE}"
+)
+
+# Add dry-run flag if DRY_RUN is set
+if [[ "${DRY_RUN:-false}" == "true" ]]; then
+    CMD+=(--dry-run)
+    echo "DRY RUN MODE - No files will be decompressed"
+    echo ""
+fi
+
+"${CMD[@]}"
 
 echo ""
-echo "Done! Output: ${DATASET_DIR}/sample_metadata.csv"
+echo "Done! Patched samplesheet: ${OUTPUT_FILE}"

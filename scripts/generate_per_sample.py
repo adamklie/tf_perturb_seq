@@ -216,10 +216,11 @@ def generate_per_sample_tsv(analysis_set_accession, output_path, auth, hash_seqs
                 else:
                     seqspec_path = seqspec.split('/')[-2]
             if not seqspec_path:
-                if hash_seqspec and rna_seqspec and sgrna_seqspec:
-                    seqspec_path = modality_to_fallback_seqspec(
-                        modality, hash_seqspec, rna_seqspec, sgrna_seqspec
-                    )
+                fallback = modality_to_fallback_seqspec(
+                    modality, hash_seqspec, rna_seqspec, sgrna_seqspec
+                )
+                if fallback:
+                    seqspec_path = fallback
                 else:
                     raise ValueError(
                         f'Missing seqspec for modality {modality} (R1 {read1["@id"]}). '
