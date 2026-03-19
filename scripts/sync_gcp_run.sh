@@ -19,7 +19,7 @@ set -euo pipefail
 #     [--mode dashboard|outputs|auto]  # default: auto
 #     [--force] [--dry-run]
 #
-# Downloaded layout in local-dir:
+# Downloaded layout in local-dir (mirrors GCP structure):
 #
 #   pipeline_dashboard/             (mode=dashboard or auto with dashboard)
 #     dashboard.html
@@ -32,10 +32,19 @@ set -euo pipefail
 #     benchmark_output/...
 #     evaluation_output/...
 #     figures/...
-#     ...
 #
-#   inference_mudata.h5mu           (mode=outputs or auto fallback)
-#   perturbo_*.tsv.gz               (mode=outputs or auto fallback)
+#   pipeline_outputs/               (always downloaded)
+#     inference_mudata.h5mu         (mode=outputs only)
+#     perturbo_cis_per_element_output.tsv.gz
+#     perturbo_cis_per_guide_output.tsv.gz
+#     perturbo_trans_per_element_output.tsv.gz
+#     perturbo_trans_per_guide_output.tsv.gz
+#
+#   tf/benchmark_output/benchmark_tables/  (if available on GCP)
+#     enrichment_all.tsv
+#     tf_order.tsv
+#     tf_peak_mapping.tsv
+#     trans_per_element_results_used.tsv
 ###############################################
 
 GCP_DATASET_URI=""
@@ -113,29 +122,69 @@ fi
 if [[ "${RESOLVED_MODE}" == "dashboard" ]]; then
   LOCAL_DASHBOARD="${LOCAL_DIR}/pipeline_dashboard"
 
+  # --- Dashboard rsync ---
   if [[ "${FORCE}" -eq 0 && -f "${LOCAL_DASHBOARD}/inference_mudata.h5mu" ]]; then
     echo "[SKIP] pipeline_dashboard/ already present (use --force to re-sync)"
-    exit 0
-  fi
-
-  if [[ "${DRY_RUN}" -eq 1 ]]; then
+  elif [[ "${DRY_RUN}" -eq 1 ]]; then
     echo "[DRY-RUN] gsutil -m rsync -r ${GCP_DASHBOARD} ${LOCAL_DASHBOARD}"
-    exit 0
+  else
+    echo "[SYNC] pipeline_dashboard/ → ${LOCAL_DASHBOARD}"
+    mkdir -p "${LOCAL_DASHBOARD}"
+    gsutil -m rsync -r "${GCP_DASHBOARD}" "${LOCAL_DASHBOARD}"
   fi
 
-  echo "[SYNC] pipeline_dashboard/ → ${LOCAL_DASHBOARD}"
-  mkdir -p "${LOCAL_DASHBOARD}"
-  gsutil -m rsync -r "${GCP_DASHBOARD}" "${LOCAL_DASHBOARD}"
+  # --- Per-element result TSVs from pipeline_outputs/ (mirrors GCP layout) ---
+  LOCAL_OUTPUTS="${LOCAL_DIR}/pipeline_outputs"
+  echo ""
+  echo "[SYNC] per-element result TSVs → pipeline_outputs/"
+  for f in perturbo_cis_per_element_output.tsv.gz \
+           perturbo_cis_per_guide_output.tsv.gz \
+           perturbo_trans_per_element_output.tsv.gz \
+           perturbo_trans_per_guide_output.tsv.gz; do
+    src="${GCP_OUTPUTS}/${f}"
+    dst="${LOCAL_OUTPUTS}/${f}"
+    if [[ "${FORCE}" -eq 0 && -f "${dst}" ]]; then
+      echo "[SKIP]     pipeline_outputs/${f}  (already exists)"
+    elif [[ "${DRY_RUN}" -eq 1 ]]; then
+      echo "[DRY-RUN]  gsutil cp ${src} ${dst}"
+    elif gsutil ls "${src}" &>/dev/null; then
+      [[ "${DRY_RUN}" -eq 0 ]] && mkdir -p "${LOCAL_OUTPUTS}"
+      echo "[DOWNLOAD] pipeline_outputs/${f}"
+      gsutil cp "${src}" "${dst}"
+    else
+      echo "[WARN]     pipeline_outputs/${f} not on GCP — skipping"
+    fi
+  done
+
+  # --- TF benchmark tables (mirrors GCP layout) ---
+  GCP_TF_TABLES="${GCP_DATASET_URI}/tf/benchmark_output/benchmark_tables"
+  LOCAL_TF_TABLES="${LOCAL_DIR}/tf/benchmark_output/benchmark_tables"
+  echo ""
+  echo "[SYNC] TF benchmark tables → tf/benchmark_output/benchmark_tables/"
+  if [[ "${DRY_RUN}" -eq 1 ]]; then
+    echo "[DRY-RUN]  gsutil -m rsync -r ${GCP_TF_TABLES} ${LOCAL_TF_TABLES}"
+  elif [[ "${FORCE}" -eq 0 && -d "${LOCAL_TF_TABLES}" ]]; then
+    echo "[SKIP]     tf/benchmark_output/benchmark_tables/ already present (use --force to re-sync)"
+  elif gsutil ls "${GCP_TF_TABLES}/" &>/dev/null; then
+    mkdir -p "${LOCAL_TF_TABLES}"
+    gsutil -m rsync -r "${GCP_TF_TABLES}" "${LOCAL_TF_TABLES}"
+    echo "[DONE]     tf/benchmark_output/benchmark_tables/"
+  else
+    echo "[SKIP]     tf/benchmark_output/benchmark_tables/ not on GCP"
+  fi
 
   echo "============================================="
-  echo " Sync complete: ${LOCAL_DASHBOARD}"
+  echo " Sync complete: ${LOCAL_DIR}"
   echo "============================================="
   exit 0
 fi
 
 ###############################################
 # Mode: outputs — download individual files
+# Mirrors GCP layout: pipeline_outputs/, tf/benchmark_output/benchmark_tables/
 ###############################################
+LOCAL_OUTPUTS="${LOCAL_DIR}/pipeline_outputs"
+
 REQUIRED_FILES=(
   "inference_mudata.h5mu"
 )
@@ -152,10 +201,10 @@ WARNINGS=0
 
 for f in "${REQUIRED_FILES[@]}"; do
   src="${GCP_OUTPUTS}/${f}"
-  dst="${LOCAL_DIR}/${f}"
+  dst="${LOCAL_OUTPUTS}/${f}"
 
   if [[ "${FORCE}" -eq 0 && -f "${dst}" ]]; then
-    echo "[SKIP]     ${f}  (already exists)"
+    echo "[SKIP]     pipeline_outputs/${f}  (already exists)"
     SKIPPED=$((SKIPPED + 1))
     continue
   fi
@@ -165,17 +214,18 @@ for f in "${REQUIRED_FILES[@]}"; do
     continue
   fi
 
-  echo "[DOWNLOAD] ${f}"
+  mkdir -p "${LOCAL_OUTPUTS}"
+  echo "[DOWNLOAD] pipeline_outputs/${f}"
   gsutil cp "${src}" "${dst}"
   DOWNLOADED=$((DOWNLOADED + 1))
 done
 
 for f in "${OPTIONAL_FILES[@]}"; do
   src="${GCP_OUTPUTS}/${f}"
-  dst="${LOCAL_DIR}/${f}"
+  dst="${LOCAL_OUTPUTS}/${f}"
 
   if [[ "${FORCE}" -eq 0 && -f "${dst}" ]]; then
-    echo "[SKIP]     ${f}  (already exists)"
+    echo "[SKIP]     pipeline_outputs/${f}  (already exists)"
     SKIPPED=$((SKIPPED + 1))
     continue
   fi
@@ -186,14 +236,33 @@ for f in "${OPTIONAL_FILES[@]}"; do
   fi
 
   if gsutil ls "${src}" &>/dev/null; then
-    echo "[DOWNLOAD] ${f}  (optional)"
+    mkdir -p "${LOCAL_OUTPUTS}"
+    echo "[DOWNLOAD] pipeline_outputs/${f}  (optional)"
     gsutil cp "${src}" "${dst}"
     DOWNLOADED=$((DOWNLOADED + 1))
   else
-    echo "[WARN]     ${f} not on GCP — skipping (optional)"
+    echo "[WARN]     pipeline_outputs/${f} not on GCP — skipping (optional)"
     WARNINGS=$((WARNINGS + 1))
   fi
 done
+
+# TF benchmark tables (mirrors GCP layout)
+GCP_TF_TABLES="${GCP_DATASET_URI}/tf/benchmark_output/benchmark_tables"
+LOCAL_TF_TABLES="${LOCAL_DIR}/tf/benchmark_output/benchmark_tables"
+
+if [[ "${DRY_RUN}" -eq 1 ]]; then
+  echo "[DRY-RUN]  gsutil -m rsync -r ${GCP_TF_TABLES} ${LOCAL_TF_TABLES}"
+elif [[ "${FORCE}" -eq 0 && -d "${LOCAL_TF_TABLES}" ]]; then
+  echo "[SKIP]     tf/benchmark_output/benchmark_tables/ already present (use --force to re-sync)"
+elif gsutil ls "${GCP_TF_TABLES}/" &>/dev/null; then
+  echo "[SYNC]     tf/benchmark_output/benchmark_tables/"
+  mkdir -p "${LOCAL_TF_TABLES}"
+  gsutil -m rsync -r "${GCP_TF_TABLES}" "${LOCAL_TF_TABLES}"
+  DOWNLOADED=$((DOWNLOADED + 1))
+else
+  echo "[WARN]     tf/benchmark_output/benchmark_tables/ not on GCP — skipping"
+  WARNINGS=$((WARNINGS + 1))
+fi
 
 echo "============================================="
 echo " Downloaded: ${DOWNLOADED}"

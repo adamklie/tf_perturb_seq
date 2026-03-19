@@ -328,6 +328,14 @@ def run_gene_mapping_qc(
     gene = mdata.mod[gene_mod_key]
     logger.info(f"Gene modality: {gene.n_obs} cells, {gene.n_vars} genes")
 
+    # Fallback: derive num_expressed_genes from log1p_n_genes_by_counts if missing
+    if genes_col not in gene.obs.columns and "log1p_n_genes_by_counts" in gene.obs.columns:
+        gene.obs[genes_col] = np.expm1(gene.obs["log1p_n_genes_by_counts"]).astype(int)
+        logger.info(
+            f"Column '{genes_col}' not found; derived from "
+            f"np.expm1(log1p_n_genes_by_counts) ({gene.obs[genes_col].median():.0f} median)"
+        )
+
     # Compute metrics: overall
     metrics_list = []
     metrics_all = compute_gene_metrics(

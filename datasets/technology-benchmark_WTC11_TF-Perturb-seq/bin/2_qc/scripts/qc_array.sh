@@ -4,8 +4,8 @@
 #SBATCH --mem=16G
 #SBATCH --partition=carter-compute
 #SBATCH -t 02:00:00
-#SBATCH -o slurm_logs/qc_array.%A_%a.out
-#SBATCH -e slurm_logs/qc_array.%A_%a.err
+#SBATCH -o /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/bin/slurm_logs/qc_array.%A_%a.out
+#SBATCH -e /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/bin/slurm_logs/qc_array.%A_%a.err
 
 set -euo pipefail
 
@@ -23,7 +23,8 @@ elif [[ -n "${3:-}" ]]; then
   exit 1
 fi
 
-mkdir -p slurm_logs
+SLURM_LOG_DIR="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/bin/slurm_logs"
+mkdir -p "${SLURM_LOG_DIR}"
 
 [[ -f "${TSV}" ]] || { echo "ERROR: TSV not found: ${TSV}" >&2; exit 1; }
 

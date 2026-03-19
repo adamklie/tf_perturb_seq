@@ -6,6 +6,7 @@ runs/
 ._*
 _*/
 **/_*/
+CLAUDE.md
 
 # Credential files
 *_key.json

@@ -1,24 +1,63 @@
 #!/bin/bash
-# Run per-guide capture extraction for all datasets
-# Execute this on the cluster where MuData files are accessible
+# Run per-guide capture extraction for all datasets in a manifest.
+#
+# Usage:
+#   bash run_extract_per_guide_capture.sh <qc_paths.tsv>
+#
+# Example:
+#   bash run_extract_per_guide_capture.sh ../../manifests/cleanser_unified_qc_paths.tsv
+#   bash run_extract_per_guide_capture.sh ../../manifests/sceptre_v11_qc_paths.tsv
+#
+# The script derives the MuData path from each row's qc_dir:
+#   qc_dir = .../pipeline_dashboard/additional_qc
+#   mudata  = .../pipeline_dashboard/inference_mudata.h5mu
+#
+# Output is written to: <qc_dir>/guide/per_guide_capture.tsv
 
-set -e
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-MUDATA_PATHS="/Users/adamklie/Desktop/projects/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/latest_mudata_paths.tsv"
+QC_PATHS="${1:?Usage: $0 <qc_paths.tsv>}"
 
-# Read the TSV and process each dataset
-tail -n +2 "$MUDATA_PATHS" | while IFS=$'\t' read -r input outdir run_name; do
-    echo "Processing: $run_name"
+if [[ ! -f "$QC_PATHS" ]]; then
+    echo "ERROR: File not found: $QC_PATHS"
+    exit 1
+fi
 
-    output_file="${outdir}/per_guide_capture.tsv"
+echo "Reading manifest: $QC_PATHS"
+echo "---"
+
+# Activate the project venv
+PROJECT_ROOT="/cellar/users/aklie/data/datasets/tf_perturb_seq"
+source "$PROJECT_ROOT/.venv/bin/activate"
+
+# Read the TSV (skip header), columns: dataset qc_dir ...
+tail -n +2 "$QC_PATHS" | while IFS=$'\t' read -r dataset qc_dir _rest; do
+    # Derive MuData path from qc_dir
+    # qc_dir ends in .../pipeline_dashboard/additional_qc
+    mudata_path="$(dirname "$qc_dir")/inference_mudata.h5mu"
+    output_file="${qc_dir}/guide/per_guide_capture.tsv"
+
+    if [[ ! -f "$mudata_path" ]]; then
+        echo "SKIP: MuData not found for $dataset: $mudata_path"
+        continue
+    fi
+
+    if [[ -f "$output_file" ]]; then
+        echo "SKIP: Already exists for $dataset: $output_file"
+        continue
+    fi
+
+    echo "Processing: $dataset"
+    echo "  MuData: $mudata_path"
+    echo "  Output: $output_file"
 
     python "$SCRIPT_DIR/extract_per_guide_capture.py" \
-        "$input" \
+        "$mudata_path" \
         "$output_file" \
-        "$run_name"
+        "$dataset"
 
-    echo "Done: $output_file"
+    echo "  Done!"
     echo "---"
 done
 

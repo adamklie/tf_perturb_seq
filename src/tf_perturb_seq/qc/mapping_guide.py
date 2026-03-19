@@ -469,6 +469,28 @@ def run_guide_mapping_qc(
     guide = mdata.mod[guide_mod_key]
     logger.info(f"Guide modality: {guide.n_obs} cells, {guide.n_vars} guides")
 
+    # Bandaid: if guide and gene modalities have mismatched batch IDs
+    # (e.g. Engreitz uses different accessions per modality), copy gene batch
+    # labels onto guide so per-lane metrics are consistent across modalities.
+    gene_mod_key = "gene"
+    if (
+        gene_mod_key in mdata.mod
+        and batch_col in guide.obs.columns
+        and batch_col in mdata.mod[gene_mod_key].obs.columns
+    ):
+        gene_batches = set(mdata.mod[gene_mod_key].obs[batch_col].unique())
+        guide_batches = set(guide.obs[batch_col].unique())
+        if gene_batches != guide_batches and not gene_batches & guide_batches:
+            # No overlap at all — modalities use completely different batch IDs.
+            # Since cells are shared, adopt the gene modality's batch labels.
+            guide.obs[batch_col] = mdata.mod[gene_mod_key].obs[batch_col]
+            logger.warning(
+                f"Guide and gene batch IDs have zero overlap; "
+                f"copied gene batch labels onto guide.obs['{batch_col}']. "
+                f"Gene batches: {sorted(gene_batches)[:3]}... "
+                f"Guide batches (original): {sorted(guide_batches)[:3]}..."
+            )
+
     # Compute n_guides_per_cell and n_cells_per_guide from assignment matrix
     compute_guide_assignment_counts(guide, assignment_layer=assignment_layer)
 
@@ -534,7 +556,102 @@ def run_guide_mapping_qc(
         batch_col=batch_col,
     )
 
+    # -----------------------------------------------------------------
+    # Per-guide capture statistics (from guide.X raw UMI counts)
+    # -----------------------------------------------------------------
+    compute_per_guide_capture(guide, outdir, prefix=prefix, label_col=label_col)
+
     logger.info("Guide mapping QC complete.")
+
+
+# ---------------------------------------------------------------------
+# Per-guide capture statistics
+# ---------------------------------------------------------------------
+def compute_per_guide_capture(
+    guide: AnnData,
+    outdir: str,
+    prefix: str = "guide",
+    label_col: str = "label",
+) -> pd.DataFrame:
+    """
+    Compute per-guide capture statistics from the raw UMI count matrix (guide.X).
+
+    For each guide, calculates:
+      - n_cells_detected: Number of cells with UMI > 0
+      - frac_cells_detected: Fraction of total cells with UMI > 0
+      - total_umi: Sum of UMIs across all cells
+      - mean_umi: Mean UMI among cells with guide detected
+      - median_umi: Median UMI among cells with guide detected
+      - std_umi: Std dev of UMI among cells with guide detected
+      - max_umi: Maximum UMI observed
+
+    Parameters
+    ----------
+    guide : AnnData
+        Guide modality AnnData object.
+    outdir : str
+        Output directory for the TSV file.
+    prefix : str
+        Prefix for output filename.
+    label_col : str
+        Column in guide.var for guide labels.
+
+    Returns
+    -------
+    pd.DataFrame
+        Per-guide capture statistics.
+    """
+    X = guide.X
+    if issparse(X):
+        X = X.toarray()
+
+    n_cells = guide.n_obs
+    guide_ids = guide.var_names.tolist()
+
+    results = []
+    for i, guide_id in enumerate(guide_ids):
+        counts = X[:, i]
+        detected = counts > 0
+        n_detected = int(detected.sum())
+
+        if n_detected > 0:
+            vals = counts[detected]
+            results.append({
+                "guide_id": guide_id,
+                "n_cells_detected": n_detected,
+                "frac_cells_detected": n_detected / n_cells,
+                "total_umi": float(vals.sum()),
+                "mean_umi": float(vals.mean()),
+                "median_umi": float(np.median(vals)),
+                "std_umi": float(vals.std()),
+                "max_umi": float(vals.max()),
+            })
+        else:
+            results.append({
+                "guide_id": guide_id,
+                "n_cells_detected": 0,
+                "frac_cells_detected": 0.0,
+                "total_umi": 0.0,
+                "mean_umi": np.nan,
+                "median_umi": np.nan,
+                "std_umi": np.nan,
+                "max_umi": 0.0,
+            })
+
+    df = pd.DataFrame(results)
+    df["total_cells"] = n_cells
+
+    # Add metadata from guide.var if available
+    for col in [label_col, "gene_name"]:
+        if col in guide.var.columns:
+            col_map = guide.var[col].to_dict()
+            df[col] = df["guide_id"].map(col_map)
+
+    out_path = os.path.join(outdir, f"{prefix}_per_guide_capture.tsv")
+    df.to_csv(out_path, sep="\t", index=False)
+    logger.info(f"Saved per-guide capture stats ({len(df)} guides) to {out_path}")
+
+    return df
 
 
 def parse_args() -> argparse.Namespace:
