@@ -579,6 +579,8 @@ def compute_per_guide_capture(
     For each guide, calculates:
       - n_cells_detected: Number of cells with UMI > 0
       - frac_cells_detected: Fraction of total cells with UMI > 0
+      - n_cells_assigned: Number of cells where guide was assigned (from guide_assignment layer)
+      - frac_cells_assigned: Fraction of total cells where guide was assigned
       - total_umi: Sum of UMIs across all cells
       - mean_umi: Mean UMI among cells with guide detected
       - median_umi: Median UMI among cells with guide detected
@@ -605,6 +607,15 @@ def compute_per_guide_capture(
     if issparse(X):
         X = X.toarray()
 
+    # Load assignment matrix if available
+    has_assignment = "guide_assignment" in guide.layers
+    if has_assignment:
+        A = guide.layers["guide_assignment"]
+        if issparse(A):
+            A = A.toarray()
+    else:
+        logger.warning("guide_assignment layer not found — n_cells_assigned will be NaN")
+
     n_cells = guide.n_obs
     guide_ids = guide.var_names.tolist()
 
@@ -614,12 +625,21 @@ def compute_per_guide_capture(
         detected = counts > 0
         n_detected = int(detected.sum())
 
+        # Assignment counts
+        if has_assignment:
+            assigned = A[:, i] > 0
+            n_assigned = int(assigned.sum())
+        else:
+            n_assigned = np.nan
+
         if n_detected > 0:
             vals = counts[detected]
             results.append({
                 "guide_id": guide_id,
                 "n_cells_detected": n_detected,
                 "frac_cells_detected": n_detected / n_cells,
+                "n_cells_assigned": n_assigned,
+                "frac_cells_assigned": n_assigned / n_cells if not np.isnan(n_assigned) else np.nan,
                 "total_umi": float(vals.sum()),
                 "mean_umi": float(vals.mean()),
                 "median_umi": float(np.median(vals)),
@@ -631,6 +651,8 @@ def compute_per_guide_capture(
                 "guide_id": guide_id,
                 "n_cells_detected": 0,
                 "frac_cells_detected": 0.0,
+                "n_cells_assigned": n_assigned,
+                "frac_cells_assigned": n_assigned / n_cells if not np.isnan(n_assigned) else np.nan,
                 "total_umi": 0.0,
                 "mean_umi": np.nan,
                 "median_umi": np.nan,
