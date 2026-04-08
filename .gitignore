@@ -7,6 +7,13 @@ runs/
 _*/
 **/_*/
 CLAUDE.md
+TODAY.md
+.claude/
+slurm-*.out
+**/HonLabInternal/
+**/sample_metadata.csv
+gcp_inference_mudata_manifest.csv
+IMPLEMENTATION_GUIDE.md
 
 # Credential files
 *_key.json
