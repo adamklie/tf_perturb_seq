@@ -4,7 +4,7 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=300G
 #SBATCH --time=14-00:00:00
-#SBATCH --output=/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/bin/slurm_logs/%x.%A.out
+#SBATCH --output=/cellar/users/aklie/projects/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/bin/slurm_logs/%x.%A.out
 
 #####
 # USAGE:
@@ -22,10 +22,10 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/opt/miniconda3/lib/
 
 # Inputs
 input_files=(
-    /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_01/mapping_qc/gene.filtered.h5ad
-    /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_01/mapping_qc/gene.filtered.h5ad
-    /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2025_12_01/mapping_qc/gene.filtered.h5ad
-    /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/results/2_qc/2025_12_01/mapping_qc/gene.filtered.h5ad
+    /cellar/users/aklie/projects/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_01/mapping_qc/gene.filtered.h5ad
+    /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/results/2_qc/2025_12_01/mapping_qc/gene.filtered.h5ad
+    /cellar/users/aklie/projects/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2025_12_01/mapping_qc/gene.filtered.h5ad
+    /cellar/users/aklie/projects/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/results/2_qc/2025_12_01/mapping_qc/gene.filtered.h5ad
 )
 sample_ids=(
     Hon_WTC11-benchmark_TF-Perturb-seq
@@ -33,7 +33,7 @@ sample_ids=(
     Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3
     Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2
 )
-outdir_path=/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/results
+outdir_path=/cellar/users/aklie/projects/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/results
 
 # Echo inputs and number of inputs
 echo -e "total inputs: ${#input_files[@]}"

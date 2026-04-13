@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pandas as pd
 
-PROJECT_ROOT = Path("/cellar/users/aklie/data/datasets/tf_perturb_seq")
+PROJECT_ROOT = Path("/cellar/users/aklie/projects/tf_perturb_seq")
 BENCHMARK_DIR = PROJECT_ROOT / "datasets" / "technology-benchmark_WTC11_TF-Perturb-seq"
 RESULTS_DIR = BENCHMARK_DIR / "results" / "cross_tech_comparison"
 OUTPUT_HTML = BENCHMARK_DIR / "results" / "cross_tech_comparison" / "benchmark_report.html"

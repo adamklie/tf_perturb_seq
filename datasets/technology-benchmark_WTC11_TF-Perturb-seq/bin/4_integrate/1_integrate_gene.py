@@ -21,7 +21,7 @@ import harmonypy as hm
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
 
-PROJECT_ROOT = Path("/cellar/users/aklie/data/datasets/tf_perturb_seq")
+PROJECT_ROOT = Path("/cellar/users/aklie/projects/tf_perturb_seq")
 BENCHMARK_DIR = PROJECT_ROOT / "datasets" / "technology-benchmark_WTC11_TF-Perturb-seq"
 
 DATASETS = [

@@ -53,7 +53,7 @@ declare -A DATASET_ALT_NAMES=(
 ###############################################
 # Paths
 ###############################################
-PROJECT_ROOT="/cellar/users/aklie/data/datasets/tf_perturb_seq"
+PROJECT_ROOT="/cellar/users/aklie/projects/tf_perturb_seq"
 DATASETS_ROOT="${PROJECT_ROOT}/datasets"
 BENCHMARK_DIR="${DATASETS_ROOT}/technology-benchmark_WTC11_TF-Perturb-seq"
 

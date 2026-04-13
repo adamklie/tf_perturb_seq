@@ -4,8 +4,8 @@
 #SBATCH --mem=16G
 #SBATCH --partition=carter-compute
 #SBATCH -t 01:00:00
-#SBATCH -o /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/bin/slurm_logs/inference_array.%A_%a.out
-#SBATCH -e /cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/bin/slurm_logs/inference_array.%A_%a.err
+#SBATCH -o /cellar/users/aklie/projects/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/bin/slurm_logs/inference_array.%A_%a.out
+#SBATCH -e /cellar/users/aklie/projects/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/bin/slurm_logs/inference_array.%A_%a.err
 
 set -euo pipefail
 
@@ -28,7 +28,7 @@ elif [[ -n "${3:-}" ]]; then
   exit 1
 fi
 
-SLURM_LOG_DIR="/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/bin/slurm_logs"
+SLURM_LOG_DIR="/cellar/users/aklie/projects/tf_perturb_seq/datasets/technology-benchmark_WTC11_TF-Perturb-seq/bin/slurm_logs"
 mkdir -p "${SLURM_LOG_DIR}"
 
 [[ -f "${TSV}" ]] || { echo "ERROR: TSV not found: ${TSV}" >&2; exit 1; }
@@ -63,7 +63,6 @@ echo "--- Step 1: Calibration ---"
 bash "${CALIBRATE_SCRIPT}" \
   --project-root "${PROJECT_ROOT}" \
   --trans-results "${TRANS_RESULTS}" \
-  --cis-results "${CIS_RESULTS}" \
   --mudata "${MUDATA}" \
   --outdir "${OUTDIR}" \
   --prefix "${DATASET}" \

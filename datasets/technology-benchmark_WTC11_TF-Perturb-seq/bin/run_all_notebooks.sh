@@ -6,7 +6,7 @@ set -uo pipefail
 #   e.g.: bash run_all_notebooks.sh cleanser_unified
 #         bash run_all_notebooks.sh sceptre_v11
 
-PROJECT_ROOT="/cellar/users/aklie/data/datasets/tf_perturb_seq"
+PROJECT_ROOT="/cellar/users/aklie/projects/tf_perturb_seq"
 BENCHMARK_DIR="${PROJECT_ROOT}/datasets/technology-benchmark_WTC11_TF-Perturb-seq"
 VENV="${PROJECT_ROOT}/.venv/bin/activate"
 

@@ -1,4 +1,4 @@
-PROJECT_ROOT="/cellar/users/aklie/data/datasets/tf_perturb_seq"
+PROJECT_ROOT="/cellar/users/aklie/projects/tf_perturb_seq"
 DATASETS_ROOT="${PROJECT_ROOT}/datasets"
 SCRIPT="${PROJECT_ROOT}/scripts/run_pathways.sh"
 GMT="${PROJECT_ROOT}/ref/gene_sets/c5.go.bp.v2024.1.Hs.symbols.gmt"

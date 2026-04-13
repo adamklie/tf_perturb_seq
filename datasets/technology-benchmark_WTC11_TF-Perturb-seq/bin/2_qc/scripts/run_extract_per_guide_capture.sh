@@ -28,7 +28,7 @@ echo "Reading manifest: $QC_PATHS"
 echo "---"
 
 # Activate the project venv
-PROJECT_ROOT="/cellar/users/aklie/data/datasets/tf_perturb_seq"
+PROJECT_ROOT="/cellar/users/aklie/projects/tf_perturb_seq"
 source "$PROJECT_ROOT/.venv/bin/activate"
 
 # Read the TSV (skip header), columns: dataset qc_dir ...
