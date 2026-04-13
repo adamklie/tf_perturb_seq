@@ -7,8 +7,8 @@
 | **Lab** | Huangfu |
 | **Cell Line** | HUES8 |
 | **Differentiation** | Definitive endoderm |
-| **IGVF Analysis Set** | TODO: Find accession on portal |
-| **Status** | Setting up pipeline scripts |
+| **IGVF Analysis Set** | [IGVFDS9951KTRR](https://data.igvf.org/analysis-sets/IGVFDS9951KTRR) |
+| **Status** | Uploading to GCP |
 
 ## Data Description
 
@@ -16,8 +16,8 @@ Production TF Perturb-seq dataset from the Huangfu lab. HUES8 hESCs differentiat
 
 ## Pipeline Status
 
-- [ ] Step 0: **BLOCKED** — Need analysis set created on IGVF portal (see below)
-- [ ] Step 1: Generate per-sample metadata (need portal accession ID)
+- [x] Step 0: Analysis set created on IGVF portal: IGVFDS9951KTRR
+- [x] Step 1: Generate per-sample metadata (198 rows: 134 scRNA + 64 gRNA)
 - [ ] Step 2: Upload to GCP
 - [ ] Step 3: Patch compressed files
 - [ ] Step 4: Run CRISPR pipeline

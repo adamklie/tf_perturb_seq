@@ -15,7 +15,7 @@ DATASET_NAME=Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq
 # TODO: Find the correct accession ID on https://data.igvf.org/
 # The Huangfu benchmark accession is IGVFDS8556LYRW for reference.
 # Search for HUES8 definitive endoderm analysis sets on the portal.
-ACCESSION=IGVFDSXXXXXXXX  # <-- CHANGE THIS
+ACCESSION=IGVFDS9951KTRR
 
 # =============================================================================
 # DERIVED PATHS (no need to change)

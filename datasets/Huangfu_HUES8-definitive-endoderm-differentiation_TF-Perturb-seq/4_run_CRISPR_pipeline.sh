@@ -11,17 +11,17 @@ DATASET_NAME=Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq
 # Base directory for the dataset (local path)
 BASE_DIR=/carter/users/aklie/projects/tf_perturb_seq/datasets/${DATASET_NAME}
 
-# Sample metadata with GCS paths
-# TODO: Update to the correct patched metadata CSV after steps 2-3
-SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_YYYY_MM_DD_patched.csv
+# Sample metadata with GCS paths (patched = decompressed barcode_onlist, guide_design, seqspec)
+SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_04_09_patched.csv
 
 # CRISPR Pipeline path
-# TODO: Update to the local clone of the CRISPR pipeline
-PIPELINE_PATH=/path/to/CRISPR_Pipeline
+PIPELINE_PATH=/cellar/users/aklie/opt/CRISPR_Pipeline
+
+# Dataset-specific config (adapted from Huangfu WTC11 benchmark)
+CONFIG=$BASE_DIR/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq_2026_04_09.config
 
 # Output directory on GCS
-# TODO: Update date and run name
-OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/YYYY_MM_DD/outs/run_name
+OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_04_09/outs/sceptre_v1
 
 # Log file with dataset name and timestamp
 LOG_FILE=$BASE_DIR/logs/${DATASET_NAME}_crispr_pipeline_$(date +%Y%m%d_%H%M%S).log
@@ -39,13 +39,9 @@ mkdir -p $BASE_DIR/logs
 cd $PIPELINE_PATH
 
 # Build the nextflow command
-# Uses the Huangfu benchmark config as a starting point
-# TODO: Create a dataset-specific .config if parameters differ
-#       (e.g. different guide library, MOI, capture method)
-#       The Huangfu benchmark config is at:
-#       datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/Huangfu_WTC11-benchmark_TF-Perturb-seq_2026_03_11.config
 NF_CMD="nextflow run main.nf \
     -profile google \
+    -c $CONFIG \
     --input $SAMPLE_METADATA \
     --outdir $OUTDIR \
     -with-tower \
