@@ -9,19 +9,20 @@ set -euo pipefail
 DATASET_NAME=Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq
 
 # Base directory for the dataset (local path)
-BASE_DIR=/carter/users/aklie/projects/tf_perturb_seq/datasets/${DATASET_NAME}
+BASE_DIR=/data4/yyang117/tf_perturb_seq/datasets/${DATASET_NAME}
 
 # Sample metadata with GCS paths
-# TODO: Update to the correct patched metadata CSV after steps 2-3
-SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_YYYY_MM_DD_patched.csv
+SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_04_13_patched.csv
 
 # CRISPR Pipeline path
 # TODO: Update to the local clone of the CRISPR pipeline
-PIPELINE_PATH=/path/to/CRISPR_Pipeline
+PIPELINE_PATH=/data4/yyang117/CRISPR_Pipeline
+
+# Dataset-specific config (adapted from Huangfu WTC11 benchmark)
+CONFIG=$BASE_DIR/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq_2026_04_13.config
 
 # Output directory on GCS
-# TODO: Update date and run name
-OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/YYYY_MM_DD/outs/run_name
+OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_04_13/outs/sceptre_v1
 
 # Log file with dataset name and timestamp
 LOG_FILE=$BASE_DIR/logs/${DATASET_NAME}_crispr_pipeline_$(date +%Y%m%d_%H%M%S).log
@@ -46,6 +47,7 @@ cd $PIPELINE_PATH
 #       datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/Huangfu_WTC11-benchmark_TF-Perturb-seq_2026_03_11.config
 NF_CMD="nextflow run main.nf \
     -profile google \
+    -c $CONFIG \
     --input $SAMPLE_METADATA \
     --outdir $OUTDIR \
     -with-tower \

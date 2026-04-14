@@ -13,7 +13,7 @@ set -euo pipefail
 # =============================================================================
 
 # Base directory (change this for local vs remote)
-BASE_DIR=/carter/users/aklie/projects/tf_perturb_seq
+BASE_DIR=/data4/yyang117/tf_perturb_seq
 
 # Dataset name
 DATASET_NAME=Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq

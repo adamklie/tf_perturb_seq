@@ -7,7 +7,7 @@
 | **Lab** | Huangfu |
 | **Cell Line** | HUES8 |
 | **Differentiation** | Embryonic stem cell (undifferentiated) |
-| **IGVF Analysis Set** | TODO: Find accession on portal |
+| **IGVF Analysis Set** | [IGVFDS1216AEWT](https://data.igvf.org/analysis-sets/IGVFDS1216AEWT) |
 | **Status** | Setting up pipeline scripts |
 
 ## Data Description
@@ -16,7 +16,7 @@ Production TF Perturb-seq dataset from the Huangfu lab. HUES8 hESCs (undifferent
 
 ## Pipeline Status
 
-- [ ] Step 0: **BLOCKED** — Need analysis set created on IGVF portal (see below)
+- [x] Step 0: Analysis set created on IGVF portal: IGVFDS1216AEWT
 - [ ] Step 1: Generate per-sample metadata (need portal accession ID)
 - [ ] Step 2: Upload to GCP
 - [ ] Step 3: Patch compressed files
@@ -40,8 +40,7 @@ The following were from an earlier internal processing run and are **not** from 
 Measurement sets (8) and auxiliary sets (8 gRNA) exist on the portal. Construct library set is IGVFDS3299AXST with guide file IGVFFI8270UPKB (released).
 
 **Blockers:**
-1. **No analysis set exists** — someone needs to create one grouping 8 MS + 8 aux sets
-2. **No seqspecs** on R1 files — need upload or fallback YAMLs
+1. **No seqspecs** on R1 files — need upload or fallback YAMLs
 
 Measurement sets: IGVFDS0746MYRH, IGVFDS0956UUQN, IGVFDS2908DIHX, IGVFDS2940LYGK, IGVFDS3348KRMQ, IGVFDS5934EZKT, IGVFDS6247FKDR, IGVFDS8623ONYE
 

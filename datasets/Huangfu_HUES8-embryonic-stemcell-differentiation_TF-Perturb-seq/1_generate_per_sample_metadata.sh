@@ -6,7 +6,7 @@ set -euo pipefail
 # =============================================================================
 
 # Base directory (change this for local vs remote)
-BASE_DIR=/carter/users/aklie/projects/tf_perturb_seq
+BASE_DIR=/data4/yyang117/tf_perturb_seq
 
 # Dataset name
 DATASET_NAME=Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq
@@ -15,7 +15,7 @@ DATASET_NAME=Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq
 # TODO: Find the correct accession ID on https://data.igvf.org/
 # The Huangfu benchmark accession is IGVFDS8556LYRW for reference.
 # Search for HUES8 embryonic stem cell analysis sets on the portal.
-ACCESSION=IGVFDSXXXXXXXX  # <-- CHANGE THIS
+ACCESSION=IGVFDS1216AEWT  # <-- CHANGE THIS
 
 # =============================================================================
 # DERIVED PATHS (no need to change)
@@ -38,7 +38,8 @@ echo ""
 
 python3 ${SCRIPT} \
   --accession ${ACCESSION} \
-  --output ${DATASET_DIR}/sample_metadata.csv
+  --output ${DATASET_DIR}/sample_metadata.csv 
+
 
 echo ""
 echo "Done! Output: ${DATASET_DIR}/sample_metadata.csv"
