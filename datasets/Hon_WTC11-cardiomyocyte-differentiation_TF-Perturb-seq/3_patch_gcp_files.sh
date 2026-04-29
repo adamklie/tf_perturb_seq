@@ -4,13 +4,57 @@
 #
 # The pipeline requires uncompressed files for:
 # - barcode_onlist (.tsv)
-# - guide_design (.csv)
-# - seqspec (.yaml)  -- 84 unique seqspecs for this dataset
+# - guide_design (.tsv -- portal serves .csv.gz but content is tab-separated)
+# - seqspec (.yaml)  -- 84 unique seqspecs for this dataset, stripped of i7/i5
+#                       sample-index reads (see SEQSPEC NOTE below)
 # - barcode_hashtag_map (handled separately; see note below)
 #
 # Usage: ./3_patch_gcp_files.sh
 #
+# SEQSPEC NOTE — Index-read stripping
+# -----------------------------------
+# The Hon-supplied seqspecs include an extra `!Read` block for the i7 sample
+# index (10bp `primer_id: index7`, sometimes mislabeled as `truseq_read2` with
+# max_len=8 in the RNA seqspecs). `parsing_guide_metadata.py` in the pipeline
+# feeds every read_id into `seqspec index -t kb`, which then produces a
+# chemistry string referencing 3 fastq files per lane. The pipeline only
+# stages 2 (R1+R2), so kallisto fails with "Number of files does not match
+# number of input files required by technology". We strip those reads here.
 set -e
+
+STRIP_PY=$(cat <<'PYEOF'
+import sys, re
+text = sys.stdin.read()
+m = re.search(r'^sequence_spec:\s*\n', text, flags=re.MULTILINE)
+if not m:
+    sys.stdout.write(text); sys.exit(0)
+head = text[:m.end()]; rest = text[m.end():]
+lines = rest.split('\n')
+blocks = []; cur = None; end_idx = len(lines)
+for i, ln in enumerate(lines):
+    if ln.startswith('- !Read'):
+        if cur is not None: blocks.append(cur)
+        cur = [ln]
+    elif ln and not ln.startswith(' ') and not ln.startswith('-'):
+        if cur is not None: blocks.append(cur); cur = None
+        end_idx = i; break
+    else:
+        if cur is not None: cur.append(ln)
+if cur is not None: blocks.append(cur)
+epilogue = '\n'.join(lines[end_idx:])
+kept = []
+for b in blocks:
+    body = '\n'.join(b)
+    if re.search(r'primer_id:\s*index[57]\b', body): continue
+    m_max = re.search(r'max_len:\s*(\d+)', body)
+    if m_max and int(m_max.group(1)) < 12: continue
+    kept.append(body)
+out = head + '\n'.join(kept)
+if not out.endswith('\n'): out += '\n'
+out += epilogue
+sys.stdout.write(out)
+PYEOF
+)
 
 BUCKET="gs://igvf-pertub-seq-pipeline-data"
 DATASET="Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq"
@@ -124,11 +168,11 @@ SEQSPEC_RELPATHS=(
 )
 
 echo ""
-echo "=== Decompressing ${#SEQSPEC_RELPATHS[@]} seqspec YAML files ==="
+echo "=== Decompressing ${#SEQSPEC_RELPATHS[@]} seqspec YAML files (stripping index reads) ==="
 for rel in "${SEQSPEC_RELPATHS[@]}"; do
     fname=$(basename "${rel}" .gz)         # e.g. IGVFFI6782VXTU.yaml
     echo "  ${fname}"
-    gsutil cat "${BUCKET}/${DATASET}/${DATE}/${rel}" | gunzip | gsutil cp - "${PATCH_DIR}/${fname}"
+    gsutil cat "${BUCKET}/${DATASET}/${DATE}/${rel}" | gunzip | python3 -c "$STRIP_PY" | gsutil cp - "${PATCH_DIR}/${fname}"
 done
 
 # =============================================================================

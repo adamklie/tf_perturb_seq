@@ -10,7 +10,7 @@
 | **IGVF Analysis Set** | [IGVFDS6332VCTO](https://data.igvf.org/analysis-sets/IGVFDS6332VCTO) (released, 78 inputs) |
 | **Guide Library** | [IGVFDS3299AXST](https://data.igvf.org/construct-library-sets/IGVFDS3299AXST) (guide file: [IGVFFI8270UPKB](https://data.igvf.org/tabular-files/IGVFFI8270UPKB)) |
 | **Technology** | 10x (HTO multiplexed) |
-| **Scale** | 32 measurement sets, 26 scRNA lanes, 52 gRNA lanes, 26 HTO lanes |
+| **Scale** | 32 measurement sets, 26 scRNA lanes, 52 gRNA lanes, 26 HTO lanes _(see note below — current sample_metadata has 28 MS / 28 scRNA / 56 gRNA / 28 hash = 112 rows)_ |
 | **Status** | Prepping for CRISPR pipeline run (Lucas) |
 
 ## Pipeline Status
@@ -49,6 +49,15 @@ gs://igvf-pertub-seq-pipeline-data/WTC11_CM_TF_PerturbSeq/
 ## Legacy Data
 
 `HonLabInternal/` contains outputs from the Hon lab's internal processing pipeline (Cell_Ranger_Output/, Perturbation_information/, Transcriptome_Analysis/). These are not from the standardized CRISPR FG pipeline and should be archived once the new run completes.
+
+## Open question — measurement set count discrepancy
+
+The "Scale" row above (32 MS / 26 scRNA / 52 gRNA / 26 HTO = 104 lanes) and the "Portal Details" table below (26 scRNA, 52 gRNA, 26 HTO) both predate the current `sample_metadata_gcp_2026_04_15_patched.csv`, which contains **28 unique measurement sets** and 112 rows (28 scRNA + 56 gRNA + 28 hash). It is unclear which number is correct — possibilities:
+- The portal added 2 measurement sets between 2026-03-25 and 2026-04-15
+- The earlier counts were wrong (32 was a guess; portal table aspirational)
+- The metadata regeneration on 2026-04-15 picked up MS that should not be included
+
+Verify against the IGVF analysis set IGVFDS6332VCTO before reading too much into pipeline outputs.
 
 ## Portal Details (audited 2026-03-25)
 
