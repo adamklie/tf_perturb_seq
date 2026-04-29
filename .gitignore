@@ -10,6 +10,7 @@ CLAUDE.md
 TODAY.md
 .claude/
 slurm-*.out
+datasets/*/logs/
 **/HonLabInternal/
 **/sample_metadata.csv
 IMPLEMENTATION_GUIDE.md

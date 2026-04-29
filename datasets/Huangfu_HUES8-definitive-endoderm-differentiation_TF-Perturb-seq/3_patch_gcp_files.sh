@@ -4,7 +4,8 @@
 #
 # The pipeline requires uncompressed files for:
 # - barcode_onlist (.tsv)
-# - guide_design (.csv)
+# - guide_design (.tsv — portal delivers .csv.gz but contents are tab-separated;
+#                 seqSpecCheck.py picks delimiter from extension, so write .tsv)
 # - seqspec (.yaml)
 #
 # This script decompresses them via streaming (no local temp files).
@@ -36,7 +37,7 @@ echo "=== Decompressing barcode_onlist ==="
 gsutil cat "${BARCODE_ONLIST_SRC}" | gunzip | gsutil cp - "${PATCH_DIR}/IGVFFI4695IKAL.tsv"
 
 echo "=== Decompressing guide_design ==="
-gsutil cat "${GUIDE_DESIGN_SRC}" | gunzip | gsutil cp - "${PATCH_DIR}/IGVFFI8270UPKB.csv"
+gsutil cat "${GUIDE_DESIGN_SRC}" | gunzip | gsutil cp - "${PATCH_DIR}/IGVFFI8270UPKB.tsv"
 
 # =============================================================================
 # SEQSPEC YAML FILES (16 total: 8 RNA + 8 gRNA)
