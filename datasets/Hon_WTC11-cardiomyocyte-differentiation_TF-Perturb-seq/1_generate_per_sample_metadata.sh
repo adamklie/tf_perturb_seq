@@ -20,7 +20,9 @@ ACCESSION=IGVFDS6332VCTO
 # =============================================================================
 
 DATASET_DIR=${BASE_DIR}/datasets/${DATASET_NAME}
-SCRIPT=${BASE_DIR}/scripts/generate_per_sample.py
+# NOTE: Using dataset-local patched copy (hack: falls back to IGVFFI3028BJFI
+# for aux sets missing barcode_map on the portal). Shared scripts/ copy stays frozen.
+SCRIPT=${DATASET_DIR}/bin/generate_per_sample.py
 
 # =============================================================================
 # RUN

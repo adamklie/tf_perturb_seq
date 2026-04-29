@@ -2,6 +2,14 @@
 set -euo pipefail
 
 # =============================================================================
+# ENVIRONMENT
+# =============================================================================
+# Nextflow lives in a conda env (not on default PATH).
+# Activate before running. Same env Adam used for DE/ESC.
+source /cellar/users/aklie/opt/miniconda3/etc/profile.d/conda.sh
+conda activate nextflow
+
+# =============================================================================
 # CONFIGURATION
 # =============================================================================
 
@@ -11,17 +19,18 @@ DATASET_NAME=Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq
 # Base directory for the dataset (local path)
 BASE_DIR=/carter/users/aklie/projects/tf_perturb_seq/datasets/${DATASET_NAME}
 
-# Sample metadata with GCS paths
-# TODO: Update to the correct patched metadata CSV after steps 2-3
-SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_YYYY_MM_DD_patched.csv
+# Sample metadata with GCS paths (patched, all 311 GCS paths verified 2026-04-29)
+SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_04_15_patched.csv
 
 # CRISPR Pipeline path
-# TODO: Update to the local clone of the CRISPR pipeline
-PIPELINE_PATH=/path/to/CRISPR_Pipeline
+PIPELINE_PATH=/cellar/users/aklie/opt/CRISPR_Pipeline
+
+# Dataset-specific config (adapted from Hon benchmark; HTO multiplexed production)
+CONFIG=$BASE_DIR/${DATASET_NAME}_2026_04_15.config
 
 # Output directory on GCS
-# TODO: Update date and run name
-OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/YYYY_MM_DD/outs/run_name
+# Name following the DE/ESC convention (sceptre_v1). Spacer-tagged Hon run #1.
+OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_04_15/outs/sceptre_v1
 
 # Log file with dataset name and timestamp
 LOG_FILE=$BASE_DIR/logs/${DATASET_NAME}_crispr_pipeline_$(date +%Y%m%d_%H%M%S).log
@@ -38,22 +47,28 @@ mkdir -p $BASE_DIR/logs
 
 cd $PIPELINE_PATH
 
-# Build the nextflow command
-# NOTE: This is a production dataset (~26 measurement sets, full TF library)
-#       Config needs to handle HTO multiplexing and larger scale
-# TODO: Create dataset-specific .config
-#       Start from Hon benchmark config:
-#       datasets/Hon_WTC11-benchmark_TF-Perturb-seq/Hon_WTC11-benchmark_TF-Perturb-seq_2026_03_11.config
-#       Key differences:
-#         - ENABLE_DATA_HASHING = true (HTO multiplexed)
-#         - Potentially higher resource limits for the larger dataset
-#         - guide_design file is IGVFFI8270UPKB (production library, same as Huangfu production)
-NF_CMD="nextflow run main.nf \
+# Build the nextflow command. Using absolute path to nextflow so background nohup
+# subshell (which doesn't inherit conda activation) can still run it.
+NEXTFLOW=/cellar/users/aklie/opt/miniconda3/envs/nextflow/bin/nextflow
+
+NF_CMD="$NEXTFLOW run main.nf \
     -profile google \
+    -c $CONFIG \
     --input $SAMPLE_METADATA \
     --outdir $OUTDIR \
     -with-tower \
     -resume"
+
+echo "============================================="
+echo " Hon cardio CRISPR pipeline launch"
+echo "============================================="
+echo " Dataset:           $DATASET_NAME"
+echo " Sample metadata:   $SAMPLE_METADATA  (112 measurement sets)"
+echo " Config:            $CONFIG"
+echo " OUTDIR (GCS):      $OUTDIR"
+echo " Pipeline path:     $PIPELINE_PATH"
+echo " Nextflow:          $NEXTFLOW"
+echo "============================================="
 
 if [ "$RUN_IN_BACKGROUND" = true ]; then
     echo "Running CRISPR pipeline in background..."
