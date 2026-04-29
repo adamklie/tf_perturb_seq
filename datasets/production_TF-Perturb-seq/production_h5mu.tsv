@@ -1,0 +1,5 @@
+dataset	lab	target	url	notes
+Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq	Huangfu	definitive_endoderm	gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/2026_04_09/outs/muddy_penguin/inference_mudata.h5mu	18.02 GB; spacer_tag=GAGTACATGGGGG (13bp); replaces older `entertaining_hamster` (12bp) which had lower mapping rate
+Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq	Huangfu	embryonic_stemcell	gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/2026_04_13/outs/sceptre_v1/inference_mudata.h5mu	17.52 GB
+Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq	Hon	cardiomyocyte	https://www.synapse.org/Synapse:syn74522725	16.65 GB; folder syn74520421 is "2026_04_19_no_spacer" (run done with NO spacer_tag); file ID = syn74522725 inside pipeline_outputs/
+Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq	Gersbach	hepatocyte	https://www.synapse.org/Synapse:syn74728027	30.31 GB; latest cleanser inference run (gersbach_iPSC_iHep_04.06.2026_cleanser_inference_mudata.h5mu); parent folder syn70518849 has older v1/v2
