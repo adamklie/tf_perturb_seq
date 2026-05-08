@@ -4,3 +4,6 @@
 [submodule "external/cNMF_benchmarking"]
 	path = external/cNMF_benchmarking
 	url = https://github.com/adamklie/cNMF_benchmarking.git
+[submodule "external/energy_dist_TFperturb"]
+	path = external/energy_dist_TFperturb
+	url = https://github.com/Chikara-Takeuchi/energy_dist_TFperturb.git
