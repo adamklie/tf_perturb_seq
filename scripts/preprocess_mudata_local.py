@@ -74,7 +74,11 @@ def main():
         gRNA_dict[gname] = cells
 
     print("[preprocess] building annotation table")
-    g_var = adata_g.var.reset_index().rename(columns={"index": "guide_id"})
+    # IGVF MuData's guide modality already has `guide_id` as a column (var_names is also guide_id).
+    # Don't reset_index — that would try to insert a `guide_id` column that already exists.
+    g_var = adata_g.var.copy()
+    if "guide_id" not in g_var.columns:
+        g_var["guide_id"] = adata_g.var_names
     keep_cols = ["guide_id"]
     for col in ("intended_target_name", "type", "spacer", "intended_target_chr",
                 "intended_target_start", "intended_target_end"):
