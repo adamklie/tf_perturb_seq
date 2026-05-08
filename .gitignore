@@ -11,9 +11,18 @@ TODAY.md
 .claude/
 slurm-*.out
 datasets/*/logs/
+datasets/*/tmp/
 **/HonLabInternal/
 **/sample_metadata.csv
 IMPLEMENTATION_GUIDE.md
+
+# PerturbNMF / cNMF outputs (large; HPC-only)
+**/PerturbNMF/Data/
+**/PerturbNMF/Result/
+external/PerturbNMF/
+
+# Jamboree mirror logs (HPC-only, ephemeral)
+docs/jamborees/**/mirror_*.log
 
 # Credential files
 *_key.json
