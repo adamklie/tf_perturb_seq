@@ -14,6 +14,9 @@
 
 set -euo pipefail
 
+# Load apptainer (not in default PATH on nrnb compute nodes)
+module load apptainer
+
 GCS_MUDATA="gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/2026_04_13/outs/sceptre_v1/inference_mudata.h5mu"
 OUTPUT_DIR="/cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/results/energy_distance/sceptre_v1"
 

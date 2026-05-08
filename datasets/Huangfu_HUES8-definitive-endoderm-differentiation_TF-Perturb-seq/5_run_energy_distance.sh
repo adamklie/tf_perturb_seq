@@ -14,6 +14,9 @@
 
 set -euo pipefail
 
+# Load apptainer (not in default PATH on nrnb compute nodes)
+module load apptainer
+
 # MuData lives on GCS; the runner downloads it to OUTPUT_DIR/inference_mudata.h5mu
 # (skipped if already present, e.g. on resubmissions).
 GCS_MUDATA="gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/2026_04_09/outs/muddy_penguin/inference_mudata.h5mu"

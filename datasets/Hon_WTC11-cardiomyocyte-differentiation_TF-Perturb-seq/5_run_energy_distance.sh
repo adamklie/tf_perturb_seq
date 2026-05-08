@@ -14,6 +14,9 @@
 
 set -euo pipefail
 
+# Load apptainer (not in default PATH on nrnb compute nodes)
+module load apptainer
+
 # As of 2026-05-08, the only completed Hon CM CRISPR pipeline output is on
 # Synapse (the GCS prefix /2026_04_15/outs/initial_run/ is missing
 # pipeline_outputs/). Pull the inference_mudata directly from Synapse for now.
