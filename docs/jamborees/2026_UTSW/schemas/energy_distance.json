@@ -1,0 +1,135 @@
+{
+  "name": "energy_distance",
+  "title": "Energy distance outputs (per-dataset bundle)",
+  "scope": "per-dataset",
+  "description": "Outputs of the TF Perturb-seq energy-distance pipeline (`external/energy_dist_pipeline/`). For each dataset, the pipeline takes the inference MuData (post-CRISPR pipeline) and produces per-target energy distances + permutation p-values, a pairwise target-by-target distance matrix, a 2D embedding for visualization, and outlier / discordance tables. Used by Working Group 1 (transcriptome-wide significance) and Working Group 2 (TF activity clustering).",
+  "_verification_status": "VERIFIED against a real run on Synapse (syn74381167 = `edist_analysis_result` for Gersbach_WTC11-benchmark_HTv2). Column names + row format confirmed for `pval_edist_full.csv`, `targeting_outlier_table.csv`, `non_targeting_outlier_table.csv`, and the four `image/*.pdf` figures. Step-3 outputs (`target_by_target_matrix.csv`, `edist_embedding_info.csv`) were NOT generated for that run, so their schemas remain sampled from `external/energy_dist_pipeline/pipeline_output/`. Optional outputs `discordance_gRNA.csv` and `annotation_file_table.csv` were not present in the Synapse run — they may be cleared / not exported by the new wrapper.",
+  "bundle_path_local": "datasets/<dataset_id>/energy_distance/",
+  "bundle_path_synapse": "2026_UTSW/datasets/<dataset_id>/energy_distance/",
+  "source_pipeline": {
+    "current_runner": {
+      "repo": "https://github.com/Chikara-Takeuchi/energy_dist_TFperturb",
+      "approach": "Containerized (apptainer / docker.io/takechikara/energy_distance_env:latest). Wraps the underlying `energy_dist_pipeline` bin scripts.",
+      "input": "Synapse syn ID of the inference_mudata.h5mu (i.e., the per-dataset CRISPR pipeline output). The container fetches it directly from Synapse.",
+      "preprocess_steps": "Filter genes (min_counts>=1), normalize_total, log1p, scale, PCA (n_comps=50). Builds an annotation_table.csv with `intended_target_name|chr:start-end` promoter labels.",
+      "steps": [
+        "preprocess_mudata.py — pull MuData from Synapse, build PCA + gRNA dict + annotation",
+        "1_filtering_gRNA.py — filter outlier gRNAs",
+        "2_e_distance_nontargeting.py — compute energy distance per target vs. non-targeting (with permutation p-values)",
+        "2_1_Plot_figure.py — diagnostic plots"
+      ]
+    },
+    "earlier_runner_for_reference": {
+      "path": "external/energy_dist_pipeline/",
+      "wrapper": "datasets/<dataset_id>/6_run_energy_distance.sh wraps scripts/run_energy_distance_pipeline.sh",
+      "note": "The current containerized runner produces the same output files as this earlier non-containerized version; the schema in this document applies to both."
+    }
+  },
+  "files": [
+    {
+      "name": "pval_edist_full.csv",
+      "type": "csv",
+      "description": "Primary results: one row per target (gene promoter), with energy distance + permutation p-value across 20 random non-targeting backgrounds plus a `mean` summary.",
+      "verified_columns": [
+        "<unnamed index column> = target identifier in format `<ENSG>|<chr>:<start>-<end>` (built by `preprocess_mudata.py` from the gRNA annotation; the chr/start/end correspond to the targeted promoter region)",
+        "cell_count = int, number of cells used for this target (capped at `target_cell_num_max`, default 2000)",
+        "type = string. Only value seen in the Synapse run is `targeting`. (Earlier non-containerized example outputs use `target` / `positive control` / `negative control`. The new wrapper labels everything that has a target as `targeting`; positive/negative controls are handled via the annotation table, not this column.)",
+        "distance_0 ... distance_19 = per-background energy distance (target vs. one randomly sampled non-targeting set). `num_of_bg=20` by default.",
+        "pval_0 ... pval_19 = per-background permutation p-value (`permute_per_bg=1000` permutations each, so resolution is 1/1000)",
+        "distance_mean, pval_mean = means across the 20 backgrounds",
+        "pval_mean_log = -log10(pval_mean) (effectively, with a small offset)",
+        "distance_mean_log = log10(distance_mean) (or signed transform of it)"
+      ],
+      "verified_in_example_run": "syn74381183 (Gersbach HTv2 benchmark): 64 rows × 46 cols (excl. index). cell_count uniformly 2000."
+    },
+    {
+      "name": "target_by_target_matrix.csv",
+      "type": "csv",
+      "description": "Pairwise energy-distance matrix between all targets (square). Used by Working Group 1 for clustering and UpSet-style cross-lineage comparisons.",
+      "fields_overview": [
+        "First column: target identifier (e.g., ADNP2:P1P2)",
+        "Remaining columns: one per target; cell value = energy distance"
+      ],
+      "approx_rows_in_example": 420
+    },
+    {
+      "name": "edist_embedding_info.csv",
+      "type": "csv",
+      "description": "2D embedding (UMAP/MDS) of targets based on the energy-distance matrix, with cluster labels.",
+      "fields_overview": ["index (target id)", "x", "y", "cluster"],
+      "approx_rows_in_example": 420
+    },
+    {
+      "name": "targeting_outlier_table.csv",
+      "type": "csv",
+      "description": "Outlier identification table for targeting guides. One row per gRNA; lower `pval_outlier` = more likely to be an outlier vs. its siblings.",
+      "verified_columns": ["<unnamed index> = gRNA_name", "pval_outlier"],
+      "verified_in_example_run": "syn74381181 (Gersbach HTv2 benchmark): 380 rows × 1 col (excl. index)."
+    },
+    {
+      "name": "non_targeting_outlier_table.csv",
+      "type": "csv",
+      "description": "Outlier identification table for non-targeting controls. K-means on pairwise distances; outliers are non-majority cluster.",
+      "verified_columns": ["<unnamed index> = gRNA_name", "pval_outlier"],
+      "verified_in_example_run": "syn74381180 (Gersbach HTv2 benchmark): 30 rows × 1 col (excl. index)."
+    },
+    {
+      "name": "discordance_gRNA.csv",
+      "type": "csv",
+      "description": "Per-gRNA discordance status (sibling effect agreement). NOTE: not present in the Synapse run we verified against — may be optional / not exported by the new containerized wrapper. Documented for completeness from `bin/1_filtereing_gRNA.py`.",
+      "fields_overview": ["gRNA_name", "status"],
+      "approx_rows_in_legacy_example": 2725,
+      "verified": false
+    },
+    {
+      "name": "annotation_file_table.csv",
+      "type": "csv",
+      "description": "Per-gRNA annotation used as pipeline input (mirrors IGVF DACC `guide_rna_sequences` schema). Built by the wrapper's `preprocess_mudata.py`. NOT exported in the Synapse run we verified against — kept locally as input only.",
+      "fields_overview": ["guide_id", "intended_target_name", "type", "spacer"],
+      "approx_rows_in_legacy_example": 14359,
+      "verified": false
+    },
+    {
+      "name": "config1_2.json",
+      "type": "json",
+      "description": "Run configuration for Steps 1 + 2 (filenames, gRNA-filter knobs, permutation-test knobs). Captured per-run for reproducibility.",
+      "verified_in_example_run": "syn74381179"
+    },
+    {
+      "name": "config3.json",
+      "type": "json",
+      "description": "Run configuration for Step 3 (clustering cutoffs).",
+      "verified_in_example_run": "syn74381178"
+    },
+    {
+      "name": "image/",
+      "type": "directory",
+      "description": "Diagnostic plots written by Step 2.1 (`bin/2_1_Plot_figure.py`).",
+      "verified_files": [
+        "gRNA_stat.pdf — per-target counts of dropped / outlier / retained gRNAs",
+        "e-dist_distribution.pdf — energy distance vs. p-value scatter + density",
+        "e-dist_cutoff_value.pdf — heatmap of #significant targets across (p-value, energy-distance) cutoff grids",
+        "e-dist_cutoff_value_NEG_CONTROL.pdf — same heatmap restricted to negative controls"
+      ],
+      "verified_in_example_run": "syn74381197 (image folder under syn74381167)"
+    }
+  ],
+  "production_runs_status": {
+    "Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq": "not run yet (awaiting full crispr_pipeline bundle from Hon team; source MuData syn74522725)",
+    "Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq": "queued on UCSD nrnb HPC 2026-05-08 (muddy_penguin run; gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/2026_04_09/outs/muddy_penguin/inference_mudata.h5mu)",
+    "Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq": "queued on UCSD nrnb HPC 2026-05-08 (sceptre_v1 run; gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/2026_04_13/outs/sceptre_v1/inference_mudata.h5mu)",
+    "Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq": "not run yet (awaiting canonical run from Gersbach team; source MuData syn74728027)",
+    "Engreitz_WTC11-endothelial-cells_TF-Perturb-seq": "blocked (no inference MuData yet; dataset not on IGVF portal)",
+    "as_of": "2026-05-08",
+    "synapse_placeholder_folder": "syn74823521 (`edist_result` under syn64423137; currently empty — to be replaced by per-dataset folders under 2026_UTSW/datasets/<id>/energy_distance/)",
+    "mirror_tool": "docs/jamborees/2026_UTSW/scripts/mirror_edistance_outputs.py",
+    "scaffold_examples_available": [
+      "tf_perturb_seq/external/energy_dist_pipeline/pipeline_output/ (local; pipeline-author example outputs — used to spec the schema in this doc)",
+      "/cellar/users/aklie/projects/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/results/energy_distance/2026_04_08_prelim/ (HPC; preliminary run on a benchmark dataset)"
+    ]
+  },
+  "downstream_human_readable_outputs": {
+    "status": "deferred",
+    "plan": "Cross-dataset summary: per-dataset count of TFs significant at FDR thresholds (from pval_edist_full.csv), plus a cross-dataset clustered heatmap of per-target energy distances (from target_by_target_matrix.csv)."
+  }
+}

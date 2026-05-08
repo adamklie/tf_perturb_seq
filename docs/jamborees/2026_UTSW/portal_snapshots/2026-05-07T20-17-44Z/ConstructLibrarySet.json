@@ -1,0 +1,471 @@
+{
+  "@context": "/terms/",
+  "@graph": [
+    {
+      "@id": "/construct-library-sets/IGVFDS3299AXST/",
+      "@type": [
+        "ConstructLibrarySet",
+        "FileSet",
+        "Item"
+      ],
+      "accession": "IGVFDS3299AXST",
+      "aliases": [
+        "gary-hon:TF_PerturbSeq_sgRNA_list",
+        "gary-hon:TF_PerturbSeq_sgRNA_list_lenti"
+      ],
+      "audit": {
+        "INTERNAL_ACTION": [
+          {
+            "path": "/construct-library-sets/IGVFDS3299AXST/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_file_set_object_dispatcher",
+            "detail": "Construct library set [IGVFDS3299AXST](/construct-library-sets/IGVFDS3299AXST/) has no `publications`. Released and archived file sets are expected to be associated with a publication.",
+            "category": "missing publication"
+          }
+        ]
+      },
+      "data_use_limitation_summaries": [
+        "no certificate"
+      ],
+      "file_set_type": "guide library",
+      "lab": {
+        "@id": "/labs/gary-hon/",
+        "title": "Gary Hon, UT"
+      },
+      "scope": "loci",
+      "selection_criteria": [
+        "accessible genome regions",
+        "transcription start sites",
+        "TF genes"
+      ],
+      "status": "released",
+      "summary": "guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci"
+    }
+  ],
+  "@id": "/search/?type=ConstructLibrarySet&collections=TF+Perturb-seq+Project&collections%21=Benchmark&limit=all&format=json",
+  "@type": [
+    "Search"
+  ],
+  "clear_filters": "/search/?type=ConstructLibrarySet",
+  "columns": {
+    "@id": {
+      "title": "ID"
+    },
+    "accession": {
+      "title": "Accession"
+    },
+    "aliases": {
+      "title": "Aliases"
+    },
+    "status": {
+      "title": "Status"
+    },
+    "lab": {
+      "title": "Lab"
+    },
+    "file_set_type": {
+      "title": "File Set Type"
+    },
+    "scope": {
+      "title": "Scope"
+    },
+    "data_use_limitation_summaries": {
+      "title": "Data Use Limitation Summaries"
+    },
+    "controlled_access": {
+      "title": "Controlled Access"
+    },
+    "selection_criteria": {
+      "title": "Selection Criteria"
+    },
+    "small_scale_gene_list.symbol": {
+      "title": "Genes"
+    },
+    "associated_phenotypes.term_name": {
+      "title": "Associated Phenotypes Name"
+    },
+    "alternate_accessions": {
+      "title": "Alternate Accessions"
+    },
+    "summary": {
+      "title": "Summary"
+    }
+  },
+  "facet_groups": [],
+  "facets": [
+    {
+      "field": "type",
+      "title": "Object Type",
+      "terms": [
+        {
+          "key": "ConstructLibrarySet",
+          "doc_count": 1
+        },
+        {
+          "key": "FileSet",
+          "doc_count": 1
+        },
+        {
+          "key": "Item",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "file_set_type",
+      "title": "File Set Type",
+      "terms": [
+        {
+          "key": "guide library",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "selection_criteria",
+      "title": "Selection Criteria",
+      "terms": [
+        {
+          "key": "TF genes",
+          "doc_count": 1
+        },
+        {
+          "key": "accessible genome regions",
+          "doc_count": 1
+        },
+        {
+          "key": "transcription start sites",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "scope",
+      "title": "Scope",
+      "terms": [
+        {
+          "key": "loci",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "guide_type",
+      "title": "CRISPR Guide Type",
+      "terms": [
+        {
+          "key": "sgRNA",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "assay_slims",
+      "title": "Assay",
+      "terms": [
+        {
+          "key": "CRISPR screens",
+          "doc_count": 1,
+          "subfacet": {
+            "field": "assay_titles",
+            "title": "Assay type",
+            "terms": [
+              {
+                "key": "in vitro CRISPR screen using single-cell RNA-seq",
+                "doc_count": 1
+              }
+            ]
+          }
+        }
+      ],
+      "total": 1,
+      "type": "hierarchical",
+      "appended": false,
+      "open_on_load": false,
+      "description": "Assay(s) that is relevant to this construct library sets."
+    },
+    {
+      "field": "preferred_assay_titles",
+      "title": "Preferred Assay Titles",
+      "terms": [
+        {
+          "key": "Perturb-seq",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "integrated_content_files.content_type",
+      "title": "Construct Library Design",
+      "terms": [
+        {
+          "key": "guide RNA sequences",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "donors.taxa",
+      "title": "Taxa",
+      "terms": [
+        {
+          "key": "Homo sapiens",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "samples.classifications",
+      "title": "Classification",
+      "terms": [
+        {
+          "key": "cell line",
+          "doc_count": 1
+        },
+        {
+          "key": "differentiated cell specimen",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "samples.sample_terms.term_name",
+      "title": "Sample",
+      "terms": [
+        {
+          "key": "GM25256 (WTC-11)",
+          "doc_count": 1
+        },
+        {
+          "key": "HUES8",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "samples.targeted_sample_term.term_name",
+      "title": "Cellular Transformation Target",
+      "terms": [
+        {
+          "key": "cardiac muscle cell",
+          "doc_count": 1
+        },
+        {
+          "key": "definitive endoderm",
+          "doc_count": 1
+        },
+        {
+          "key": "hepatocyte",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "samples.modifications.modality",
+      "title": "Perturbation",
+      "terms": [
+        {
+          "key": "interference",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "samples.construct_delivery_methods",
+      "title": "Construct Delivery Method",
+      "terms": [
+        {
+          "key": "lentiviral transduction",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "collections",
+      "title": "Collections",
+      "terms": [
+        {
+          "key": "TF Perturb-seq Project",
+          "doc_count": 1
+        }
+      ],
+      "total": 270,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "lab.title",
+      "title": "Lab",
+      "terms": [
+        {
+          "key": "Gary Hon, UT",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "award.component",
+      "title": "Award",
+      "terms": [
+        {
+          "key": "functional characterization",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "release_timestamp",
+      "title": "Release Date",
+      "terms": [
+        {
+          "key": 1765576177038,
+          "key_as_string": "2025-12-12T21:49:37.038Z",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "creation_timestamp",
+      "title": "Creation Date",
+      "terms": [
+        {
+          "key": 1724260884484,
+          "key_as_string": "2024-08-21T17:21:24.484Z",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "status",
+      "title": "Status",
+      "terms": [
+        {
+          "key": "released",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "audit.INTERNAL_ACTION.category",
+      "title": "Audit Category: Internal Action",
+      "terms": [
+        {
+          "key": "missing publication",
+          "doc_count": 1
+        }
+      ],
+      "total": 1,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    }
+  ],
+  "filters": [
+    {
+      "field": "collections",
+      "term": "TF Perturb-seq Project",
+      "remove": "/search/?type=ConstructLibrarySet&collections%21=Benchmark&limit=all&format=json"
+    },
+    {
+      "field": "collections!",
+      "term": "Benchmark",
+      "remove": "/search/?type=ConstructLibrarySet&collections=TF+Perturb-seq+Project&limit=all&format=json"
+    },
+    {
+      "field": "type",
+      "term": "ConstructLibrarySet",
+      "remove": "/search/?collections=TF+Perturb-seq+Project&collections%21=Benchmark&limit=all&format=json"
+    }
+  ],
+  "notification": "Success",
+  "sort": {
+    "date_created": {
+      "order": "desc",
+      "unmapped_type": "keyword"
+    },
+    "label": {
+      "order": "desc",
+      "unmapped_type": "keyword"
+    },
+    "uuid": {
+      "order": "desc",
+      "unmapped_type": "keyword"
+    }
+  },
+  "title": "Search",
+  "total": 1
+}

@@ -1,0 +1,59 @@
+{
+  "name": "crispr_pipeline",
+  "title": "CRISPR pipeline outputs (machine-readable bundle, per dataset)",
+  "scope": "per-dataset",
+  "description": "Machine-readable bundle of the IGVF CRISPR FG pipeline's terminal outputs for each production dataset. Three top-level folders are mirrored as-is from the canonical pipeline run on GCS to Synapse: pipeline_dashboard/, pipeline_info/, pipeline_outputs/. The bundle is large (~60 GB per dataset, dominated by inference_mudata.h5mu); only Synapse has the full bundle, the local repo only carries pointers and READMEs.",
+  "bundle_path_local": "datasets/<dataset_id>/crispr_pipeline/",
+  "bundle_path_synapse": "2026_UTSW/datasets/<dataset_id>/crispr_pipeline/",
+  "size_per_dataset_gb_approx": 63,
+  "directories": [
+    {
+      "path": "pipeline_dashboard/",
+      "size_gb_approx": 40,
+      "description": "Primary QC outputs used in slides. Contains an interactive dashboard, the final MuData, and per-element QC tables.",
+      "contents": [
+        {"name": "dashboard.html", "type": "html", "description": "Interactive HTML dashboard summarizing the run."},
+        {"name": "inference_mudata.h5mu", "type": "mudata", "description": "Final inference MuData. Same content as pipeline_outputs/inference_mudata.h5mu (duplicated for dashboard convenience)."},
+        {"name": "additional_qc/", "type": "directory", "description": "Per-gene / per-guide / per-intended-target / trans QC tables."},
+        {"name": "evaluation_output/", "type": "directory", "description": "Pipeline's built-in evaluation outputs (bedgraph/bedpe for cis/trans perturbo and sceptre)."},
+        {"name": "figures/", "type": "directory", "description": "Pre-generated plots (knee plot, scatter, violin, evaluation barplots, precision-recall, volcano)."},
+        {"name": "guide_seqSpec_plots/", "type": "directory", "description": "Per-sample guide seqspec position plots and HitRatio scoring."},
+        {"name": "svg/", "type": "directory", "description": "Vector-format versions of dashboard figures."}
+      ]
+    },
+    {
+      "path": "pipeline_info/",
+      "size_kb_approx": 10,
+      "description": "Pipeline configuration captured at run time. Tiny but critical for reproducibility.",
+      "contents": [
+        {"name": "params_<timestamp>.json", "type": "json", "description": "Resolved Nextflow params at run start (one JSON per launch attempt)."},
+        {"name": "nf_core_pipeline_software_versions.yml", "type": "yaml", "description": "Software versions for every container/tool used in the run."}
+      ]
+    },
+    {
+      "path": "pipeline_outputs/",
+      "size_gb_approx": 23,
+      "description": "Final per-element / per-guide inference outputs from perturbo and sceptre, plus the canonical inference_mudata.h5mu.",
+      "contents": [
+        {"name": "inference_mudata.h5mu", "type": "mudata", "description": "Final inference MuData. Canonical copy."},
+        {"name": "perturbo_cis_per_element_output.tsv.gz", "type": "tsv", "description": "perturbo cis inference results, per (element, gene) pair."},
+        {"name": "perturbo_cis_per_guide_output.tsv.gz", "type": "tsv", "description": "perturbo cis inference results, per (guide, gene) pair."},
+        {"name": "perturbo_trans_per_element_output.tsv.gz", "type": "tsv", "description": "perturbo trans inference results, per (element, gene) pair."},
+        {"name": "perturbo_trans_per_guide_output.tsv.gz", "type": "tsv", "description": "perturbo trans inference results, per (guide, gene) pair."}
+      ]
+    }
+  ],
+  "source_locations": {
+    "gcs_pattern": "gs://igvf-pertub-seq-pipeline-data/<dataset_id>/<YYYY_MM_DD>/outs/<run_label>/{pipeline_dashboard,pipeline_info,pipeline_outputs}/",
+    "per_dataset": "See `experimental_metadata.tsv` -> gcs_output_path for each dataset's canonical run prefix.",
+    "hpc_note": "Some intermediate artifacts may also exist on the UCSD HPC under /cellar/users/aklie/projects/tf_perturb_seq/. The canonical source for the jamboree is GCS."
+  },
+  "mirroring": {
+    "tool": "scripts/mirror_pipeline_outputs.py",
+    "approach": "For each dataset: list the three GCS prefixes, stream-download to a temp dir, upload to Synapse under 2026_UTSW/datasets/<dataset_id>/crispr_pipeline/, then clean up. Resulting Synapse folder/file IDs are recorded in synapse_paths.tsv (column `crispr_pipeline`)."
+  },
+  "downstream_human_readable_outputs": {
+    "status": "deferred",
+    "plan": "A cross-dataset summary TSV (read counts, mapping rates, cell counts, n significant targets) and per-dataset summary plots will be derived from these bundles in a follow-up step. See docs/analysis/CRISPR_PIPELINE_OUTPUTS.md for the metric extraction TODO."
+  }
+}

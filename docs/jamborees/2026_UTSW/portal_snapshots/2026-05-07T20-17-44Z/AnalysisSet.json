@@ -1,0 +1,4835 @@
+{
+  "@context": "/terms/",
+  "@graph": [
+    {
+      "@id": "/analysis-sets/IGVFDS4389OUWU/",
+      "@type": [
+        "AnalysisSet",
+        "FileSet",
+        "Item"
+      ],
+      "accession": "IGVFDS4389OUWU",
+      "aliases": [
+        "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_PrimaryAnalysis"
+      ],
+      "audit": {
+        "INTERNAL_ACTION": [
+          {
+            "path": "/analysis-sets/IGVFDS4389OUWU/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_file_set_object_dispatcher",
+            "detail": "Analysis set [IGVFDS4389OUWU](/analysis-sets/IGVFDS4389OUWU/) has no `publications`. Released and archived file sets are expected to be associated with a publication.",
+            "category": "missing publication"
+          }
+        ]
+      },
+      "award": {
+        "component": "functional characterization",
+        "@id": "/awards/HG011996/",
+        "title": "Multiscale functional characterization of genomic variation in human developmental disorders",
+        "contact_pi": {
+          "@id": "/users/95d84f03-8ce0-489c-a755-f33ced139c5d/",
+          "title": "Gary Hon"
+        }
+      },
+      "data_use_limitation_summaries": [
+        "no certificate"
+      ],
+      "description": "Technology benchmarking by comparing the functions of ~50 transcription factors in induced pluripotent stem cells and iPSC-derived cardiomyocytes (CMs) and neural progenitor cells (NPCs): Knockdown of transcription factors in CMs using CRISPRi; measure changes in gene expression.",
+      "donors": [
+        {
+          "taxa": "Homo sapiens",
+          "aliases": [
+            "igvf:donor_of_WTC11"
+          ],
+          "sex": "male",
+          "accession": "IGVFDO1756PPKO",
+          "@id": "/human-donors/IGVFDO1756PPKO/",
+          "status": "released"
+        }
+      ],
+      "file_set_type": "principal analysis",
+      "files": [
+        {
+          "content_type": "filtered feature barcode matrix"
+        },
+        {
+          "content_type": "sparse gene count matrix"
+        },
+        {
+          "content_type": "raw feature barcode matrix"
+        },
+        {
+          "content_type": "local differential expression"
+        },
+        {
+          "content_type": "global differential expression"
+        }
+      ],
+      "input_file_sets": [
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_LW277"
+          ],
+          "accession": "IGVFDS7834BXBN",
+          "@id": "/measurement-sets/IGVFDS7834BXBN/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_sgRNA_LW277"
+          ],
+          "accession": "IGVFDS8280AMDA",
+          "@id": "/auxiliary-sets/IGVFDS8280AMDA/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_HTO_LW277"
+          ],
+          "accession": "IGVFDS6231TYIS",
+          "@id": "/auxiliary-sets/IGVFDS6231TYIS/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_LW278"
+          ],
+          "accession": "IGVFDS2628PYOH",
+          "@id": "/measurement-sets/IGVFDS2628PYOH/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_sgRNA_LW278"
+          ],
+          "accession": "IGVFDS8139DLEM",
+          "@id": "/auxiliary-sets/IGVFDS8139DLEM/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_HTO_LW278"
+          ],
+          "accession": "IGVFDS0109SCQO",
+          "@id": "/auxiliary-sets/IGVFDS0109SCQO/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_LW279"
+          ],
+          "accession": "IGVFDS7733OTCA",
+          "@id": "/measurement-sets/IGVFDS7733OTCA/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_sgRNA_LW279"
+          ],
+          "accession": "IGVFDS0997MTQA",
+          "@id": "/auxiliary-sets/IGVFDS0997MTQA/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_HTO_LW279"
+          ],
+          "accession": "IGVFDS7027VRZT",
+          "@id": "/auxiliary-sets/IGVFDS7027VRZT/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_LW280"
+          ],
+          "accession": "IGVFDS4852MAUM",
+          "@id": "/measurement-sets/IGVFDS4852MAUM/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_sgRNA_LW280"
+          ],
+          "accession": "IGVFDS6861GRJI",
+          "@id": "/auxiliary-sets/IGVFDS6861GRJI/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_CM_HTO_LW280"
+          ],
+          "accession": "IGVFDS5228AHGR",
+          "@id": "/auxiliary-sets/IGVFDS5228AHGR/",
+          "status": "released"
+        }
+      ],
+      "lab": {
+        "@id": "/labs/gary-hon/",
+        "title": "Gary Hon, UT"
+      },
+      "protocols": [
+        "https://www.protocols.io/view/experimental-procedures-for-tf-perturb-seq-ut-sout-denf3dbn"
+      ],
+      "sample_summary": "Homo sapiens GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell, at 12 day(s) post change, modified with CRISPRi Sp-dCas9, transfected with a guide library and measured at 3 week(s) post-transfection, cellular sub pool(s): subpool_LW277, subpool_LW278, subpool_LW279, subpool_LW280",
+      "samples": [
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW279) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_CMs_Lenti_LW279"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM0559UNMK",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM0559UNMK/",
+          "cellular_sub_pool": "subpool_LW279",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW280) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_CMs_Lenti_LW280"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM0604KDJF",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM0604KDJF/",
+          "cellular_sub_pool": "subpool_LW280",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW278) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_CMs_Lenti_LW278"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM7499ZWUW",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM7499ZWUW/",
+          "cellular_sub_pool": "subpool_LW278",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW277) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_CMs_Lenti_LW277"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM7513BJDT",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM7513BJDT/",
+          "cellular_sub_pool": "subpool_LW277",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        }
+      ],
+      "status": "released",
+      "summary": "CRISPR interference Perturb-seq integrating a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+      "uuid": "1a15b925-7d5f-4dcb-87e5-43696e019ff1"
+    },
+    {
+      "@id": "/analysis-sets/IGVFDS7340YDHF/",
+      "@type": [
+        "AnalysisSet",
+        "FileSet",
+        "Item"
+      ],
+      "accession": "IGVFDS7340YDHF",
+      "aliases": [
+        "gary-hon:WTC11_TF_Perturb_Seq_Pilot_iPSC_Lenti_PrimaryAnalysis"
+      ],
+      "audit": {
+        "INTERNAL_ACTION": [
+          {
+            "path": "/analysis-sets/IGVFDS7340YDHF/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_file_set_object_dispatcher",
+            "detail": "Analysis set [IGVFDS7340YDHF](/analysis-sets/IGVFDS7340YDHF/) has no `publications`. Released and archived file sets are expected to be associated with a publication.",
+            "category": "missing publication"
+          }
+        ]
+      },
+      "award": {
+        "component": "functional characterization",
+        "@id": "/awards/HG011996/",
+        "title": "Multiscale functional characterization of genomic variation in human developmental disorders",
+        "contact_pi": {
+          "@id": "/users/95d84f03-8ce0-489c-a755-f33ced139c5d/",
+          "title": "Gary Hon"
+        }
+      },
+      "data_use_limitation_summaries": [
+        "no certificate"
+      ],
+      "description": "Technology benchmarking by comparing the functions of ~50 transcription factors in induced pluripotent stem cells and iPSC-derived cardiomyocytes (CMs) and neural progenitor cells (NPCs): Knockdown of transcription factors in iPSCs using CRISPRi; measure changes in gene expression.",
+      "donors": [
+        {
+          "taxa": "Homo sapiens",
+          "aliases": [
+            "igvf:donor_of_WTC11"
+          ],
+          "sex": "male",
+          "accession": "IGVFDO1756PPKO",
+          "@id": "/human-donors/IGVFDO1756PPKO/",
+          "status": "released"
+        }
+      ],
+      "file_set_type": "principal analysis",
+      "files": [
+        {
+          "content_type": "sparse gene count matrix"
+        },
+        {
+          "content_type": "raw feature barcode matrix"
+        },
+        {
+          "content_type": "filtered feature barcode matrix"
+        },
+        {
+          "content_type": "local differential expression"
+        },
+        {
+          "content_type": "global differential expression"
+        }
+      ],
+      "input_file_sets": [
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_LW286"
+          ],
+          "accession": "IGVFDS5429CXNB",
+          "@id": "/measurement-sets/IGVFDS5429CXNB/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_sgRNA_LW286"
+          ],
+          "accession": "IGVFDS1128FXRR",
+          "@id": "/auxiliary-sets/IGVFDS1128FXRR/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_HTO_LW286"
+          ],
+          "accession": "IGVFDS3465KEWH",
+          "@id": "/auxiliary-sets/IGVFDS3465KEWH/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_LW287"
+          ],
+          "accession": "IGVFDS2692VBHQ",
+          "@id": "/measurement-sets/IGVFDS2692VBHQ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_sgRNA_LW287"
+          ],
+          "accession": "IGVFDS1937JPZI",
+          "@id": "/auxiliary-sets/IGVFDS1937JPZI/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_HTO_LW287"
+          ],
+          "accession": "IGVFDS2373RGIJ",
+          "@id": "/auxiliary-sets/IGVFDS2373RGIJ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_LW288"
+          ],
+          "accession": "IGVFDS3975OFAO",
+          "@id": "/measurement-sets/IGVFDS3975OFAO/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_sgRNA_LW288"
+          ],
+          "accession": "IGVFDS6503WNZT",
+          "@id": "/auxiliary-sets/IGVFDS6503WNZT/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_HTO_LW288"
+          ],
+          "accession": "IGVFDS9718OGWQ",
+          "@id": "/auxiliary-sets/IGVFDS9718OGWQ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_LW289"
+          ],
+          "accession": "IGVFDS3495FUIW",
+          "@id": "/measurement-sets/IGVFDS3495FUIW/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_sgRNA_LW289"
+          ],
+          "accession": "IGVFDS1931QVXR",
+          "@id": "/auxiliary-sets/IGVFDS1931QVXR/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_iPSC_HTO_LW289"
+          ],
+          "accession": "IGVFDS6015JDKU",
+          "@id": "/auxiliary-sets/IGVFDS6015JDKU/",
+          "status": "released"
+        }
+      ],
+      "lab": {
+        "@id": "/labs/gary-hon/",
+        "title": "Gary Hon, UT"
+      },
+      "protocols": [
+        "https://www.protocols.io/view/experimental-procedures-for-tf-perturb-seq-ut-sout-denf3dbn"
+      ],
+      "sample_summary": "Homo sapiens GM25256 (WTC-11) cell line, modified with CRISPRi Sp-dCas9, transfected with a guide library, cellular sub pool(s): subpool_LW286, subpool_LW287, subpool_LW288, subpool_LW289",
+      "samples": [
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) cell line (cellular sub pool: subpool_LW287) modified with CRISPRi Sp-dCas9, transduced (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "cell line"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_iPSC_Lenti_LW287"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM1153INDY",
+          "@id": "/in-vitro-systems/IGVFSM1153INDY/",
+          "cellular_sub_pool": "subpool_LW287",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) cell line (cellular sub pool: subpool_LW289) modified with CRISPRi Sp-dCas9, transduced (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "cell line"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_iPSC_Lenti_LW289"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM1597KVRS",
+          "@id": "/in-vitro-systems/IGVFSM1597KVRS/",
+          "cellular_sub_pool": "subpool_LW289",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) cell line (cellular sub pool: subpool_LW286) modified with CRISPRi Sp-dCas9, transduced (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "cell line"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_iPSC_Lenti_LW286"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM2726ORRN",
+          "@id": "/in-vitro-systems/IGVFSM2726ORRN/",
+          "cellular_sub_pool": "subpool_LW286",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) cell line (cellular sub pool: subpool_LW288) modified with CRISPRi Sp-dCas9, transduced (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "cell line"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_iPSC_Lenti_LW288"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM9411HZLU",
+          "@id": "/in-vitro-systems/IGVFSM9411HZLU/",
+          "cellular_sub_pool": "subpool_LW288",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        }
+      ],
+      "status": "released",
+      "summary": "CRISPR interference Perturb-seq integrating a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+      "uuid": "ab709a68-2d95-46ba-9462-decc91623d62"
+    },
+    {
+      "@id": "/analysis-sets/IGVFDS1588TVKF/",
+      "@type": [
+        "AnalysisSet",
+        "FileSet",
+        "Item"
+      ],
+      "accession": "IGVFDS1588TVKF",
+      "aliases": [
+        "gary-hon:WTC11_TF_Perturb_Seq_Pilot_NPC_Lenti_PrimaryAnalysis"
+      ],
+      "audit": {
+        "INTERNAL_ACTION": [
+          {
+            "path": "/analysis-sets/IGVFDS1588TVKF/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_file_set_object_dispatcher",
+            "detail": "Analysis set [IGVFDS1588TVKF](/analysis-sets/IGVFDS1588TVKF/) has no `publications`. Released and archived file sets are expected to be associated with a publication.",
+            "category": "missing publication"
+          }
+        ]
+      },
+      "award": {
+        "component": "functional characterization",
+        "@id": "/awards/HG011996/",
+        "title": "Multiscale functional characterization of genomic variation in human developmental disorders",
+        "contact_pi": {
+          "@id": "/users/95d84f03-8ce0-489c-a755-f33ced139c5d/",
+          "title": "Gary Hon"
+        }
+      },
+      "data_use_limitation_summaries": [
+        "no certificate"
+      ],
+      "description": "Technology benchmarking by comparing the functions of ~50 transcription factors in induced pluripotent stem cells and iPSC-derived cardiomyocytes (CMs) and neural progenitor cells (NPCs): Knockdown of transcription factors in NPCs using CRISPRi; measure changes in gene expression.",
+      "donors": [
+        {
+          "taxa": "Homo sapiens",
+          "aliases": [
+            "igvf:donor_of_WTC11"
+          ],
+          "sex": "male",
+          "accession": "IGVFDO1756PPKO",
+          "@id": "/human-donors/IGVFDO1756PPKO/",
+          "status": "released"
+        }
+      ],
+      "file_set_type": "principal analysis",
+      "files": [
+        {
+          "content_type": "sparse gene count matrix"
+        },
+        {
+          "content_type": "raw feature barcode matrix"
+        },
+        {
+          "content_type": "filtered feature barcode matrix"
+        }
+      ],
+      "input_file_sets": [
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_LW281"
+          ],
+          "accession": "IGVFDS2143BSOH",
+          "@id": "/measurement-sets/IGVFDS2143BSOH/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_sgRNA_LW281"
+          ],
+          "accession": "IGVFDS2612LSTD",
+          "@id": "/auxiliary-sets/IGVFDS2612LSTD/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_HTO_LW281"
+          ],
+          "accession": "IGVFDS2549GCKW",
+          "@id": "/auxiliary-sets/IGVFDS2549GCKW/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_LW282"
+          ],
+          "accession": "IGVFDS8810ABUD",
+          "@id": "/measurement-sets/IGVFDS8810ABUD/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_sgRNA_LW282"
+          ],
+          "accession": "IGVFDS7986GKWR",
+          "@id": "/auxiliary-sets/IGVFDS7986GKWR/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_HTO_LW282"
+          ],
+          "accession": "IGVFDS3567LQMB",
+          "@id": "/auxiliary-sets/IGVFDS3567LQMB/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_LW283"
+          ],
+          "accession": "IGVFDS4028IRAH",
+          "@id": "/measurement-sets/IGVFDS4028IRAH/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_sgRNA_LW283"
+          ],
+          "accession": "IGVFDS4262EBDF",
+          "@id": "/auxiliary-sets/IGVFDS4262EBDF/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_HTO_LW283"
+          ],
+          "accession": "IGVFDS2600XYHD",
+          "@id": "/auxiliary-sets/IGVFDS2600XYHD/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_LW284"
+          ],
+          "accession": "IGVFDS0657YBVN",
+          "@id": "/measurement-sets/IGVFDS0657YBVN/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_sgRNA_LW284"
+          ],
+          "accession": "IGVFDS5339UNRP",
+          "@id": "/auxiliary-sets/IGVFDS5339UNRP/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:TF_Perturb_Seq_Pilot_Lenti_NPC_HTO_LW284"
+          ],
+          "accession": "IGVFDS2693DPLW",
+          "@id": "/auxiliary-sets/IGVFDS2693DPLW/",
+          "status": "released"
+        }
+      ],
+      "lab": {
+        "@id": "/labs/gary-hon/",
+        "title": "Gary Hon, UT"
+      },
+      "protocols": [
+        "https://www.protocols.io/view/experimental-procedures-for-tf-perturb-seq-ut-sout-denf3dbn"
+      ],
+      "sample_summary": "Homo sapiens GM25256 (WTC-11) differentiated cell specimen induced to neural stem cell, at 20 day(s) post change, modified with CRISPRi Sp-dCas9, transfected with a guide library and measured at 3 week(s) post-transfection, cellular sub pool(s): subpool_LW281, subpool_LW282, subpool_LW283, subpool_LW284",
+      "samples": [
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to neural stem cell for 20 days, (cellular sub pool: subpool_LW281) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_NPC_Lenti_LW281"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM0956HKRJ",
+          "targeted_sample_term": {
+            "term_name": "neural stem cell",
+            "@id": "/sample-terms/CL_0000047/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM0956HKRJ/",
+          "cellular_sub_pool": "subpool_LW281",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to neural stem cell for 20 days, (cellular sub pool: subpool_LW282) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_NPC_Lenti_LW282"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM1288TQKF",
+          "targeted_sample_term": {
+            "term_name": "neural stem cell",
+            "@id": "/sample-terms/CL_0000047/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM1288TQKF/",
+          "cellular_sub_pool": "subpool_LW282",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to neural stem cell for 20 days, (cellular sub pool: subpool_LW284) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_NPC_Lenti_LW284"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM2597WGYB",
+          "targeted_sample_term": {
+            "term_name": "neural stem cell",
+            "@id": "/sample-terms/CL_0000047/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM2597WGYB/",
+          "cellular_sub_pool": "subpool_LW284",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to neural stem cell for 20 days, (cellular sub pool: subpool_LW283) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_TF_Perturb_Seq_Pilot_NPC_Lenti_LW283"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM8464JMJS",
+          "targeted_sample_term": {
+            "term_name": "neural stem cell",
+            "@id": "/sample-terms/CL_0000047/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM8464JMJS/",
+          "cellular_sub_pool": "subpool_LW283",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        }
+      ],
+      "status": "released",
+      "summary": "CRISPR interference Perturb-seq integrating a guide (sgRNA) library targeting accessible genome regions in many genomic loci",
+      "uuid": "89c7a51d-f7f2-4c3e-ba52-036da8010898"
+    },
+    {
+      "@id": "/analysis-sets/IGVFDS6332VCTO/",
+      "@type": [
+        "AnalysisSet",
+        "FileSet",
+        "Item"
+      ],
+      "accession": "IGVFDS6332VCTO",
+      "aliases": [
+        "gary-hon:WTC11_CM_TF_PerturbSeq"
+      ],
+      "audit": {
+        "INTERNAL_ACTION": [
+          {
+            "path": "/analysis-sets/IGVFDS6332VCTO/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_analysis_set_object_dispatcher",
+            "detail": "Analysis set [IGVFDS6332VCTO](/analysis-sets/IGVFDS6332VCTO/) has tabular file(s) with no transcriptome `reference_files`: [IGVFFI6966LMRS](/tabular-files/IGVFFI6966LMRS/), [IGVFFI9218RTDZ](/tabular-files/IGVFFI9218RTDZ/), [IGVFFI9914SKEC](/tabular-files/IGVFFI9914SKEC/). Tabular files processed from transcript sequence data are expected to link to a transcriptome reference.",
+            "category": "missing reference files"
+          },
+          {
+            "path": "/analysis-sets/IGVFDS6332VCTO/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_file_set_object_dispatcher",
+            "detail": "Analysis set [IGVFDS6332VCTO](/analysis-sets/IGVFDS6332VCTO/) has no `publications`. Released and archived file sets are expected to be associated with a publication.",
+            "category": "missing publication"
+          },
+          {
+            "path": "/analysis-sets/IGVFDS6332VCTO/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released analysis set [IGVFDS6332VCTO](/analysis-sets/IGVFDS6332VCTO/) has in progress subobject measurement set [IGVFDS8747AVMA](/measurement-sets/IGVFDS8747AVMA/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/analysis-sets/IGVFDS6332VCTO/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released analysis set [IGVFDS6332VCTO](/analysis-sets/IGVFDS6332VCTO/) has in progress subobject auxiliary set [IGVFDS1991NQQO](/auxiliary-sets/IGVFDS1991NQQO/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/analysis-sets/IGVFDS6332VCTO/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released analysis set [IGVFDS6332VCTO](/analysis-sets/IGVFDS6332VCTO/) has in progress subobject auxiliary set [IGVFDS6118JXLI](/auxiliary-sets/IGVFDS6118JXLI/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/analysis-sets/IGVFDS6332VCTO/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released analysis set [IGVFDS6332VCTO](/analysis-sets/IGVFDS6332VCTO/) has in progress subobject measurement set [IGVFDS6239SWYS](/measurement-sets/IGVFDS6239SWYS/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/analysis-sets/IGVFDS6332VCTO/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released analysis set [IGVFDS6332VCTO](/analysis-sets/IGVFDS6332VCTO/) has in progress subobject auxiliary set [IGVFDS6488PFMQ](/auxiliary-sets/IGVFDS6488PFMQ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/analysis-sets/IGVFDS6332VCTO/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released analysis set [IGVFDS6332VCTO](/analysis-sets/IGVFDS6332VCTO/) has in progress subobject auxiliary set [IGVFDS5487NREY](/auxiliary-sets/IGVFDS5487NREY/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/tabular-files/IGVFFI0830FXFI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_file_object_dispatcher",
+            "detail": "Move in progress file IGVFFI0830FXFI from s3://igvf-files/2026/05/05/9cac0879-e87f-4eeb-af25-bf15fd5a3257/IGVFFI0830FXFI.csv.gz to s3://igvf-private/2026/05/05/9cac0879-e87f-4eeb-af25-bf15fd5a3257/IGVFFI0830FXFI.csv.gz",
+            "category": "incorrect file bucket"
+          },
+          {
+            "path": "/tabular-files/IGVFFI6966LMRS/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_file_object_dispatcher",
+            "detail": "Move in progress file IGVFFI6966LMRS from s3://igvf-files/2026/03/12/bd9c86b6-8edb-44a1-ad63-ecad17736f68/IGVFFI6966LMRS.csv.gz to s3://igvf-private/2026/03/12/bd9c86b6-8edb-44a1-ad63-ecad17736f68/IGVFFI6966LMRS.csv.gz",
+            "category": "incorrect file bucket"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI0967GOYM](/sequence-files/IGVFFI0967GOYM/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI4334SWCL](/sequence-files/IGVFFI4334SWCL/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI9804ODSA](/sequence-files/IGVFFI9804ODSA/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI5226ACMJ](/sequence-files/IGVFFI5226ACMJ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI7628SKBH](/sequence-files/IGVFFI7628SKBH/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI5890UEPW](/sequence-files/IGVFFI5890UEPW/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI1802TLGK](/sequence-files/IGVFFI1802TLGK/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI5296TFGM](/sequence-files/IGVFFI5296TFGM/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI8132YMJV](/sequence-files/IGVFFI8132YMJV/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI8297PAAE](/sequence-files/IGVFFI8297PAAE/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI4745AISB](/sequence-files/IGVFFI4745AISB/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI8910JNKQ](/sequence-files/IGVFFI8910JNKQ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI5792NMHA](/sequence-files/IGVFFI5792NMHA/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI1676DAZY](/sequence-files/IGVFFI1676DAZY/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI4242PHEU](/sequence-files/IGVFFI4242PHEU/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI8611ITZQ](/sequence-files/IGVFFI8611ITZQ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI3421MJNJ](/sequence-files/IGVFFI3421MJNJ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI6620PFLK](/sequence-files/IGVFFI6620PFLK/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI0998LGPR](/sequence-files/IGVFFI0998LGPR/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI6937HYCE](/sequence-files/IGVFFI6937HYCE/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI5471SAST](/sequence-files/IGVFFI5471SAST/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI5221EXJJ](/sequence-files/IGVFFI5221EXJJ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI5210NVVZ](/sequence-files/IGVFFI5210NVVZ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI9018VWVP](/sequence-files/IGVFFI9018VWVP/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI2660LRPM](/sequence-files/IGVFFI2660LRPM/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI2624LJFU](/sequence-files/IGVFFI2624LJFU/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI9532FOXR](/sequence-files/IGVFFI9532FOXR/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI5412AEAB](/sequence-files/IGVFFI5412AEAB/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI9045WGIS](/sequence-files/IGVFFI9045WGIS/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI6479IQHV](/sequence-files/IGVFFI6479IQHV/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI9068FDNB](/sequence-files/IGVFFI9068FDNB/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI4735RXPI/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI4735RXPI](/matrix-files/IGVFFI4735RXPI/) has in progress subobject sequence file [IGVFFI3260RVFI](/sequence-files/IGVFFI3260RVFI/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI0967GOYM](/sequence-files/IGVFFI0967GOYM/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI4334SWCL](/sequence-files/IGVFFI4334SWCL/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI9804ODSA](/sequence-files/IGVFFI9804ODSA/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI5226ACMJ](/sequence-files/IGVFFI5226ACMJ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI7628SKBH](/sequence-files/IGVFFI7628SKBH/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI5890UEPW](/sequence-files/IGVFFI5890UEPW/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI1802TLGK](/sequence-files/IGVFFI1802TLGK/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI5296TFGM](/sequence-files/IGVFFI5296TFGM/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI8132YMJV](/sequence-files/IGVFFI8132YMJV/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI8297PAAE](/sequence-files/IGVFFI8297PAAE/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI4745AISB](/sequence-files/IGVFFI4745AISB/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI8910JNKQ](/sequence-files/IGVFFI8910JNKQ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI5792NMHA](/sequence-files/IGVFFI5792NMHA/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI1676DAZY](/sequence-files/IGVFFI1676DAZY/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI4242PHEU](/sequence-files/IGVFFI4242PHEU/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI8611ITZQ](/sequence-files/IGVFFI8611ITZQ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI3421MJNJ](/sequence-files/IGVFFI3421MJNJ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI6620PFLK](/sequence-files/IGVFFI6620PFLK/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI0998LGPR](/sequence-files/IGVFFI0998LGPR/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI6937HYCE](/sequence-files/IGVFFI6937HYCE/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI5471SAST](/sequence-files/IGVFFI5471SAST/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI5221EXJJ](/sequence-files/IGVFFI5221EXJJ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI5210NVVZ](/sequence-files/IGVFFI5210NVVZ/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI9018VWVP](/sequence-files/IGVFFI9018VWVP/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI2660LRPM](/sequence-files/IGVFFI2660LRPM/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI2624LJFU](/sequence-files/IGVFFI2624LJFU/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI9532FOXR](/sequence-files/IGVFFI9532FOXR/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI5412AEAB](/sequence-files/IGVFFI5412AEAB/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI9045WGIS](/sequence-files/IGVFFI9045WGIS/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI6479IQHV](/sequence-files/IGVFFI6479IQHV/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI9068FDNB](/sequence-files/IGVFFI9068FDNB/).",
+            "category": "mismatched status"
+          },
+          {
+            "path": "/matrix-files/IGVFFI3617IJOW/",
+            "level_name": "INTERNAL_ACTION",
+            "level": 30,
+            "name": "audit_item_status",
+            "detail": "Released matrix file [IGVFFI3617IJOW](/matrix-files/IGVFFI3617IJOW/) has in progress subobject sequence file [IGVFFI3260RVFI](/sequence-files/IGVFFI3260RVFI/).",
+            "category": "mismatched status"
+          }
+        ],
+        "ERROR": [
+          {
+            "path": "/tabular-files/IGVFFI9914SKEC/",
+            "level_name": "ERROR",
+            "level": 60,
+            "name": "audit_file_object_dispatcher",
+            "detail": "Tabular file [IGVFFI9914SKEC](/tabular-files/IGVFFI9914SKEC/) has `upload_status` invalidated. Validation error detail: {\"tabular_file_error\": {\"schema\": \"src/schemas/table_schemas/gene_programs.json\", \"error_number_limit\": 1000, \"number_of_errors\": 1000, \"missing-label\": {\"count\": 1, \"description\": \"Based on the schema there should be a label that is missing in the data's header.\", \"details\": [{\"row_number\": null, \"field_number\": 7, \"note\": \"\"}]}, \"incorrect-label\": {\"count\": 2, \"description\": \"One of the data source header does not match the field name defined in the schema.\", \"details\": [{\"row_number\": null, \"field_number\": 5, \"note\": \"\"}, {\"row_number\": null, \"field_number\": 6, \"note\": \"\"}]}, \"missing-cell\": {\"count\": 997, \"description\": \"This row has less values compared to the header row (the first row in the data source). A key concept is that all the rows in tabular data must have the same number of columns.\", \"details\": [{\"row_number\": 2, \"field_number\": 7, \"note\": \"\"}, {\"row_number\": 3, \"field_number\": 7, \"note\": \"\"}]}, \"error_types\": [\"missing-cell\", \"incorrect-label\", \"missing-label\"]}}. Files are expected to be validated or validation exempted.",
+            "category": "upload status not validated"
+          }
+        ]
+      },
+      "award": {
+        "component": "functional characterization",
+        "@id": "/awards/HG011996/",
+        "title": "Multiscale functional characterization of genomic variation in human developmental disorders",
+        "contact_pi": {
+          "@id": "/users/95d84f03-8ce0-489c-a755-f33ced139c5d/",
+          "title": "Gary Hon"
+        }
+      },
+      "data_use_limitation_summaries": [
+        "no certificate"
+      ],
+      "description": "Identify function of all transcription factors (TFs) in cardiomyocytes: Knockdown of all TFs in cardiomyocytes by targeting promoters using CRISPRi; measure changes in gene expression.",
+      "donors": [
+        {
+          "taxa": "Homo sapiens",
+          "aliases": [
+            "igvf:donor_of_WTC11"
+          ],
+          "sex": "male",
+          "accession": "IGVFDO1756PPKO",
+          "@id": "/human-donors/IGVFDO1756PPKO/",
+          "status": "released"
+        }
+      ],
+      "file_set_type": "principal analysis",
+      "files": [
+        {
+          "content_type": "filtered feature barcode matrix"
+        },
+        {
+          "content_type": "raw feature barcode matrix"
+        },
+        {
+          "content_type": "sparse gene count matrix"
+        },
+        {
+          "content_type": "global differential expression"
+        },
+        {
+          "content_type": "global differential expression"
+        },
+        {
+          "content_type": "gene universe"
+        },
+        {
+          "content_type": "local differential expression"
+        },
+        {
+          "content_type": "gene program regulators"
+        },
+        {
+          "content_type": "gene programs"
+        }
+      ],
+      "input_file_sets": [
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW310"
+          ],
+          "accession": "IGVFDS8493OWMF",
+          "@id": "/measurement-sets/IGVFDS8493OWMF/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW310"
+          ],
+          "accession": "IGVFDS4764SHVM",
+          "@id": "/auxiliary-sets/IGVFDS4764SHVM/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW310"
+          ],
+          "accession": "IGVFDS1527OEXG",
+          "@id": "/auxiliary-sets/IGVFDS1527OEXG/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW311"
+          ],
+          "accession": "IGVFDS3275TXAD",
+          "@id": "/measurement-sets/IGVFDS3275TXAD/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW311"
+          ],
+          "accession": "IGVFDS4105LZZG",
+          "@id": "/auxiliary-sets/IGVFDS4105LZZG/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW311"
+          ],
+          "accession": "IGVFDS4991SKGB",
+          "@id": "/auxiliary-sets/IGVFDS4991SKGB/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW312"
+          ],
+          "accession": "IGVFDS2933CBPV",
+          "@id": "/measurement-sets/IGVFDS2933CBPV/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW312"
+          ],
+          "accession": "IGVFDS0781TWMH",
+          "@id": "/auxiliary-sets/IGVFDS0781TWMH/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW312"
+          ],
+          "accession": "IGVFDS1278DTYO",
+          "@id": "/auxiliary-sets/IGVFDS1278DTYO/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW313"
+          ],
+          "accession": "IGVFDS7181KBXZ",
+          "@id": "/measurement-sets/IGVFDS7181KBXZ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW313"
+          ],
+          "accession": "IGVFDS4479WGWW",
+          "@id": "/auxiliary-sets/IGVFDS4479WGWW/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW313"
+          ],
+          "accession": "IGVFDS1199CQPR",
+          "@id": "/auxiliary-sets/IGVFDS1199CQPR/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW314"
+          ],
+          "accession": "IGVFDS5398VEFY",
+          "@id": "/measurement-sets/IGVFDS5398VEFY/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW314"
+          ],
+          "accession": "IGVFDS6709VYRA",
+          "@id": "/auxiliary-sets/IGVFDS6709VYRA/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW314"
+          ],
+          "accession": "IGVFDS8551VFYN",
+          "@id": "/auxiliary-sets/IGVFDS8551VFYN/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW315"
+          ],
+          "accession": "IGVFDS0119GHBM",
+          "@id": "/measurement-sets/IGVFDS0119GHBM/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW315"
+          ],
+          "accession": "IGVFDS8095BIYR",
+          "@id": "/auxiliary-sets/IGVFDS8095BIYR/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW315"
+          ],
+          "accession": "IGVFDS8838RHBV",
+          "@id": "/auxiliary-sets/IGVFDS8838RHBV/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW316"
+          ],
+          "accession": "IGVFDS5304ZOXD",
+          "@id": "/measurement-sets/IGVFDS5304ZOXD/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW316"
+          ],
+          "accession": "IGVFDS0685SQEF",
+          "@id": "/auxiliary-sets/IGVFDS0685SQEF/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW316"
+          ],
+          "accession": "IGVFDS3054TWZC",
+          "@id": "/auxiliary-sets/IGVFDS3054TWZC/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW317"
+          ],
+          "accession": "IGVFDS4080NNVH",
+          "@id": "/measurement-sets/IGVFDS4080NNVH/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW317"
+          ],
+          "accession": "IGVFDS6435UNUZ",
+          "@id": "/auxiliary-sets/IGVFDS6435UNUZ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW317"
+          ],
+          "accession": "IGVFDS8907VDMG",
+          "@id": "/auxiliary-sets/IGVFDS8907VDMG/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW318"
+          ],
+          "accession": "IGVFDS6688BORQ",
+          "@id": "/measurement-sets/IGVFDS6688BORQ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW318"
+          ],
+          "accession": "IGVFDS3975GDHT",
+          "@id": "/auxiliary-sets/IGVFDS3975GDHT/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW318"
+          ],
+          "accession": "IGVFDS7140JSTC",
+          "@id": "/auxiliary-sets/IGVFDS7140JSTC/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW319"
+          ],
+          "accession": "IGVFDS5151YCLI",
+          "@id": "/measurement-sets/IGVFDS5151YCLI/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW319"
+          ],
+          "accession": "IGVFDS9766VGIB",
+          "@id": "/auxiliary-sets/IGVFDS9766VGIB/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW319"
+          ],
+          "accession": "IGVFDS5606XTNG",
+          "@id": "/auxiliary-sets/IGVFDS5606XTNG/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW320"
+          ],
+          "accession": "IGVFDS2653YSTF",
+          "@id": "/measurement-sets/IGVFDS2653YSTF/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW320"
+          ],
+          "accession": "IGVFDS8270RCEJ",
+          "@id": "/auxiliary-sets/IGVFDS8270RCEJ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW320"
+          ],
+          "accession": "IGVFDS9585CRXD",
+          "@id": "/auxiliary-sets/IGVFDS9585CRXD/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW321"
+          ],
+          "accession": "IGVFDS9367JFNB",
+          "@id": "/measurement-sets/IGVFDS9367JFNB/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW321"
+          ],
+          "accession": "IGVFDS1389VUUP",
+          "@id": "/auxiliary-sets/IGVFDS1389VUUP/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW321"
+          ],
+          "accession": "IGVFDS7759NVYW",
+          "@id": "/auxiliary-sets/IGVFDS7759NVYW/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW322"
+          ],
+          "accession": "IGVFDS6472JBHY",
+          "@id": "/measurement-sets/IGVFDS6472JBHY/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW322"
+          ],
+          "accession": "IGVFDS8787VKWW",
+          "@id": "/auxiliary-sets/IGVFDS8787VKWW/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW322"
+          ],
+          "accession": "IGVFDS7246AEMI",
+          "@id": "/auxiliary-sets/IGVFDS7246AEMI/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW323"
+          ],
+          "accession": "IGVFDS1042ITOF",
+          "@id": "/measurement-sets/IGVFDS1042ITOF/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW323"
+          ],
+          "accession": "IGVFDS7278IUJW",
+          "@id": "/auxiliary-sets/IGVFDS7278IUJW/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW323"
+          ],
+          "accession": "IGVFDS7926CTMI",
+          "@id": "/auxiliary-sets/IGVFDS7926CTMI/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW324"
+          ],
+          "accession": "IGVFDS9699UXJW",
+          "@id": "/measurement-sets/IGVFDS9699UXJW/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW324"
+          ],
+          "accession": "IGVFDS0148BHTV",
+          "@id": "/auxiliary-sets/IGVFDS0148BHTV/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW324"
+          ],
+          "accession": "IGVFDS7862MHWD",
+          "@id": "/auxiliary-sets/IGVFDS7862MHWD/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW325"
+          ],
+          "accession": "IGVFDS1867JBBD",
+          "@id": "/measurement-sets/IGVFDS1867JBBD/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW325"
+          ],
+          "accession": "IGVFDS5654OECZ",
+          "@id": "/auxiliary-sets/IGVFDS5654OECZ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW325"
+          ],
+          "accession": "IGVFDS7866OLQL",
+          "@id": "/auxiliary-sets/IGVFDS7866OLQL/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW326"
+          ],
+          "accession": "IGVFDS6980CXOR",
+          "@id": "/measurement-sets/IGVFDS6980CXOR/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW326"
+          ],
+          "accession": "IGVFDS0443RRSL",
+          "@id": "/auxiliary-sets/IGVFDS0443RRSL/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW326"
+          ],
+          "accession": "IGVFDS1312JUBY",
+          "@id": "/auxiliary-sets/IGVFDS1312JUBY/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW327"
+          ],
+          "accession": "IGVFDS7696ONVJ",
+          "@id": "/measurement-sets/IGVFDS7696ONVJ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW327"
+          ],
+          "accession": "IGVFDS4476UNSW",
+          "@id": "/auxiliary-sets/IGVFDS4476UNSW/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW327"
+          ],
+          "accession": "IGVFDS0361LHKV",
+          "@id": "/auxiliary-sets/IGVFDS0361LHKV/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW328"
+          ],
+          "accession": "IGVFDS0814DYDR",
+          "@id": "/measurement-sets/IGVFDS0814DYDR/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW328"
+          ],
+          "accession": "IGVFDS3636IYVW",
+          "@id": "/auxiliary-sets/IGVFDS3636IYVW/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW328"
+          ],
+          "accession": "IGVFDS0391TWQH",
+          "@id": "/auxiliary-sets/IGVFDS0391TWQH/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW329"
+          ],
+          "accession": "IGVFDS6990PWDJ",
+          "@id": "/measurement-sets/IGVFDS6990PWDJ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW329"
+          ],
+          "accession": "IGVFDS6995IJAL",
+          "@id": "/auxiliary-sets/IGVFDS6995IJAL/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW329"
+          ],
+          "accession": "IGVFDS2096GWGL",
+          "@id": "/auxiliary-sets/IGVFDS2096GWGL/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW330"
+          ],
+          "accession": "IGVFDS1584ZJUM",
+          "@id": "/measurement-sets/IGVFDS1584ZJUM/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW330"
+          ],
+          "accession": "IGVFDS3280TSQW",
+          "@id": "/auxiliary-sets/IGVFDS3280TSQW/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW330"
+          ],
+          "accession": "IGVFDS7418PELF",
+          "@id": "/auxiliary-sets/IGVFDS7418PELF/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW331"
+          ],
+          "accession": "IGVFDS6847GSEQ",
+          "@id": "/measurement-sets/IGVFDS6847GSEQ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW331"
+          ],
+          "accession": "IGVFDS4900JFTK",
+          "@id": "/auxiliary-sets/IGVFDS4900JFTK/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW331"
+          ],
+          "accession": "IGVFDS4113KKEN",
+          "@id": "/auxiliary-sets/IGVFDS4113KKEN/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW332"
+          ],
+          "accession": "IGVFDS3599AKSM",
+          "@id": "/measurement-sets/IGVFDS3599AKSM/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW332"
+          ],
+          "accession": "IGVFDS1966SHVF",
+          "@id": "/auxiliary-sets/IGVFDS1966SHVF/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW332"
+          ],
+          "accession": "IGVFDS4600PMYW",
+          "@id": "/auxiliary-sets/IGVFDS4600PMYW/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW333"
+          ],
+          "accession": "IGVFDS8548HJBX",
+          "@id": "/measurement-sets/IGVFDS8548HJBX/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW333"
+          ],
+          "accession": "IGVFDS4379QIZJ",
+          "@id": "/auxiliary-sets/IGVFDS4379QIZJ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW333"
+          ],
+          "accession": "IGVFDS6526BHTC",
+          "@id": "/auxiliary-sets/IGVFDS6526BHTC/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW334"
+          ],
+          "accession": "IGVFDS9568EYXJ",
+          "@id": "/measurement-sets/IGVFDS9568EYXJ/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW334"
+          ],
+          "accession": "IGVFDS0695HCIA",
+          "@id": "/auxiliary-sets/IGVFDS0695HCIA/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW334"
+          ],
+          "accession": "IGVFDS3485JPGG",
+          "@id": "/auxiliary-sets/IGVFDS3485JPGG/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW335"
+          ],
+          "accession": "IGVFDS0860HOHE",
+          "@id": "/measurement-sets/IGVFDS0860HOHE/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW335"
+          ],
+          "accession": "IGVFDS3258LNIC",
+          "@id": "/auxiliary-sets/IGVFDS3258LNIC/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW335"
+          ],
+          "accession": "IGVFDS7767NWNB",
+          "@id": "/auxiliary-sets/IGVFDS7767NWNB/",
+          "status": "released"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW309"
+          ],
+          "accession": "IGVFDS8747AVMA",
+          "@id": "/measurement-sets/IGVFDS8747AVMA/",
+          "status": "in progress"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW309"
+          ],
+          "accession": "IGVFDS1991NQQO",
+          "@id": "/auxiliary-sets/IGVFDS1991NQQO/",
+          "status": "in progress"
+        },
+        {
+          "file_set_type": "cell hashing barcode sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_HTO_LW308"
+          ],
+          "accession": "IGVFDS6118JXLI",
+          "@id": "/auxiliary-sets/IGVFDS6118JXLI/",
+          "status": "in progress"
+        },
+        {
+          "file_set_type": "experimental data",
+          "assay_term": {
+            "term_name": "in vitro CRISPR screen using single-cell RNA-seq",
+            "@id": "/assay-terms/OBI_0003660/",
+            "assay_slims": [
+              "CRISPR screens"
+            ]
+          },
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_LW308"
+          ],
+          "accession": "IGVFDS6239SWYS",
+          "@id": "/measurement-sets/IGVFDS6239SWYS/",
+          "status": "in progress"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW308"
+          ],
+          "accession": "IGVFDS6488PFMQ",
+          "@id": "/auxiliary-sets/IGVFDS6488PFMQ/",
+          "status": "in progress"
+        },
+        {
+          "file_set_type": "gRNA sequencing",
+          "aliases": [
+            "gary-hon:differentited_WTC11_CM_TF_PerturbSeq_sgRNA_LW309"
+          ],
+          "accession": "IGVFDS5487NREY",
+          "@id": "/auxiliary-sets/IGVFDS5487NREY/",
+          "status": "in progress"
+        }
+      ],
+      "lab": {
+        "@id": "/labs/gary-hon/",
+        "title": "Gary Hon, UT"
+      },
+      "protocols": [
+        "https://www.protocols.io/view/experimental-procedures-for-tf-perturb-seq-ut-sout-denf3dbn"
+      ],
+      "sample_summary": "Homo sapiens GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell, at 12 day(s) post change, modified with CRISPRi Sp-dCas9, transfected with a guide library and measured at 3 week(s) post-transfection, cellular sub pool(s): subpool_LW308, subpool_LW309, subpool_LW310, subpool_LW311, subpool_LW312, subpool_LW313, subpool_LW314, subpool_LW315, subpool_LW316, subpool_LW317, subpool_LW318, subpool_LW319, subpool_LW320, subpool_LW321, subpool_LW322, subpool_LW323, subpool_LW324, subpool_LW325, subpool_LW326, subpool_LW327, subpool_LW328, subpool_LW329, subpool_LW330, subpool_LW331, subpool_LW332, subpool_LW333, subpool_LW334, subpool_LW335",
+      "samples": [
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW322) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW322"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM0582LVCA",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM0582LVCA/",
+          "cellular_sub_pool": "subpool_LW322",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW310) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW310"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM0677JQON",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM0677JQON/",
+          "cellular_sub_pool": "subpool_LW310",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW312) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW312"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM1100VSAV",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM1100VSAV/",
+          "cellular_sub_pool": "subpool_LW312",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW333) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW333"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM1262BMXZ",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM1262BMXZ/",
+          "cellular_sub_pool": "subpool_LW333",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW318) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW318"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM1407UFUA",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM1407UFUA/",
+          "cellular_sub_pool": "subpool_LW318",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW335) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW335"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM1486VOFT",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM1486VOFT/",
+          "cellular_sub_pool": "subpool_LW335",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW317) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW317"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM1571ZJPR",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM1571ZJPR/",
+          "cellular_sub_pool": "subpool_LW317",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW330) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW330"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM1783RMGS",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM1783RMGS/",
+          "cellular_sub_pool": "subpool_LW330",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW323) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW323"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM2105TPXP",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM2105TPXP/",
+          "cellular_sub_pool": "subpool_LW323",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW316) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW316"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM2466UXHW",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM2466UXHW/",
+          "cellular_sub_pool": "subpool_LW316",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW314) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW314"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM2469FDHI",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM2469FDHI/",
+          "cellular_sub_pool": "subpool_LW314",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW309) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW309"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM2503VHPE",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM2503VHPE/",
+          "cellular_sub_pool": "subpool_LW309",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW331) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW331"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM2697SJYA",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM2697SJYA/",
+          "cellular_sub_pool": "subpool_LW331",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW315) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW315"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM3199IPUF",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM3199IPUF/",
+          "cellular_sub_pool": "subpool_LW315",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW320) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW320"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM3276IAPL",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM3276IAPL/",
+          "cellular_sub_pool": "subpool_LW320",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW311) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW311"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM3963LJGV",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM3963LJGV/",
+          "cellular_sub_pool": "subpool_LW311",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW325) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW325"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM5117QARH",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM5117QARH/",
+          "cellular_sub_pool": "subpool_LW325",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW313) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW313"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM5931YWOD",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM5931YWOD/",
+          "cellular_sub_pool": "subpool_LW313",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW308) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW308"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM5987GMNW",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM5987GMNW/",
+          "cellular_sub_pool": "subpool_LW308",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW319) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW319"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM6527PCEG",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM6527PCEG/",
+          "cellular_sub_pool": "subpool_LW319",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW324) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW324"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM7248AXMT",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM7248AXMT/",
+          "cellular_sub_pool": "subpool_LW324",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW329) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW329"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM7651JQLX",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM7651JQLX/",
+          "cellular_sub_pool": "subpool_LW329",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW334) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW334"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM7740IDNA",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM7740IDNA/",
+          "cellular_sub_pool": "subpool_LW334",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW332) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW332"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM7965IUTO",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM7965IUTO/",
+          "cellular_sub_pool": "subpool_LW332",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW328) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW328"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM8396BAPD",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM8396BAPD/",
+          "cellular_sub_pool": "subpool_LW328",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW321) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW321"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM8646JNYN",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM8646JNYN/",
+          "cellular_sub_pool": "subpool_LW321",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW327) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW327"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM8752MVLX",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM8752MVLX/",
+          "cellular_sub_pool": "subpool_LW327",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        },
+        {
+          "summary": "Homo sapiens (male, Japanese) GM25256 (WTC-11) differentiated cell specimen induced to cardiac muscle cell for 12 days, (cellular sub pool: subpool_LW326) modified with CRISPRi Sp-dCas9, 3 week(s) after transduction (lentivirus) with a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+          "taxa": "Homo sapiens",
+          "classifications": [
+            "differentiated cell specimen"
+          ],
+          "aliases": [
+            "nikhil-munshi:differentited_WTC11_CM_TF_PerturbSeq_LW326"
+          ],
+          "@type": [
+            "InVitroSystem",
+            "Biosample",
+            "Sample",
+            "Item"
+          ],
+          "accession": "IGVFSM9849XJIY",
+          "targeted_sample_term": {
+            "term_name": "cardiac muscle cell",
+            "@id": "/sample-terms/CL_0000746/",
+            "status": "released"
+          },
+          "@id": "/in-vitro-systems/IGVFSM9849XJIY/",
+          "cellular_sub_pool": "subpool_LW326",
+          "status": "released",
+          "sample_terms": [
+            {
+              "summary": "GM25256 (WTC-11)",
+              "aliases": [
+                "igvf:WTC11"
+              ],
+              "term_name": "GM25256 (WTC-11)",
+              "@type": [
+                "SampleTerm",
+                "OntologyTerm",
+                "Item"
+              ],
+              "@id": "/sample-terms/EFO_0009747/",
+              "status": "released"
+            }
+          ],
+          "modifications": [
+            {
+              "modality": "interference",
+              "@id": "/crispr-modifications/0a63b754-eca4-44aa-bbc2-fccdc6c44fb5/",
+              "status": "released"
+            }
+          ]
+        }
+      ],
+      "status": "released",
+      "summary": "CRISPR interference Perturb-seq integrating a guide (sgRNA) library targeting accessible genome regions, transcription start sites, TF genes in many genomic loci",
+      "uuid": "e1bb9de2-95d5-4e5d-8846-054038d86ad5"
+    }
+  ],
+  "@id": "/search/?type=AnalysisSet&collections=TF+Perturb-seq+Project&collections%21=Benchmark&limit=all&format=json",
+  "@type": [
+    "Search"
+  ],
+  "clear_filters": "/search/?type=AnalysisSet",
+  "columns": {
+    "@id": {
+      "title": "ID"
+    },
+    "accession": {
+      "title": "Accession"
+    },
+    "alternate_accessions": {
+      "title": "Alternate Accessions"
+    },
+    "uuid": {
+      "title": "UUID"
+    },
+    "aliases": {
+      "title": "Aliases"
+    },
+    "description": {
+      "title": "Description"
+    },
+    "status": {
+      "title": "Status"
+    },
+    "samples": {
+      "title": "Samples"
+    },
+    "data_use_limitation_summaries": {
+      "title": "Data Use Limitation Summaries"
+    },
+    "controlled_access": {
+      "title": "Controlled Access"
+    },
+    "donors": {
+      "title": "Donors"
+    },
+    "lab": {
+      "title": "Lab"
+    },
+    "award": {
+      "title": "Award"
+    },
+    "input_file_sets": {
+      "title": "Input File Sets"
+    },
+    "sample_summary": {
+      "title": "Simplified Sample Summary"
+    },
+    "summary": {
+      "title": "Summary"
+    },
+    "donors.taxa": {
+      "title": "Taxa"
+    },
+    "file_set_type": {
+      "title": "File Set Type"
+    },
+    "protocols": {
+      "title": "Protocols"
+    },
+    "functional_assay_mechanisms.term_name": {
+      "title": "Functional Assay Mechanisms"
+    },
+    "files.content_type": {
+      "title": "File Content Type"
+    }
+  },
+  "facet_groups": [],
+  "facets": [
+    {
+      "field": "type",
+      "title": "Data Type",
+      "terms": [
+        {
+          "key": "AnalysisSet",
+          "doc_count": 4
+        },
+        {
+          "key": "FileSet",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "file_set_type",
+      "title": "Analysis Set Type",
+      "terms": [
+        {
+          "key": "principal analysis",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Analysis Set Details",
+      "description": "The category of analysis set. Intermediate analysis are not final result of an experiment and typically used as input to a principal analysis. Principal analysis are final, core analysis.",
+      "optional": true
+    },
+    {
+      "field": "assay_slims",
+      "title": "Assay",
+      "terms": [
+        {
+          "key": "CRISPR screens",
+          "doc_count": 4,
+          "subfacet": {
+            "field": "assay_titles",
+            "title": "Assay type",
+            "terms": [
+              {
+                "key": "in vitro CRISPR screen using single-cell RNA-seq",
+                "doc_count": 4
+              }
+            ]
+          }
+        }
+      ],
+      "total": 4,
+      "type": "hierarchical",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Analysis Set Details",
+      "description": "Assay(s) that is relevant to this analysis sets.",
+      "optional": true
+    },
+    {
+      "field": "preferred_assay_titles",
+      "title": "Preferred Assay Titles",
+      "terms": [
+        {
+          "key": "Perturb-seq",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Analysis Set Details",
+      "description": "Title of assays that produced data analyzed in the analysis sets."
+    },
+    {
+      "field": "workflows.uniform_pipeline",
+      "title": "Uniformly Processed",
+      "terms": [
+        {
+          "key": 0,
+          "key_as_string": "false",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Analysis Set Details",
+      "description": "Indicator that this analysis was processed by an IGVF uniform pipeline.",
+      "optional": true
+    },
+    {
+      "field": "files.assembly",
+      "title": "Assembly",
+      "terms": [
+        {
+          "key": "GRCh38",
+          "doc_count": 3
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Analysis Set Details",
+      "description": "The genome assembly associated with the analysis.",
+      "optional": true
+    },
+    {
+      "field": "files.transcriptome_annotation",
+      "title": "Transcriptome Annotation",
+      "terms": [
+        {
+          "key": "GENCODE 32",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Analysis Set Details",
+      "description": "The transcriptome annotation version of the analysis.",
+      "optional": true
+    },
+    {
+      "field": "donors.taxa",
+      "title": "Taxa",
+      "terms": [
+        {
+          "key": "Homo sapiens",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Sample",
+      "description": "The organism or species associated with the donor."
+    },
+    {
+      "field": "samples.classifications",
+      "title": "Classification",
+      "terms": [
+        {
+          "key": "differentiated cell specimen",
+          "doc_count": 3
+        },
+        {
+          "key": "cell line",
+          "doc_count": 1
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Sample",
+      "description": "High-level classification of the sample.",
+      "optional": true
+    },
+    {
+      "field": "samples.sample_terms.term_name",
+      "title": "Sample",
+      "terms": [
+        {
+          "key": "GM25256 (WTC-11)",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Sample",
+      "description": "The sample name associated with the analysis set."
+    },
+    {
+      "field": "samples.targeted_sample_term.term_name",
+      "title": "Cellular Transformation Target",
+      "terms": [
+        {
+          "key": "cardiac muscle cell",
+          "doc_count": 2
+        },
+        {
+          "key": "neural stem cell",
+          "doc_count": 1
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Sample",
+      "description": "Biosample name of the endpoint from a differentiation or reprogramming protocol."
+    },
+    {
+      "field": "samples.modifications.modality",
+      "title": "Perturbation",
+      "terms": [
+        {
+          "key": "interference",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Sample",
+      "description": "The intended effect of an exogenous or in situ modification of the sample; e.g. activation, inhibition, degradation.",
+      "optional": true
+    },
+    {
+      "field": "construct_library_sets.file_set_type",
+      "title": "Construct Library",
+      "terms": [
+        {
+          "key": "guide library",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Library",
+      "description": "The type of the construct library associated with the analysis set, e.g, guide library, reporter library etc.",
+      "optional": true
+    },
+    {
+      "field": "construct_library_sets.selection_criteria",
+      "title": "Construct Library Selection Criteria",
+      "terms": [
+        {
+          "key": "accessible genome regions",
+          "doc_count": 4
+        },
+        {
+          "key": "TF genes",
+          "doc_count": 1
+        },
+        {
+          "key": "transcription start sites",
+          "doc_count": 1
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Library",
+      "description": "The selection criteria or type of elements cloned into the library, e.g, variants, accessible elements, tf binding sites etc.",
+      "optional": true
+    },
+    {
+      "field": "files.content_type",
+      "title": "File Type",
+      "terms": [
+        {
+          "key": "filtered feature barcode matrix",
+          "doc_count": 4
+        },
+        {
+          "key": "raw feature barcode matrix",
+          "doc_count": 4
+        },
+        {
+          "key": "sparse gene count matrix",
+          "doc_count": 4
+        },
+        {
+          "key": "global differential expression",
+          "doc_count": 3
+        },
+        {
+          "key": "local differential expression",
+          "doc_count": 3
+        },
+        {
+          "key": "gene program regulators",
+          "doc_count": 1
+        },
+        {
+          "key": "gene programs",
+          "doc_count": 1
+        },
+        {
+          "key": "gene universe",
+          "doc_count": 1
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "File",
+      "description": "The type of files included in the analysis set.",
+      "optional": true
+    },
+    {
+      "field": "files.file_format",
+      "title": "File Format",
+      "terms": [
+        {
+          "key": "h5ad",
+          "doc_count": 4
+        },
+        {
+          "key": "hdf5",
+          "doc_count": 4
+        },
+        {
+          "key": "pkl",
+          "doc_count": 4
+        },
+        {
+          "key": "csv",
+          "doc_count": 3
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "File",
+      "description": "The file formats included in the analysis set.",
+      "optional": true
+    },
+    {
+      "field": "data_use_limitation_summaries",
+      "title": "Data Use Limitation",
+      "terms": [
+        {
+          "key": "no certificate",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "File",
+      "description": "Summaries of restrictions or limitations on data usage.",
+      "optional": true
+    },
+    {
+      "field": "collections",
+      "title": "Collections",
+      "terms": [
+        {
+          "key": "IGVF_catalog_v1.1",
+          "doc_count": 62
+        },
+        {
+          "key": "IGVF_catalog_v1.0",
+          "doc_count": 53
+        },
+        {
+          "key": "TF Perturb-seq Project",
+          "doc_count": 4
+        }
+      ],
+      "total": 3227,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Provenance",
+      "description": "Data collections the analysis set is a part of.",
+      "optional": true
+    },
+    {
+      "field": "lab.title",
+      "title": "Lab",
+      "terms": [
+        {
+          "key": "Gary Hon, UT",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Provenance",
+      "description": "Lab that generated or submitted the data."
+    },
+    {
+      "field": "award.component",
+      "title": "Award",
+      "terms": [
+        {
+          "key": "functional characterization",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Provenance",
+      "description": "The project component the award is associated with.",
+      "optional": true
+    },
+    {
+      "field": "release_timestamp",
+      "title": "Release Date",
+      "terms": [
+        {
+          "key": 1765778663241,
+          "key_as_string": "2025-12-15T06:04:23.241Z",
+          "doc_count": 1
+        },
+        {
+          "key": 1770054962740,
+          "key_as_string": "2026-02-02T17:56:02.740Z",
+          "doc_count": 1
+        },
+        {
+          "key": 1770054975955,
+          "key_as_string": "2026-02-02T17:56:15.955Z",
+          "doc_count": 1
+        },
+        {
+          "key": 1770055002922,
+          "key_as_string": "2026-02-02T17:56:42.922Z",
+          "doc_count": 1
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Provenance",
+      "description": "The date the analysis set was publicly released."
+    },
+    {
+      "field": "creation_timestamp",
+      "title": "Creation Date",
+      "terms": [
+        {
+          "key": 1715362671579,
+          "key_as_string": "2024-05-10T17:37:51.579Z",
+          "doc_count": 1
+        },
+        {
+          "key": 1733342518796,
+          "key_as_string": "2024-12-04T20:01:58.796Z",
+          "doc_count": 1
+        },
+        {
+          "key": 1733342835325,
+          "key_as_string": "2024-12-04T20:07:15.325Z",
+          "doc_count": 1
+        },
+        {
+          "key": 1733352140018,
+          "key_as_string": "2024-12-04T22:42:20.018Z",
+          "doc_count": 1
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Provenance",
+      "description": "The date the analysis set was submitted.",
+      "optional": true
+    },
+    {
+      "field": "status",
+      "title": "Status",
+      "terms": [
+        {
+          "key": "released",
+          "doc_count": 4
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Analysis Set Details",
+      "description": "The status of the analysis."
+    },
+    {
+      "field": "audit.ERROR.category",
+      "title": "Audit category: ERROR",
+      "terms": [
+        {
+          "key": "upload status not validated",
+          "doc_count": 1
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false
+    },
+    {
+      "field": "audit.INTERNAL_ACTION.category",
+      "title": "Audit Category: Internal Action",
+      "terms": [
+        {
+          "key": "missing publication",
+          "doc_count": 4
+        },
+        {
+          "key": "incorrect file bucket",
+          "doc_count": 1
+        },
+        {
+          "key": "mismatched status",
+          "doc_count": 1
+        },
+        {
+          "key": "missing reference files",
+          "doc_count": 1
+        }
+      ],
+      "total": 4,
+      "type": "terms",
+      "appended": false,
+      "open_on_load": false,
+      "category": "Audit",
+      "description": "Audit for internal action: identifies metadata issues that require DACC staff resolution.",
+      "optional": true
+    }
+  ],
+  "filters": [
+    {
+      "field": "collections",
+      "term": "TF Perturb-seq Project",
+      "remove": "/search/?type=AnalysisSet&collections%21=Benchmark&limit=all&format=json"
+    },
+    {
+      "field": "collections!",
+      "term": "Benchmark",
+      "remove": "/search/?type=AnalysisSet&collections=TF+Perturb-seq+Project&limit=all&format=json"
+    },
+    {
+      "field": "type",
+      "term": "AnalysisSet",
+      "remove": "/search/?collections=TF+Perturb-seq+Project&collections%21=Benchmark&limit=all&format=json"
+    }
+  ],
+  "notification": "Success",
+  "sort": {
+    "date_created": {
+      "order": "desc",
+      "unmapped_type": "keyword"
+    },
+    "label": {
+      "order": "desc",
+      "unmapped_type": "keyword"
+    },
+    "uuid": {
+      "order": "desc",
+      "unmapped_type": "keyword"
+    }
+  },
+  "title": "Search",
+  "total": 4
+}

@@ -1,0 +1,39 @@
+{
+  "name": "tf_metadata",
+  "title": "TF metadata (comprehensive)",
+  "description": "One row per unique TF target gene in the perturb-seq library. Joins target_genes.tsv with the IGVF GTF, HGNC complete set, Lambert et al. 2018, and JASPAR CORE (human).",
+  "produced_by": "scripts/generate_tf_metadata.py",
+  "row_count": 1983,
+  "primaryKey": "gene_symbol",
+  "fields": [
+    {"name": "gene_symbol", "type": "string", "constraints": {"required": true, "unique": true}, "source": "target_genes.tsv", "description": "Original gene symbol as it appears in the target list (primary key)."},
+    {"name": "hgnc_approved_symbol", "type": "string", "source": "GTF / HGNC", "description": "Current approved symbol after alias resolution. Equals gene_symbol for ~98% of rows; differs for deprecated names (e.g. T -> TBXT, NOV -> CCN3)."},
+    {"name": "n_promoters_in_target_library", "type": "integer", "source": "target_genes.tsv", "description": "Number of promoter rows for this gene in the library (counts both named rows and Gene=NaN continuation rows)."},
+    {"name": "ensembl_gene_id", "type": "string", "source": "GTF", "description": "Ensembl gene ID (no version suffix)."},
+    {"name": "ensembl_gene_id_source", "type": "string", "constraints": {"enum": ["gtf_direct", "hgnc_alias", "harmonized_guides"]}, "source": "resolver", "description": "How the ENSG was resolved."},
+    {"name": "in_lambert_2018", "type": "boolean", "source": "Lambert 2018", "description": "Whether the gene appears in the Lambert 2018 database (matched first by Ensembl ID, then by symbol)."},
+    {"name": "lambert_2018_is_tf", "type": "string", "source": "Lambert 2018", "description": "Lambert 'Is TF?' flag (Yes / No / In progress)."},
+    {"name": "lambert_2018_dbd", "type": "string", "source": "Lambert 2018", "description": "DNA-binding domain assignment."},
+    {"name": "lambert_2018_tf_assessment", "type": "string", "source": "Lambert 2018", "description": "Confidence assessment."},
+    {"name": "lambert_2018_binding_mode", "type": "string", "source": "Lambert 2018", "description": "Binding mode (e.g., monomer, obligate heterodimer)."},
+    {"name": "in_jaspar_core", "type": "boolean", "source": "JASPAR CORE", "description": "Whether the gene has any human JASPAR CORE entry (matched by approved or original symbol)."},
+    {"name": "jaspar_matrix_ids", "type": "string", "source": "JASPAR CORE", "description": "Semicolon-joined matrix_id across versions."},
+    {"name": "jaspar_base_ids", "type": "string", "source": "JASPAR CORE", "description": "Semicolon-joined base_id."},
+    {"name": "jaspar_tf_class", "type": "string", "source": "JASPAR CORE", "description": "Semicolon-joined class values."},
+    {"name": "jaspar_tf_family", "type": "string", "source": "JASPAR CORE", "description": "Semicolon-joined family values."},
+    {"name": "jaspar_uniprot_ids", "type": "string", "source": "JASPAR CORE", "description": "Semicolon-joined UniProt IDs."}
+  ],
+  "sources": [
+    {"name": "target_genes.tsv", "path": "tf_perturb_seq/ref/target_genes.tsv", "purpose": "Target gene list + per-gene promoter-row count (continuation rows with NaN Gene are recovered via the promoter-ID prefix)."},
+    {"name": "IGVF GTF", "path": "tf_perturb_seq/ref/IGVFFI9573KOZR.gtf.gz", "url": "https://data.igvf.org/reference-files/IGVFFI9573KOZR/", "purpose": "Primary gene_name -> ensembl_gene_id map; also exposes hgnc_id for ID-based fallback."},
+    {"name": "HGNC complete set", "path": "/tmp/jamboree_cache/hgnc_complete_set.txt", "url": "https://storage.googleapis.com/public-download-files/hgnc/tsv/tsv/hgnc_complete_set.txt", "purpose": "Authoritative prev_symbol / alias_symbol -> approved symbol resolver."},
+    {"name": "Harmonized guide file", "path": "tf_perturb_seq/ref/finalized_annotation_files/harmonized_guide_file_poolabcdf_ensg.tsv", "purpose": "Last-resort fallback (gene_name -> intended_target_name ENSG)."},
+    {"name": "Lambert et al. 2018", "url": "https://humantfs.ccbr.utoronto.ca/download/v_1.01/DatabaseExtract_v_1.01.csv", "purpose": "Curated human TF list, DBD, TF-assessment. Referer header required for download."},
+    {"name": "JASPAR CORE", "path": "tf_perturb_seq/docs/jamborees/2026_UTSW/jaspar_core_tf_metadata.tsv", "purpose": "TF class / family / matrix IDs / UniProt (filtered to tax_id='9606')."}
+  ],
+  "notes": [
+    "Resolution priority: gtf_direct -> hgnc_alias -> harmonized_guides.",
+    "Coverage at last run: 1983 unique target genes; 1981 with Ensembl ID; 1868 in Lambert 2018; 774 with a JASPAR human entry.",
+    "Two readthrough fusions (APITD1-CORT, MEF2BNB-MEF2B) resolve to fusion ENSGs via HGNC."
+  ]
+}

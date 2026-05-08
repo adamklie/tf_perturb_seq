@@ -1,0 +1,5 @@
+type	n_records	total	url
+MeasurementSet	38	38	https://api.data.igvf.org/search/?type=MeasurementSet&collections=TF+Perturb-seq+Project&collections%21=Benchmark&limit=all&format=json
+AuxiliarySet	76	76	https://api.data.igvf.org/search/?type=AuxiliarySet&collections=TF+Perturb-seq+Project&collections%21=Benchmark&limit=all&format=json
+AnalysisSet	4	4	https://api.data.igvf.org/search/?type=AnalysisSet&collections=TF+Perturb-seq+Project&collections%21=Benchmark&limit=all&format=json
+ConstructLibrarySet	1	1	https://api.data.igvf.org/search/?type=ConstructLibrarySet&collections=TF+Perturb-seq+Project&collections%21=Benchmark&limit=all&format=json

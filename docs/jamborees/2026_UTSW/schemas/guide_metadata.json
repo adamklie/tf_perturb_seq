@@ -1,0 +1,47 @@
+{
+  "name": "guide_metadata",
+  "title": "Guide metadata (IGVF guide library, pools A-D)",
+  "description": "Canonical guide library used across the production datasets that share the full TF library (Hon CM, Huangfu DE, Huangfu ES, Gersbach hepatocyte). This schema describes the file as it is published on the IGVF portal — we do not modify or simplify it; consumers should read it directly from the portal URL.",
+  "source_file": {
+    "igvf_accession": "IGVFFI8270UPKB",
+    "url": "https://data.igvf.org/tabular-files/IGVFFI8270UPKB/",
+    "download_url": "https://api.data.igvf.org/tabular-files/IGVFFI8270UPKB/@@download/IGVFFI8270UPKB.csv.gz",
+    "format": "TSV (gzipped, despite the .csv.gz extension)",
+    "file_size_bytes": 348103,
+    "row_count": 14150
+  },
+  "scope_decision": "Pool A-D only. Some datasets (Hon CM, Gersbach hepatocyte) used an additional pool F in the actual experiment, but only the pool A-D library is mirrored to the jamboree because (a) it is the canonical released library on the IGVF portal and (b) pool F adds only a small additional set of targets. Pool F guide details, if needed, can be derived from `tf_perturb_seq/ref/finalized_annotation_files/harmonized_guide_file_poolf_ensg.tsv`.",
+  "fields": [
+    {"name": "guide_id", "type": "string", "constraints": {"required": true, "unique": true}, "description": "Unique guide identifier (often gene_name#position)."},
+    {"name": "spacer", "type": "string", "description": "Spacer (protospacer) sequence."},
+    {"name": "targeting", "type": "boolean", "description": "Whether the guide is intended to target a genomic locus (TRUE for targeting / positive controls / negative controls; FALSE for non-targeting)."},
+    {"name": "type", "type": "string", "constraints": {"enum": ["targeting", "positive control", "negative control", "non-targeting"]}, "description": "Guide functional category."},
+    {"name": "guide_chr", "type": "string", "description": "Chromosome of the guide cut site."},
+    {"name": "guide_start", "type": "integer", "description": "Guide start coordinate (0-based)."},
+    {"name": "guide_end", "type": "integer", "description": "Guide end coordinate."},
+    {"name": "strand", "type": "string", "constraints": {"enum": ["+", "-"]}, "description": "Strand of the guide."},
+    {"name": "pam", "type": "string", "description": "PAM sequence (e.g., NGG)."},
+    {"name": "genomic_element", "type": "string", "description": "Annotation of the targeted element (e.g., promoter)."},
+    {"name": "intended_target_name", "type": "string", "description": "Ensembl gene ID (ENSG...) of the intended target."},
+    {"name": "intended_target_chr", "type": "string", "description": "Chromosome of the intended target locus."},
+    {"name": "intended_target_start", "type": "integer", "description": "Start coordinate of the intended target locus."},
+    {"name": "intended_target_end", "type": "integer", "description": "End coordinate of the intended target locus."},
+    {"name": "putative_target_genes", "type": "string", "description": "Other genes that may be affected (free-text)."},
+    {"name": "reporter", "type": "string", "description": "Reporter information."},
+    {"name": "imperfect", "type": "string", "description": "Imperfect-match notes."},
+    {"name": "gene_name", "type": "string", "description": "Gene symbol of the intended target."}
+  ],
+  "summary_stats_at_capture": {
+    "total_guides": 14150,
+    "targeting_true_count": 13551,
+    "type_distribution": {
+      "targeting": 12934,
+      "non-targeting": 600,
+      "negative control": 598,
+      "positive control": 19
+    },
+    "unique_target_ensgs": 2061,
+    "unique_gene_names": 2062,
+    "captured_at": "2026-05-07"
+  }
+}

@@ -1,0 +1,1984 @@
+gene_symbol	hgnc_approved_symbol	ensembl_gene_id	n_promoters_in_target_library	in_lambert_2018	lambert_2018_dbd	jaspar_tf_class	jaspar_tf_family
+AATF	AATF	ENSG00000275700	1	True	Unknown		
+ADNP	ADNP	ENSG00000101126	1	True	Homeodomain		
+ADNP2	ADNP2	ENSG00000101544	1	True	Homeodomain		
+AEBP1	AEBP1	ENSG00000106624	1	True	Unknown		
+AEBP2	AEBP2	ENSG00000139154	1	True	C2H2 ZF		
+AFF1	AFF1	ENSG00000172493	1	True	Unknown		
+AFF2	AFF2	ENSG00000155966	1	False			
+AFF3	AFF3	ENSG00000144218	1	True	Unknown		
+AFF4	AFF4	ENSG00000072364	1	True	Unknown		
+AHCTF1	AHCTF1	ENSG00000153207	1	True	AT hook		
+AHCY	AHCY	ENSG00000101444	1	False			
+AHDC1	AHDC1	ENSG00000126705	1	True	AT hook		
+AHR	AHR	ENSG00000106546	1	True	bHLH		
+AHRR	AHRR	ENSG00000063438	1	True	bHLH		
+AIRE	AIRE	ENSG00000160224	1	True	SAND		
+AKAP8	AKAP8	ENSG00000105127	1	True	C2H2 ZF		
+AKAP8L	AKAP8L	ENSG00000011243	1	True	C2H2 ZF		
+AKNA	AKNA	ENSG00000106948	2	True	AT hook		
+ALX1	ALX1	ENSG00000180318	1	True	Homeodomain		
+ALX3	ALX3	ENSG00000156150	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+ALX4	ALX4	ENSG00000052850	1	True	Homeodomain		
+ALYREF	ALYREF	ENSG00000183684	1	False			
+ANHX	ANHX	ENSG00000227059	1	True	Homeodomain		
+ANKRD1	ANKRD1	ENSG00000148677	1	False			
+ANKRD30A	ANKRD30A	ENSG00000148513	1	True	Unknown		
+ANKZF1	ANKZF1	ENSG00000163516	1	True	C2H2 ZF		
+APITD1	CENPS	ENSG00000175279	1	True	Unknown		
+APITD1-CORT	CENPS-CORT	ENSG00000251503	1	False			
+AR	AR	ENSG00000169083	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Steroid hormone receptors (NR3)
+ARGFX	ARGFX	ENSG00000186103	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+ARHGAP35	ARHGAP35	ENSG00000160007	1	True	Unknown		
+ARID1A	ARID1A	ENSG00000117713	1	True	ARID/BRIGHT		
+ARID1B	ARID1B	ENSG00000049618	2	True	ARID/BRIGHT		
+ARID2	ARID2	ENSG00000189079	1	True	ARID/BRIGHT; RFX		
+ARID3A	ARID3A	ENSG00000116017	1	True	ARID/BRIGHT		
+ARID3B	ARID3B	ENSG00000179361	1	True	ARID/BRIGHT		
+ARID3C	ARID3C	ENSG00000205143	1	True	ARID/BRIGHT		
+ARID4A	ARID4A	ENSG00000032219	1	True	ARID/BRIGHT		
+ARID4B	ARID4B	ENSG00000054267	1	True	ARID/BRIGHT		
+ARID5A	ARID5A	ENSG00000196843	1	True	ARID/BRIGHT		
+ARID5B	ARID5B	ENSG00000150347	1	True	ARID/BRIGHT		
+ARNT	ARNT	ENSG00000143437	1	True	bHLH		
+ARNT2	ARNT2	ENSG00000172379	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	PAS domain factors
+ARNTL	BMAL1	ENSG00000133794	1	True	bHLH		
+ARNTL2	BMAL2	ENSG00000029153	1	True	bHLH		
+ARX	ARX	ENSG00000004848	2	True	Homeodomain		
+ASCL1	ASCL1	ENSG00000139352	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	MyoD/ASC-related factors
+ASCL2	ASCL2	ENSG00000183734	1	True	bHLH		
+ASCL3	ASCL3	ENSG00000176009	1	True	bHLH		
+ASCL4	ASCL4	ENSG00000187855	1	True	bHLH		
+ASCL5	ASCL5	ENSG00000232237	1	True	bHLH		
+ASH1L	ASH1L	ENSG00000116539	1	True	AT hook		
+ATF1	ATF1	ENSG00000123268	1	True	bZIP		
+ATF2	ATF2	ENSG00000115966	1	True	bZIP	Basic leucine zipper factors (bZIP)	Jun-related
+ATF3	ATF3	ENSG00000162772	1	True	bZIP	Basic leucine zipper factors (bZIP)	Fos-related
+ATF4	ATF4	ENSG00000128272	1	True	bZIP	Basic leucine zipper factors (bZIP)	ATF-4-related factors
+ATF5	ATF5	ENSG00000169136	1	True	bZIP		
+ATF6	ATF6	ENSG00000118217	1	True	bZIP	Basic leucine zipper factors (bZIP)	Jun-related
+ATF6B	ATF6B	ENSG00000213676	1	True	bZIP		
+ATF7	ATF7	ENSG00000170653	1	True	bZIP	Basic leucine zipper factors (bZIP)	Jun-related
+ATMIN	ATMIN	ENSG00000166454	1	True	C2H2 ZF		
+ATN1	ATN1	ENSG00000111676	1	False			
+ATOH1	ATOH1	ENSG00000172238	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+ATOH7	ATOH7	ENSG00000179774	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+ATOH8	ATOH8	ENSG00000168874	1	True	bHLH		
+ATXN7	ATXN7	ENSG00000163635	2	True	Unknown		
+BACH1	BACH1	ENSG00000156273	1	True	bZIP	Basic leucine zipper factors (bZIP)	Jun-related
+BACH2	BACH2	ENSG00000112182	1	True	bZIP	Basic leucine zipper factors (bZIP)	Jun-related
+BARHL1	BARHL1	ENSG00000125492	1	True	Homeodomain	Homeo domain factors	NK
+BARHL2	BARHL2	ENSG00000143032	1	True	Homeodomain	Homeo domain factors	NK
+BARX1	BARX1	ENSG00000131668	1	True	Homeodomain	Homeo domain factors	NK
+BARX2	BARX2	ENSG00000043039	1	True	Homeodomain	Homeo domain factors	NK
+BATF	BATF	ENSG00000156127	1	True	bZIP	Basic leucine zipper factors (bZIP)	B-ATF-related factors
+BATF2	BATF2	ENSG00000168062	1	True	bZIP		
+BATF3	BATF3	ENSG00000123685	1	True	bZIP	Basic leucine zipper factors (bZIP)	B-ATF-related factors
+BAZ1B	BAZ1B	ENSG00000009954	1	False			
+BAZ2A	BAZ2A	ENSG00000076108	2	True	MBD; AT hook		
+BAZ2B	BAZ2B	ENSG00000123636	1	True	MBD		
+BBX	BBX	ENSG00000114439	1	True	HMG/Sox		
+BCL11A	BCL11A	ENSG00000119866	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+BCL11B	BCL11B	ENSG00000127152	1	True	C2H2 ZF		
+BCL3	BCL3	ENSG00000069399	1	True	Unknown		
+BCL6	BCL6	ENSG00000113916	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+BCL6B	BCL6B	ENSG00000161940	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+BCLAF1	BCLAF1	ENSG00000029363	1	True	Unknown		
+BDP1	BDP1	ENSG00000145734	1	True	Unknown		
+BHLHA15	BHLHA15	ENSG00000180535	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+BHLHA9	BHLHA9	ENSG00000205899	1	True	bHLH		
+BHLHB9	GPRASP3	ENSG00000198908	1	False			
+BHLHE22	BHLHE22	ENSG00000180828	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+BHLHE23	BHLHE23	ENSG00000125533	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+BHLHE40	BHLHE40	ENSG00000134107	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Hairy-related factors
+BHLHE41	BHLHE41	ENSG00000123095	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Hairy-related factors
+BID	BID	ENSG00000015475	1	False			
+BLZF1	BLZF1	ENSG00000117475	1	True	Unknown		
+BMP2	BMP2	ENSG00000125845	2	True	Unknown		
+BNC1	BNC1	ENSG00000169594	1	True	C2H2 ZF		
+BNC2	BNC2	ENSG00000173068	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+BOLA1	BOLA1	ENSG00000178096	2	True	Unknown		
+BOLA2	BOLA2	ENSG00000183336	1	True	Unknown		
+BOLA2B	BOLA2B	ENSG00000169627	1	True	Unknown		
+BOLA3	BOLA3	ENSG00000163170	1	True	Unknown		
+BPTF	BPTF	ENSG00000171634	1	True	Unknown		
+BRF2	BRF2	ENSG00000104221	1	True	Unknown		
+BRIP1	BRIP1	ENSG00000136492	1	False			
+BRPF1	BRPF1	ENSG00000156983	1	True	Unknown		
+BSX	BSX	ENSG00000188909	1	True	Homeodomain	Homeo domain factors	NK
+C11orf95	ZFTA	ENSG00000188070	1	True	BED ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+C1orf85	GLMP	ENSG00000198715	2	True	Unknown		
+CAMTA1	CAMTA1	ENSG00000171735	1	True	CG-1		
+CAMTA2	CAMTA2	ENSG00000108509	1	True	CG-1		
+CAPN15	CAPN15	ENSG00000103326	1	True	Unknown		
+CARF	CARF	ENSG00000138380	1	True	Unknown		
+CARHSP1	CARHSP1	ENSG00000153048	1	True	CSD		
+CASZ1	CASZ1	ENSG00000130940	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+CBFA2T2	CBFA2T2	ENSG00000078699	1	True	Unknown		
+CBFA2T3	CBFA2T3	ENSG00000129993	2	True	Unknown		
+CBFB	CBFB	ENSG00000067955	1	True	Unknown		
+CBL	CBL	ENSG00000110395	1	True	Unknown		
+CBX2	CBX2	ENSG00000173894	1	True	AT hook		
+CC2D1A	CC2D1A	ENSG00000132024	1	True	Unknown		
+CCDC169-SOHLH2	CCDC169-SOHLH2	ENSG00000250709	1	True	bHLH		
+CCDC17	CCDC17	ENSG00000159588	1	True	C2H2 ZF		
+CCDC79	TERB1	ENSG00000249961	1	True	Myb/SANT		
+CCNT2	CCNT2	ENSG00000082258	1	True	Unknown		
+CDC5L	CDC5L	ENSG00000096401	1	True	Myb/SANT		
+CDCA7L	CDCA7L	ENSG00000164649	1	False			
+CDIP1	CDIP1	ENSG00000089486	1	False			
+CDK1	CDK1	ENSG00000170312	1	False			
+CDK2	CDK2	ENSG00000123374	1	False			
+CDK7	CDK7	ENSG00000134058	1	True	Unknown		
+CDK9	CDK9	ENSG00000136807	1	True	Unknown		
+CDX1	CDX1	ENSG00000113722	1	True	Homeodomain	Homeo domain factors	HOX
+CDX2	CDX2	ENSG00000165556	1	True	Homeodomain	Homeo domain factors	HOX
+CDX4	CDX4	ENSG00000131264	1	True	Homeodomain	Homeo domain factors	HOX
+CEBPA	CEBPA	ENSG00000245848	1	True	bZIP	Basic leucine zipper factors (bZIP)	CEBP-related
+CEBPB	CEBPB	ENSG00000172216	1	True	bZIP	Basic leucine zipper factors (bZIP)	CEBP-related
+CEBPD	CEBPD	ENSG00000221869	1	True	bZIP	Basic leucine zipper factors (bZIP)	CEBP-related
+CEBPE	CEBPE	ENSG00000092067	1	True	bZIP	Basic leucine zipper factors (bZIP)	CEBP-related
+CEBPG	CEBPG	ENSG00000153879	1	True	bZIP	Basic leucine zipper factors (bZIP)	CEBP-related
+CEBPZ	CEBPZ	ENSG00000115816	1	True	Unknown		
+CENPA	CENPA	ENSG00000115163	2	True	Unknown		
+CENPB	CENPB	ENSG00000125817	1	True	CENPB		
+CENPBD1	CENPBD1P	ENSG00000177946	1	True	CENPB		
+CENPT	CENPT	ENSG00000102901	1	True	Unknown		
+CGGBP1	CGGBP1	ENSG00000163320	2	True	Unknown	C2H2 zinc finger factors	
+CHAMP1	CHAMP1	ENSG00000198824	1	True	C2H2 ZF		
+CHCHD3	CHCHD3	ENSG00000106554	1	True	Unknown		
+CHD7	CHD7	ENSG00000171316	1	True	Unknown		
+CHMP2A	CHMP2A	ENSG00000130724	1	False			
+CIC	CIC	ENSG00000079432	1	True	HMG/Sox		
+CIR1	CIR1	ENSG00000138433	1	True	Unknown		
+CIZ1	CIZ1	ENSG00000148337	1	True	Unknown		
+CLOCK	CLOCK	ENSG00000134852	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	PAS domain factors
+CNBP	CNBP	ENSG00000169714	1	True	Unknown		
+CNOT7	CNOT7	ENSG00000198791	1	True	Unknown		
+CNOT8	CNOT8	ENSG00000155508	1	True	Unknown		
+COX20	COX20	ENSG00000203667	1	False			
+CPEB1	CPEB1	ENSG00000214575	2	True	Unknown		
+CPXCR1	CPXCR1	ENSG00000147183	1	True	C2H2 ZF		
+CRAMP1L	CRAMP1	ENSG00000007545	2	True	Myb/SANT		
+CREB1	CREB1	ENSG00000118260	1	True	bZIP	Basic leucine zipper factors (bZIP)	CREB-related factors
+CREB3	CREB3	ENSG00000107175	1	True	bZIP	Basic leucine zipper factors (bZIP)	CREB-related factors
+CREB3L1	CREB3L1	ENSG00000157613	1	True	bZIP	Basic leucine zipper factors (bZIP)	CREB-related factors
+CREB3L2	CREB3L2	ENSG00000182158	1	True	bZIP		
+CREB3L3	CREB3L3	ENSG00000060566	1	True	bZIP	Basic leucine zipper factors (bZIP)	CREB-related
+CREB3L4	CREB3L4	ENSG00000143578	1	True	bZIP	Basic leucine zipper factors (bZIP)	CREB-related factors
+CREB5	CREB5	ENSG00000146592	2	True	bZIP		
+CREBBP	CREBBP	ENSG00000005339	1	True	Unknown		
+CREBL2	CREBL2	ENSG00000111269	1	True	bZIP		
+CREBRF	CREBRF	ENSG00000164463	2	True	bZIP		
+CREBZF	CREBZF	ENSG00000137504	1	True	bZIP		
+CREM	CREM	ENSG00000095794	1	True	bZIP	Basic leucine zipper factors (bZIP)	CREB-related factors
+CRTC1	CRTC1	ENSG00000105662	1	True	Unknown		
+CRTC2	CRTC2	ENSG00000160741	1	True	Unknown		
+CRTC3	CRTC3	ENSG00000140577	1	True	Unknown		
+CRX	CRX	ENSG00000105392	1	True	Homeodomain		
+CSNK2A1	CSNK2A1	ENSG00000101266	1	False			
+CSRNP1	CSRNP1	ENSG00000144655	1	True	Unknown		
+CSRNP2	CSRNP2	ENSG00000110925	1	True	Unknown		
+CSRNP3	CSRNP3	ENSG00000178662	2	True	Unknown		
+CTBP1	CTBP1	ENSG00000159692	1	True	Unknown		
+CTBP2	CTBP2	ENSG00000175029	1	True	Unknown		
+CTCF	CTCF	ENSG00000102974	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+CTCFL	CTCFL	ENSG00000124092	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+CTNNB1	CTNNB1	ENSG00000168036	1	True	Unknown		
+CUX1	CUX1	ENSG00000257923	1	True	CUT; Homeodomain	Homeo domain factors	HD-CUT
+CUX2	CUX2	ENSG00000111249	1	True	CUT; Homeodomain	Homeo domain factors	HD-CUT
+CXXC1	CXXC1	ENSG00000154832	1	True	CxxC		
+CXXC4	CXXC4	ENSG00000168772	1	True	CxxC		
+CXXC5	CXXC5	ENSG00000171604	1	True	CxxC		
+DACH1	DACH1	ENSG00000276644	1	True	Unknown		
+DACH2	DACH2	ENSG00000126733	1	True	Unknown		
+DAXX	DAXX	ENSG00000204209	2	True	Unknown		
+DBP	DBP	ENSG00000105516	1	True	bZIP	Basic leucine zipper factors (bZIP)	CEBP-related
+DBX1	DBX1	ENSG00000109851	1	True	Homeodomain		
+DBX2	DBX2	ENSG00000185610	1	True	Homeodomain		
+DCP1A	DCP1A	ENSG00000272886	1	True	Unknown		
+DDB1	DDB1	ENSG00000167986	2	True	Unknown		
+DDB2	DDB2	ENSG00000134574	1	True	Unknown		
+DDIT3	DDIT3	ENSG00000175197	1	True	bZIP		
+DEAF1	DEAF1	ENSG00000177030	1	True	SAND		
+DEK	DEK	ENSG00000124795	1	True	Unknown		
+DENND4A	DENND4A	ENSG00000174485	1	False			
+DHX9	DHX9	ENSG00000135829	1	False			
+DLX1	DLX1	ENSG00000144355	1	True	Homeodomain	Homeo domain factors	NK
+DLX2	DLX2	ENSG00000115844	1	True	Homeodomain		
+DLX3	DLX3	ENSG00000064195	1	True	Homeodomain		
+DLX4	DLX4	ENSG00000108813	1	True	Homeodomain		
+DLX5	DLX5	ENSG00000105880	1	True	Homeodomain	Homeo domain factors	NK
+DLX6	DLX6	ENSG00000006377	1	True	Homeodomain	Homeo domain factors	NK
+DMAP1	DMAP1	ENSG00000178028	1	True	Unknown		
+DMBX1	DMBX1	ENSG00000197587	1	True	Homeodomain		
+DMRT1	DMRT1	ENSG00000137090	1	True	DM		
+DMRT2	DMRT2	ENSG00000173253	1	True	DM		
+DMRT3	DMRT3	ENSG00000064218	1	True	DM	DM-type intertwined zinc finger factors	DMRT factors
+DMRTA1	DMRTA1	ENSG00000176399	1	True	DM	DM-type intertwined zinc finger factors	DMRT factors
+DMRTA2	DMRTA2	ENSG00000142700	1	True	DM	DM-type intertwined zinc finger factors	DMRT factors
+DMRTB1	DMRTB1	ENSG00000143006	1	True	DM		
+DMRTC1	DMRTC1	ENSG00000269502	1	True	Unknown		
+DMRTC2	DMRTC2	ENSG00000142025	1	True	DM	DM-type intertwined zinc finger factors	DMRT factors
+DMTF1	DMTF1	ENSG00000135164	1	True	Myb/SANT	Tryptophan cluster factors	Myb-SANT
+DNAJC1	DNAJC1	ENSG00000136770	1	True	Myb/SANT		
+DNAJC2	DNAJC2	ENSG00000105821	1	True	Myb/SANT		
+DNAJC21	DNAJC21	ENSG00000168724	1	True	Unknown		
+DNMT1	DNMT1	ENSG00000130816	1	True	CxxC		
+DNTTIP1	DNTTIP1	ENSG00000101457	1	True	AT hook	Rel homology region (RHR) factors	NFkappaB-related
+DOT1L	DOT1L	ENSG00000104885	1	True	AT hook		
+DPF1	DPF1	ENSG00000011332	2	True	C2H2 ZF		
+DPF2	DPF2	ENSG00000133884	2	True	Unknown		
+DPF3	DPF3	ENSG00000205683	1	True	C2H2 ZF		
+DPRX	DPRX	ENSG00000204595	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+DR1	DR1	ENSG00000117505	1	True	Unknown		
+DRAP1	DRAP1	ENSG00000175550	1	True	Unknown		
+DRGX	DRGX	ENSG00000165606	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+DUXA	DUXA	ENSG00000258873	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+DZIP1	DZIP1	ENSG00000134874	1	True	C2H2 ZF		
+E2F1	E2F1	ENSG00000101412	1	True	E2F	Fork head/winged helix factors	E2F
+E2F2	E2F2	ENSG00000007968	1	True	E2F	Fork head/winged helix factors	E2F
+E2F3	E2F3	ENSG00000112242	2	True	E2F	Fork head/winged helix factors	E2F
+E2F4	E2F4	ENSG00000205250	1	True	E2F	Fork head/winged helix factors	E2F
+E2F5	E2F5	ENSG00000133740	1	True	E2F		
+E2F6	E2F6	ENSG00000169016	1	True	E2F	Fork head/winged helix factors	E2F
+E2F7	E2F7	ENSG00000165891	1	True	E2F	Fork head/winged helix factors	E2F
+E2F8	E2F8	ENSG00000129173	1	True	E2F	Fork head/winged helix factors	E2F
+E4F1	E4F1	ENSG00000167967	1	True	C2H2 ZF		
+EBF1	EBF1	ENSG00000164330	1	True	EBF1	Rel homology region (RHR) factors	Early B-Cell Factor-related factors
+EBF2	EBF2	ENSG00000221818	1	True	EBF1		
+EBF3	EBF3	ENSG00000108001	1	True	EBF1	Rel homology region (RHR) factors	Early B-Cell Factor-related factors
+EBF4	EBF4	ENSG00000088881	1	True	EBF1		
+EEA1	EEA1	ENSG00000102189	1	True	C2H2 ZF		
+EGR1	EGR1	ENSG00000120738	2	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+EGR2	EGR2	ENSG00000122877	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+EGR3	EGR3	ENSG00000179388	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+EGR4	EGR4	ENSG00000135625	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+EHF	EHF	ENSG00000135373	1	True	Ets	Tryptophan cluster factors	Ets-related
+ELF1	ELF1	ENSG00000120690	1	True	Ets	Tryptophan cluster factors	Ets-related
+ELF2	ELF2	ENSG00000109381	1	True	Ets	Tryptophan cluster factors	Ets-related
+ELF3	ELF3	ENSG00000163435	1	True	Ets; AT hook	Tryptophan cluster factors	Ets-related
+ELF4	ELF4	ENSG00000102034	1	True	Ets	Tryptophan cluster factors	Ets-related
+ELF5	ELF5	ENSG00000135374	1	True	Ets	Tryptophan cluster factors	Ets-related
+ELK1	ELK1	ENSG00000126767	1	True	Ets	Tryptophan cluster factors	Ets-related
+ELK3	ELK3	ENSG00000111145	1	True	Ets	Tryptophan cluster factors	Ets-related
+ELK4	ELK4	ENSG00000158711	1	True	Ets	Tryptophan cluster factors	Ets-related
+ELMSAN1	MIDEAS	ENSG00000156030	2	True	Myb/SANT		
+ELP3	ELP3	ENSG00000134014	1	False			
+EMX1	EMX1	ENSG00000135638	2	True	Homeodomain	Homeo domain factors	NK
+EMX2	EMX2	ENSG00000170370	1	True	Homeodomain	Homeo domain factors	NK
+EN1	EN1	ENSG00000163064	1	True	Homeodomain	Homeo domain factors	NK
+EN2	EN2	ENSG00000164778	1	True	Homeodomain	Homeo domain factors	NK
+ENO1	ENO1	ENSG00000074800	1	True	Unknown		
+EOMES	EOMES	ENSG00000163508	1	True	T-box	T-Box factors	TBrain-related factors
+EP300	EP300	ENSG00000100393	1	True	Unknown		
+EP400	EP400	ENSG00000183495	1	True	Unknown		
+EPAS1	EPAS1	ENSG00000116016	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	PAS domain factors
+ERCC2	ERCC2	ENSG00000104884	1	False			
+ERCC3	ERCC3	ENSG00000163161	1	True	Unknown		
+ERCC6	ERCC6	ENSG00000225830	1	False			
+ERCC8	ERCC8	ENSG00000049167	1	False			
+ERF	ERF	ENSG00000105722	1	True	Ets	Tryptophan cluster factors	Ets-related
+ERG	ERG	ENSG00000157554	2	True	Ets	Tryptophan cluster factors	Ets-related
+ESR1	ESR1	ENSG00000091831	2	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Steroid hormone receptors (NR3)
+ESR2	ESR2	ENSG00000140009	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Steroid hormone receptors (NR3)
+ESRRA	ESRRA	ENSG00000173153	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Steroid hormone receptors (NR3)
+ESRRB	ESRRB	ENSG00000119715	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Steroid hormone receptors (NR3)
+ESRRG	ESRRG	ENSG00000196482	5	True	Nuclear receptor		
+ESX1	ESX1	ENSG00000123576	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+ETF1	ETF1	ENSG00000120705	1	False			
+ETS1	ETS1	ENSG00000134954	1	True	Ets	Tryptophan cluster factors	Ets-related
+ETS2	ETS2	ENSG00000157557	1	True	Ets	Tryptophan cluster factors	Ets-related
+ETV1	ETV1	ENSG00000006468	1	True	Ets	Tryptophan cluster factors	Ets-related
+ETV2	ETV2	ENSG00000105672	1	True	Ets	Tryptophan cluster factors	Ets-related
+ETV3	ETV3	ENSG00000117036	1	True	Ets	Tryptophan cluster factors	Ets-related
+ETV3L	ETV3L	ENSG00000253831	1	True	Ets		
+ETV4	ETV4	ENSG00000175832	1	True	Ets	Tryptophan cluster factors	Ets-related
+ETV5	ETV5	ENSG00000244405	1	True	Ets	Tryptophan cluster factors	Ets-related
+ETV6	ETV6	ENSG00000139083	1	True	Ets	Tryptophan cluster factors	Ets-related
+ETV7	ETV7	ENSG00000010030	1	True	Ets	Tryptophan cluster factors	Ets-related
+EVX1	EVX1	ENSG00000106038	1	True	Homeodomain	Homeo domain factors	HOX
+EVX2	EVX2	ENSG00000174279	1	True	Homeodomain	Homeo domain factors	HOX
+EWSR1	EWSR1	ENSG00000182944	1	True	Unknown		
+EZH1	EZH1	ENSG00000108799	1	True	Unknown		
+EZH2	EZH2	ENSG00000106462	1	True	Unknown		
+FAM170A	FAM170A	ENSG00000164334	1	True	C2H2 ZF		
+FAM200B	FAM200B	ENSG00000237765	1	True	BED ZF	C2H2 zinc finger factors	BED zinc finger factors
+FBXL19	FBXL19	ENSG00000099364	1	True	CxxC		
+FBXO16	FBXO16	ENSG00000214050	1	False			
+FERD3L	FERD3L	ENSG00000146618	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+FEV	FEV	ENSG00000163497	1	True	Ets	Tryptophan cluster factors	Ets-related
+FEZF1	FEZF1	ENSG00000128610	1	True	C2H2 ZF		
+FEZF2	FEZF2	ENSG00000153266	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+FGF3	FGF3	ENSG00000186895	1	False			
+FIGLA	FIGLA	ENSG00000183733	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+FIZ1	FIZ1	ENSG00000179943	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+FLI1	FLI1	ENSG00000151702	1	True	Ets	Tryptophan cluster factors	Ets-related
+FLYWCH1	FLYWCH1	ENSG00000059122	1	True	FLYWCH		FLYWCH1
+FOS	FOS	ENSG00000170345	2	True	bZIP	Basic leucine zipper factors (bZIP)	Fos-related
+FOSB	FOSB	ENSG00000125740	2	True	bZIP		
+FOSL1	FOSL1	ENSG00000175592	1	True	bZIP	Basic leucine zipper factors (bZIP)	Fos-related
+FOSL2	FOSL2	ENSG00000075426	1	True	bZIP	Basic leucine zipper factors (bZIP)	Fos-related
+FOXA1	FOXA1	ENSG00000129514	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXA2	FOXA2	ENSG00000125798	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXA3	FOXA3	ENSG00000170608	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXB1	FOXB1	ENSG00000171956	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXB2	FOXB2	ENSG00000204612	1	True	Forkhead		
+FOXC1	FOXC1	ENSG00000054598	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXC2	FOXC2	ENSG00000176692	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXD1	FOXD1	ENSG00000251493	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXD2	FOXD2	ENSG00000186564	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXD3	FOXD3	ENSG00000187140	2	True	Forkhead	Fork head/winged helix factors	FOX
+FOXD4	FOXD4	ENSG00000170122	1	True	Forkhead		
+FOXD4L1	FOXD4L1	ENSG00000184492	1	True	Forkhead		
+FOXE1	FOXE1	ENSG00000178919	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXE3	FOXE3	ENSG00000186790	1	True	Forkhead		
+FOXF1	FOXF1	ENSG00000103241	1	True	Forkhead		
+FOXF2	FOXF2	ENSG00000137273	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXG1	FOXG1	ENSG00000176165	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXH1	FOXH1	ENSG00000160973	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXI1	FOXI1	ENSG00000168269	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXI2	FOXI2	ENSG00000186766	1	True	Forkhead		
+FOXI3	FOXI3	ENSG00000214336	1	True	Forkhead		
+FOXJ1	FOXJ1	ENSG00000129654	1	True	Forkhead		
+FOXJ2	FOXJ2	ENSG00000065970	1	True	Forkhead		
+FOXJ3	FOXJ3	ENSG00000198815	1	True	Forkhead		
+FOXK1	FOXK1	ENSG00000164916	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXK2	FOXK2	ENSG00000141568	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXL1	FOXL1	ENSG00000176678	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXL2	FOXL2	ENSG00000183770	1	True	Forkhead		
+FOXM1	FOXM1	ENSG00000111206	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXN1	FOXN1	ENSG00000109101	1	True	Forkhead		
+FOXN2	FOXN2	ENSG00000170802	1	True	Forkhead		
+FOXN3	FOXN3	ENSG00000053254	2	True	Forkhead	Fork head/winged helix factors	FOX
+FOXN4	FOXN4	ENSG00000139445	1	True	Forkhead		
+FOXO1	FOXO1	ENSG00000150907	1	True	Forkhead		
+FOXO3	FOXO3	ENSG00000118689	2	True	Forkhead	Fork head/winged helix factors	FOX
+FOXO4	FOXO4	ENSG00000184481	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXO6	FOXO6	ENSG00000204060	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXP1	FOXP1	ENSG00000114861	4	True	Forkhead	Fork head/winged helix factors	FOX
+FOXP2	FOXP2	ENSG00000128573	2	True	Forkhead	Fork head/winged helix factors	FOX
+FOXP3	FOXP3	ENSG00000049768	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXP4	FOXP4	ENSG00000137166	1	True	Forkhead	Fork head/winged helix factors	FOX
+FOXQ1	FOXQ1	ENSG00000164379	1	True	Forkhead		
+FOXR1	FOXR1	ENSG00000176302	1	True	Forkhead		
+FOXR2	FOXR2	ENSG00000189299	1	True	Forkhead		
+FOXS1	FOXS1	ENSG00000179772	1	True	Forkhead	Fork head/winged helix factors	FOX
+FUBP1	FUBP1	ENSG00000162613	1	True	Unknown		
+FUBP3	FUBP3	ENSG00000107164	1	True	Unknown		
+FXN	FXN	ENSG00000165060	1	False			
+GABPA	GABPA	ENSG00000154727	1	True	Ets	Tryptophan cluster factors	Ets-related
+GABPB1	GABPB1	ENSG00000104064	1	True	Unknown		
+GAS7	GAS7	ENSG00000007237	1	True	Unknown		
+GATA1	GATA1	ENSG00000102145	1	True	GATA	Other C4 zinc finger-type factors	C4-GATA-related
+GATA2	GATA2	ENSG00000179348	2	True	GATA	Other C4 zinc finger-type factors	C4-GATA-related
+GATA3	GATA3	ENSG00000107485	1	True	GATA	Other C4 zinc finger-type factors	C4-GATA-related
+GATA4	GATA4	ENSG00000136574	1	True	GATA	Other C4 zinc finger-type factors	C4-GATA-related
+GATA5	GATA5	ENSG00000130700	1	True	GATA	Other C4 zinc finger-type factors	C4-GATA-related
+GATA6	GATA6	ENSG00000141448	1	True	GATA	Other C4 zinc finger-type factors	C4-GATA-related
+GATAD1	GATAD1	ENSG00000157259	1	True	GATA		
+GATAD2A	GATAD2A	ENSG00000167491	2	True	GATA		
+GATAD2B	GATAD2B	ENSG00000143614	1	True	GATA		
+GBX1	GBX1	ENSG00000164900	2	True	Homeodomain	Homeo domain factors	HOX
+GBX2	GBX2	ENSG00000168505	1	True	Homeodomain	Homeo domain factors	HOX
+GCFC2	GCFC2	ENSG00000005436	1	True	Unknown		
+GCM1	GCM1	ENSG00000137270	1	True	GCM	GCM domain factors	GCM
+GCM2	GCM2	ENSG00000124827	1	True	GCM	GCM domain factors	GCM
+GFI1	GFI1	ENSG00000162676	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+GFI1B	GFI1B	ENSG00000165702	1	True	C2H2 ZF		
+GLI1	GLI1	ENSG00000111087	1	True	C2H2 ZF		
+GLI2	GLI2	ENSG00000074047	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+GLI3	GLI3	ENSG00000106571	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+GLI4	GLI4	ENSG00000250571	1	True	C2H2 ZF		
+GLIS1	GLIS1	ENSG00000174332	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+GLIS2	GLIS2	ENSG00000126603	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+GLIS3	GLIS3	ENSG00000107249	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+GLYR1	GLYR1	ENSG00000140632	1	True	AT hook		
+GMEB1	GMEB1	ENSG00000162419	1	True	SAND		
+GMEB2	GMEB2	ENSG00000101216	1	True	SAND	SAND domain factors	GMEB
+GON4L	GON4L	ENSG00000116580	2	True	Unknown		
+GPBP1	GPBP1	ENSG00000062194	1	True	Unknown		
+GPBP1L1	GPBP1L1	ENSG00000159592	1	True	Unknown		
+GRHL1	GRHL1	ENSG00000134317	1	True	Grainyhead	Grainyhead domain factors	Grainyhead-related factors
+GRHL2	GRHL2	ENSG00000083307	1	True	Grainyhead	Grainyhead domain factors	Grainyhead-related factors
+GRHL3	GRHL3	ENSG00000158055	1	True	Grainyhead		
+GSC	GSC	ENSG00000133937	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+GSC2	GSC2	ENSG00000063515	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+GSX1	GSX1	ENSG00000169840	1	True	Homeodomain	Homeo domain factors	HOX
+GSX2	GSX2	ENSG00000180613	1	True	Homeodomain	Homeo domain factors	HOX
+GTF2A1	GTF2A1	ENSG00000165417	1	True	Unknown		
+GTF2A1L	GTF2A1L	ENSG00000242441	1	True	Unknown		
+GTF2A2	GTF2A2	ENSG00000140307	1	True	Unknown		
+GTF2B	GTF2B	ENSG00000137947	1	True	Unknown		
+GTF2E1	GTF2E1	ENSG00000153767	1	False			
+GTF2F1	GTF2F1	ENSG00000125651	1	True	Unknown		
+GTF2F2	GTF2F2	ENSG00000188342	1	True	Unknown		
+GTF2H1	GTF2H1	ENSG00000110768	1	True	Unknown		
+GTF2H2	GTF2H2	ENSG00000145736	1	True	Unknown		
+GTF2H3	GTF2H3	ENSG00000111358	1	True	Unknown		
+GTF2I	GTF2I	ENSG00000263001	1	True	GTF2I-like		
+GTF2IRD1	GTF2IRD1	ENSG00000006704	1	True	GTF2I-like		
+GTF2IRD2	GTF2IRD2	ENSG00000196275	1	True	GTF2I-like		
+GTF2IRD2B	GTF2IRD2B	ENSG00000174428	1	True	GTF2I-like		
+GTF3A	GTF3A	ENSG00000122034	1	True	C2H2 ZF		
+GTF3C3	GTF3C3	ENSG00000119041	1	False			
+GZF1	GZF1	ENSG00000125812	1	True	C2H2 ZF		
+HAND1	HAND1	ENSG00000113196	1	True	bHLH		
+HAND2	HAND2	ENSG00000164107	2	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+HBP1	HBP1	ENSG00000105856	1	True	HMG/Sox		
+HCFC1	HCFC1	ENSG00000172534	1	True	Unknown		
+HCLS1	HCLS1	ENSG00000180353	1	False			
+HDAC1	HDAC1	ENSG00000116478	1	True	Unknown		
+HDAC3	HDAC3	ENSG00000171720	1	True	Unknown		
+HDAC4	HDAC4	ENSG00000068024	1	True	Unknown		
+HDAC5	HDAC5	ENSG00000108840	1	True	Unknown		
+HDGF	HDGF	ENSG00000143321	1	False			
+HDX	HDX	ENSG00000165259	1	True	Homeodomain		
+HELT	HELT	ENSG00000187821	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Hairy-related factors
+HELZ2	HELZ2	ENSG00000130589	2	True	Unknown		
+HES1	HES1	ENSG00000114315	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Hairy-related factors
+HES2	HES2	ENSG00000069812	2	True	bHLH	Basic helix-loop-helix factors (bHLH)	Hairy-related factors
+HES3	HES3	ENSG00000173673	1	True	bHLH		
+HES4	HES4	ENSG00000188290	1	True	bHLH		
+HES5	HES5	ENSG00000197921	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Hairy-related factors
+HES6	HES6	ENSG00000144485	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Hairy-related factors
+HES7	HES7	ENSG00000179111	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Hairy-related factors
+HESX1	HESX1	ENSG00000163666	2	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+HEY1	HEY1	ENSG00000164683	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Hairy-related factors
+HEY2	HEY2	ENSG00000135547	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Hairy-related factors
+HEYL	HEYL	ENSG00000163909	1	True	bHLH		
+HHEX	HHEX	ENSG00000152804	1	True	Homeodomain		
+HIC1	HIC1	ENSG00000177374	1	True	C2H2 ZF		
+HIC2	HIC2	ENSG00000169635	2	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+HIF1A	HIF1A	ENSG00000100644	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	PAS domain factors
+HIF3A	HIF3A	ENSG00000124440	2	True	bHLH	Homeo domain factors	PAS
+HINFP	HINFP	ENSG00000172273	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+HIRA	HIRA	ENSG00000100084	2	True	Unknown		
+HIVEP1	HIVEP1	ENSG00000095951	1	True	C2H2 ZF		
+HIVEP2	HIVEP2	ENSG00000010818	1	True	C2H2 ZF		
+HIVEP3	HIVEP3	ENSG00000127124	3	True	C2H2 ZF		
+HKR1	ZNF875	ENSG00000181666	2	True	C2H2 ZF		
+HLF	HLF	ENSG00000108924	2	True	bZIP	Basic leucine zipper factors (bZIP)	CEBP-related
+HLTF	HLTF	ENSG00000071794	1	True	Unknown		
+HLX	HLX	ENSG00000136630	1	True	Homeodomain		
+HMBOX1	HMBOX1	ENSG00000147421	1	True	Homeodomain	Homeo domain factors	POU domain factors
+HMG20A	HMG20A	ENSG00000140382	1	True	HMG/Sox		
+HMG20B	HMG20B	ENSG00000064961	2	True	HMG/Sox		
+HMGA1	HMGA1	ENSG00000137309	1	True	AT hook		
+HMGA2	HMGA2	ENSG00000149948	1	True	AT hook		
+HMGB1	HMGB1	ENSG00000189403	2	True	HMG/Sox		
+HMGB2	HMGB2	ENSG00000164104	1	True	HMG/Sox		
+HMGB3	HMGB3	ENSG00000029993	1	True	HMG/Sox		
+HMGB4	HMGB4	ENSG00000176256	1	True	HMG/Sox		
+HMGN2	HMGN2	ENSG00000198830	1	False			
+HMGN3	HMGN3	ENSG00000118418	1	True	HMG/Sox		
+HMGXB3	HMGXB3	ENSG00000113716	1	True	HMG/Sox		
+HMGXB4	HMGXB4	ENSG00000100281	1	True	HMG/Sox		
+HMX1	HMX1	ENSG00000215612	1	True	Homeodomain		
+HMX2	HMX2	ENSG00000188816	1	True	Homeodomain		
+HMX3	HMX3	ENSG00000188620	1	True	Homeodomain		
+HNF1A	HNF1A	ENSG00000135100	1	True	Homeodomain	Homeo domain factors	POU domain factors
+HNF1B	HNF1B	ENSG00000275410	1	True	Homeodomain	Homeo domain factors	POU domain factors
+HNF4A	HNF4A	ENSG00000101076	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	RXR-related receptors (NR2)
+HNF4G	HNF4G	ENSG00000164749	2	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	RXR-related receptors (NR2)
+HNRNPK	HNRNPK	ENSG00000165119	1	True	Unknown		
+HNRNPU	HNRNPU	ENSG00000153187	1	True	Unknown		
+HOMEZ	HOMEZ	ENSG00000290292	1	True	Homeodomain	Homeo domain factors	HD-ZF
+HOPX	HOPX	ENSG00000171476	2	True	Homeodomain		
+HOXA1	HOXA1	ENSG00000105991	1	True	Homeodomain	Homeo domain factors	HOX
+HOXA10	HOXA10	ENSG00000253293	1	True	Homeodomain	Homeo domain factors	HOX
+HOXA11	HOXA11	ENSG00000005073	1	True	Homeodomain		
+HOXA13	HOXA13	ENSG00000106031	1	True	Homeodomain	Homeo domain factors	HOX
+HOXA2	HOXA2	ENSG00000105996	1	True	Homeodomain	Homeo domain factors	HOX
+HOXA3	HOXA3	ENSG00000105997	2	True	Homeodomain	Homeo domain factors	HOX
+HOXA4	HOXA4	ENSG00000197576	1	True	Homeodomain	Homeo domain factors	HOX
+HOXA5	HOXA5	ENSG00000106004	1	True	Homeodomain	Homeo domain factors	HOX
+HOXA6	HOXA6	ENSG00000106006	1	True	Homeodomain	Homeo domain factors	HOX
+HOXA7	HOXA7	ENSG00000122592	1	True	Homeodomain	Homeo domain factors	HOX
+HOXA9	HOXA9	ENSG00000078399	1	True	Homeodomain	Homeo domain factors	HOX
+HOXB1	HOXB1	ENSG00000120094	1	True	Homeodomain	Homeo domain factors	HOX
+HOXB13	HOXB13	ENSG00000159184	1	True	Homeodomain	Homeo domain factors	HOX
+HOXB2	HOXB2	ENSG00000173917	1	True	Homeodomain	Homeo domain factors	HOX
+HOXB3	HOXB3	ENSG00000120093	1	True	Homeodomain	Homeo domain factors	HOX
+HOXB4	HOXB4	ENSG00000182742	1	True	Homeodomain	Homeo domain factors	HOX
+HOXB5	HOXB5	ENSG00000120075	1	True	Homeodomain	Homeo domain factors	HOX
+HOXB6	HOXB6	ENSG00000108511	2	True	Homeodomain	Homeo domain factors	HOX
+HOXB7	HOXB7	ENSG00000260027	1	True	Homeodomain	Homeo domain factors	HOX
+HOXB8	HOXB8	ENSG00000120068	2	True	Homeodomain	Homeo domain factors	HOX
+HOXB9	HOXB9	ENSG00000170689	1	True	Homeodomain	Homeo domain factors	HOX
+HOXC10	HOXC10	ENSG00000180818	1	True	Homeodomain	Homeo domain factors	HOX
+HOXC11	HOXC11	ENSG00000123388	1	True	Homeodomain	Homeo domain factors	HOX
+HOXC12	HOXC12	ENSG00000123407	1	True	Homeodomain	Homeo domain factors	HOX
+HOXC13	HOXC13	ENSG00000123364	1	True	Homeodomain	Homeo domain factors	HOX
+HOXC4	HOXC4	ENSG00000198353	1	True	Homeodomain	Homeo domain factors	HOX
+HOXC5	HOXC5	ENSG00000172789	1	True	Homeodomain		
+HOXC6	HOXC6	ENSG00000197757	1	True	Homeodomain		
+HOXC8	HOXC8	ENSG00000037965	1	True	Homeodomain	Homeo domain factors	HOX
+HOXC9	HOXC9	ENSG00000180806	1	True	Homeodomain	Homeo domain factors	HOX
+HOXD1	HOXD1	ENSG00000128645	1	True	Homeodomain	Homeo domain factors	HOX
+HOXD10	HOXD10	ENSG00000128710	2	True	Homeodomain	Homeo domain factors	HOX
+HOXD11	HOXD11	ENSG00000128713	1	True	Homeodomain	Homeo domain factors	HOX
+HOXD12	HOXD12	ENSG00000170178	1	True	Homeodomain	Homeo domain factors	HOX
+HOXD13	HOXD13	ENSG00000128714	1	True	Homeodomain	Homeo domain factors	HOX
+HOXD3	HOXD3	ENSG00000128652	1	True	Homeodomain	Homeo domain factors	HOX
+HOXD4	HOXD4	ENSG00000170166	1	True	Homeodomain	Homeo domain factors	HOX
+HOXD8	HOXD8	ENSG00000175879	1	True	Homeodomain	Homeo domain factors	HOX
+HOXD9	HOXD9	ENSG00000128709	1	True	Homeodomain	Homeo domain factors	HOX
+HR	HR	ENSG00000168453	2	True	Unknown		
+HSF1	HSF1	ENSG00000185122	1	True	HSF	Heat shock factors	HSF factors
+HSF2	HSF2	ENSG00000025156	1	True	HSF	Heat shock factors	HSF factors
+HSF4	HSF4	ENSG00000102878	1	True	HSF	Heat shock factors	HSF factors
+HSF5	HSF5	ENSG00000176160	1	True	HSF	Heat shock factors	HSF factors
+HSFX1	HSFX1	ENSG00000171116	1	True	HSF		
+HSFX2	HSFX2	ENSG00000268738	1	True	HSF		
+HSFY1	HSFY1	ENSG00000172468	1	True	HSF		
+HSFY2	HSFY2	ENSG00000169953	1	True	HSF		
+ID1	ID1	ENSG00000125968	1	True	bHLH		
+ID2	ID2	ENSG00000115738	2	True	bHLH		
+ID3	ID3	ENSG00000117318	1	True	bHLH		
+ID4	ID4	ENSG00000172201	1	True	bHLH		
+IFI16	IFI16	ENSG00000163565	1	True	Unknown		
+IGFBP1	IGFBP1	ENSG00000146678	1	False			
+IGHMBP2	IGHMBP2	ENSG00000132740	1	False			
+IKZF1	IKZF1	ENSG00000185811	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+IKZF2	IKZF2	ENSG00000030419	2	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+IKZF3	IKZF3	ENSG00000161405	1	True	C2H2 ZF		
+IKZF4	IKZF4	ENSG00000123411	2	True	C2H2 ZF		
+IKZF5	IKZF5	ENSG00000095574	1	True	C2H2 ZF		
+ILF2	ILF2	ENSG00000143621	1	False			
+ILF3	ILF3	ENSG00000129351	1	False			
+ING1	ING1	ENSG00000153487	2	False			
+ING4	ING4	ENSG00000111653	1	True	Unknown		
+INSM1	INSM1	ENSG00000173404	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+INSM2	INSM2	ENSG00000168348	1	True	C2H2 ZF		
+IRF1	IRF1	ENSG00000125347	1	True	IRF	Tryptophan cluster factors	Interferon-regulatory factors
+IRF2	IRF2	ENSG00000168310	1	True	IRF	Tryptophan cluster factors	Interferon-regulatory factors
+IRF3	IRF3	ENSG00000126456	1	True	IRF	Tryptophan cluster factors	Interferon-regulatory factors
+IRF4	IRF4	ENSG00000137265	2	True	IRF	Tryptophan cluster factors	Interferon-regulatory factors
+IRF5	IRF5	ENSG00000128604	2	True	IRF	Tryptophan cluster factors	Interferon-regulatory factors
+IRF6	IRF6	ENSG00000117595	1	True	IRF	Tryptophan cluster factors	Interferon-regulatory factors
+IRF7	IRF7	ENSG00000185507	1	True	IRF	Tryptophan cluster factors	Interferon-regulatory factors
+IRF8	IRF8	ENSG00000140968	1	True	IRF	Tryptophan cluster factors	Interferon-regulatory factors
+IRF9	IRF9	ENSG00000213928	1	True	IRF	Tryptophan cluster factors	Interferon-regulatory factors
+IRX1	IRX1	ENSG00000170549	1	True	Homeodomain	Homeo domain factors	TALE-type HD
+IRX2	IRX2	ENSG00000170561	1	True	Homeodomain	Homeo domain factors	TALE-type HD
+IRX3	IRX3	ENSG00000177508	1	True	Homeodomain		
+IRX4	IRX4	ENSG00000113430	1	True	Homeodomain		
+IRX5	IRX5	ENSG00000176842	1	True	Homeodomain	Homeo domain factors	TALE-type HD
+IRX6	IRX6	ENSG00000159387	1	True	Homeodomain		
+ISL1	ISL1	ENSG00000016082	2	True	Homeodomain		
+ISL2	ISL2	ENSG00000159556	1	True	Homeodomain	Homeo domain factors	HD-LIM
+ISX	ISX	ENSG00000175329	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+JAZF1	JAZF1	ENSG00000153814	1	True	C2H2 ZF		
+JDP2	JDP2	ENSG00000140044	1	True	bZIP	Basic leucine zipper factors (bZIP)	Fos-related
+JRK	JRK	ENSG00000234616	2	True	CENPB		
+JRKL	JRKL	ENSG00000183340	1	True	CENPB		
+JUN	JUN	ENSG00000177606	1	True	bZIP	Basic leucine zipper factors (bZIP)	Jun-related
+JUNB	JUNB	ENSG00000171223	1	True	bZIP	Basic leucine zipper factors (bZIP)	Jun-related
+JUND	JUND	ENSG00000130522	1	True	bZIP	Basic leucine zipper factors (bZIP)	Jun-related
+JUP	JUP	ENSG00000173801	1	True	Unknown		
+KAT2A	KAT2A	ENSG00000108773	1	True	Unknown		
+KAT7	KAT7	ENSG00000136504	1	True	C2H2 ZF		
+KCMF1	KCMF1	ENSG00000176407	1	True	C2H2 ZF		
+KCNIP3	KCNIP3	ENSG00000115041	1	True	Unknown		
+KDM2A	KDM2A	ENSG00000173120	1	True	CxxC		
+KDM2B	KDM2B	ENSG00000089094	2	True	CxxC		
+KDM4C	KDM4C	ENSG00000107077	1	False			
+KDM4E	KDM4E	ENSG00000235268	1	False			
+KDM5B	KDM5B	ENSG00000117139	1	True	ARID/BRIGHT		
+KDM5C	KDM5C	ENSG00000126012	1	True	ARID/BRIGHT		
+KIAA1549	KIAA1549	ENSG00000122778	1	True	Unknown		
+KIAA2018	USF3	ENSG00000176542	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+KIN	KIN	ENSG00000151657	1	True	C2H2 ZF		
+KLF1	KLF1	ENSG00000105610	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF10	KLF10	ENSG00000155090	2	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF11	KLF11	ENSG00000172059	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF12	KLF12	ENSG00000118922	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF13	KLF13	ENSG00000169926	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF14	KLF14	ENSG00000266265	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF15	KLF15	ENSG00000163884	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF16	KLF16	ENSG00000129911	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF17	KLF17	ENSG00000171872	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF2	KLF2	ENSG00000127528	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF3	KLF3	ENSG00000109787	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF4	KLF4	ENSG00000136826	2	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF5	KLF5	ENSG00000102554	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF6	KLF6	ENSG00000067082	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF7	KLF7	ENSG00000118263	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF8	KLF8	ENSG00000102349	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLF9	KLF9	ENSG00000119138	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+KLRG1	KLRG1	ENSG00000139187	1	False			
+KMT2A	KMT2A	ENSG00000118058	1	True	CxxC; AT hook		
+KMT2B	KMT2B	ENSG00000272333	2	True	CxxC; AT hook		
+L3MBTL1	L3MBTL1	ENSG00000185513	2	True	C2H2 ZF		
+L3MBTL3	L3MBTL3	ENSG00000198945	1	True	C2H2 ZF		
+L3MBTL4	L3MBTL4	ENSG00000154655	1	True	C2H2 ZF		
+LBX1	LBX1	ENSG00000138136	1	True	Homeodomain	Homeo domain factors	NK
+LBX2	LBX2	ENSG00000179528	1	True	Homeodomain	Homeo domain factors	NK
+LCOR	LCOR	ENSG00000196233	1	True	Pipsqueak		
+LCORL	LCORL	ENSG00000178177	1	True	Pipsqueak		
+LDB1	LDB1	ENSG00000198728	2	False			
+LDB2	LDB2	ENSG00000169744	1	False			
+LEF1	LEF1	ENSG00000138795	2	True	HMG/Sox	High-mobility group (HMG) domain factors	TCF-7-related factors
+LEUTX	LEUTX	ENSG00000213921	1	True	Homeodomain	Homeo domain factors	Paired-related HD
+LHX1	LHX1	ENSG00000273706	1	True	Homeodomain	Homeo domain factors	HD-LIM
+LHX2	LHX2	ENSG00000106689	1	True	Homeodomain	Homeo domain factors	HD-LIM
+LHX3	LHX3	ENSG00000107187	2	True	Homeodomain		
+LHX4	LHX4	ENSG00000121454	1	True	Homeodomain		
+LHX5	LHX5	ENSG00000089116	1	True	Homeodomain	Homeo domain factors	HD-LIM
+LHX6	LHX6	ENSG00000106852	2	True	Homeodomain	Homeo domain factors	HD-LIM
+LHX8	LHX8	ENSG00000162624	1	True	Homeodomain		
+LHX9	LHX9	ENSG00000143355	1	True	Homeodomain	Homeo domain factors	HD-LIM
+LIN28A	LIN28A	ENSG00000131914	1	True	CSD		
+LIN28B	LIN28B	ENSG00000187772	1	True	CSD		
+LIN54	LIN54	ENSG00000189308	2	True	TCR/CxC		
+LIN9	LIN9	ENSG00000183814	1	False			
+LITAF	LITAF	ENSG00000189067	1	False			
+LMO1	LMO1	ENSG00000166407	2	False			
+LMO3	LMO3	ENSG00000048540	2	False			
+LMO4	LMO4	ENSG00000143013	1	True	Unknown		
+LMX1A	LMX1A	ENSG00000162761	1	True	Homeodomain	Homeo domain factors	HD-LIM
+LMX1B	LMX1B	ENSG00000136944	1	True	Homeodomain	Homeo domain factors	HD-LIM
+LRPPRC	LRPPRC	ENSG00000138095	1	False			
+LRRFIP1	LRRFIP1	ENSG00000124831	1	True	Unknown		
+LTF	LTF	ENSG00000012223	1	True	Unknown		
+LYL1	LYL1	ENSG00000104903	1	True	bHLH		
+LZTR1	LZTR1	ENSG00000099949	1	True	Unknown		
+LZTS1	LZTS1	ENSG00000061337	1	True	Unknown		
+MAEL	MAEL	ENSG00000143194	1	True	HMG/Sox		
+MAF	MAF	ENSG00000178573	1	True	bZIP	Basic leucine zipper factors (bZIP)	Maf-related
+MAFA	MAFA	ENSG00000182759	1	True	bZIP	Basic leucine zipper factors (bZIP)	Maf-related
+MAFB	MAFB	ENSG00000204103	1	True	bZIP		
+MAFF	MAFF	ENSG00000185022	1	True	bZIP	Basic leucine zipper factors (bZIP)	Maf-related
+MAFG	MAFG	ENSG00000197063	1	True	bZIP	Basic leucine zipper factors (bZIP)	Maf-related
+MAFK	MAFK	ENSG00000198517	1	True	bZIP	Basic leucine zipper factors (bZIP)	Maf-related
+MAP3K7	MAP3K7	ENSG00000135341	1	True	Unknown		
+MAPK8IP1	MAPK8IP1	ENSG00000121653	2	False			
+MARS	MARS1	ENSG00000166986	1	False			
+MAX	MAX	ENSG00000125952	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+MAZ	MAZ	ENSG00000103495	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+MBD1	MBD1	ENSG00000141644	1	True	MBD; CxxC ZF		
+MBD2	MBD2	ENSG00000134046	1	True	MBD		
+MBD3	MBD3	ENSG00000071655	1	True	MBD		
+MBD4	MBD4	ENSG00000129071	1	True	MBD		
+MBD6	MBD6	ENSG00000166987	1	True	MBD		
+MBNL2	MBNL2	ENSG00000139793	1	True	CCCH ZF		
+MBNL3	MBNL3	ENSG00000076770	1	True	CCCH ZF		
+MECOM	MECOM	ENSG00000085276	1	True	C2H2 ZF		
+MECP2	MECP2	ENSG00000169057	1	True	MBD; AT hook		
+MED20	MED20	ENSG00000124641	1	False			
+MED8	MED8	ENSG00000159479	1	False			
+MEF2A	MEF2A	ENSG00000068305	1	True	MADS box	MADS box factors	Regulators of differentiation
+MEF2B	MEF2B	ENSG00000213999	1	True	MADS box	MADS box factors	Regulators of differentiation
+MEF2BNB-MEF2B	BORCS8-MEF2B	ENSG00000064489	1	True	MADS box		
+MEF2C	MEF2C	ENSG00000081189	1	True	MADS box	MADS box factors	Regulators of differentiation
+MEF2D	MEF2D	ENSG00000116604	1	True	MADS box	MADS box factors	Regulators of differentiation
+MEIS1	MEIS1	ENSG00000143995	1	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+MEIS2	MEIS2	ENSG00000134138	1	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+MEIS3	MEIS3	ENSG00000105419	2	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+MEOX1	MEOX1	ENSG00000005102	1	True	Homeodomain	Homeo domain factors	HOX
+MEOX2	MEOX2	ENSG00000106511	1	True	Homeodomain	Homeo domain factors	HOX
+MESP1	MESP1	ENSG00000166823	1	True	bHLH		
+MESP2	MESP2	ENSG00000188095	1	True	bHLH		
+MGA	MGA	ENSG00000174197	1	True	T-box	T-Box factors	TBX6-related factors
+MIER1	MIER1	ENSG00000198160	2	True	Myb/SANT		
+MIER2	MIER2	ENSG00000105556	1	True	Myb/SANT		
+MIER3	MIER3	ENSG00000155545	1	True	Myb/SANT		
+MIS18BP1	MIS18BP1	ENSG00000129534	1	True	Myb/SANT		
+MITF	MITF	ENSG00000187098	2	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+MIXL1	MIXL1	ENSG00000185155	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+MKX	MKX	ENSG00000150051	2	True	Homeodomain	Homeo domain factors	TALE-type HD
+MLLT1	MLLT1	ENSG00000130382	1	True	Unknown		
+MLLT10	MLLT10	ENSG00000078403	1	True	Unknown		
+MLLT3	MLLT3	ENSG00000171843	1	True	Unknown		
+MLX	MLX	ENSG00000108788	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+MLXIP	MLXIP	ENSG00000175727	1	True	bHLH		
+MLXIPL	MLXIPL	ENSG00000009950	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+MMP3	MMP3	ENSG00000149968	1	False			
+MNAT1	MNAT1	ENSG00000020426	1	True	Unknown		
+MNT	MNT	ENSG00000070444	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+MNX1	MNX1	ENSG00000130675	1	True	Homeodomain	Homeo domain factors	HOX
+MSANTD1	MSANTD1	ENSG00000188981	1	True	MADF	Tryptophan cluster factors	Myb-SANT
+MSANTD3	MSANTD3	ENSG00000066697	1	True	MADF	Tryptophan cluster factors	Myb/SANT domain factors
+MSANTD4	MSANTD4	ENSG00000170903	1	True	Myb/SANT	Tryptophan cluster factors	Myb-SANT
+MSC	MSC	ENSG00000178860	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+MSGN1	MSGN1	ENSG00000151379	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+MSLN	MSLN	ENSG00000102854	1	False			
+MSX1	MSX1	ENSG00000163132	1	True	Homeodomain	Homeo domain factors	NK
+MSX2	MSX2	ENSG00000120149	1	True	Homeodomain	Homeo domain factors	NK
+MTA1	MTA1	ENSG00000182979	1	True	Myb/SANT; GATA		
+MTA2	MTA2	ENSG00000149480	1	True	Myb/SANT; GATA		
+MTA3	MTA3	ENSG00000057935	1	True	Myb/SANT; GATA		
+MTERF	MTERF1	ENSG00000127989	1	True	mTERF		
+MTERFD1	MTERF3	ENSG00000156469	1	True	mTERF		
+MTERFD2	MTERF4	ENSG00000122085	1	True	mTERF		
+MTERFD3	MTERF2	ENSG00000120832	1	True	mTERF		
+MTF1	MTF1	ENSG00000188786	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+MTF2	MTF2	ENSG00000143033	1	True	Unknown		
+MXD1	MXD1	ENSG00000059728	1	True	bHLH		
+MXD3	MXD3	ENSG00000213347	1	True	bHLH		
+MXD4	MXD4	ENSG00000123933	1	True	bHLH		
+MXI1	MXI1	ENSG00000119950	2	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+MYB	MYB	ENSG00000118513	1	True	Myb/SANT	Tryptophan cluster factors	Myb/SANT domain factors
+MYBBP1A	MYBBP1A	ENSG00000132382	1	True	Unknown		
+MYBL1	MYBL1	ENSG00000185697	1	True	Myb/SANT	Tryptophan cluster factors	Myb/SANT domain factors
+MYBL2	MYBL2	ENSG00000101057	1	True	Myb/SANT	Tryptophan cluster factors	Myb/SANT domain factors
+MYC	MYC	ENSG00000136997	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+MYCBP	MYCBP	ENSG00000214114	1	True	Unknown		
+MYCL	MYCL	ENSG00000116990	1	True	bHLH		
+MYCN	MYCN	ENSG00000134323	2	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+MYEF2	MYEF2	ENSG00000104177	1	True	Unknown		
+MYF5	MYF5	ENSG00000111049	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	MyoD/ASC-related factors
+MYF6	MYF6	ENSG00000111046	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	MyoD/ASC-related factors
+MYNN	MYNN	ENSG00000085274	1	True	C2H2 ZF		
+MYOCD	MYOCD	ENSG00000141052	1	True	Unknown		
+MYOD1	MYOD1	ENSG00000129152	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	MyoD/ASC-related factors
+MYOG	MYOG	ENSG00000122180	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	MyoD/ASC-related factors
+MYPOP	MYPOP	ENSG00000176182	1	True	Myb/SANT	Tryptophan cluster factors	Myb-SANT
+MYRF	MYRF	ENSG00000124920	2	True	Ndt80/PhoG		
+MYRFL	MYRFL	ENSG00000166268	1	True	Ndt80/PhoG		
+MYSM1	MYSM1	ENSG00000162601	1	True	Myb/SANT		
+MYT1	MYT1	ENSG00000196132	1	True	C2H2 ZF	C2HC	MYT
+MYT1L	MYT1L	ENSG00000186487	1	True	C2H2 ZF	C2HC	MYT
+MZF1	MZF1	ENSG00000099326	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+NACC2	NACC2	ENSG00000148411	1	True	Unknown	C2H2 zinc finger factors	Other factors with up to three adjacent zinc fingers
+NAIF1	NAIF1	ENSG00000171169	1	True	MADF		
+NANOG	NANOG	ENSG00000111704	1	True	Homeodomain		
+NANOGNB	NANOGNB	ENSG00000205857	1	True	Homeodomain		
+NCL	NCL	ENSG00000115053	2	False			
+NCOA1	NCOA1	ENSG00000084676	1	True	bHLH		
+NCOA2	NCOA2	ENSG00000140396	1	True	bHLH		
+NCOA3	NCOA3	ENSG00000124151	1	True	bHLH		
+NCOA6	NCOA6	ENSG00000198646	1	True	Unknown		
+NCOR1	NCOR1	ENSG00000141027	1	True	Myb/SANT		
+NCOR2	NCOR2	ENSG00000196498	2	True	Myb/SANT		
+NELFE	NELFE	ENSG00000204356	1	False			
+NEUROD1	NEUROD1	ENSG00000162992	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+NEUROD2	NEUROD2	ENSG00000171532	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+NEUROD4	NEUROD4	ENSG00000123307	1	True	bHLH		
+NEUROD6	NEUROD6	ENSG00000164600	1	True	bHLH		
+NEUROG1	NEUROG1	ENSG00000181965	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+NEUROG2	NEUROG2	ENSG00000178403	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+NEUROG3	NEUROG3	ENSG00000122859	1	True	bHLH		
+NF1	NF1	ENSG00000196712	1	False			
+NFAT5	NFAT5	ENSG00000102908	1	True	Rel		
+NFATC1	NFATC1	ENSG00000131196	2	True	Rel		
+NFATC2	NFATC2	ENSG00000101096	2	True	Rel		
+NFATC3	NFATC3	ENSG00000072736	1	True	Rel	Rel homology region (RHR) factors	NFAT-related factors
+NFATC4	NFATC4	ENSG00000100968	1	True	Rel	Rel homology region (RHR) factors	NFAT-related factors
+NFE2	NFE2	ENSG00000123405	1	True	bZIP	Basic leucine zipper factors (bZIP)	Jun-related
+NFE2L1	NFE2L1	ENSG00000082641	1	True	bZIP		
+NFE2L2	NFE2L2	ENSG00000116044	2	True	bZIP	Basic leucine zipper factors (bZIP)	Jun-related
+NFE2L3	NFE2L3	ENSG00000050344	1	True	bZIP		
+NFE4	NFE4	ENSG00000230257	1	True	Unknown		
+NFIA	NFIA	ENSG00000162599	1	True	SMAD	SMAD/NF-1 DNA-binding domain factors	Nuclear factor 1
+NFIB	NFIB	ENSG00000147862	1	True	SMAD	SMAD/NF-1 DNA-binding domain factors	Nuclear factor 1
+NFIC	NFIC	ENSG00000141905	2	True	SMAD	SMAD/NF-1 DNA-binding domain factors	Nuclear factor 1
+NFIL3	NFIL3	ENSG00000165030	1	True	bZIP	Basic leucine zipper factors (bZIP)	CEBP-related
+NFIX	NFIX	ENSG00000008441	2	True	SMAD	SMAD/NF-1 DNA-binding domain factors	Nuclear factor 1
+NFKB1	NFKB1	ENSG00000109320	1	True	Rel	Rel homology region (RHR) factors	NF-kappaB-related factors
+NFKB2	NFKB2	ENSG00000077150	1	True	Rel	Rel homology region (RHR) factors	NF-kappaB-related factors
+NFKBIA	NFKBIA	ENSG00000100906	2	True	Unknown		
+NFKBIB	NFKBIB	ENSG00000104825	1	True	Unknown		
+NFKBID	NFKBID	ENSG00000167604	2	True	Unknown		
+NFKBIE	NFKBIE	ENSG00000146232	1	False			
+NFKBIL1	NFKBIL1	ENSG00000204498	1	True	Unknown		
+NFKBIZ	NFKBIZ	ENSG00000144802	2	True	Unknown		
+NFRKB	NFRKB	ENSG00000170322	1	True	Unknown		
+NFX1	NFX1	ENSG00000086102	1	True	NFX		
+NFXL1	NFXL1	ENSG00000170448	1	True	NFX		
+NFYA	NFYA	ENSG00000001167	1	True	CBF/NF-Y	Heteromeric CCAAT-binding factors	Heteromeric CCAAT-binding
+NFYB	NFYB	ENSG00000120837	1	True	Unknown	Heteromeric CCAAT-binding factors	Heteromeric CCAAT-binding
+NFYC	NFYC	ENSG00000066136	1	True	Unknown	Heteromeric CCAAT-binding factors	Heteromeric CCAAT-binding
+NHLH1	NHLH1	ENSG00000171786	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+NHLH2	NHLH2	ENSG00000177551	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+NHP2	NHP2	ENSG00000145912	1	False			
+NKRF	NKRF	ENSG00000186416	1	True	Unknown		
+NKX1-1	NKX1-1	ENSG00000235608	1	True	Homeodomain		
+NKX1-2	NKX1-2	ENSG00000229544	1	True	Homeodomain		
+NKX2-1	NKX2-1	ENSG00000136352	1	True	Homeodomain		
+NKX2-2	NKX2-2	ENSG00000125820	1	True	Homeodomain	Homeo domain factors	NK
+NKX2-3	NKX2-3	ENSG00000119919	1	True	Homeodomain	Homeo domain factors	NK
+NKX2-4	NKX2-4	ENSG00000125816	1	True	Homeodomain	Homeo domain factors	NK
+NKX2-5	NKX2-5	ENSG00000183072	1	True	Homeodomain	Homeo domain factors	NK
+NKX2-6	NKX2-6	ENSG00000180053	1	True	Homeodomain		
+NKX2-8	NKX2-8	ENSG00000136327	1	True	Homeodomain	Homeo domain factors	NK
+NKX3-1	NKX3-1	ENSG00000167034	1	True	Homeodomain	Homeo domain factors	NK
+NKX3-2	NKX3-2	ENSG00000109705	1	True	Homeodomain	Homeo domain factors	NK
+NKX6-1	NKX6-1	ENSG00000163623	1	True	Homeodomain	Homeo domain factors	NK
+NKX6-2	NKX6-2	ENSG00000148826	1	True	Homeodomain	Homeo domain factors	NK
+NKX6-3	NKX6-3	ENSG00000165066	1	True	Homeodomain	Homeo domain factors	NK
+NME1-NME2	NME1-NME2	ENSG00000011052	1	False			
+NME2	NME2	ENSG00000243678	1	True	Unknown		
+NMI	NMI	ENSG00000123609	1	False			
+NOBOX	NOBOX	ENSG00000106410	2	True	Homeodomain		
+NOC3L	NOC3L	ENSG00000173145	1	True	Unknown		
+NONO	NONO	ENSG00000147140	1	True	Unknown		
+NOTCH1	NOTCH1	ENSG00000148400	2	True	Unknown		
+NOTCH2	NOTCH2	ENSG00000134250	1	True	Unknown		
+NOTO	NOTO	ENSG00000214513	1	True	Homeodomain	Homeo domain factors	NK
+NOV	CCN3	ENSG00000136999	1	False			
+NPAS1	NPAS1	ENSG00000130751	1	True	bHLH		
+NPAS2	NPAS2	ENSG00000170485	1	True	bHLH		
+NPAS3	NPAS3	ENSG00000151322	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	PAS
+NPAS4	NPAS4	ENSG00000174576	1	True	bHLH		
+NR0B1	NR0B1	ENSG00000169297	1	True	Unknown		
+NR0B2	NR0B2	ENSG00000131910	1	True	Unknown		
+NR1D1	NR1D1	ENSG00000126368	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+NR1D2	NR1D2	ENSG00000174738	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+NR1H2	NR1H2	ENSG00000131408	1	True	Nuclear receptor		
+NR1H3	NR1H3	ENSG00000025434	2	True	Nuclear receptor		
+NR1H4	NR1H4	ENSG00000012504	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+NR1I2	NR1I2	ENSG00000144852	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+NR1I3	NR1I3	ENSG00000143257	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+NR2C1	NR2C1	ENSG00000120798	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	RXR-related receptors (NR2)
+NR2C2	NR2C2	ENSG00000177463	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	RXR-related receptors (NR2)
+NR2E1	NR2E1	ENSG00000112333	1	True	Nuclear receptor		
+NR2E3	NR2E3	ENSG00000278570	1	True	Nuclear receptor		
+NR2F1	NR2F1	ENSG00000175745	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	RXR-related receptors (NR2)
+NR2F2	NR2F2	ENSG00000185551	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	RXR-related receptors (NR2)
+NR2F6	NR2F6	ENSG00000160113	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	RXR-related receptors (NR2)
+NR3C1	NR3C1	ENSG00000113580	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Steroid hormone receptors (NR3)
+NR3C2	NR3C2	ENSG00000151623	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Steroid hormone receptors (NR3)
+NR4A1	NR4A1	ENSG00000123358	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	NGFI-B-related receptors (NR4)
+NR4A2	NR4A2	ENSG00000153234	2	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	NGFI-B-related receptors (NR4)
+NR4A3	NR4A3	ENSG00000119508	1	True	Nuclear receptor		
+NR5A1	NR5A1	ENSG00000136931	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	FTZF1-related (NR5A)
+NR5A2	NR5A2	ENSG00000116833	2	True	Nuclear receptor		
+NR6A1	NR6A1	ENSG00000148200	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	GCNF-related receptors (NR6)
+NRF1	NRF1	ENSG00000106459	1	True	Unknown	Uncharacterized	NRF
+NRL	NRL	ENSG00000129535	2	True	bZIP	Basic leucine zipper factors (bZIP)	Maf-related
+OLIG1	OLIG1	ENSG00000184221	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+OLIG2	OLIG2	ENSG00000205927	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+OLIG3	OLIG3	ENSG00000177468	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+ONECUT1	ONECUT1	ENSG00000169856	1	True	CUT; Homeodomain	Homeo domain factors	HD-CUT
+ONECUT2	ONECUT2	ENSG00000119547	1	True	CUT; Homeodomain	Homeo domain factors	HD-CUT
+ONECUT3	ONECUT3	ENSG00000205922	1	True	CUT; Homeodomain	Homeo domain factors	HD-CUT
+OSR1	OSR1	ENSG00000143867	1	True	C2H2 ZF	C2H2 zinc finger factors	Other factors with up to three adjacent zinc fingers
+OSR2	OSR2	ENSG00000164920	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+OTP	OTP	ENSG00000171540	1	True	Homeodomain		
+OTX1	OTX1	ENSG00000115507	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+OTX2	OTX2	ENSG00000165588	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+OVOL1	OVOL1	ENSG00000172818	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+OVOL2	OVOL2	ENSG00000125850	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+OVOL3	OVOL3	ENSG00000105261	1	True	C2H2 ZF		
+OXSR1	OXSR1	ENSG00000172939	1	False			
+PA2G4	PA2G4	ENSG00000170515	1	True	Unknown		
+PARP1	PARP1	ENSG00000143799	1	True	Unknown		
+PATZ1	PATZ1	ENSG00000100105	2	True	C2H2 ZF; AT hook	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+PAWR	PAWR	ENSG00000177425	1	True	Unknown		
+PAX1	PAX1	ENSG00000125813	1	True	Paired box	Paired box factors	Paired domain only
+PAX2	PAX2	ENSG00000075891	1	True	Homeodomain; Paired box	Paired box factors	Paired domain only
+PAX3	PAX3	ENSG00000135903	1	True	Homeodomain; Paired box	Paired box factors	Paired plus homeo domain
+PAX4	PAX4	ENSG00000106331	1	True	Homeodomain; Paired box	Paired box factors	Paired plus homeo domain
+PAX5	PAX5	ENSG00000196092	1	True	Paired box	Paired box factors	Paired domain only
+PAX6	PAX6	ENSG00000007372	1	True	Homeodomain; Paired box	Paired box factors	Paired plus homeo domain
+PAX7	PAX7	ENSG00000009709	1	True	Homeodomain; Paired box	Paired box factors	Paired plus homeo domain
+PAX8	PAX8	ENSG00000125618	1	True	Paired box	Paired box factors	Paired domain only
+PAX9	PAX9	ENSG00000198807	2	True	Paired box	Paired box factors	Paired domain only
+PAXBP1	PAXBP1	ENSG00000159086	1	True	Unknown		
+PBRM1	PBRM1	ENSG00000163939	1	True	HMG/Sox		
+PBX1	PBX1	ENSG00000185630	1	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+PBX2	PBX2	ENSG00000204304	1	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+PBX3	PBX3	ENSG00000167081	1	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+PBX4	PBX4	ENSG00000105717	1	True	Homeodomain		
+PCGF2	PCGF2	ENSG00000277258	2	True	Unknown		
+PCGF6	PCGF6	ENSG00000156374	1	True	Unknown		
+PDX1	PDX1	ENSG00000139515	1	True	Homeodomain	Homeo domain factors	HOX
+PEG3	PEG3	ENSG00000198300	1	True	C2H2 ZF		
+PFDN5	PFDN5	ENSG00000123349	1	False			
+PGBD1	PGBD1	ENSG00000137338	1	True	Unknown		
+PGR	PGR	ENSG00000082175	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Steroid hormone receptors (NR3)
+PHB2	PHB2	ENSG00000215021	1	True	Unknown		
+PHF1	PHF1	ENSG00000112511	1	True	Unknown		
+PHF19	PHF19	ENSG00000119403	1	True	Unknown		
+PHF2	PHF2	ENSG00000197724	1	False			
+PHF20	PHF20	ENSG00000025293	1	True	AT hook		
+PHF21A	PHF21A	ENSG00000135365	1	True	AT hook		
+PHOX2A	PHOX2A	ENSG00000165462	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+PHOX2B	PHOX2B	ENSG00000109132	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+PHTF1	PHTF1	ENSG00000116793	1	True	Unknown		
+PIAS3	PIAS3	ENSG00000131788	1	True	Unknown		
+PIAS4	PIAS4	ENSG00000105229	1	True	Unknown		
+PIN1	PIN1	ENSG00000127445	1	True	MBD		
+PITX1	PITX1	ENSG00000069011	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+PITX2	PITX2	ENSG00000164093	2	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+PITX3	PITX3	ENSG00000107859	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+PKNOX1	PKNOX1	ENSG00000160199	1	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+PKNOX2	PKNOX2	ENSG00000165495	1	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+PLAG1	PLAG1	ENSG00000181690	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+PLAGL1	PLAGL1	ENSG00000118495	2	True	C2H2 ZF		
+PLAGL2	PLAGL2	ENSG00000126003	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+PLEK	PLEK	ENSG00000115956	1	True	Unknown		
+PLEKHA5	PLEKHA5	ENSG00000052126	1	False			
+PLSCR1	PLSCR1	ENSG00000188313	1	True	Unknown		
+POGK	POGK	ENSG00000143157	1	True	Brinker	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+POLR3C	POLR3C	ENSG00000186141	1	False			
+POLR3K	POLR3K	ENSG00000161980	1	False			
+POU1F1	POU1F1	ENSG00000064835	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU2AF1	POU2AF1	ENSG00000110777	1	True	Unknown		
+POU2F1	POU2F1	ENSG00000143190	2	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU2F2	POU2F2	ENSG00000028277	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU2F3	POU2F3	ENSG00000137709	2	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU3F1	POU3F1	ENSG00000185668	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU3F2	POU3F2	ENSG00000184486	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU3F3	POU3F3	ENSG00000198914	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU3F4	POU3F4	ENSG00000196767	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU4F1	POU4F1	ENSG00000152192	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU4F2	POU4F2	ENSG00000151615	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU4F3	POU4F3	ENSG00000091010	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU5F1	POU5F1	ENSG00000204531	2	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU5F1B	POU5F1B	ENSG00000212993	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU5F2	POU5F2	ENSG00000248483	1	True	Homeodomain; POU		
+POU6F1	POU6F1	ENSG00000184271	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+POU6F2	POU6F2	ENSG00000106536	1	True	Homeodomain; POU	Homeo domain factors	POU domain factors
+PPARA	PPARA	ENSG00000186951	1	True	Nuclear receptor		
+PPARD	PPARD	ENSG00000112033	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+PPARG	PPARG	ENSG00000132170	2	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+PPIL4	PPIL4	ENSG00000131013	1	False			
+PPP1CB	PPP1CB	ENSG00000213639	1	False			
+PPP1R13L	PPP1R13L	ENSG00000104881	2	True	Unknown		
+PRDM1	PRDM1	ENSG00000057657	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+PRDM10	PRDM10	ENSG00000170325	1	True	C2H2 ZF		
+PRDM11	PRDM11	ENSG00000019485	2	True	Myb/SANT		
+PRDM12	PRDM12	ENSG00000130711	1	True	C2H2 ZF		
+PRDM13	PRDM13	ENSG00000112238	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+PRDM14	PRDM14	ENSG00000147596	1	True	C2H2 ZF		
+PRDM15	PRDM15	ENSG00000141956	1	True	C2H2 ZF		
+PRDM16	PRDM16	ENSG00000142611	1	True	C2H2 ZF		
+PRDM2	PRDM2	ENSG00000116731	1	True	C2H2 ZF		
+PRDM4	PRDM4	ENSG00000110851	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+PRDM5	PRDM5	ENSG00000138738	1	True	C2H2 ZF		
+PRDM6	PRDM6	ENSG00000061455	1	True	C2H2 ZF		
+PRDM7	PRDM7	ENSG00000126856	1	True	Unknown		
+PRDM8	PRDM8	ENSG00000152784	2	True	C2H2 ZF		
+PRDM9	PRDM9	ENSG00000164256	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+PREB	PREB	ENSG00000138073	1	True	Unknown		
+PRKRIP1	PRKRIP1	ENSG00000128563	2	False			
+PRKRIR	THAP12	ENSG00000137492	1	True	THAP finger		
+PRMT3	PRMT3	ENSG00000185238	1	True	C2H2 ZF		
+PROP1	PROP1	ENSG00000175325	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+PROX1	PROX1	ENSG00000117707	1	True	Prospero	Homeo domain factors	HD-PROS factors
+PROX2	PROX2	ENSG00000119608	1	True	Prospero		
+PRR12	PRR12	ENSG00000126464	1	True	AT hook		
+PRRX1	PRRX1	ENSG00000116132	2	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+PRRX2	PRRX2	ENSG00000167157	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+PSIP1	PSIP1	ENSG00000164985	1	False			
+PSMA1	PSMA1	ENSG00000129084	1	False			
+PSMB1	PSMB1	ENSG00000008018	1	False			
+PSMB4	PSMB4	ENSG00000159377	1	False			
+PSMC3	PSMC3	ENSG00000165916	1	False			
+PTF1A	PTF1A	ENSG00000168267	1	True	bHLH		
+PTTG1	PTTG1	ENSG00000164611	1	True	Unknown		
+PUF60	PUF60	ENSG00000179950	1	False			
+PURA	PURA	ENSG00000185129	2	True	Unknown		
+PURB	PURB	ENSG00000146676	1	True	Unknown		
+PURG	PURG	ENSG00000172733	1	True	Unknown		
+RAG1	RAG1	ENSG00000166349	1	True	Unknown		
+RARA	RARA	ENSG00000131759	2	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+RARB	RARB	ENSG00000077092	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+RARG	RARG	ENSG00000172819	2	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+RAX	RAX	ENSG00000134438	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+RAX2	RAX2	ENSG00000173976	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+RB1	RB1	ENSG00000139687	1	True	Unknown		
+RB1CC1	RB1CC1	ENSG00000023287	2	False			
+RBAK	RBAK	ENSG00000146587	2	True	C2H2 ZF		
+RBCK1	RBCK1	ENSG00000125826	1	True	Unknown		
+RBL2	RBL2	ENSG00000103479	2	True	Unknown		
+RBMS1	RBMS1	ENSG00000153250	1	False			
+RBPJ	RBPJ	ENSG00000168214	1	True	CSL	Rel homology region (RHR) factors	CSL-related factors
+RBPJL	RBPJL	ENSG00000124232	1	True	CSL		
+RC3H2	RC3H2	ENSG00000056586	1	True	CCCH ZF		
+RCAN1	RCAN1	ENSG00000159200	1	True	Unknown		
+RCOR1	RCOR1	ENSG00000089902	1	True	Myb/SANT		
+RCOR2	RCOR2	ENSG00000167771	1	True	Myb/SANT		
+RCOR3	RCOR3	ENSG00000117625	1	True	Myb/SANT		
+REL	REL	ENSG00000162924	1	True	Rel	Rel homology region (RHR) factors	NF-kappaB-related factors
+RELA	RELA	ENSG00000173039	1	True	Rel	Rel homology region (RHR) factors	NF-kappaB-related factors
+RELB	RELB	ENSG00000104856	1	True	Rel	Rel homology region (RHR) factors	NF-kappaB-related factors
+REPIN1	REPIN1	ENSG00000214022	1	True	C2H2 ZF		
+RERE	RERE	ENSG00000142599	1	True	Myb/SANT; GATA		
+REST	REST	ENSG00000084093	2	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+REXO4	REXO4	ENSG00000148300	1	True	Unknown		
+RFX1	RFX1	ENSG00000132005	1	True	RFX	Fork head/winged helix factors	RFX-related factors
+RFX2	RFX2	ENSG00000087903	1	True	RFX	Fork head/winged helix factors	RFX-related factors
+RFX3	RFX3	ENSG00000080298	1	True	RFX	Fork head/winged helix factors	RFX-related factors
+RFX4	RFX4	ENSG00000111783	1	True	RFX	Fork head/winged helix factors	RFX-related factors
+RFX5	RFX5	ENSG00000143390	1	True	RFX	Fork head/winged helix factors	RFX-related factors
+RFX6	RFX6	ENSG00000185002	1	True	RFX		
+RFX7	RFX7	ENSG00000181827	1	True	RFX	Fork head/winged helix factors	RFX-related factors
+RFX8	RFX8	ENSG00000196460	1	True	RFX		
+RFXANK	RFXANK	ENSG00000064490	1	True	Unknown		
+RFXAP	RFXAP	ENSG00000133111	1	True	Unknown		
+RHOXF1	RHOXF1	ENSG00000101883	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+RHOXF2	RHOXF2	ENSG00000131721	1	True	Homeodomain		
+RHOXF2B	RHOXF2B	ENSG00000203989	1	True	Homeodomain		
+RLF	RLF	ENSG00000117000	1	True	C2H2 ZF		
+RNF141	RNF141	ENSG00000110315	1	False			
+RNF2	RNF2	ENSG00000121481	1	True	Unknown		
+RNF4	RNF4	ENSG00000063978	1	True	Unknown		
+RORA	RORA	ENSG00000069667	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+RORB	RORB	ENSG00000198963	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+RORC	RORC	ENSG00000143365	2	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+RPA3	RPA3	ENSG00000106399	1	False			
+RPF1	RPF1	ENSG00000117133	1	False			
+RPS4X	RPS4X	ENSG00000198034	1	False			
+RREB1	RREB1	ENSG00000124782	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+RUNX1	RUNX1	ENSG00000159216	1	True	Runt	Runt domain factors	Runt-related factors
+RUNX1T1	RUNX1T1	ENSG00000079102	2	True	Unknown		
+RUNX2	RUNX2	ENSG00000124813	2	True	Runt	Runt domain factors	Runt-related factors
+RUNX3	RUNX3	ENSG00000020633	2	True	Runt	Runt domain factors	Runt-related factors
+RUVBL1	RUVBL1	ENSG00000175792	1	False			
+RXRA	RXRA	ENSG00000186350	1	True	Nuclear receptor		
+RXRB	RXRB	ENSG00000204231	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	RXR-related receptors (NR2)
+RXRG	RXRG	ENSG00000143171	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	RXR-related receptors (NR2)
+SACM1L	SACM1L	ENSG00000211456	1	False			
+SAFB	SAFB	ENSG00000160633	1	True	Unknown		
+SAFB2	SAFB2	ENSG00000130254	1	True	Unknown		
+SALL1	SALL1	ENSG00000103449	1	True	C2H2 ZF		
+SALL2	SALL2	ENSG00000165821	1	True	C2H2 ZF		
+SALL3	SALL3	ENSG00000256463	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+SALL4	SALL4	ENSG00000101115	1	True	C2H2 ZF		
+SATB1	SATB1	ENSG00000182568	2	True	CUT; Homeodomain	Homeo domain factors	HD-CUT
+SATB2	SATB2	ENSG00000119042	1	True	CUT; Homeodomain		
+SCAND3	ZBED9	ENSG00000232040	1	True	BED ZF	C2H2 zinc finger factors	BED zinc finger factors
+SCAPER	SCAPER	ENSG00000140386	1	True	Unknown		
+SCMH1	SCMH1	ENSG00000010803	2	True	Unknown		
+SCML4	SCML4	ENSG00000146285	1	True	AT hook		
+SCRT1	SCRT1	ENSG00000261678	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+SCRT2	SCRT2	ENSG00000215397	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+SCXA	SCX	ENSG00000260428	1	True	bHLH		
+SCXB	SCX	ENSG00000260428	1	True	bHLH		
+SEBOX	SEBOX	ENSG00000274529	1	True	Homeodomain		
+SETBP1	SETBP1	ENSG00000152217	1	True	AT hook		
+SETD1A	SETD1A	ENSG00000099381	1	False			
+SETDB1	SETDB1	ENSG00000143379	1	True	MBD		
+SETDB2	SETDB2	ENSG00000136169	1	True	MBD		
+SGSM2	SGSM2	ENSG00000141258	1	True	BED ZF		
+SH3D19	SH3D19	ENSG00000109686	2	False			
+SHOX	SHOX	ENSG00000185960	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+SHOX2	SHOX2	ENSG00000168779	1	True	Homeodomain		
+SIM1	SIM1	ENSG00000112246	1	True	bHLH		
+SIM2	SIM2	ENSG00000159263	1	True	bHLH		
+SIN3A	SIN3A	ENSG00000169375	2	True	Unknown		
+SIRT6	SIRT6	ENSG00000077463	1	True	Unknown		
+SIX1	SIX1	ENSG00000126778	1	True	Homeodomain	Homeo domain factors	HD-SINE
+SIX2	SIX2	ENSG00000170577	1	True	Homeodomain	Homeo domain factors	HD-SINE
+SIX3	SIX3	ENSG00000138083	1	True	Homeodomain		
+SIX4	SIX4	ENSG00000100625	1	True	Homeodomain		
+SIX5	SIX5	ENSG00000177045	1	True	Homeodomain		
+SIX6	SIX6	ENSG00000184302	1	True	Homeodomain		
+SKI	SKI	ENSG00000157933	1	True	Unknown		
+SKIL	SKIL	ENSG00000136603	1	True	Unknown		
+SKOR1	SKOR1	ENSG00000188779	1	True	Unknown		
+SKOR2	SKOR2	ENSG00000215474	1	True	SAND		
+SLC22A1	SLC22A1	ENSG00000175003	1	False			
+SLC2A4RG	SLC2A4RG	ENSG00000125520	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+SLC30A9	SLC30A9	ENSG00000014824	1	True	Unknown		
+SMAD1	SMAD1	ENSG00000170365	1	True	SMAD		
+SMAD2	SMAD2	ENSG00000175387	1	True	SMAD	SMAD/NF-1 DNA-binding domain factors	SMAD factors
+SMAD3	SMAD3	ENSG00000166949	1	True	SMAD	SMAD/NF-1 DNA-binding domain factors	SMAD factors
+SMAD4	SMAD4	ENSG00000141646	1	True	SMAD		
+SMAD5	SMAD5	ENSG00000113658	1	True	SMAD	SMAD/NF-1 DNA-binding domain factors	SMAD factors
+SMAD6	SMAD6	ENSG00000137834	1	True	SMAD		
+SMAD7	SMAD7	ENSG00000101665	1	True	SMAD		
+SMAD9	SMAD9	ENSG00000120693	1	True	SMAD		
+SMARCA1	SMARCA1	ENSG00000102038	1	True	Myb/SANT		
+SMARCA2	SMARCA2	ENSG00000080503	1	True	Unknown		
+SMARCA4	SMARCA4	ENSG00000127616	1	True	Unknown		
+SMARCA5	SMARCA5	ENSG00000153147	1	True	Myb/SANT		
+SMARCB1	SMARCB1	ENSG00000099956	2	True	Unknown		
+SMARCC1	SMARCC1	ENSG00000173473	1	True	Myb/SANT		
+SMARCC2	SMARCC2	ENSG00000139613	1	True	Myb/SANT		
+SMYD2	SMYD2	ENSG00000143499	1	False			
+SMYD3	SMYD3	ENSG00000185420	1	True	Unknown		
+SNAI1	SNAI1	ENSG00000124216	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+SNAI2	SNAI2	ENSG00000019549	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+SNAI3	SNAI3	ENSG00000185669	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+SNAPC1	SNAPC1	ENSG00000023608	1	False			
+SNAPC2	SNAPC2	ENSG00000104976	1	True	Unknown		
+SNAPC3	SNAPC3	ENSG00000164975	1	False			
+SNAPC4	SNAPC4	ENSG00000165684	1	True	Myb/SANT		
+SNAPC5	SNAPC5	ENSG00000174446	1	True	Unknown		
+SOHLH1	SOHLH1	ENSG00000165643	1	True	bHLH		
+SOHLH2	SOHLH2	ENSG00000120669	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	PAS domain factors
+SON	SON	ENSG00000159140	2	True	Unknown		
+SOX1	SOX1	ENSG00000182968	1	True	HMG/Sox		
+SOX10	SOX10	ENSG00000100146	1	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SOX11	SOX11	ENSG00000176887	1	True	HMG/Sox		
+SOX12	SOX12	ENSG00000177732	1	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SOX13	SOX13	ENSG00000143842	1	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SOX14	SOX14	ENSG00000168875	1	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SOX15	SOX15	ENSG00000129194	1	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SOX17	SOX17	ENSG00000164736	1	True	HMG/Sox		
+SOX18	SOX18	ENSG00000203883	1	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SOX2	SOX2	ENSG00000181449	1	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SOX21	SOX21	ENSG00000125285	1	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SOX3	SOX3	ENSG00000134595	1	True	HMG/Sox		
+SOX30	SOX30	ENSG00000039600	2	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SOX4	SOX4	ENSG00000124766	2	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SOX5	SOX5	ENSG00000134532	2	True	HMG/Sox		
+SOX6	SOX6	ENSG00000110693	3	True	HMG/Sox		
+SOX7	SOX7	ENSG00000171056	1	True	HMG/Sox		
+SOX8	SOX8	ENSG00000005513	1	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SOX9	SOX9	ENSG00000125398	1	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SP1	SP1	ENSG00000185591	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+SP100	SP100	ENSG00000067066	1	True	SAND		
+SP110	SP110	ENSG00000135899	1	True	SAND		
+SP140	SP140	ENSG00000079263	1	True	SAND		
+SP140L	SP140L	ENSG00000185404	1	True	SAND	SAND domain factors	Sp140-Sp100
+SP2	SP2	ENSG00000167182	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+SP3	SP3	ENSG00000172845	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+SP4	SP4	ENSG00000105866	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+SP5	SP5	ENSG00000204335	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+SP6	SP6	ENSG00000189120	1	True	C2H2 ZF		
+SP7	SP7	ENSG00000170374	1	True	C2H2 ZF		
+SP8	SP8	ENSG00000164651	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+SP9	SP9	ENSG00000217236	1	True	C2H2 ZF	C2H2 zinc finger factors	Three-zinc finger Kruppel-related
+SPDEF	SPDEF	ENSG00000124664	1	True	Ets	Tryptophan cluster factors	Ets-related
+SPEN	SPEN	ENSG00000065526	1	True	Unknown		
+SPI1	SPI1	ENSG00000066336	1	True	Ets	Tryptophan cluster factors	Ets-related
+SPIB	SPIB	ENSG00000269404	1	True	Ets	Tryptophan cluster factors	Ets-related
+SPIC	SPIC	ENSG00000166211	1	True	Ets	Tryptophan cluster factors	Ets-related
+SPZ1	SPZ1	ENSG00000164299	1	True	Unknown		
+SRCAP	SRCAP	ENSG00000080603	1	True	AT hook		
+SREBF1	SREBF1	ENSG00000072310	2	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+SREBF2	SREBF2	ENSG00000198911	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+SRF	SRF	ENSG00000112658	1	True	MADS box	MADS box factors	Responders to external signals (SRF/RLM1)
+SRY	SRY	ENSG00000184895	1	True	HMG/Sox	High-mobility group (HMG) domain factors	SOX-related factors
+SS18	SS18	ENSG00000141380	1	False			
+SSRP1	SSRP1	ENSG00000149136	1	True	HMG/Sox		
+ST18	ST18	ENSG00000147488	1	True	C2H2 ZF		
+STAT1	STAT1	ENSG00000115415	1	True	STAT	STAT domain factors	STAT factors
+STAT2	STAT2	ENSG00000170581	1	True	STAT		
+STAT3	STAT3	ENSG00000168610	1	True	STAT	STAT domain factors	STAT factors
+STAT4	STAT4	ENSG00000138378	1	True	STAT		
+STAT5A	STAT5A	ENSG00000126561	1	True	STAT		
+STAT5B	STAT5B	ENSG00000173757	1	True	STAT		
+STAT6	STAT6	ENSG00000166888	1	True	STAT		
+STOX2	STOX2	ENSG00000173320	2	False			
+STRA13	CENPX	ENSG00000169689	1	True	Unknown		
+STRAP	STRAP	ENSG00000023734	1	False			
+SUB1	SUB1	ENSG00000113387	2	True	Unknown		
+SULT2A1	SULT2A1	ENSG00000105398	1	False			
+SUPT4H1	SUPT4H1	ENSG00000213246	1	True	Unknown		
+SUPT5H	SUPT5H	ENSG00000196235	1	True	Unknown		
+SUZ12	SUZ12	ENSG00000178691	1	True	Unknown		
+T	TBXT	ENSG00000164458	1	True	T-box	T-Box factors	Brachyury-related factors
+TADA2A	TADA2A	ENSG00000276234	1	True	Myb/SANT		
+TADA2B	TADA2B	ENSG00000173011	1	True	Myb/SANT		
+TADA3	TADA3	ENSG00000171148	1	True	Unknown		
+TAF1	TAF1	ENSG00000147133	1	True	Unknown		
+TAF10	TAF10	ENSG00000166337	1	True	Unknown		
+TAF11	TAF11	ENSG00000064995	1	True	Unknown		
+TAF12	TAF12	ENSG00000120656	1	True	Unknown		
+TAF13	TAF13	ENSG00000197780	1	True	Unknown		
+TAF1A	TAF1A	ENSG00000143498	1	True	Unknown		
+TAF1B	TAF1B	ENSG00000115750	1	True	Unknown		
+TAF4	TAF4	ENSG00000130699	1	True	Unknown		
+TAF4B	TAF4B	ENSG00000141384	1	True	Unknown		
+TAF5	TAF5	ENSG00000148835	1	True	Unknown		
+TAF5L	TAF5L	ENSG00000135801	1	True	Unknown		
+TAF6	TAF6	ENSG00000106290	1	True	Unknown		
+TAF7	TAF7	ENSG00000178913	1	True	Unknown		
+TAF9	TAF9	ENSG00000273841	1	True	Unknown		
+TAL1	TAL1	ENSG00000162367	2	True	bHLH		
+TAL2	TAL2	ENSG00000186051	1	True	bHLH		
+TARDBP	TARDBP	ENSG00000120948	1	True	Unknown		
+TAZ	TAFAZZIN	ENSG00000102125	1	False			
+TBP	TBP	ENSG00000112592	1	True	TBP		
+TBPL1	TBPL1	ENSG00000028839	1	True	TBP		
+TBPL2	TBPL2	ENSG00000182521	1	True	TBP		
+TBR1	TBR1	ENSG00000136535	1	True	T-box	T-Box factors	TBrain-related factors
+TBX1	TBX1	ENSG00000184058	1	True	T-box	T-Box factors	TBX1-related factors
+TBX10	TBX10	ENSG00000167800	1	True	T-box		
+TBX15	TBX15	ENSG00000092607	1	True	T-box	T-Box factors	TBX1-related factors
+TBX18	TBX18	ENSG00000112837	2	True	T-box	T-Box factors	TBX1-related factors
+TBX19	TBX19	ENSG00000143178	1	True	T-box	T-Box factors	Brachyury-related factors
+TBX2	TBX2	ENSG00000121068	1	True	T-box	T-Box factors	TBX2-related factors
+TBX20	TBX20	ENSG00000164532	1	True	T-box	T-Box factors	TBX1-related factors
+TBX21	TBX21	ENSG00000073861	1	True	T-box	T-Box factors	TBrain-related factors
+TBX22	TBX22	ENSG00000122145	1	True	T-box		
+TBX3	TBX3	ENSG00000135111	1	True	T-box	T-Box factors	TBX2-related factors
+TBX4	TBX4	ENSG00000121075	2	True	T-box	T-Box factors	TBX2-related factors
+TBX5	TBX5	ENSG00000089225	2	True	T-box	T-Box factors	TBX2-related factors
+TBX6	TBX6	ENSG00000149922	1	True	T-box	T-Box factors	TBX6-related factors
+TCEB1	ELOC	ENSG00000154582	1	False			
+TCEB2	ELOB	ENSG00000103363	1	False			
+TCEB3	ELOA	ENSG00000011007	1	False			
+TCERG1	TCERG1	ENSG00000113649	1	False			
+TCF12	TCF12	ENSG00000140262	2	True	bHLH	Basic helix-loop-helix factors (bHLH)	E2A
+TCF15	TCF15	ENSG00000125878	1	True	bHLH		
+TCF19	TCF19	ENSG00000137310	2	True	Unknown		
+TCF20	TCF20	ENSG00000100207	1	True	Unknown		
+TCF21	TCF21	ENSG00000118526	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+TCF23	TCF23	ENSG00000163792	1	True	bHLH		
+TCF24	TCF24	ENSG00000261787	1	True	bHLH		
+TCF25	TCF25	ENSG00000141002	1	True	Unknown		
+TCF3	TCF3	ENSG00000071564	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	E2A
+TCF4	TCF4	ENSG00000196628	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	E2A
+TCF7	TCF7	ENSG00000081059	1	True	HMG/Sox	High-mobility group (HMG) domain factors	TCF-7-related factors
+TCF7L1	TCF7L1	ENSG00000152284	1	True	HMG/Sox	High-mobility group (HMG) domain factors	TCF-7-related factors
+TCF7L2	TCF7L2	ENSG00000148737	1	True	HMG/Sox	High-mobility group (HMG) domain factors	TCF-7-related factors
+TCFL5	TCFL5	ENSG00000101190	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	PAS domain factors
+TEAD1	TEAD1	ENSG00000187079	1	True	TEA	TEA domain factors	TEF-1-related factors
+TEAD2	TEAD2	ENSG00000074219	1	True	TEA	TEA domain factors	TEF-1-related factors
+TEAD3	TEAD3	ENSG00000007866	1	True	TEA	TEA domain factors	TEF-1-related factors
+TEAD4	TEAD4	ENSG00000197905	1	True	TEA	TEA domain factors	TEF-1-related factors
+TEF	TEF	ENSG00000167074	2	True	bZIP	Basic leucine zipper factors (bZIP)	CEBP-related
+TERF1	TERF1	ENSG00000147601	1	True	Myb/SANT		
+TERF2	TERF2	ENSG00000132604	1	True	Myb/SANT		
+TET1	TET1	ENSG00000138336	1	True	CxxC		
+TET2	TET2	ENSG00000168769	1	True	Unknown		
+TET3	TET3	ENSG00000187605	1	True	CxxC		
+TFAM	TFAM	ENSG00000108064	1	True	HMG/Sox		
+TFAP2A	TFAP2A	ENSG00000137203	2	True	AP-2	Basic helix-span-helix factors (bHSH)	AP-2
+TFAP2B	TFAP2B	ENSG00000008196	1	True	AP-2	Basic helix-span-helix factors (bHSH)	AP-2
+TFAP2C	TFAP2C	ENSG00000087510	1	True	AP-2	Basic helix-span-helix factors (bHSH)	AP-2
+TFAP2D	TFAP2D	ENSG00000008197	1	True	AP-2		
+TFAP2E	TFAP2E	ENSG00000116819	1	True	AP-2	Basic helix-span-helix factors (bHSH)	AP-2
+TFAP4	TFAP4	ENSG00000090447	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+TFCP2	TFCP2	ENSG00000135457	1	True	Grainyhead	Grainyhead domain factors	CP2-related factors
+TFCP2L1	TFCP2L1	ENSG00000115112	1	True	Grainyhead		
+TFDP1	TFDP1	ENSG00000198176	1	True	E2F	Fork head/winged helix factors	E2F
+TFDP2	TFDP2	ENSG00000114126	2	True	E2F		
+TFDP3	TFDP3	ENSG00000183434	1	True	E2F		
+TFE3	TFE3	ENSG00000068323	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+TFEB	TFEB	ENSG00000112561	2	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+TFEC	TFEC	ENSG00000105967	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+TGFB1I1	TGFB1I1	ENSG00000140682	1	True	Unknown		
+TGIF1	TGIF1	ENSG00000177426	1	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+TGIF2	TGIF2	ENSG00000118707	1	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+TGIF2LX	TGIF2LX	ENSG00000153779	1	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+TGIF2LY	TGIF2LY	ENSG00000176679	1	True	Homeodomain	Homeo domain factors	TALE-type homeo domain factors
+THAP1	THAP1	ENSG00000131931	1	True	THAP finger	C2CH THAP-type zinc finger factors	THAP-related factors
+THAP10	THAP10	ENSG00000129028	1	True	THAP finger		
+THAP11	THAP11	ENSG00000168286	1	True	THAP finger	C2CH THAP-type zinc finger factors	THAP-related factors
+THAP2	THAP2	ENSG00000173451	2	True	THAP finger		
+THAP3	THAP3	ENSG00000041988	1	True	THAP finger		
+THAP4	THAP4	ENSG00000176946	1	True	THAP finger		
+THAP5	THAP5	ENSG00000177683	1	True	THAP finger		
+THAP6	THAP6	ENSG00000174796	1	True	THAP finger		
+THAP7	THAP7	ENSG00000184436	1	True	THAP finger		
+THAP8	THAP8	ENSG00000161277	1	True	THAP finger		
+THAP9	THAP9	ENSG00000168152	1	True	THAP finger		
+THRA	THRA	ENSG00000126351	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+THRB	THRB	ENSG00000151090	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+THYN1	THYN1	ENSG00000151500	1	True	Unknown		
+TIGD1	TIGD1	ENSG00000221944	1	True	CENPB		
+TIGD2	TIGD2	ENSG00000180346	1	True	CENPB		
+TIGD3	TIGD3	ENSG00000173825	1	True	CENPB		
+TIGD4	TIGD4	ENSG00000169989	1	True	CENPB	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+TIGD5	TIGD5	ENSG00000179886	1	True	CENPB	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+TIGD6	TIGD6	ENSG00000164296	1	True	CENPB		
+TIGD7	TIGD7	ENSG00000140993	1	True	CENPB	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+TLX1	TLX1	ENSG00000107807	1	True	Homeodomain		
+TLX2	TLX2	ENSG00000115297	1	True	Homeodomain	Homeo domain factors	NK
+TLX3	TLX3	ENSG00000164438	1	True	Homeodomain	Homeo domain factors	NK
+TMF1	TMF1	ENSG00000144747	1	True	Unknown		
+TNXB	TNXB	ENSG00000168477	1	False			
+TOPORS	TOPORS	ENSG00000197579	1	True	Unknown		
+TOX	TOX	ENSG00000198846	1	True	HMG/Sox		
+TOX2	TOX2	ENSG00000124191	1	True	HMG/Sox		
+TOX3	TOX3	ENSG00000103460	1	True	HMG/Sox		
+TOX4	TOX4	ENSG00000092203	1	True	HMG/Sox		
+TP53	TP53	ENSG00000141510	1	True	p53	p53 domain factors	p53-related factors
+TP53BP1	TP53BP1	ENSG00000067369	2	True	Unknown		
+TP53BP2	TP53BP2	ENSG00000143514	1	False			
+TP63	TP63	ENSG00000073282	1	True	p53	p53 domain factors	p53-related factors
+TP73	TP73	ENSG00000078900	1	True	p53	p53 domain factors	p53-related factors
+TPI1	TPI1	ENSG00000111669	1	False			
+TPRX1	TPRX1	ENSG00000178928	1	True	Homeodomain	Homeo domain factors	Paired-related HD
+TRAFD1	TRAFD1	ENSG00000135148	1	True	C2H2 ZF		
+TRERF1	TRERF1	ENSG00000124496	1	True	C2H2 ZF; Myb/SANT		
+TRIM22	TRIM22	ENSG00000132274	1	True	Unknown		
+TRIM25	TRIM25	ENSG00000121060	1	True	Unknown		
+TRIM27	TRIM27	ENSG00000204713	1	True	Unknown		
+TRIM28	TRIM28	ENSG00000130726	1	True	Unknown		
+TRIM29	TRIM29	ENSG00000137699	2	True	Unknown		
+TRPS1	TRPS1	ENSG00000104447	1	True	GATA	Other C4 zinc finger-type factors	C4-GATA-related
+TSC22D1	TSC22D1	ENSG00000102804	1	True	Unknown		
+TSC22D2	TSC22D2	ENSG00000196428	1	True	Unknown		
+TSC22D3	TSC22D3	ENSG00000157514	1	True	Unknown		
+TSC22D4	TSC22D4	ENSG00000166925	1	True	Unknown		
+TSHZ1	TSHZ1	ENSG00000179981	1	True	C2H2 ZF		
+TSHZ2	TSHZ2	ENSG00000182463	1	True	C2H2 ZF		
+TSHZ3	TSHZ3	ENSG00000121297	1	True	C2H2 ZF		
+TTF1	TTF1	ENSG00000125482	1	True	Myb/SANT		
+TUB	TUB	ENSG00000166402	1	True	Unknown		
+TULP1	TULP1	ENSG00000112041	1	False			
+TULP2	TULP2	ENSG00000104804	1	False			
+TULP3	TULP3	ENSG00000078246	2	False			
+TULP4	TULP4	ENSG00000130338	1	True	Unknown		
+TWIST1	TWIST1	ENSG00000122691	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	Tal-related
+TWIST2	TWIST2	ENSG00000233608	1	True	bHLH		
+UBN1	UBN1	ENSG00000118900	1	True	Unknown		
+UBP1	UBP1	ENSG00000153560	1	True	Grainyhead		
+UBTF	UBTF	ENSG00000108312	1	True	HMG/Sox		
+UNCX	UNCX	ENSG00000164853	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+UNKL	UNKL	ENSG00000059145	1	True	CCCH ZF		
+USF1	USF1	ENSG00000158773	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+USF2	USF2	ENSG00000105698	1	True	bHLH	Basic helix-loop-helix factors (bHLH)	bHLH-ZIP
+VAV1	VAV1	ENSG00000141968	1	True	Unknown		
+VAX1	VAX1	ENSG00000148704	1	True	Homeodomain	Homeo domain factors	NK
+VAX2	VAX2	ENSG00000116035	1	True	Homeodomain	Homeo domain factors	NK
+VDR	VDR	ENSG00000111424	1	True	Nuclear receptor	Nuclear receptors with C4 zinc fingers	Thyroid hormone receptor-related factors (NR1)
+VENTX	VENTX	ENSG00000151650	1	True	Homeodomain	Homeo domain factors	NK
+VEZF1	VEZF1	ENSG00000136451	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+VPS72	VPS72	ENSG00000163159	1	True	Unknown		
+VSX1	VSX1	ENSG00000100987	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+VSX2	VSX2	ENSG00000119614	1	True	Homeodomain	Homeo domain factors	Paired-related HD factors
+VTN	VTN	ENSG00000109072	1	False			
+WDHD1	WDHD1	ENSG00000198554	1	True	HMG/Sox		
+WDR82	WDR82	ENSG00000164091	1	False			
+WHSC1	NSD2	ENSG00000109685	1	True	HMG/Sox		
+WIZ	WIZ	ENSG00000011451	1	True	C2H2 ZF		
+WNK1	WNK1	ENSG00000060237	1	False			
+WT1	WT1	ENSG00000184937	1	True	C2H2 ZF		
+XBP1	XBP1	ENSG00000100219	1	True	bZIP	Basic leucine zipper factors (bZIP)	XBP-1-related factors
+XPA	XPA	ENSG00000136936	1	True	Unknown		
+XRCC5	XRCC5	ENSG00000079246	1	False			
+XRCC6	XRCC6	ENSG00000196419	1	False			
+YAF2	YAF2	ENSG00000015153	1	False			
+YAP1	YAP1	ENSG00000137693	1	False			
+YBX1	YBX1	ENSG00000065978	1	True	CSD		
+YBX2	YBX2	ENSG00000006047	1	True	CSD		
+YBX3	YBX3	ENSG00000060138	1	True	CSD		
+YEATS2	YEATS2	ENSG00000163872	1	True	Unknown		
+YWHAE	YWHAE	ENSG00000108953	1	False			
+YWHAZ	YWHAZ	ENSG00000164924	1	False			
+YY1	YY1	ENSG00000100811	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+YY2	YY2	ENSG00000230797	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBED1	ZBED1	ENSG00000214717	1	True	BED ZF	C2H2 zinc finger factors	BED zinc finger factors
+ZBED2	ZBED2	ENSG00000177494	1	True	BED ZF	C2H2 zinc finger factors	BED zinc finger factors
+ZBED3	ZBED3	ENSG00000132846	1	True	BED ZF		
+ZBED4	ZBED4	ENSG00000100426	1	True	BED ZF	C2H2 zinc finger factors	BED zinc finger factors
+ZBED5	ZBED5	ENSG00000236287	1	True	BED ZF	C2H2 zinc finger factors	BED zinc finger factors
+ZBED6	ZBED6	ENSG00000257315	1	True	BED ZF		
+ZBTB1	ZBTB1	ENSG00000126804	1	True	C2H2 ZF		
+ZBTB10	ZBTB10	ENSG00000205189	1	True	C2H2 ZF		
+ZBTB11	ZBTB11	ENSG00000066422	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB12	ZBTB12	ENSG00000204366	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB14	ZBTB14	ENSG00000198081	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB16	ZBTB16	ENSG00000109906	1	True	C2H2 ZF		
+ZBTB17	ZBTB17	ENSG00000116809	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZBTB18	ZBTB18	ENSG00000179456	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB2	ZBTB2	ENSG00000181472	1	True	C2H2 ZF		
+ZBTB20	ZBTB20	ENSG00000181722	2	True	C2H2 ZF		
+ZBTB21	ZBTB21	ENSG00000173276	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZBTB22	ZBTB22	ENSG00000236104	1	True	C2H2 ZF		
+ZBTB24	ZBTB24	ENSG00000112365	1	True	C2H2 ZF; AT hook	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB25	ZBTB25	ENSG00000089775	1	True	C2H2 ZF		
+ZBTB26	ZBTB26	ENSG00000171448	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB3	ZBTB3	ENSG00000185670	1	True	C2H2 ZF		
+ZBTB32	ZBTB32	ENSG00000011590	1	True	C2H2 ZF	C2H2 zinc finger factors	Other factors with up to three adjacent zinc fingers
+ZBTB33	ZBTB33	ENSG00000177485	1	True	C2H2 ZF	C2H2 zinc finger factors	Other factors with up to three adjacent zinc fingers
+ZBTB34	ZBTB34	ENSG00000177125	1	True	C2H2 ZF		
+ZBTB37	ZBTB37	ENSG00000185278	1	True	C2H2 ZF		
+ZBTB38	ZBTB38	ENSG00000177311	2	True	C2H2 ZF		
+ZBTB39	ZBTB39	ENSG00000166860	1	True	C2H2 ZF		
+ZBTB4	ZBTB4	ENSG00000174282	2	True	C2H2 ZF		
+ZBTB40	ZBTB40	ENSG00000184677	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB41	ZBTB41	ENSG00000177888	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZBTB42	ZBTB42	ENSG00000179627	1	True	C2H2 ZF		
+ZBTB43	ZBTB43	ENSG00000169155	1	True	C2H2 ZF		
+ZBTB44	ZBTB44	ENSG00000196323	1	True	C2H2 ZF		
+ZBTB45	ZBTB45	ENSG00000119574	1	True	C2H2 ZF		
+ZBTB46	ZBTB46	ENSG00000130584	1	True	C2H2 ZF		
+ZBTB47	ZBTB47	ENSG00000114853	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB48	ZBTB48	ENSG00000204859	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB49	ZBTB49	ENSG00000168826	1	True	C2H2 ZF		
+ZBTB5	ZBTB5	ENSG00000168795	1	True	C2H2 ZF	C2H2 zinc finger factors	BTB-POZ
+ZBTB6	ZBTB6	ENSG00000186130	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB7A	ZBTB7A	ENSG00000178951	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB7B	ZBTB7B	ENSG00000160685	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB7C	ZBTB7C	ENSG00000184828	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZBTB8A	ZBTB8A	ENSG00000160062	1	True	C2H2 ZF	C2H2 zinc finger factors	Other factors with up to three adjacent zinc fingers
+ZBTB8B	ZBTB8B	ENSG00000273274	1	True	C2H2 ZF	C2H2 zinc finger factors	Other factors with up to three adjacent zinc fingers
+ZBTB9	ZBTB9	ENSG00000213588	1	True	C2H2 ZF		
+ZC3H11A	ZC3H11A	ENSG00000058673	1	True	CCCH ZF		
+ZC3H15	ZC3H15	ENSG00000065548	1	True	CCCH ZF		
+ZC3H3	ZC3H3	ENSG00000014164	1	True	CCCH ZF		
+ZC3H8	ZC3H8	ENSG00000144161	1	True	CCCH ZF		
+ZCCHC11	TUT4	ENSG00000134744	1	True	Unknown		
+ZCCHC6	TUT7	ENSG00000083223	1	True	Unknown		
+ZEB1	ZEB1	ENSG00000148516	2	True	C2H2 ZF; Homeodomain	Homeo domain factors	HD-ZF factors
+ZEB2	ZEB2	ENSG00000169554	2	True	C2H2 ZF; Homeodomain	Homeo domain factors	HD-ZF
+ZFAT	ZFAT	ENSG00000066827	2	True	C2H2 ZF		
+ZFHX2	ZFHX2	ENSG00000136367	2	True	Homeodomain		
+ZFHX3	ZFHX3	ENSG00000140836	1	True	C2H2 ZF; Homeodomain		
+ZFHX4	ZFHX4	ENSG00000091656	1	True	C2H2 ZF; Homeodomain		
+ZFP1	ZFP1	ENSG00000184517	1	True	C2H2 ZF		
+ZFP14	ZFP14	ENSG00000142065	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZFP2	ZFP2	ENSG00000198939	1	True	C2H2 ZF		
+ZFP28	ZFP28	ENSG00000196867	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZFP3	ZFP3	ENSG00000180787	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZFP30	ZFP30	ENSG00000120784	1	True	C2H2 ZF		
+ZFP36L1	ZFP36L1	ENSG00000185650	2	True	CCCH ZF		
+ZFP36L2	ZFP36L2	ENSG00000152518	1	True	CCCH ZF		
+ZFP37	ZFP37	ENSG00000136866	1	True	C2H2 ZF		
+ZFP41	ZFP41	ENSG00000181638	1	True	C2H2 ZF		
+ZFP42	ZFP42	ENSG00000179059	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZFP57	ZFP57	ENSG00000204644	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZFP62	ZFP62	ENSG00000196670	1	True	C2H2 ZF		
+ZFP64	ZFP64	ENSG00000020256	1	True	C2H2 ZF		
+ZFP69	ZFP69	ENSG00000187815	1	True	C2H2 ZF		
+ZFP69B	ZFP69B	ENSG00000187801	1	True	C2H2 ZF		
+ZFP82	ZFP82	ENSG00000181007	1	True	C2H2 ZF		
+ZFP90	ZFP90	ENSG00000184939	2	True	C2H2 ZF		
+ZFP91	ZFP91	ENSG00000186660	1	True	C2H2 ZF		
+ZFP92	ZFP92	ENSG00000189420	1	True	C2H2 ZF		
+ZFPM1	ZFPM1	ENSG00000179588	1	True	C2H2 ZF		
+ZFPM2	ZFPM2	ENSG00000169946	1	True	C2H2 ZF		
+ZFX	ZFX	ENSG00000005889	1	True	C2H2 ZF		
+ZFY	ZFY	ENSG00000067646	1	True	C2H2 ZF		
+ZFYVE20	RBSN	ENSG00000131381	1	True	C2H2 ZF		
+ZFYVE26	ZFYVE26	ENSG00000072121	1	True	FYVE-type ZF		
+ZGLP1	ZGLP1	ENSG00000220201	1	True	GATA	Other C4 zinc finger-type factors	C4-GATA-related
+ZGPAT	ZGPAT	ENSG00000197114	1	True	CCCH ZF		
+ZHX1	ZHX1	ENSG00000165156	1	True	Homeodomain		
+ZHX2	ZHX2	ENSG00000178764	1	True	Homeodomain		
+ZHX3	ZHX3	ENSG00000174306	1	True	Homeodomain		
+ZIC1	ZIC1	ENSG00000152977	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZIC2	ZIC2	ENSG00000043355	1	True	C2H2 ZF		
+ZIC3	ZIC3	ENSG00000156925	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZIC4	ZIC4	ENSG00000174963	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZIC5	ZIC5	ENSG00000139800	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZIK1	ZIK1	ENSG00000171649	1	True	C2H2 ZF		
+ZIM2	ZIM2	ENSG00000269699	1	True	C2H2 ZF		
+ZIM3	ZIM3	ENSG00000141946	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZKSCAN1	ZKSCAN1	ENSG00000106261	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZKSCAN2	ZKSCAN2	ENSG00000155592	1	True	C2H2 ZF		
+ZKSCAN3	ZKSCAN3	ENSG00000189298	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZKSCAN4	ZKSCAN4	ENSG00000187626	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZKSCAN5	ZKSCAN5	ENSG00000196652	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZKSCAN7	ZKSCAN7	ENSG00000196345	1	True	C2H2 ZF		
+ZKSCAN8	ZKSCAN8	ENSG00000198315	1	True	C2H2 ZF		
+ZMAT1	ZMAT1	ENSG00000166432	1	True	C2H2 ZF		
+ZMAT2	ZMAT2	ENSG00000146007	2	True	Unknown		
+ZMAT3	ZMAT3	ENSG00000172667	1	True	C2H2 ZF		
+ZMAT4	ZMAT4	ENSG00000165061	1	True	C2H2 ZF		
+ZNF10	ZNF10	ENSG00000256223	1	True	C2H2 ZF		
+ZNF100	ZNF100	ENSG00000197020	1	True	C2H2 ZF		
+ZNF101	ZNF101	ENSG00000181896	1	True	C2H2 ZF		
+ZNF107	ZNF107	ENSG00000196247	1	True	C2H2 ZF		
+ZNF112	ZNF112	ENSG00000062370	1	True	C2H2 ZF		
+ZNF114	ZNF114	ENSG00000178150	1	True	C2H2 ZF		
+ZNF117	ZNF117	ENSG00000152926	1	True	C2H2 ZF		
+ZNF12	ZNF12	ENSG00000164631	1	True	C2H2 ZF		
+ZNF121	ZNF121	ENSG00000197961	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF124	ZNF124	ENSG00000196418	1	True	C2H2 ZF		
+ZNF131	ZNF131	ENSG00000172262	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF132	ZNF132	ENSG00000131849	1	True	C2H2 ZF		
+ZNF133	ZNF133	ENSG00000125846	1	True	C2H2 ZF		
+ZNF134	ZNF134	ENSG00000213762	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF135	ZNF135	ENSG00000176293	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF136	ZNF136	ENSG00000196646	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF138	ZNF138	ENSG00000197008	1	True	C2H2 ZF		
+ZNF14	ZNF14	ENSG00000105708	1	True	C2H2 ZF		
+ZNF140	ZNF140	ENSG00000196387	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF141	ZNF141	ENSG00000131127	1	True	C2H2 ZF		
+ZNF142	ZNF142	ENSG00000115568	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF143	ZNF143	ENSG00000166478	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF146	ZNF146	ENSG00000167635	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF148	ZNF148	ENSG00000163848	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF154	ZNF154	ENSG00000179909	1	True	C2H2 ZF		
+ZNF155	ZNF155	ENSG00000204920	1	True	C2H2 ZF		
+ZNF157	ZNF157	ENSG00000147117	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF16	ZNF16	ENSG00000170631	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF160	ZNF160	ENSG00000170949	1	True	C2H2 ZF		
+ZNF165	ZNF165	ENSG00000197279	1	True	C2H2 ZF		
+ZNF169	ZNF169	ENSG00000175787	1	True	C2H2 ZF		
+ZNF17	ZNF17	ENSG00000186272	1	True	C2H2 ZF		
+ZNF174	ZNF174	ENSG00000103343	1	True	C2H2 ZF		
+ZNF175	ZNF175	ENSG00000105497	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF177	ZNF177	ENSG00000188629	2	True	C2H2 ZF		
+ZNF18	ZNF18	ENSG00000154957	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF180	ZNF180	ENSG00000167384	1	True	C2H2 ZF		
+ZNF181	ZNF181	ENSG00000197841	1	True	C2H2 ZF		
+ZNF182	ZNF182	ENSG00000147118	1	True	C2H2 ZF		
+ZNF184	ZNF184	ENSG00000096654	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF189	ZNF189	ENSG00000136870	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF19	ZNF19	ENSG00000157429	1	True	C2H2 ZF		
+ZNF195	ZNF195	ENSG00000005801	1	True	C2H2 ZF		
+ZNF197	ZNF197	ENSG00000186448	1	True	C2H2 ZF		
+ZNF2	ZNF2	ENSG00000275111	1	True	C2H2 ZF		
+ZNF20	ZNF20	ENSG00000132010	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF200	ZNF200	ENSG00000010539	1	True	C2H2 ZF		
+ZNF202	ZNF202	ENSG00000166261	1	True	C2H2 ZF		
+ZNF205	ZNF205	ENSG00000122386	1	True	C2H2 ZF		
+ZNF207	ZNF207	ENSG00000010244	2	True	C2H2 ZF		
+ZNF208	ZNF208	ENSG00000160321	1	True	C2H2 ZF		
+ZNF211	ZNF211	ENSG00000121417	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF212	ZNF212	ENSG00000170260	1	True	C2H2 ZF		
+ZNF213	ZNF213	ENSG00000085644	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF214	ZNF214	ENSG00000149050	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF215	ZNF215	ENSG00000149054	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF217	ZNF217	ENSG00000171940	2	True	C2H2 ZF		
+ZNF219	ZNF219	ENSG00000165804	1	True	C2H2 ZF		
+ZNF22	ZNF22	ENSG00000165512	1	True	C2H2 ZF		
+ZNF221	ZNF221	ENSG00000159905	1	True	C2H2 ZF		
+ZNF222	ZNF222	ENSG00000159885	1	True	C2H2 ZF		
+ZNF223	ZNF223	ENSG00000178386	1	True	C2H2 ZF		
+ZNF224	ZNF224	ENSG00000267680	1	True	C2H2 ZF		
+ZNF225	ZNF225	ENSG00000256294	1	True	C2H2 ZF		
+ZNF226	ZNF226	ENSG00000167380	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF227	ZNF227	ENSG00000131115	1	True	C2H2 ZF		
+ZNF229	ZNF229	ENSG00000278318	1	True	C2H2 ZF		
+ZNF23	ZNF23	ENSG00000167377	2	True	C2H2 ZF		
+ZNF230	ZNF230	ENSG00000159882	1	True	C2H2 ZF		
+ZNF232	ZNF232	ENSG00000167840	2	True	C2H2 ZF		
+ZNF233	ZNF233	ENSG00000159915	1	True	C2H2 ZF		
+ZNF234	ZNF234	ENSG00000263002	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF235	ZNF235	ENSG00000159917	1	True	C2H2 ZF		
+ZNF236	ZNF236	ENSG00000130856	1	True	C2H2 ZF		
+ZNF239	ZNF239	ENSG00000196793	1	True	C2H2 ZF		
+ZNF24	ZNF24	ENSG00000172466	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF248	ZNF248	ENSG00000198105	1	True	C2H2 ZF		
+ZNF25	ZNF25	ENSG00000175395	1	True	C2H2 ZF		
+ZNF250	ZNF250	ENSG00000196150	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF251	ZNF251	ENSG00000198169	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF253	ZNF253	ENSG00000256771	1	True	C2H2 ZF		
+ZNF254	ZNF254	ENSG00000213096	1	True	C2H2 ZF		
+ZNF256	ZNF256	ENSG00000152454	1	True	C2H2 ZF		
+ZNF257	ZNF257	ENSG00000197134	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF26	ZNF26	ENSG00000198393	1	True	C2H2 ZF		
+ZNF260	ZNF260	ENSG00000254004	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF263	ZNF263	ENSG00000006194	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF264	ZNF264	ENSG00000083844	1	True	C2H2 ZF		
+ZNF266	ZNF266	ENSG00000174652	1	True	C2H2 ZF		
+ZNF267	ZNF267	ENSG00000185947	2	True	C2H2 ZF		
+ZNF268	ZNF268	ENSG00000090612	1	True	C2H2 ZF		
+ZNF273	ZNF273	ENSG00000198039	2	True	C2H2 ZF		
+ZNF274	ZNF274	ENSG00000171606	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF275	ZNF275	ENSG00000063587	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF276	ZNF276	ENSG00000158805	1	True	C2H2 ZF		
+ZNF277	ZNF277	ENSG00000198839	1	True	C2H2 ZF; BED ZF		
+ZNF28	ZNF28	ENSG00000198538	1	True	C2H2 ZF		
+ZNF280A	ZNF280A	ENSG00000169548	1	True	C2H2 ZF		
+ZNF280B	ZNF280B	ENSG00000275004	1	True	C2H2 ZF		
+ZNF280C	ZNF280C	ENSG00000056277	1	True	C2H2 ZF		
+ZNF280D	ZNF280D	ENSG00000137871	1	True	C2H2 ZF		
+ZNF281	ZNF281	ENSG00000162702	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF282	ZNF282	ENSG00000170265	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF283	ZNF283	ENSG00000167637	1	True	C2H2 ZF		
+ZNF284	ZNF284	ENSG00000186026	1	True	C2H2 ZF		
+ZNF285	ZNF285	ENSG00000267508	1	True	C2H2 ZF		
+ZNF286A	ZNF286A	ENSG00000187607	1	True	C2H2 ZF		
+ZNF286B	ZNF286B	ENSG00000290687	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF287	ZNF287	ENSG00000141040	1	True	C2H2 ZF		
+ZNF292	ZNF292	ENSG00000188994	1	True	C2H2 ZF		
+ZNF296	ZNF296	ENSG00000170684	1	True	C2H2 ZF		
+ZNF3	ZNF3	ENSG00000166526	1	True	C2H2 ZF		
+ZNF30	ZNF30	ENSG00000168661	1	True	C2H2 ZF		
+ZNF300	ZNF300	ENSG00000145908	1	True	C2H2 ZF		
+ZNF302	ZNF302	ENSG00000089335	1	True	C2H2 ZF		
+ZNF304	ZNF304	ENSG00000131845	1	True	C2H2 ZF		
+ZNF311	ZNF311	ENSG00000197935	1	True	C2H2 ZF		
+ZNF317	ZNF317	ENSG00000130803	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF318	ZNF318	ENSG00000171467	1	True	C2H2 ZF		
+ZNF319	ZNF319	ENSG00000166188	2	True	C2H2 ZF		
+ZNF32	ZNF32	ENSG00000169740	1	True	C2H2 ZF		
+ZNF320	ZNF320	ENSG00000182986	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF322	ZNF322	ENSG00000181315	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF324	ZNF324	ENSG00000083812	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF324B	ZNF324B	ENSG00000249471	1	True	C2H2 ZF		
+ZNF326	ZNF326	ENSG00000162664	1	True	C2H2 ZF		
+ZNF329	ZNF329	ENSG00000181894	2	True	C2H2 ZF		
+ZNF330	ZNF330	ENSG00000109445	1	True	NOA36-type ZF		
+ZNF331	ZNF331	ENSG00000130844	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF333	ZNF333	ENSG00000160961	1	True	C2H2 ZF		
+ZNF334	ZNF334	ENSG00000198185	1	True	C2H2 ZF		
+ZNF335	ZNF335	ENSG00000198026	1	True	C2H2 ZF	C2H2 zinc finger factors	Other factors with up to three adjacent zinc fingers
+ZNF337	ZNF337	ENSG00000130684	1	True	C2H2 ZF		
+ZNF33A	ZNF33A	ENSG00000189180	1	True	C2H2 ZF		
+ZNF33B	ZNF33B	ENSG00000196693	1	True	C2H2 ZF		
+ZNF34	ZNF34	ENSG00000196378	1	True	C2H2 ZF		
+ZNF341	ZNF341	ENSG00000131061	2	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF343	ZNF343	ENSG00000088876	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF345	ZNF345	ENSG00000251247	1	True	C2H2 ZF		
+ZNF346	ZNF346	ENSG00000113761	1	True	C2H2 ZF		
+ZNF347	ZNF347	ENSG00000197937	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF35	ZNF35	ENSG00000169981	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF350	ZNF350	ENSG00000256683	1	True	C2H2 ZF		
+ZNF354A	ZNF354A	ENSG00000169131	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF354B	ZNF354B	ENSG00000178338	1	True	C2H2 ZF		
+ZNF354C	ZNF354C	ENSG00000177932	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF358	ZNF358	ENSG00000198816	2	True	C2H2 ZF		
+ZNF362	ZNF362	ENSG00000160094	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF365	ZNF365	ENSG00000138311	1	True	C2H2 ZF		
+ZNF366	ZNF366	ENSG00000178175	1	True	C2H2 ZF		
+ZNF367	ZNF367	ENSG00000165244	1	True	C2H2 ZF	C2H2 zinc finger factors	
+ZNF37A	ZNF37A	ENSG00000075407	1	True	C2H2 ZF		
+ZNF382	ZNF382	ENSG00000161298	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF383	ZNF383	ENSG00000188283	1	True	C2H2 ZF		
+ZNF384	ZNF384	ENSG00000126746	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF385A	ZNF385A	ENSG00000161642	2	True	C2H2 ZF		
+ZNF385B	ZNF385B	ENSG00000144331	1	True	C2H2 ZF		
+ZNF385C	ZNF385C	ENSG00000187595	1	True	C2H2 ZF		
+ZNF385D	ZNF385D	ENSG00000151789	1	True	C2H2 ZF		
+ZNF391	ZNF391	ENSG00000124613	1	True	C2H2 ZF		
+ZNF394	ZNF394	ENSG00000160908	1	True	C2H2 ZF		
+ZNF395	ZNF395	ENSG00000186918	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF396	ZNF396	ENSG00000186496	1	True	C2H2 ZF		
+ZNF397	ZNF397	ENSG00000186812	1	True	C2H2 ZF		
+ZNF398	ZNF398	ENSG00000197024	1	True	C2H2 ZF		
+ZNF404	ZNF404	ENSG00000176222	1	True	C2H2 ZF		
+ZNF407	ZNF407	ENSG00000215421	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF408	ZNF408	ENSG00000175213	1	True	C2H2 ZF		
+ZNF41	ZNF41	ENSG00000147124	1	True	C2H2 ZF		
+ZNF410	ZNF410	ENSG00000119725	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF414	ZNF414	ENSG00000133250	1	True	C2H2 ZF		
+ZNF415	ZNF415	ENSG00000170954	1	True	C2H2 ZF		
+ZNF416	ZNF416	ENSG00000083817	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF417	ZNF417	ENSG00000173480	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF418	ZNF418	ENSG00000196724	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF419	ZNF419	ENSG00000105136	1	True	C2H2 ZF		
+ZNF420	ZNF420	ENSG00000197050	1	True	C2H2 ZF		
+ZNF423	ZNF423	ENSG00000102935	2	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF425	ZNF425	ENSG00000204947	1	True	C2H2 ZF		
+ZNF426	ZNF426	ENSG00000130818	1	True	C2H2 ZF		
+ZNF428	ZNF428	ENSG00000131116	1	True	C2H2 ZF		
+ZNF429	ZNF429	ENSG00000197013	1	True	C2H2 ZF		
+ZNF43	ZNF43	ENSG00000198521	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF430	ZNF430	ENSG00000118620	1	True	C2H2 ZF		
+ZNF431	ZNF431	ENSG00000196705	1	True	C2H2 ZF		
+ZNF432	ZNF432	ENSG00000256087	1	True	C2H2 ZF		
+ZNF433	ZNF433	ENSG00000197647	1	True	C2H2 ZF		
+ZNF436	ZNF436	ENSG00000125945	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF438	ZNF438	ENSG00000183621	2	True	C2H2 ZF		
+ZNF439	ZNF439	ENSG00000171291	1	True	C2H2 ZF		
+ZNF44	ZNF44	ENSG00000197857	1	True	C2H2 ZF		
+ZNF440	ZNF440	ENSG00000171295	1	True	C2H2 ZF		
+ZNF441	ZNF441	ENSG00000197044	1	True	C2H2 ZF		
+ZNF442	ZNF442	ENSG00000198342	1	True	C2H2 ZF		
+ZNF443	ZNF443	ENSG00000180855	1	True	C2H2 ZF		
+ZNF444	ZNF444	ENSG00000167685	1	True	C2H2 ZF		
+ZNF445	ZNF445	ENSG00000185219	1	True	C2H2 ZF		
+ZNF446	ZNF446	ENSG00000083838	1	True	C2H2 ZF		
+ZNF449	ZNF449	ENSG00000173275	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF45	ZNF45	ENSG00000124459	1	True	C2H2 ZF		
+ZNF451	ZNF451	ENSG00000112200	1	True	C2H2 ZF		
+ZNF454	ZNF454	ENSG00000178187	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF460	ZNF460	ENSG00000197714	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF461	ZNF461	ENSG00000197808	1	True	C2H2 ZF		
+ZNF462	ZNF462	ENSG00000148143	1	True	C2H2 ZF		
+ZNF467	ZNF467	ENSG00000181444	1	True	C2H2 ZF		
+ZNF468	ZNF468	ENSG00000204604	1	True	C2H2 ZF		
+ZNF469	ZNF469	ENSG00000225614	1	True	C2H2 ZF		
+ZNF470	ZNF470	ENSG00000197016	1	True	C2H2 ZF	C2H2 zinc finger factors	Other factors with up to three adjacent zinc fingers
+ZNF471	ZNF471	ENSG00000196263	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF473	ZNF473	ENSG00000142528	1	True	C2H2 ZF		
+ZNF474	ZNF474	ENSG00000164185	1	True	C2H2 ZF		
+ZNF479	ZNF479	ENSG00000185177	1	True	C2H2 ZF		
+ZNF48	ZNF48	ENSG00000180035	1	True	C2H2 ZF		
+ZNF480	ZNF480	ENSG00000198464	1	True	C2H2 ZF		
+ZNF483	ZNF483	ENSG00000173258	1	True	C2H2 ZF		
+ZNF484	ZNF484	ENSG00000127081	1	True	C2H2 ZF		
+ZNF485	ZNF485	ENSG00000198298	1	True	C2H2 ZF		
+ZNF486	ZNF486	ENSG00000256229	1	True	C2H2 ZF		
+ZNF488	ZNF488	ENSG00000265763	2	True	C2H2 ZF		
+ZNF490	ZNF490	ENSG00000188033	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF491	ZNF491	ENSG00000177599	1	True	C2H2 ZF		
+ZNF492	ZNF492	ENSG00000229676	1	True	C2H2 ZF		
+ZNF493	ZNF493	ENSG00000196268	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF496	ZNF496	ENSG00000162714	1	True	C2H2 ZF		
+ZNF497	ZNF497	ENSG00000174586	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF500	ZNF500	ENSG00000103199	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF501	ZNF501	ENSG00000186446	1	True	C2H2 ZF		
+ZNF502	ZNF502	ENSG00000196653	1	True	C2H2 ZF		
+ZNF503	ZNF503	ENSG00000165655	1	True	C2H2 ZF		
+ZNF506	ZNF506	ENSG00000081665	1	True	C2H2 ZF		
+ZNF507	ZNF507	ENSG00000168813	1	True	C2H2 ZF		
+ZNF510	ZNF510	ENSG00000081386	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF511	ZNF511	ENSG00000198546	1	True	C2H2 ZF		
+ZNF512	ZNF512	ENSG00000243943	1	True	C2H2 ZF; BED ZF		
+ZNF512B	ZNF512B	ENSG00000196700	1	True	C2H2 ZF		
+ZNF513	ZNF513	ENSG00000163795	1	True	C2H2 ZF		
+ZNF514	ZNF514	ENSG00000144026	2	True	C2H2 ZF		
+ZNF516	ZNF516	ENSG00000101493	1	True	C2H2 ZF		
+ZNF517	ZNF517	ENSG00000197363	1	True	C2H2 ZF		
+ZNF518A	ZNF518A	ENSG00000177853	1	True	C2H2 ZF		
+ZNF518B	ZNF518B	ENSG00000178163	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF519	ZNF519	ENSG00000175322	1	True	C2H2 ZF		
+ZNF521	ZNF521	ENSG00000198795	1	True	C2H2 ZF		
+ZNF524	ZNF524	ENSG00000171443	1	True	C2H2 ZF; AT hook	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF526	ZNF526	ENSG00000167625	1	True	C2H2 ZF		
+ZNF527	ZNF527	ENSG00000189164	1	True	C2H2 ZF		
+ZNF528	ZNF528	ENSG00000167555	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF529	ZNF529	ENSG00000186020	1	True	C2H2 ZF		
+ZNF530	ZNF530	ENSG00000183647	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF532	ZNF532	ENSG00000074657	2	True	C2H2 ZF		
+ZNF534	ZNF534	ENSG00000198633	1	True	C2H2 ZF		
+ZNF536	ZNF536	ENSG00000198597	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF540	ZNF540	ENSG00000171817	2	True	C2H2 ZF		
+ZNF541	ZNF541	ENSG00000118156	1	True	C2H2 ZF; Myb/SANT		
+ZNF543	ZNF543	ENSG00000178229	1	True	C2H2 ZF		
+ZNF544	ZNF544	ENSG00000198131	1	True	C2H2 ZF		
+ZNF546	ZNF546	ENSG00000187187	1	True	C2H2 ZF		
+ZNF547	ZNF547	ENSG00000152433	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF548	ZNF548	ENSG00000188785	1	True	C2H2 ZF		
+ZNF549	ZNF549	ENSG00000121406	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF550	ZNF550	ENSG00000251369	1	True	C2H2 ZF		
+ZNF551	ZNF551	ENSG00000204519	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF552	ZNF552	ENSG00000178935	1	True	C2H2 ZF		
+ZNF554	ZNF554	ENSG00000172006	1	True	C2H2 ZF		
+ZNF555	ZNF555	ENSG00000186300	1	True	C2H2 ZF		
+ZNF556	ZNF556	ENSG00000172000	1	True	C2H2 ZF		
+ZNF557	ZNF557	ENSG00000130544	1	True	C2H2 ZF		
+ZNF558	ZNF558	ENSG00000167785	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF559	ZNF559	ENSG00000188321	1	True	C2H2 ZF		
+ZNF559-ZNF177	ZNF559-ZNF177	ENSG00000270011	1	False			
+ZNF560	ZNF560	ENSG00000198028	1	True	C2H2 ZF		
+ZNF561	ZNF561	ENSG00000171469	1	True	C2H2 ZF		
+ZNF562	ZNF562	ENSG00000171466	1	True	C2H2 ZF		
+ZNF563	ZNF563	ENSG00000188868	1	True	C2H2 ZF		
+ZNF564	ZNF564	ENSG00000249709	1	True	C2H2 ZF		
+ZNF565	ZNF565	ENSG00000196357	1	True	C2H2 ZF		
+ZNF566	ZNF566	ENSG00000186017	1	True	C2H2 ZF		
+ZNF567	ZNF567	ENSG00000189042	1	True	C2H2 ZF		
+ZNF568	ZNF568	ENSG00000198453	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF569	ZNF569	ENSG00000196437	1	True	C2H2 ZF		
+ZNF57	ZNF57	ENSG00000171970	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF570	ZNF570	ENSG00000171827	2	True	C2H2 ZF		
+ZNF571	ZNF571	ENSG00000180479	1	True	C2H2 ZF		
+ZNF572	ZNF572	ENSG00000180938	1	True	C2H2 ZF		
+ZNF573	ZNF573	ENSG00000189144	1	True	C2H2 ZF		
+ZNF574	ZNF574	ENSG00000105732	2	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF575	ZNF575	ENSG00000176472	1	True	C2H2 ZF		
+ZNF576	ZNF576	ENSG00000124444	1	True	C2H2 ZF		
+ZNF577	ZNF577	ENSG00000161551	1	True	C2H2 ZF		
+ZNF578	ZNF578	ENSG00000258405	1	True	C2H2 ZF		
+ZNF579	ZNF579	ENSG00000218891	1	True	C2H2 ZF		
+ZNF580	ZNF580	ENSG00000213015	2	True	C2H2 ZF		
+ZNF581	ZNF581	ENSG00000171425	2	True	C2H2 ZF		
+ZNF582	ZNF582	ENSG00000018869	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF583	ZNF583	ENSG00000198440	1	True	C2H2 ZF		
+ZNF584	ZNF584	ENSG00000171574	1	True	C2H2 ZF		
+ZNF585A	ZNF585A	ENSG00000196967	1	True	C2H2 ZF		
+ZNF585B	ZNF585B	ENSG00000245680	1	True	C2H2 ZF		
+ZNF586	ZNF586	ENSG00000083828	1	True	C2H2 ZF		
+ZNF587	ZNF587	ENSG00000198466	1	True	C2H2 ZF		
+ZNF587B	ZNF587B	ENSG00000269343	1	True	C2H2 ZF		
+ZNF589	ZNF589	ENSG00000164048	1	True	C2H2 ZF		
+ZNF592	ZNF592	ENSG00000166716	1	True	C2H2 ZF		
+ZNF593	ZNF593	ENSG00000142684	1	True	C2H2 ZF		
+ZNF594	ZNF594	ENSG00000180626	1	True	C2H2 ZF		
+ZNF595	ZNF595	ENSG00000272602	2	True	C2H2 ZF		
+ZNF596	ZNF596	ENSG00000172748	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF597	ZNF597	ENSG00000167981	1	True	C2H2 ZF		
+ZNF598	ZNF598	ENSG00000167962	1	True	C2H2 ZF		
+ZNF599	ZNF599	ENSG00000153896	1	True	C2H2 ZF		
+ZNF600	ZNF600	ENSG00000189190	1	True	C2H2 ZF		
+ZNF605	ZNF605	ENSG00000196458	1	True	C2H2 ZF		
+ZNF606	ZNF606	ENSG00000166704	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF607	ZNF607	ENSG00000198182	1	True	C2H2 ZF		
+ZNF608	ZNF608	ENSG00000168916	2	True	C2H2 ZF		
+ZNF609	ZNF609	ENSG00000180357	1	True	C2H2 ZF		
+ZNF610	ZNF610	ENSG00000167554	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF611	ZNF611	ENSG00000213020	1	True	C2H2 ZF		
+ZNF613	ZNF613	ENSG00000176024	1	True	C2H2 ZF		
+ZNF614	ZNF614	ENSG00000142556	1	True	C2H2 ZF		
+ZNF615	ZNF615	ENSG00000197619	1	True	C2H2 ZF		
+ZNF616	ZNF616	ENSG00000204611	1	True	C2H2 ZF		
+ZNF618	ZNF618	ENSG00000157657	1	True	C2H2 ZF		
+ZNF619	ZNF619	ENSG00000177873	1	True	C2H2 ZF		
+ZNF620	ZNF620	ENSG00000177842	1	True	C2H2 ZF		
+ZNF621	ZNF621	ENSG00000172888	1	True	C2H2 ZF		
+ZNF623	ZNF623	ENSG00000183309	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF624	ZNF624	ENSG00000197566	1	True	C2H2 ZF		
+ZNF625	ZNF625	ENSG00000257591	1	True	C2H2 ZF		
+ZNF626	ZNF626	ENSG00000188171	1	True	C2H2 ZF		
+ZNF627	ZNF627	ENSG00000198551	1	True	C2H2 ZF		
+ZNF628	ZNF628	ENSG00000197483	1	True	C2H2 ZF		
+ZNF629	ZNF629	ENSG00000102870	1	True	C2H2 ZF		
+ZNF630	ZNF630	ENSG00000221994	1	True	C2H2 ZF		
+ZNF639	ZNF639	ENSG00000121864	1	True	C2H2 ZF		
+ZNF641	ZNF641	ENSG00000167528	1	True	C2H2 ZF		
+ZNF644	ZNF644	ENSG00000122482	1	True	C2H2 ZF		
+ZNF645	CBLL2	ENSG00000175809	1	True	C2H2 ZF		
+ZNF646	ZNF646	ENSG00000167395	1	True	C2H2 ZF		
+ZNF648	ZNF648	ENSG00000179930	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF649	ZNF649	ENSG00000198093	1	True	C2H2 ZF		
+ZNF652	ZNF652	ENSG00000198740	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF653	ZNF653	ENSG00000161914	1	True	C2H2 ZF; AT hook		
+ZNF654	ZNF654	ENSG00000175105	1	True	C2H2 ZF		
+ZNF655	ZNF655	ENSG00000197343	1	True	C2H2 ZF		
+ZNF658	ZNF658	ENSG00000274349	1	True	C2H2 ZF		
+ZNF660	ZNF660	ENSG00000144792	1	True	C2H2 ZF		
+ZNF662	ZNF662	ENSG00000182983	1	True	C2H2 ZF		
+ZNF664	ZNF664	ENSG00000179195	1	True	C2H2 ZF		
+ZNF665	ZNF665	ENSG00000197497	1	True	C2H2 ZF		
+ZNF667	ZNF667	ENSG00000198046	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF668	ZNF668	ENSG00000167394	1	True	C2H2 ZF		
+ZNF669	ZNF669	ENSG00000188295	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF670	ZNF670	ENSG00000277462	1	True	C2H2 ZF		
+ZNF671	ZNF671	ENSG00000083814	1	True	C2H2 ZF		
+ZNF672	ZNF672	ENSG00000171161	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF674	ZNF674	ENSG00000251192	1	True	C2H2 ZF		
+ZNF675	ZNF675	ENSG00000197372	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF676	ZNF676	ENSG00000196109	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF677	ZNF677	ENSG00000197928	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF678	ZNF678	ENSG00000181450	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF679	ZNF679	ENSG00000197123	1	True	C2H2 ZF		
+ZNF680	ZNF680	ENSG00000173041	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF681	ZNF681	ENSG00000196172	1	True	C2H2 ZF		
+ZNF682	ZNF682	ENSG00000197124	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF683	ZNF683	ENSG00000176083	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF684	ZNF684	ENSG00000117010	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF687	ZNF687	ENSG00000143373	1	True	C2H2 ZF		
+ZNF688	ZNF688	ENSG00000229809	1	True	C2H2 ZF		
+ZNF689	ZNF689	ENSG00000156853	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF69	ZNF69	ENSG00000198429	1	True	C2H2 ZF		
+ZNF691	ZNF691	ENSG00000164011	1	True	C2H2 ZF		
+ZNF692	ZNF692	ENSG00000171163	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF695	ZNF695	ENSG00000197472	1	True	C2H2 ZF		
+ZNF696	ZNF696	ENSG00000185730	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF697	ZNF697	ENSG00000143067	1	True	C2H2 ZF		
+ZNF699	ZNF699	ENSG00000196110	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF7	ZNF7	ENSG00000147789	1	True	C2H2 ZF		
+ZNF70	ZNF70	ENSG00000187792	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF700	ZNF700	ENSG00000196757	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF701	ZNF701	ENSG00000167562	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF703	ZNF703	ENSG00000183779	1	True	C2H2 ZF		
+ZNF704	ZNF704	ENSG00000164684	1	True	C2H2 ZF		
+ZNF705A	ZNF705A	ENSG00000196946	1	True	C2H2 ZF		
+ZNF705B	ZNF705B	ENSG00000215356	2	True	C2H2 ZF		
+ZNF705D	ZNF705D	ENSG00000215343	1	True	C2H2 ZF		
+ZNF705G	ZNF705G	ENSG00000215372	2	True	C2H2 ZF		
+ZNF706	ZNF706	ENSG00000120963	1	True	C2H2 ZF		
+ZNF707	ZNF707	ENSG00000181135	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF708	ZNF708	ENSG00000182141	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF709	ZNF709	ENSG00000242852	1	True	C2H2 ZF		
+ZNF71	ZNF71	ENSG00000197951	1	True	C2H2 ZF		
+ZNF710	ZNF710	ENSG00000140548	1	True	C2H2 ZF		
+ZNF711	ZNF711	ENSG00000147180	1	True	C2H2 ZF		
+ZNF713	ZNF713	ENSG00000178665	1	True	C2H2 ZF		
+ZNF714	ZNF714	ENSG00000160352	1	True	C2H2 ZF		
+ZNF716	ZNF716	ENSG00000182111	1	True	C2H2 ZF		
+ZNF717	ZNF717	ENSG00000227124	1	True	C2H2 ZF		
+ZNF718	ZNF718	ENSG00000250312	3	True	C2H2 ZF		
+ZNF720	KRBOX5	ENSG00000197302	1	True	Unknown		
+ZNF721	ZNF721	ENSG00000182903	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF726	ZNF726	ENSG00000213967	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF727	ZNF727	ENSG00000214652	1	True	C2H2 ZF		
+ZNF728	ZNF728	ENSG00000269067	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF729	ZNF729	ENSG00000196350	1	True	C2H2 ZF		
+ZNF730	ZNF730	ENSG00000183850	1	True	C2H2 ZF		
+ZNF732	ZNF732	ENSG00000186777	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF735	ZNF735	ENSG00000223614	1	True	C2H2 ZF		
+ZNF736	ZNF736	ENSG00000234444	2	True	C2H2 ZF		
+ZNF737	ZNF737	ENSG00000237440	1	True	C2H2 ZF		
+ZNF74	ZNF74	ENSG00000185252	1	True	C2H2 ZF		
+ZNF740	ZNF740	ENSG00000139651	1	True	C2H2 ZF	C2H2 zinc finger factors	Other factors with up to three adjacent zinc fingers
+ZNF746	ZNF746	ENSG00000181220	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF747	ZNF747	ENSG00000169955	1	True	C2H2 ZF		
+ZNF749	ZNF749	ENSG00000186230	1	True	C2H2 ZF		
+ZNF750	ZNF750	ENSG00000141579	1	True	C2H2 ZF		
+ZNF75A	ZNF75A	ENSG00000162086	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF75D	ZNF75D	ENSG00000186376	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF76	ZNF76	ENSG00000065029	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF761	ZNF761	ENSG00000160336	1	True	C2H2 ZF		
+ZNF763	ZNF763	ENSG00000197054	1	True	C2H2 ZF		
+ZNF764	ZNF764	ENSG00000169951	1	True	C2H2 ZF		
+ZNF765	ZNF765	ENSG00000196417	2	True	C2H2 ZF		
+ZNF766	ZNF766	ENSG00000196214	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF768	ZNF768	ENSG00000169957	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF77	ZNF77	ENSG00000175691	1	True	C2H2 ZF		
+ZNF770	ZNF770	ENSG00000198146	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF771	ZNF771	ENSG00000179965	1	True	C2H2 ZF		
+ZNF772	ZNF772	ENSG00000197128	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF773	ZNF773	ENSG00000152439	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF774	ZNF774	ENSG00000196391	1	True	C2H2 ZF		
+ZNF775	ZNF775	ENSG00000196456	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF776	ZNF776	ENSG00000152443	1	True	C2H2 ZF		
+ZNF777	ZNF777	ENSG00000196453	1	True	C2H2 ZF		
+ZNF778	ZNF778	ENSG00000170100	1	True	C2H2 ZF		
+ZNF780A	ZNF780A	ENSG00000197782	1	True	C2H2 ZF		
+ZNF780B	ZNF780B	ENSG00000128000	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF781	ZNF781	ENSG00000290988	1	True	C2H2 ZF		
+ZNF782	ZNF782	ENSG00000196597	1	True	C2H2 ZF		
+ZNF783	ZNF783	ENSG00000204946	1	True	C2H2 ZF		
+ZNF784	ZNF784	ENSG00000179922	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF785	ZNF785	ENSG00000197162	1	True	C2H2 ZF		
+ZNF786	ZNF786	ENSG00000197362	1	True	C2H2 ZF		
+ZNF787	ZNF787	ENSG00000142409	1	True	C2H2 ZF		
+ZNF789	ZNF789	ENSG00000198556	1	True	C2H2 ZF		
+ZNF79	ZNF79	ENSG00000196152	1	True	C2H2 ZF		
+ZNF790	ZNF790	ENSG00000197863	2	True	C2H2 ZF		
+ZNF791	ZNF791	ENSG00000173875	1	True	C2H2 ZF		
+ZNF792	ZNF792	ENSG00000180884	1	True	C2H2 ZF		
+ZNF793	ZNF793	ENSG00000188227	1	True	C2H2 ZF		
+ZNF799	ZNF799	ENSG00000196466	1	True	C2H2 ZF		
+ZNF8	ZNF8	ENSG00000278129	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF80	ZNF80	ENSG00000174255	1	True	C2H2 ZF		
+ZNF800	ZNF800	ENSG00000048405	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF804A	ZNF804A	ENSG00000170396	1	True	C2H2 ZF		
+ZNF804B	ZNF804B	ENSG00000182348	1	True	C2H2 ZF		
+ZNF805	ZNF805	ENSG00000204524	1	True	C2H2 ZF		
+ZNF808	ZNF808	ENSG00000198482	2	True	C2H2 ZF		
+ZNF81	ZNF81	ENSG00000197779	1	True	C2H2 ZF		
+ZNF813	ZNF813	ENSG00000198346	1	True	C2H2 ZF		
+ZNF814	ZNF814	ENSG00000204514	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF816	ZNF816	ENSG00000180257	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF821	ZNF821	ENSG00000102984	1	True	C2H2 ZF		
+ZNF823	ZNF823	ENSG00000197933	1	True	C2H2 ZF		
+ZNF827	ZNF827	ENSG00000151612	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF829	ZNF829	ENSG00000185869	1	True	C2H2 ZF		
+ZNF83	ZNF83	ENSG00000167766	3	True	C2H2 ZF		
+ZNF830	ZNF830	ENSG00000198783	1	True	C2H2 ZF		
+ZNF831	ZNF831	ENSG00000124203	1	True	C2H2 ZF	C2H2 zinc finger factors	Factors with multiple dispersed zinc fingers
+ZNF835	ZNF835	ENSG00000127903	1	True	C2H2 ZF		
+ZNF836	ZNF836	ENSG00000196267	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF837	ZNF837	ENSG00000152475	1	True	C2H2 ZF		
+ZNF839	ZNF839	ENSG00000022976	1	True	C2H2 ZF		
+ZNF84	ZNF84	ENSG00000198040	1	True	C2H2 ZF		
+ZNF841	ZNF841	ENSG00000197608	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF843	ZNF843	ENSG00000176723	1	True	C2H2 ZF		
+ZNF844	ZNF844	ENSG00000223547	1	True	C2H2 ZF		
+ZNF845	ZNF845	ENSG00000213799	1	True	C2H2 ZF		
+ZNF846	ZNF846	ENSG00000196605	1	True	C2H2 ZF		
+ZNF85	ZNF85	ENSG00000105750	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF850	ZNF850	ENSG00000267041	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF852	ZNF852	ENSG00000178917	1	True	C2H2 ZF		
+ZNF853	ZNF853	ENSG00000236609	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF860	ZNF860	ENSG00000197385	1	True	C2H2 ZF		
+ZNF862	ZNF862	ENSG00000106479	1	True	Unknown		
+ZNF865	ZNF865	ENSG00000261221	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF878	ZNF878	ENSG00000257446	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF879	ZNF879	ENSG00000234284	1	True	C2H2 ZF		
+ZNF880	ZNF880	ENSG00000221923	1	True	C2H2 ZF		
+ZNF883	ZNF883	ENSG00000228623	1	True	C2H2 ZF		
+ZNF888	ZNF888	ENSG00000213793	2	True	C2H2 ZF		
+ZNF891	ZNF891	ENSG00000214029	1	True	C2H2 ZF		
+ZNF90	ZNF90	ENSG00000213988	1	True	C2H2 ZF		
+ZNF91	ZNF91	ENSG00000167232	1	True	C2H2 ZF		
+ZNF92	ZNF92	ENSG00000146757	1	True	C2H2 ZF		
+ZNF93	ZNF93	ENSG00000184635	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZNF98	ZNF98	ENSG00000197360	1	True	C2H2 ZF		
+ZNF99	ZNF99	ENSG00000213973	1	True	C2H2 ZF		
+ZNFX1	ZNFX1	ENSG00000124201	1	True	Unknown		
+ZSCAN1	ZSCAN1	ENSG00000152467	1	True	C2H2 ZF		
+ZSCAN10	ZSCAN10	ENSG00000130182	1	True	C2H2 ZF		
+ZSCAN12	ZSCAN12	ENSG00000158691	1	True	C2H2 ZF		
+ZSCAN16	ZSCAN16	ENSG00000196812	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZSCAN18	ZSCAN18	ENSG00000121413	2	True	C2H2 ZF		
+ZSCAN2	ZSCAN2	ENSG00000176371	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZSCAN20	ZSCAN20	ENSG00000121903	1	True	C2H2 ZF		
+ZSCAN21	ZSCAN21	ENSG00000166529	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZSCAN22	ZSCAN22	ENSG00000182318	1	True	C2H2 ZF		
+ZSCAN23	ZSCAN23	ENSG00000187987	1	True	C2H2 ZF		
+ZSCAN25	ZSCAN25	ENSG00000197037	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZSCAN26	ZSCAN26	ENSG00000197062	1	True	C2H2 ZF		
+ZSCAN29	ZSCAN29	ENSG00000140265	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZSCAN30	ZSCAN30	ENSG00000186814	1	True	C2H2 ZF		
+ZSCAN31	ZSCAN31	ENSG00000235109	2	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZSCAN32	ZSCAN32	ENSG00000140987	1	True	C2H2 ZF		
+ZSCAN5A	ZSCAN5A	ENSG00000131848	2	True	C2H2 ZF		
+ZSCAN5B	ZSCAN5B	ENSG00000197213	2	True	C2H2 ZF		
+ZSCAN9	ZSCAN9	ENSG00000137185	1	True	C2H2 ZF		
+ZUFSP	ZUP1	ENSG00000153975	1	True	C2H2 ZF		
+ZXDA	ZXDA	ENSG00000198205	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZXDB	ZXDB	ENSG00000198455	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZXDC	ZXDC	ENSG00000070476	1	True	C2H2 ZF	C2H2 zinc finger factors	More than 3 adjacent zinc fingers
+ZZZ3	ZZZ3	ENSG00000036549	1	True	Myb/SANT		

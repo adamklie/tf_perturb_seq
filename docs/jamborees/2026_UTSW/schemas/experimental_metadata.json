@@ -1,0 +1,47 @@
+{
+  "name": "experimental_metadata",
+  "title": "Experimental metadata (comprehensive)",
+  "description": "One row per production dataset, capturing lab / cell line / differentiation / IGVF accessions / pipeline parameters. Hand-curated from per-dataset documentation; chemistry/MOI/spacer-tag fields auto-extracted from each dataset's pipeline config.",
+  "produced_by": "scripts/generate_experimental_metadata.py",
+  "row_count": 5,
+  "primaryKey": "dataset_id",
+  "marker_conventions": {
+    "?": "Value not yet known / needs to be filled in by the team.",
+    "-": "Not applicable / does not exist (e.g., dataset not on portal yet).",
+    "0": "Used in numeric columns to mean unknown (kept numeric)."
+  },
+  "fields": [
+    {"name": "dataset_id", "type": "string", "constraints": {"required": true, "unique": true}, "description": "Canonical long-form ID (matches tf_perturb_seq/datasets/<id>/, primary key)."},
+    {"name": "dataset_name", "type": "string", "description": "Free-text human-friendly name (e.g., 'Hon WTC11 Cardiomyocyte')."},
+    {"name": "lab", "type": "string", "description": "Source lab (Hon, Huangfu, Gersbach, Engreitz)."},
+    {"name": "cell_line", "type": "string", "description": "Starting cell line (WTC11, HUES8)."},
+    {"name": "differentiation", "type": "string", "description": "Lineage / differentiation state."},
+    {"name": "igvf_analysis_set", "type": "string", "description": "IGVF analysis-set accession (e.g., IGVFDS6332VCTO)."},
+    {"name": "igvf_construct_library_set", "type": "string", "description": "IGVF construct-library-set accession."},
+    {"name": "igvf_guide_file", "type": "string", "description": "IGVF guide-file accession (pool A-D library)."},
+    {"name": "guide_pools", "type": "string", "description": "Pool letters used (e.g., ABCD, ABCDF). Pool F is an additional set used by Hon CM and Gersbach hepatocyte; only pool A-D guide metadata is mirrored to Synapse."},
+    {"name": "perturbation_method", "type": "string", "description": "CRISPRi / CRISPRa / etc."},
+    {"name": "assay_technology", "type": "string", "description": "Sequencing chemistry / kit (e.g., 10x 3' v3, 10x 5'-Perturb HTv2)."},
+    {"name": "multiplexing_method", "type": "string", "description": "Sample multiplexing strategy (HTO, none)."},
+    {"name": "n_measurement_sets", "type": "integer", "description": "Number of measurement sets (10x lanes / pools)."},
+    {"name": "canonical_run_label", "type": "string", "description": "The current 'official' pipeline RUN_LABEL for this dataset."},
+    {"name": "canonical_config", "type": "string", "description": "Filename of the canonical pipeline config."},
+    {"name": "gcs_output_path", "type": "string", "description": "GCS output prefix for the canonical run."},
+    {"name": "config_enable_data_hashing", "type": "boolean", "source": "config", "description": "ENABLE_DATA_HASHING."},
+    {"name": "config_is_10x3v3", "type": "boolean", "source": "config", "description": "is_10x3v3."},
+    {"name": "config_reverse_complement_guides", "type": "boolean", "source": "config", "description": "reverse_complement_guides."},
+    {"name": "config_spacer_tag", "type": "string", "source": "config", "description": "spacer_tag (e.g., TAGCTCTTAAAC)."},
+    {"name": "config_guide_assignment_method", "type": "string", "source": "config", "description": "GUIDE_ASSIGNMENT_method (sceptre, cleanser)."},
+    {"name": "config_guide_assignment_capture_method", "type": "string", "source": "config", "description": "GUIDE_ASSIGNMENT_capture_method (CROP-seq, direct-capture)."},
+    {"name": "config_multiplicity_of_infection", "type": "string", "source": "config", "description": "Multiplicity_of_infection (high, low)."},
+    {"name": "config_dual_guide", "type": "boolean", "source": "config", "description": "DUAL_GUIDE."},
+    {"name": "pipeline_status", "type": "string", "description": "One-line status for jamboree audience."},
+    {"name": "notes", "type": "string", "description": "Free-text caveats, run history pointers, lab-specific quirks."}
+  ],
+  "sources": [
+    {"name": "DATA.md", "path": "tf_perturb_seq/docs/DATA.md", "purpose": "Production dataset table (lab / lineage / portal status)."},
+    {"name": "Per-dataset docs", "path": "tf_perturb_seq/datasets/<dataset_id>/<dataset_id>.md and README.md", "purpose": "IGVF accessions, run history, pipeline status, lab-specific notes."},
+    {"name": "Pipeline configs", "path": "tf_perturb_seq/datasets/<dataset_id>/*.config", "purpose": "Chemistry, multiplexing, guide-assignment, spacer tag, MOI."},
+    {"name": "IGVF portal", "url": "https://data.igvf.org/", "purpose": "Ground truth for analysis-set / construct-library / guide-file accessions."}
+  ]
+}

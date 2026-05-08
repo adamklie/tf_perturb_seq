@@ -1,0 +1,19 @@
+{
+  "name": "tf_metadata_simplified",
+  "title": "TF metadata (simplified)",
+  "description": "Lightweight, human-readable subset of the comprehensive TF metadata table. Same row set, fewer columns.",
+  "produced_by": "scripts/generate_tf_metadata.py",
+  "row_count": 1983,
+  "primaryKey": "gene_symbol",
+  "fields": [
+    {"name": "gene_symbol", "type": "string", "constraints": {"required": true, "unique": true}, "description": "Original gene symbol from the target list."},
+    {"name": "hgnc_approved_symbol", "type": "string", "description": "Current approved symbol after alias resolution."},
+    {"name": "ensembl_gene_id", "type": "string", "description": "Ensembl gene ID."},
+    {"name": "n_promoters_in_target_library", "type": "integer", "description": "Number of promoter rows for this gene in the library."},
+    {"name": "in_lambert_2018", "type": "boolean", "description": "Whether the gene appears in Lambert 2018."},
+    {"name": "lambert_2018_dbd", "type": "string", "description": "DNA-binding domain (Lambert)."},
+    {"name": "jaspar_tf_class", "type": "string", "description": "TF class (JASPAR; ;-joined if multiple)."},
+    {"name": "jaspar_tf_family", "type": "string", "description": "TF family (JASPAR; ;-joined if multiple)."}
+  ],
+  "related_schemas": ["tf_metadata.json"]
+}

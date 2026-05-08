@@ -1,0 +1,23 @@
+{
+  "name": "experimental_metadata_simplified",
+  "title": "Experimental metadata (simplified)",
+  "description": "Lightweight, human-readable subset of the comprehensive experimental metadata table. Same row set, fewer columns.",
+  "produced_by": "scripts/generate_experimental_metadata.py",
+  "row_count": 5,
+  "primaryKey": "dataset_id",
+  "fields": [
+    {"name": "dataset_id", "type": "string", "constraints": {"required": true, "unique": true}, "description": "Canonical long-form ID."},
+    {"name": "dataset_name", "type": "string", "description": "Free-text human-friendly name."},
+    {"name": "lab", "type": "string", "description": "Source lab."},
+    {"name": "cell_line", "type": "string", "description": "Starting cell line."},
+    {"name": "differentiation", "type": "string", "description": "Lineage / differentiation state."},
+    {"name": "igvf_analysis_set", "type": "string", "description": "IGVF analysis-set accession."},
+    {"name": "guide_pools", "type": "string", "description": "Pool letters used."},
+    {"name": "perturbation_method", "type": "string", "description": "CRISPRi / CRISPRa / etc."},
+    {"name": "assay_technology", "type": "string", "description": "Sequencing chemistry / kit."},
+    {"name": "multiplexing_method", "type": "string", "description": "Sample multiplexing strategy."},
+    {"name": "n_measurement_sets", "type": "integer", "description": "Number of measurement sets."},
+    {"name": "pipeline_status", "type": "string", "description": "One-line status for jamboree audience."}
+  ],
+  "related_schemas": ["experimental_metadata.json"]
+}
