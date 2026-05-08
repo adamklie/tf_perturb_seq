@@ -211,11 +211,13 @@ BIND_ARGS=(
 
 if [[ ! -f "${OUTPUT_DIR_ABS}/pca_dataframe.pickle" ]] || [[ ! -f "${OUTPUT_DIR_ABS}/gRNA_dict.pickle" ]]; then
   echo "[step0] preprocessing MuData ..."
+  # Use container's pre-installed muon 0.1.7 (in /app/.venv). DO NOT pip install muon
+  # to /tmp/muon_deps — that pulls a newer numpy (>=2.0) whose pickled artifacts
+  # cannot be deserialized by the container's numpy 1.26.4 in steps 1/2/2.1.
   apptainer exec --nv "${BIND_ARGS[@]}" "$CONTAINER_PATH" \
-    bash -c "pip install --quiet --target=/tmp/muon_deps muon && \
-             PYTHONPATH=/tmp/muon_deps python ${PREPROCESS_LOCAL} \
-               --mudata-path ${MUDATA_PATH} \
-               --output-dir ${OUTPUT_DIR_ABS}"
+    python ${PREPROCESS_LOCAL} \
+      --mudata-path ${MUDATA_PATH} \
+      --output-dir ${OUTPUT_DIR_ABS}
 else
   echo "[step0] preprocessed files exist — skipping"
 fi
@@ -229,9 +231,10 @@ fi
 # "1_filtering_gRNA.py".
 ###############################################################################
 
-PYTHONPATH_RUN="/tmp/muon_deps:${PIPELINE_BIN}"
-STEP1_SCRIPT="${PIPELINE_BIN}/1_filtereing_gRNA.py"
-[[ ! -f "$STEP1_SCRIPT" ]] && STEP1_SCRIPT="${PIPELINE_BIN}/1_filtering_gRNA.py"
+PYTHONPATH_RUN="${PIPELINE_BIN}"
+# Prefer the renamed file (upstream main); fall back to the legacy typo'd name only if it's all that exists.
+STEP1_SCRIPT="${PIPELINE_BIN}/1_filtering_gRNA.py"
+[[ ! -f "$STEP1_SCRIPT" ]] && STEP1_SCRIPT="${PIPELINE_BIN}/1_filtereing_gRNA.py"
 
 echo "[step1] filter outlier gRNAs"
 apptainer exec --nv "${BIND_ARGS[@]}" "$CONTAINER_PATH" \
