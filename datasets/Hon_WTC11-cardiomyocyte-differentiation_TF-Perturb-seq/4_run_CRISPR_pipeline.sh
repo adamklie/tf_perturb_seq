@@ -22,14 +22,15 @@ DATA_DATE=2026_04_15
 
 # Sample metadata with GCS paths
 # 112 rows = 28 measurement sets × (1 scRNA + 2 gRNA + 1 hash)
-# v2 = seqspec column points at patch_v2/ yamls (i7/i5 index reads stripped)
-SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_${DATA_DATE}_patched_v2.csv
+# v3 = seqspec column points at patch_v3/ generic per-modality yamls
+#      (rna_seqspec.yml / guide_seqspec.yml / hash_seqspec.yml)
+SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_${DATA_DATE}_patched_v3.csv
 
 # CRISPR Pipeline path
 PIPELINE_PATH=/Users/adamklie/Desktop/tfp3/CRISPR_Pipeline
 
 # Run label (Nextflow run name) — bump this per run
-RUN_LABEL=seqspec_v2
+RUN_LABEL=seqspec_v3
 
 # Dataset-specific config (HTO multiplexed Hon production: ENABLE_DATA_HASHING=true,
 # reverse_complement_guides=true, spacer_tag="TAGCTCTTAAAC", is_10x3v3=false)
@@ -56,6 +57,7 @@ NF_CMD="nextflow run main.nf \
     -c $CONFIG \
     --input $SAMPLE_METADATA \
     --outdir $OUTDIR \
+    -resume \
     -with-tower"
 
 echo "============================================="
