@@ -41,6 +41,35 @@ import scipy.sparse as sp
 warnings.filterwarnings("ignore")
 
 
+def filter_cells_zero_hvg_counts(adata, num_highvar_genes):
+    """Match cnmf.cnmf.get_norm_counts: drop cells with zero counts in the
+    overdispersed-gene set that cnmf would select. This is the exact failure
+    mode cnmf raises ('%d cells have zero counts of overdispersed genes').
+
+    Replicates cnmf's HVG selection by:
+      1. TPM-normalizing the count matrix (each cell -> 1e6)
+      2. Calling cnmf's get_highvar_genes_sparse with numgenes=num_highvar_genes
+      3. Identifying cells whose RAW counts in HVG columns sum to 0
+      4. Returning a boolean mask of cells to KEEP.
+    """
+    from cnmf.cnmf import get_highvar_genes_sparse
+
+    X = adata.X
+    if not sp.issparse(X):
+        X = sp.csr_matrix(X)
+    total = np.array(X.sum(axis=1)).flatten()
+    # avoid div-by-zero (cells with literally zero counts will be dropped anyway)
+    total_safe = np.where(total > 0, total, 1.0)
+    tpm = X.multiply(1e6 / total_safe[:, None]).tocsr()
+    gene_stats, _ = get_highvar_genes_sparse(tpm, numgenes=num_highvar_genes)
+    hvg_mask = gene_stats["high_var"].values
+    hvg_counts_per_cell = np.array(X[:, hvg_mask].sum(axis=1)).flatten()
+    keep = hvg_counts_per_cell > 0
+    n_drop = (~keep).sum()
+    print(f"  HVG filter (n_top={num_highvar_genes}): dropping {n_drop} cells with zero counts in the {hvg_mask.sum()} overdispersed genes")
+    return keep
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("--in_h5mu", required=True, help="Path to inference_mudata.h5mu")
@@ -51,6 +80,12 @@ def main():
                    help="Column in guide.var holding target gene SYMBOLS (default: gene_name)")
     p.add_argument("--symbol_col", default="symbol",
                    help="Column in gene.var holding gene SYMBOLS (default: symbol)")
+    p.add_argument("--num_highvar_genes", type=int, default=2000,
+                   help="Number of HVGs cnmf will select (must match torch-cNMF --numhvgenes; "
+                        "default 2000). Cells with zero counts in the resulting HVG set are dropped, "
+                        "matching cnmf's get_norm_counts() pre-flight check.")
+    p.add_argument("--no_hvg_filter", action="store_true",
+                   help="Skip the HVG-zero-counts cell filter (not recommended — cnmf will fail).")
     args = p.parse_args()
 
     print(f"Loading {args.in_h5mu}")
@@ -91,6 +126,14 @@ def main():
         print("  WARNING: no 'batch' column in obs — PerturbNMF expects a categorical key (default 'batch'/'sample')")
     else:
         print(f"  batch: {a.obs['batch'].nunique()} unique values")
+
+    # Pre-flight HVG-zero-counts filter — matches cnmf.cnmf.get_norm_counts behavior.
+    # Without this, cnmf raises mid-run after the user's already burned compute on prepare/factorize.
+    if not args.no_hvg_filter:
+        print(f"\nRunning HVG pre-flight filter (num_highvar_genes={args.num_highvar_genes})...")
+        keep = filter_cells_zero_hvg_counts(a, args.num_highvar_genes)
+        a = a[keep].copy()  # anndata auto-subsets obsm/uns layers along obs axis
+        print(f"  result after HVG filter: {a.shape}")
 
     print(f"\nWriting {args.out_h5ad}")
     os.makedirs(os.path.dirname(args.out_h5ad), exist_ok=True)
