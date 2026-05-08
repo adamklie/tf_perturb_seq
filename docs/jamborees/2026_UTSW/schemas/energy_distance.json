@@ -8,21 +8,26 @@
   "bundle_path_synapse": "2026_UTSW/datasets/<dataset_id>/energy_distance/",
   "source_pipeline": {
     "current_runner": {
-      "repo": "https://github.com/Chikara-Takeuchi/energy_dist_TFperturb",
-      "approach": "Containerized (apptainer / docker.io/takechikara/energy_distance_env:latest). Wraps the underlying `energy_dist_pipeline` bin scripts.",
-      "input": "Synapse syn ID of the inference_mudata.h5mu (i.e., the per-dataset CRISPR pipeline output). The container fetches it directly from Synapse.",
-      "preprocess_steps": "Filter genes (min_counts>=1), normalize_total, log1p, scale, PCA (n_comps=50). Builds an annotation_table.csv with `intended_target_name|chr:start-end` promoter labels.",
+      "wrapper": "scripts/run_energy_distance_pipeline.sh (UCSD nrnb edition; SLURM-driven by datasets/<dataset_id>/5_run_energy_distance.sh)",
+      "based_on": "https://github.com/Chikara-Takeuchi/energy_dist_TFperturb (Sara's Duke-HPC variant, adapted for nrnb /cellar paths + GCS source + idempotency)",
+      "submodules": {
+        "external/energy_dist_TFperturb": "Canonical upstream wrapper (Synapse-source preprocess_mudata.py + run_all_energy_distance_pipeline.sh template)",
+        "external/energy_dist_pipeline": "Pipeline bin scripts (steps 0/1/2/2.1/3); pinned to an Adam-fork commit that still has the upstream `1_filtereing_gRNA.py` typo. Bump if/when adopting upstream main's GPU-OOM fallback + sgRNA downsampling for non-targeting."
+      },
+      "container": "docker.io/takechikara/energy_distance_env:latest (apptainer .sif at /cellar/users/aklie/opt/containers/edist_pipeline.sif)",
+      "input": "Local file (default), GCS path (gs://...), or Synapse ID — controlled via --mudata-path / --gcs-mudata-path / --synapse-id flags.",
+      "preprocess_steps": "Filter genes (min_counts>=1), normalize_total, log1p, scale, PCA (n_comps=50). Builds annotation_table.csv with `intended_target_name|chr:start-end` promoter labels. Implemented in scripts/preprocess_mudata_local.py (the local-input variant of upstream preprocess_mudata.py).",
       "steps": [
-        "preprocess_mudata.py — pull MuData from Synapse, build PCA + gRNA dict + annotation",
-        "1_filtering_gRNA.py — filter outlier gRNAs",
-        "2_e_distance_nontargeting.py — compute energy distance per target vs. non-targeting (with permutation p-values)",
-        "2_1_Plot_figure.py — diagnostic plots"
+        "scripts/preprocess_mudata_local.py — read MuData from local/GCS/Synapse, build PCA + gRNA dict + annotation",
+        "external/energy_dist_pipeline/bin/1_filtereing_gRNA.py — filter outlier gRNAs (typo in upstream filename at our pin)",
+        "external/energy_dist_pipeline/bin/2_e_distance_nontargeting.py — compute energy distance per target vs. non-targeting (with permutation p-values)",
+        "external/energy_dist_pipeline/bin/2_1_Plot_figure.py — diagnostic plots",
+        "external/energy_dist_pipeline/bin/3_e_distance_among_regions.py — target-by-target matrix + clustering (DEFERRED; run after picking cutoffs in config3.json)"
       ]
     },
-    "earlier_runner_for_reference": {
-      "path": "external/energy_dist_pipeline/",
-      "wrapper": "datasets/<dataset_id>/6_run_energy_distance.sh wraps scripts/run_energy_distance_pipeline.sh",
-      "note": "The current containerized runner produces the same output files as this earlier non-containerized version; the schema in this document applies to both."
+    "legacy_runner": {
+      "path": "scripts/_legacy_run_energy_distance_pipeline.sh",
+      "note": "Pre-2026-05-08 wrapper that cloned energy_dist_pipeline at runtime instead of using submodules and embedded the preprocess script as a heredoc. Kept for reference; do not use for new runs."
     }
   },
   "files": [
