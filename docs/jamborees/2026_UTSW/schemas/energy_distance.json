@@ -121,17 +121,21 @@
   ],
   "production_runs_status": {
     "Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq": "not run yet (awaiting full crispr_pipeline bundle from Hon team; source MuData syn74522725)",
-    "Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq": "queued on UCSD nrnb HPC 2026-05-08 (muddy_penguin run; gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/2026_04_09/outs/muddy_penguin/inference_mudata.h5mu)",
-    "Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq": "queued on UCSD nrnb HPC 2026-05-08 (sceptre_v1 run; gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/2026_04_13/outs/sceptre_v1/inference_mudata.h5mu)",
+    "Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq": "complete 2026-05-09 (muddy_penguin run; SLURM job 10547114, 9h 34m; mirrored to syn74883327; all 4 validation layers PASS)",
+    "Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq": "complete 2026-05-09 (sceptre_v1 run; SLURM job 10547705, 10h 0m; mirrored to syn74883475; all 4 validation layers PASS)",
     "Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq": "not run yet (awaiting canonical run from Gersbach team; source MuData syn74728027)",
     "Engreitz_WTC11-endothelial-cells_TF-Perturb-seq": "blocked (no inference MuData yet; dataset not on IGVF portal)",
-    "as_of": "2026-05-08",
-    "synapse_placeholder_folder": "syn74823521 (`edist_result` under syn64423137; currently empty — to be replaced by per-dataset folders under 2026_UTSW/datasets/<id>/energy_distance/)",
+    "as_of": "2026-05-09",
+    "synapse_placeholder_folder": "syn74823521 (`edist_result` under syn64423137; currently empty — replaced by per-dataset folders under 2026_UTSW/datasets/<id>/energy_distance/)",
     "mirror_tool": "docs/jamborees/2026_UTSW/scripts/mirror_edistance_outputs.py",
+    "validation_tool": "scripts/validate_edistance_outputs.py (4-layer: file presence, CSV schema, value-range sanity, schema-identity vs HTv2 reference syn74381183)",
     "scaffold_examples_available": [
       "tf_perturb_seq/external/energy_dist_pipeline/pipeline_output/ (local; pipeline-author example outputs — used to spec the schema in this doc)",
       "/cellar/users/aklie/projects/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/results/energy_distance/2026_04_08_prelim/ (HPC; preliminary run on a benchmark dataset)"
     ]
+  },
+  "known_issues": {
+    "p_value_calibration_huangfu_runs": "Both Huangfu DE + ESC runs (2026-05-09) have anti-conservative p-values: all 100 negative-control targets have pval_mean=0 in both datasets, with NC distance_mean medians ~identical to targeting distance_mean medians (1.02x DE, 1.00x ESC). Distances are 1-2 orders of magnitude larger than the HTv2 verified reference (DE: 93 vs HTv2: 1.78). Likely cause: PCA was computed on all genes with min_counts>=1 (~9k features for DE, ~14k for ESC) instead of HVG subset; the resulting null distribution is too tight at our distance scale. Workaround: use raw distance_mean as effect-size proxy, do not threshold on pval_mean. Permanent fix: re-preprocess with HVG selection in scripts/preprocess_mudata_local.py before re-running."
   },
   "downstream_human_readable_outputs": {
     "status": "deferred",

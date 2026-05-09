@@ -237,15 +237,17 @@ Per-target energy distances + permutation p-values, plus diagnostic plots, from 
 | Synapse target | `2026_UTSW/datasets/<dataset_id>/energy_distance/` |
 | Runner | `scripts/run_energy_distance_pipeline.sh` (wrapped per-dataset by `5_run_energy_distance.sh`) |
 
-**Per-dataset status (2026-05-08):**
+**Per-dataset status (2026-05-09):**
 
-| Dataset | Run label | Status |
-|---|---|---|
-| Hon WTC11 Cardiomyocyte | TBD | Not run — awaiting full `crispr_pipeline/` bundle from Hon team; source MuData [`syn74522725`](https://www.synapse.org/Synapse:syn74522725) |
-| Huangfu HUES8 Definitive Endoderm | `muddy_penguin` | ⏳ Queued on UCSD nrnb HPC 2026-05-08 |
-| Huangfu HUES8 Embryonic Stem Cell | `sceptre_v1` | ⏳ Queued on UCSD nrnb HPC 2026-05-08 |
-| Gersbach WTC11 Hepatocyte | TBD | Not run — awaiting canonical run; source MuData [`syn74728027`](https://www.synapse.org/Synapse:syn74728027) |
-| Engreitz WTC11 Endothelial | — | Blocked — no inference MuData (not on portal yet) |
+| Dataset | Run label | Status | Synapse |
+|---|---|---|---|
+| Hon WTC11 Cardiomyocyte | TBD | Not run — awaiting full `crispr_pipeline/` bundle from Hon team; source MuData [`syn74522725`](https://www.synapse.org/Synapse:syn74522725) | — |
+| Huangfu HUES8 Definitive Endoderm | `muddy_penguin` | ✅ Complete (9h 34m) — all validation layers PASS; ⚠ p-values mis-calibrated (see per-dataset README) | [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) |
+| Huangfu HUES8 Embryonic Stem Cell | `sceptre_v1` | ✅ Complete (10h 0m) — all validation layers PASS; ⚠ same calibration concern as DE | [`syn74883475`](https://www.synapse.org/Synapse:syn74883475) |
+| Gersbach WTC11 Hepatocyte | TBD | Not run — awaiting canonical run; source MuData [`syn74728027`](https://www.synapse.org/Synapse:syn74728027) | — |
+| Engreitz WTC11 Endothelial | — | Blocked — no inference MuData (not on portal yet) | — |
+
+**⚠ Known issue across both Huangfu runs**: p-values are anti-conservative — all 100 negative-control targets have `pval_mean=0` despite negative-control distance distribution overlapping the targeting distribution. The pipeline's permutation null is too tight relative to our ~1-2-orders-of-magnitude-larger distances vs the HTv2 verified reference (likely cause: we kept all genes for PCA, vs HTv2 which used HVG subset). Use raw `distance_mean` as an effect-size proxy until calibration is fixed; do not threshold on the p-value alone.
 
 **Mirror to Synapse (after each run completes):**
 
