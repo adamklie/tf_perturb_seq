@@ -6,10 +6,11 @@
 | Schema | [`../../../schemas/energy_distance.json`](../../../schemas/energy_distance.json) |
 | Run label | `muddy_penguin` |
 | Source MuData | `gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/2026_04_09/outs/muddy_penguin/inference_mudata.h5mu` (18.02 GB) |
-| Status | ✅ Complete (2026-05-09; SLURM job 10547114, 9h 34m on carter-gpu-02) |
+| Status | ✅ Steps 1+2+2.1 complete (2026-05-09; SLURM job 10547114, 9h 34m on carter-gpu-02). Step 3 also complete (job 10573244, 6m 29s, filtered to top-200 by distance). |
 | HPC output dir | `/cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/results/energy_distance/muddy_penguin/` |
 | Synapse | [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) |
 | Validation | All 4 layers PASS (file presence, schema, value ranges, schema-identity vs HTv2 reference). 2267 targets × 46 cols. ⚠ Calibration concern, see below. |
+| Step 3 cutoff | `distance_cutoff=105.11` (top-200 by distance; just above NC max 109.9), `pval_cutoff=1.0` (effectively disabled — pvals mis-calibrated). Yields 193 targets in `target_by_target_matrix.csv` (193×193) and TSNE+AffinityPropagation clustering in `edist_embedding_info.csv`. |
 
 ## How to run / re-run
 
