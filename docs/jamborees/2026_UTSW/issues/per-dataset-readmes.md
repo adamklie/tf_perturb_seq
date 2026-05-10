@@ -1,8 +1,8 @@
 # Issue 6 — Per-dataset READMEs
 
-**Status**: ⏳ Small task. One README per production dataset under `datasets/<dataset>/` so collaborators landing in any folder know what's on Synapse without reading the master README.
+**Status**: ✅ mostly complete (2026-05-09). Top-level + per-analysis READMEs landed for all 5 production datasets + the HTv2 testbed. Will be refreshed in place as each output's status changes.
 
-**Owner of fix**: us. ~30 min once the production CRISPR bundles are settled.
+**Owner of fix**: us.
 
 ## TL;DR
 
@@ -22,11 +22,12 @@ datasets/<dataset>/
 
 Datasets:
 
-- [ ] `Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq` (gated on Issue #2)
-- [ ] `Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq` (CRISPR + ED ready to write; cNMF when runs land)
-- [ ] `Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq` (CRISPR + ED ready to write; cNMF when runs land)
-- [ ] `Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq` (gated on Issue #3)
-- [ ] `Engreitz_WTC11-endothelial-cells_TF-Perturb-seq` (gated on Issue #4)
+- [x] `Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq` — top-level + crispr_pipeline + cnmf + energy_distance READMEs all present
+- [x] `Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq` — full set
+- [x] `Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq` — full set
+- [x] `Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq` — full set (per-analysis files note "awaiting Sara")
+- [x] `Engreitz_WTC11-endothelial-cells_TF-Perturb-seq` — top-level + cnmf + energy_distance READMEs (no crispr_pipeline placeholder; the top-level + Issue #4 cover it)
+- [x] `Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2` (testbed) — top-level + crispr_pipeline + cnmf READMEs
 
 ## Template
 

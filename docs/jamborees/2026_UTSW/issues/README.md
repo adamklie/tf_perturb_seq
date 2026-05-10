@@ -9,7 +9,7 @@ Each file here is a self-contained report on one current problem — designed to
 | 3 | [Gersbach Hep deliverables (CRISPR + cNMF + energy distance)](gersbach-hep-deliverables.md) | Sara (Gersbach team) | ⚠ non-canonical bundle on Synapse, no production runs in our schema |
 | 4 | [Engreitz endothelial data not on portal](engreitz-no-data.md) | Engreitz team | ☐ blocked: no data |
 | 5 | [HTv2 cNMF testbed verification → production launch](htv2-cnmf-testbed.md) | us (job is running) | 🔄 in progress |
-| 6 | [Per-dataset READMEs](per-dataset-readmes.md) | us (small task) | ⏳ pending |
+| 6 | [Per-dataset READMEs](per-dataset-readmes.md) | us | ✅ landed 2026-05-09 (refresh in place as status changes) |
 
 Each report includes:
 

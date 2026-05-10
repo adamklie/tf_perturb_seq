@@ -75,13 +75,7 @@ Storage considerations: simplified TSVs (small, ~KB-MB) live in this repo under 
 Only the small, human-readable artifacts (e.g., `*_simplified.tsv` in `reference/`) live in this repo. Bulky files do not get staged locally — they go straight to Synapse.
 
 - [x] Drop simplified reference tables (TF / experimental) into `reference/`.
-- [ ] Add per-dataset READMEs under `datasets/<name>/` describing what's on Synapse and linking to it.
-  - [x] HTv2 testbed (`datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/crispr_pipeline/README.md`)
-  - [ ] Hon WTC11 Cardiomyocyte
-  - [ ] Huangfu HUES8 Definitive Endoderm
-  - [ ] Huangfu HUES8 Embryonic Stem Cell
-  - [ ] Gersbach WTC11 Hepatocyte
-  - [ ] Engreitz WTC11 Endothelial
+- [x] Per-dataset READMEs under `datasets/<name>/` (2026-05-09; top-level + per-analysis subdirs for all 5 production datasets + HTv2 testbed). Will be refreshed in place as each output's status changes — see [Issue 6](issues/per-dataset-readmes.md).
 - [ ] Add small simplified summaries per analysis where they make sense (deferred — depends on Step 4 outputs landing).
 
 ## 6. Upload to Synapse as artifacts come in (interleaved with 3 & 4)
