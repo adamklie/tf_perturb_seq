@@ -217,7 +217,7 @@
     "as_of": "2026-05-09",
     "reference_run": "Hon WTC11 benchmark (`/cellar/users/aklie/projects/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/PerturbNMF/Result/030726_20iter_5KHVG_torch_halsvar_batch_e7/`). Used to verify schema; not a production dataset for the jamboree but the structural template for production runs.",
     "synapse_placeholder_folder": "TBD — not yet created under syn64423137 (unlike energy_distance which has syn74823521)",
-    "mirror_tool": "TBD — `docs/jamborees/2026_UTSW/scripts/mirror_cnmf_outputs.py` (deferred until first production run lands and a selected k is chosen)"
+    "mirror_tool": "docs/jamborees/2026_UTSW/scripts/mirror_cnmf_outputs.py — implements the bundle_inclusion_rule (selected-k full data + sweep-as-provenance, drops intermediates / per-k bulk). Takes --selected-k. Idempotent folder creation, updates synapse_paths.tsv."
   },
   "known_issues": {
     "selected_k_decision_pending": "All 5 production datasets need a selected k. The decision is group-level (clinical-review-board style per docs/analysis/cNMF.md line 119) and won't be made until the cNMF k-selection plots are reviewed jointly. Until then, the bundle's exact contents are parameterized by `<sel>` and can't be uploaded.",

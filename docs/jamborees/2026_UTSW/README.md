@@ -224,6 +224,14 @@ For a daily cron at 06:00 UTC:
 | [`scripts/generate_tf_metadata.py`](scripts/generate_tf_metadata.py) | Comprehensive + simplified TF metadata tables. |
 | [`scripts/generate_experimental_metadata.py`](scripts/generate_experimental_metadata.py) | Comprehensive + simplified experimental metadata tables. |
 | [`scripts/upload_to_synapse.py`](scripts/upload_to_synapse.py) | Idempotent file uploader to the Synapse mirror. |
+| [`../../../scripts/cross_dataset_pipeline_summary.py`](../../../scripts/cross_dataset_pipeline_summary.py) | Aggregates per-dataset CRISPR pipeline metrics from Synapse → [`reference/cross_dataset_pipeline_summary.tsv`](reference/cross_dataset_pipeline_summary.tsv) (cell counts, UMI medians, knockdown stats, perturbo-significant counts). For WG1 data summarization. |
+
+### Validators
+
+| Script | Validates |
+|---|---|
+| [`../../../scripts/validate_edistance_outputs.py`](../../../scripts/validate_edistance_outputs.py) | Energy distance run dir against `schemas/energy_distance.json` (4 layers: presence, schema, value sanity, cross-ref vs HTv2 reference). |
+| [`../../../scripts/validate_cnmf_outputs.py`](../../../scripts/validate_cnmf_outputs.py) | cNMF run dir against `schemas/cnmf.json` (4 layers: presence, table shapes, value sanity, cross-ref vs Hon benchmark). Takes `--selected-k`. |
 
 ## Working groups
 

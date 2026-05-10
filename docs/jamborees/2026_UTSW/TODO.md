@@ -57,7 +57,7 @@ Outputs aimed at general scientists — simpler artifacts for higher-level figur
 - [x] Simplified guide metadata → not needed (IGVF release used as-is)
 
 **Perturb-seq outputs**
-- [ ] Cross-dataset summary TSV (cell counts, mapping rates, n-significant-targets per dataset; see TODO in [`docs/analysis/CRISPR_PIPELINE_OUTPUTS.md`](../../analysis/CRISPR_PIPELINE_OUTPUTS.md))
+- [x] Cross-dataset summary TSV (cell counts, UMI medians, knockdown stats, perturbo significance counts) → [`reference/cross_dataset_pipeline_summary.tsv`](reference/cross_dataset_pipeline_summary.tsv) (3 datasets so far: Hon CM, Huangfu DE, Huangfu ESC; Gersbach Hep skipped because of non-canonical Synapse layout). Generator: [`scripts/cross_dataset_pipeline_summary.py`](../../../scripts/cross_dataset_pipeline_summary.py). Re-run when more datasets get canonical bundles.
 
 **cNMF outputs** (deferred — depend on production cNMF runs)
 - [ ] Cross-dataset program-similarity heatmap (cosine similarity of `gene_spectra_score` across all 5 datasets at each dataset's selected k)
@@ -95,7 +95,7 @@ Done iteratively, not at the end. Tracking lives in [`synapse_paths.tsv`](synaps
 - [ ] Gersbach WTC11 Hepatocyte — non-canonical at [`syn70518849`](https://www.synapse.org/Synapse:syn70518849); awaiting canonical bundle from **Sara** (Gersbach team)
 - [ ] Engreitz WTC11 Endothelial — ☐ blocked: no data on the IGVF portal yet
 
-**cNMF** (mirror script: TBD `scripts/mirror_cnmf_outputs.py`, deferred until first production run lands and a k is selected)
+**cNMF** (mirror script: [`scripts/mirror_cnmf_outputs.py`](scripts/mirror_cnmf_outputs.py); takes `--selected-k` and applies the curation rule from `schemas/cnmf.json`)
 - [ ] HTv2 testbed (job 10577039 running) — verify pipeline structure end-to-end before launching production runs
 - [ ] Hon WTC11 Cardiomyocyte — gated on full CRISPR bundle from Hon team (Weizhou)
 - [ ] Huangfu HUES8 Definitive Endoderm — runnable now; awaits group k-selection
