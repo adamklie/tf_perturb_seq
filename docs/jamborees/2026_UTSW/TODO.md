@@ -120,7 +120,8 @@ Done iteratively, not at the end. Tracking lives in [`synapse_paths.tsv`](synaps
 
 - [ ] Create a Google Sheet capturing the same state (likely a friendlier view of `synapse_paths.tsv`).
 - [ ] Link the jamboree planning doc to the Google Sheet.
-- [ ] Make sure this repo is up to date end-to-end. Build skills + MDs so jamboree participants can explore the data and run analyses with agents.
+- [x] Onboarding doc for jamboree participants → [`GETTING_STARTED.md`](GETTING_STARTED.md) (2026-05-09; refresh as outputs land).
+- [ ] Make sure this repo is up to date end-to-end. Build skills (in addition to the GETTING_STARTED doc) so jamboree participants can explore the data and run analyses with agents.
 
 # What's next (top 5)
 

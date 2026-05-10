@@ -15,7 +15,7 @@ Use the same Hon-mirroring params (`halsvar` / `batch` / 20 iter / 5K HVG / dens
 
 ## Synapse target (when run completes)
 
-`2026_UTSW/datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/cnmf/<run_name>/` — to be populated by `scripts/mirror_cnmf_outputs.py` (TBD; not yet built — see [`schemas/cnmf.json`](../../../schemas/cnmf.json) `bundle_inclusion_rule` for the curation spec).
+`2026_UTSW/datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/cnmf/<run_name>/` — populated by [`scripts/mirror_cnmf_outputs.py`](../../../scripts/mirror_cnmf_outputs.py) (curation rule: `schemas/cnmf.json` → `bundle_inclusion_rule`).
 
 ## Schema + walkthrough
 

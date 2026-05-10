@@ -73,7 +73,7 @@ Sara can either:
 - **Path B (Adam's mirror scripts)** — Sara puts the runs at a GCS path or HPC location Adam can access; Adam runs:
   - [`scripts/mirror_pipeline_outputs.py`](../scripts/mirror_pipeline_outputs.py) (GCS source) or [`scripts/mirror_pipeline_outputs_hpc.py`](../scripts/mirror_pipeline_outputs_hpc.py) (HPC source) for the CRISPR bundle.
   - [`scripts/mirror_edistance_outputs.py`](../scripts/mirror_edistance_outputs.py) for energy distance.
-  - cNMF mirror script [`scripts/mirror_cnmf_outputs.py`](../scripts/) doesn't exist yet — Adam will write it once Sara confirms file naming, or Sara can upload directly. The schema in [`schemas/cnmf.json`](../schemas/cnmf.json) → `bundle_inclusion_rule` enumerates the full include/exclude list.
+  - cNMF mirror script: [`scripts/mirror_cnmf_outputs.py`](../scripts/mirror_cnmf_outputs.py) (HPC → Synapse, takes `--selected-k`, implements `schemas/cnmf.json` → `bundle_inclusion_rule`). Sara can either upload directly to the canonical Synapse path, or place the run on HPC at `/cellar/users/aklie/projects/tf_perturb_seq/datasets/Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq/PerturbNMF/Result/<run>/` and Adam will run the mirror script.
 
 Path A is simplest if Sara is comfortable with synapseclient. Path B keeps the bundle assembly automated on our side.
 

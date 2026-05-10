@@ -2,7 +2,7 @@
 
 Working folder for preparing data and documentation ahead of the 2026 UTSW jamboree. This README is the single entry point — it tells you what we're packaging, where everything lives, and how the pieces fit together.
 
-For scientific scope (topics + working groups), see [`TOPICS.md`](TOPICS.md) and [`WORKING_GROUPS.md`](WORKING_GROUPS.md). For open problems and conversation-ready reports per blocker, see [`issues/`](issues/).
+For scientific scope (topics + working groups), see [`TOPICS.md`](TOPICS.md) and [`WORKING_GROUPS.md`](WORKING_GROUPS.md). For open problems and conversation-ready reports per blocker, see [`issues/`](issues/). New participants: start with [`GETTING_STARTED.md`](GETTING_STARTED.md).
 
 ## What we're packaging
 
@@ -166,7 +166,7 @@ Per-dataset cNMF gene-program-discovery outputs from the torch-cNMF pipeline. Us
 | Source | HPC: `/cellar/users/aklie/projects/tf_perturb_seq/datasets/<dataset>/PerturbNMF/Result/<run_name>/` |
 | Synapse target | `2026_UTSW/datasets/<dataset>/cnmf/<run_name>/` |
 | Runner | per-dataset `6_run_cnmf.sh` — see [`docs/analysis/cNMF.md`](../../analysis/cNMF.md) for the runbook |
-| Mirror script | _TBD_ — `scripts/mirror_cnmf_outputs.py`, deferred until first production run lands and a k is selected. |
+| Mirror script | [`scripts/mirror_cnmf_outputs.py`](scripts/mirror_cnmf_outputs.py) (HPC → Synapse; implements the `schemas/cnmf.json` curation rule). Takes `--selected-k`. |
 
 **Curation rule** (full schema in [`schemas/cnmf.json`](schemas/cnmf.json)):
 
@@ -214,7 +214,7 @@ For a daily cron at 06:00 UTC:
 | [`scripts/mirror_pipeline_outputs.py`](scripts/mirror_pipeline_outputs.py) | GCS → Synapse | Downloads `pipeline_dashboard/` + `pipeline_info/` + `pipeline_outputs/` from GCS, uploads to `2026_UTSW/datasets/<dataset>/crispr_pipeline/`, records folder ID in `synapse_paths.tsv`. |
 | [`scripts/mirror_pipeline_outputs_hpc.py`](scripts/mirror_pipeline_outputs_hpc.py) | HPC → Synapse | Same target layout but reads from a local HPC run dir (used for runs that didn't land on GCS). |
 | [`scripts/mirror_edistance_outputs.py`](scripts/mirror_edistance_outputs.py) | HPC → Synapse | Uploads only deliverables (CSVs, configs, `image/`, `logs/`) — skips intermediates and the input MuData. |
-| _`scripts/mirror_cnmf_outputs.py`_ | _HPC → Synapse_ | _TBD; deferred until first production run lands._ |
+| [`scripts/mirror_cnmf_outputs.py`](scripts/mirror_cnmf_outputs.py) | HPC → Synapse | Uploads the curated cNMF bundle (selected-k full data + sweep-as-provenance) per the `schemas/cnmf.json` rule. Records folder ID in `synapse_paths.tsv`'s `cnmf` column. |
 
 ### Generation scripts
 

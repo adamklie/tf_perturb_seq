@@ -1,23 +1,28 @@
 # Huangfu HUES8 Embryonic Stem Cell — cNMF
 
-**Status**: ⏳ Not run yet. **Unblocked** — full canonical CRISPR bundle is on Synapse ([`syn74835010`](https://www.synapse.org/Synapse:syn74835010)) and the inference MuData is ready. Will launch as soon as the HTv2 testbed (job 10577039) verifies the pipeline structure cleanly. See [Issue 5](../../../issues/htv2-cnmf-testbed.md).
+**Status**: ⏳ **Pre-staged, ready to launch.** SLURM script written + scp'd to HPC. Holding submission until the HTv2 testbed (job 10577039) verifies the pipeline structure cleanly. See [Issue 5](../../../issues/htv2-cnmf-testbed.md).
 
-## Plan
+## Pre-staged
 
-Follow the HTv2 testbed pattern:
+| | |
+|---|---|
+| Run name | `050926_HuangfuESC_20iter_5KHVG_torch_halsvar_batch` |
+| Input `.h5ad` | `/cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/PerturbNMF/Data/ESC_sceptre_v1_perturbnmf.h5ad` (897 MB; pre-converted from MuData) |
+| SLURM script | [`PerturbNMF/Script/050926_HuangfuESC_20iter_5KHVG_torch_halsvar_batch.sh`](../../../../../datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/PerturbNMF/Script/050926_HuangfuESC_20iter_5KHVG_torch_halsvar_batch.sh) |
+| Params | mirrors Hon's `030726_20iter_5KHVG_torch_halsvar_batch_e7` (halsvar / batch / 20 iter / 5K HVG / density thresholds 0.2 + 2.0 / `categorical_key=batch` / benchmark k list 5–200) |
 
-1. Copy [`Convert_file_adata.py`](../../Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/cnmf/README.md) and `torch-cNMF_batch.sh` from the HTv2 testbed `PerturbNMF/Script/` to this dataset's `PerturbNMF/Script/` (HPC).
-2. Update paths + `RUN_NAME` (suggested: `<DATE>_HuangfuESC_20iter_5KHVG_torch_halsvar_batch`).
-3. Set `--counts_fn` to the inference MuData. Source options:
-   - GCS: `gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/2026_04_13/outs/sceptre_v1/pipeline_dashboard/inference_mudata.h5mu`
-   - Synapse: under [`syn74835010`](https://www.synapse.org/Synapse:syn74835010)
-4. `sbatch`.
+## To launch (when HTv2 testbed verifies)
 
-Use the same Hon-mirroring params (`halsvar` / `batch` / 20 iter / 5K HVG / density thresholds 0.2 + 2.0 / `categorical_key=batch` / benchmark k list).
+```bash
+ssh aklie@nrnb-login.ucsd.edu
+sbatch /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/PerturbNMF/Script/050926_HuangfuESC_20iter_5KHVG_torch_halsvar_batch.sh
+```
+
+Time limit set to 72h (Huangfu ESC is ~6× larger than HTv2 testbed; expect ~24-48h actual wall time). Can run in parallel with the DE production run on a separate GPU node.
 
 ## Synapse target (when run completes)
 
-`2026_UTSW/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/cnmf/<run_name>/` — to be populated by `scripts/mirror_cnmf_outputs.py` (TBD).
+`2026_UTSW/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/cnmf/<run_name>/` — populated by [`scripts/mirror_cnmf_outputs.py`](../../../scripts/mirror_cnmf_outputs.py) (curation rule: `schemas/cnmf.json`).
 
 ## Schema + walkthrough
 
