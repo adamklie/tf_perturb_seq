@@ -114,7 +114,7 @@ Done iteratively, not at the end. Tracking lives in [`synapse_paths.tsv`](synaps
 
 **Tracking**
 - [x] Log Synapse paths in [`synapse_paths.tsv`](synapse_paths.tsv) as artifacts land (one row per dataset / `_reference_`, one column per output type)
-- [ ] Keep `2026_05_07_state.tsv` checkboxes in sync with what's actually on Synapse (or replace with a refreshed snapshot)
+- [x] Refreshed snapshot at [`2026_05_09_state.tsv`](2026_05_09_state.tsv) (2026-05-09; original `2026_05_07_state.tsv` kept as historical). Refresh again whenever a major status change lands.
 
 ## 7. Final documentation
 

@@ -41,7 +41,7 @@ Status as of 2026-05-09. ✅ = on Synapse, canonical layout. ⚠ = on Synapse, p
 
 **Reference data** (cross-dataset, all on Synapse): TF metadata [`syn74834227`](https://www.synapse.org/Synapse:syn74834227) ✅ • Experimental metadata [`syn74834309`](https://www.synapse.org/Synapse:syn74834309) ✅ • IGVF GTF [`syn74834518`](https://www.synapse.org/Synapse:syn74834518) ✅ • Guide library [`syn74834519`](https://www.synapse.org/Synapse:syn74834519) ✅.
 
-The full mapping (one Synapse path per dataset × output) lives in [`synapse_paths.tsv`](synapse_paths.tsv). The original snapshot is [`2026_05_07_state.png`](2026_05_07_state.png) / [`2026_05_07_state.tsv`](2026_05_07_state.tsv).
+The full mapping (one Synapse path per dataset × output) lives in [`synapse_paths.tsv`](synapse_paths.tsv). Latest dataset-checkpoint snapshot: [`2026_05_09_state.tsv`](2026_05_09_state.tsv) (compare against the original [`2026_05_07_state.png`](2026_05_07_state.png) / [`2026_05_07_state.tsv`](2026_05_07_state.tsv) to see what's moved).
 
 ## Where the data lives
 
@@ -68,7 +68,8 @@ Practical rules:
 ├── README.md                         (this file)
 ├── TOPICS.md, WORKING_GROUPS.md      (jamboree scope)
 ├── TODO.md                           (step-by-step prep plan)
-├── 2026_05_07_state.{png,tsv}        (initial state snapshot)
+├── 2026_05_07_state.{png,tsv}        (initial state snapshot, kept as historical reference)
+├── 2026_05_09_state.tsv              (latest snapshot)
 ├── synapse_paths.tsv                 (dataset × output → Synapse ID)
 ├── schemas/                          (one JSON schema per output table)
 ├── scripts/                          (generation + mirror scripts)
