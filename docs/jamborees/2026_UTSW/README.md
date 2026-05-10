@@ -1,10 +1,21 @@
 # 2026 UTSW Jamboree
 
-Working folder for preparing data and documentation ahead of the 2026 UTSW jamboree.
+Working folder for preparing data and documentation ahead of the 2026 UTSW jamboree. This README is the single entry point — it tells you what we're packaging, where everything lives, and how the pieces fit together.
 
-## Scope
+For scientific scope (topics + working groups), see [`TOPICS.md`](TOPICS.md) and [`WORKING_GROUPS.md`](WORKING_GROUPS.md). For open problems and conversation-ready reports per blocker, see [`issues/`](issues/).
 
-Five **production** datasets are the focus of this jamboree. Bridge / benchmark datasets are tracked elsewhere and are out of scope here.
+## What we're packaging
+
+For each of the 5 production datasets:
+- **CRISPR pipeline** outputs (dashboard, MuData, perturbo TSVs)
+- **cNMF** gene programs (selected k + sweep-as-provenance)
+- **Energy distance** perturbation effects (per-target distances + p-values)
+
+Plus cross-dataset **reference data**: IGVF GTF, TF metadata, experimental metadata, guide library.
+
+Everything lives on Synapse under [`syn64423137`](https://www.synapse.org/Synapse:syn64423137) → `2026_UTSW/`. Each output has a JSON schema in [`schemas/`](schemas/) describing its files and columns. Working-group analyses pull from Synapse + the schemas to generate figures and run cross-dataset comparisons.
+
+## Production datasets
 
 | Dataset | Lab | Cell line | Differentiation |
 |---------|-----|-----------|-----------------|
@@ -14,131 +25,81 @@ Five **production** datasets are the focus of this jamboree. Bridge / benchmark 
 | `Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq` | Gersbach | WTC11 | Hepatocyte |
 | `Engreitz_WTC11-endothelial-cells_TF-Perturb-seq` | Engreitz | WTC11 | Endothelial |
 
-See `2026_05_07_state.tsv` for per-dataset processing status as of 2026-05-07. The original snapshot lives in `2026_05_07_state.png` (which also shows bridge/benchmark datasets — those are not part of this jamboree's scope).
+> _A 6th dataset, Gersbach WTC11 benchmark HTv2 (`Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2`), is mirrored under `2026_UTSW/datasets/` purely as a small testbed for verifying pipeline structure end-to-end. It is **not** part of the production roster and is not enshrined in the schemas._
 
-## State columns
+## Status at a glance
 
-The TSV captures four pipeline checkpoints per dataset:
+Status as of 2026-05-09. ✅ = on Synapse, canonical layout. ⚠ = on Synapse, partial / non-canonical. ⏳ = pending (data exists somewhere, not yet packaged). ☐ = blocked.
 
-| Column | Meaning |
-|--------|---------|
-| `igvf_uploaded` | Raw data uploaded to the IGVF portal |
-| `crispr_pipeline` | CRISPR perturb-seq pipeline run completed |
-| `cnmf_programs` | cNMF gene programs calculated |
-| `energy_distance` | Energy distance calculations completed |
+| Dataset | CRISPR pipeline | cNMF | Energy distance |
+|---|---|---|---|
+| Hon WTC11 Cardiomyocyte | ⚠ [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) — has `dashboard/` + `pipeline_outputs/` but no `pipeline_info/`. Awaiting the rest of the CRISPR outputs from **Weizhou** (Hon team). | ⏳ blocked on full CRISPR bundle | ⏳ blocked on full CRISPR bundle |
+| Huangfu HUES8 Definitive Endoderm | ✅ [`syn74834952`](https://www.synapse.org/Synapse:syn74834952) | ⏳ run pending | ✅ [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) ⚠ p-value calibration |
+| Huangfu HUES8 Embryonic Stem Cell | ✅ [`syn74835010`](https://www.synapse.org/Synapse:syn74835010) | ⏳ run pending | ✅ [`syn74883475`](https://www.synapse.org/Synapse:syn74883475) ⚠ p-value calibration |
+| Gersbach WTC11 Hepatocyte | ⚠ [`syn70518849`](https://www.synapse.org/Synapse:syn70518849) — non-canonical layout. **Sara** to deliver in our format. | ⏳ **Sara** to deliver in our format | ⏳ **Sara** to deliver in our format |
+| Engreitz WTC11 Endothelial | ☐ no data on portal | ☐ | ☐ |
 
-Values: `yes` / `no` / `running` / `?` (unknown).
+**Reference data** (cross-dataset, all on Synapse): TF metadata [`syn74834227`](https://www.synapse.org/Synapse:syn74834227) ✅ • Experimental metadata [`syn74834309`](https://www.synapse.org/Synapse:syn74834309) ✅ • IGVF GTF [`syn74834518`](https://www.synapse.org/Synapse:syn74834518) ✅ • Guide library [`syn74834519`](https://www.synapse.org/Synapse:syn74834519) ✅.
 
-## Files in this folder
-
-| File | Purpose |
-|------|---------|
-| `TODO.md` | Step-by-step plan for jamboree prep |
-| `WORKING_GROUPs.md` | Hand-written outline of the 5 (+1 optional) working groups + their goals |
-| `2026_05_07_state.png` | Source-of-truth snapshot of dataset processing state |
-| `2026_05_07_state.tsv` | Machine-readable version of the snapshot |
-| `synapse_paths.tsv` | Map of (dataset × output type) → Synapse ID, populated as uploads happen |
-| `schemas/` | JSON schemas (one per output table) describing columns, types, sources, and notes |
-| `scripts/generate_tf_metadata.py` | Builds the comprehensive + simplified TF metadata tables |
-| `scripts/generate_experimental_metadata.py` | Builds the comprehensive + simplified experimental metadata tables |
-| `scripts/query_igvf_portal.py` | Snapshots IGVF portal state (production-project filesets) into `portal_snapshots/<utc-iso>/` |
-| `scripts/upload_to_synapse.py` | Idempotent file uploader to the Synapse mirror |
-| `portal_snapshots/` | History of IGVF portal state — one timestamped subdir per snapshot, with raw JSON + per-type TSV summaries |
-| `reference/tf_metadata_simplified.tsv` | Simplified human-readable TF metadata |
-| `README.md` | This file — extended as decisions are made |
-
-## Portal snapshots
-
-`scripts/query_igvf_portal.py` snapshots the current state of the TF Perturb-seq Project on the IGVF portal (excluding Benchmark) into `portal_snapshots/<utc-iso>/`. Each snapshot writes per-type JSON + TSV (MeasurementSet, AuxiliarySet, AnalysisSet, ConstructLibrarySet) and a `manifest.tsv` summary. A `portal_snapshots/latest` symlink always points to the newest snapshot.
-
-To take a fresh snapshot manually:
-
-```bash
-.venv/bin/python docs/jamborees/2026_UTSW/scripts/query_igvf_portal.py
-```
-
-To run on a recurring schedule, add a cron entry (e.g., daily at 06:00 UTC):
-
-```cron
-0 6 * * * cd /Users/adamklie/Desktop/tfp3/tf_perturb_seq && .venv/bin/python docs/jamborees/2026_UTSW/scripts/query_igvf_portal.py >> docs/jamborees/2026_UTSW/portal_snapshots/cron.log 2>&1
-```
-
-**Note** (as of the first snapshot, 2026-05-07): only **Hon** measurement sets currently appear under the `TF Perturb-seq Project` collection on the portal (Gersbach hepatocyte data is on the portal under a different collection; Engreitz endothelial isn't on the portal at all yet).
-
-## Synapse mirror
-
-Top-level Synapse parent: [`syn64423137`](https://www.synapse.org/Synapse:syn64423137) (the `tf_perturb_seq` project folder).
-
-Created for this jamboree:
-
-| Synapse | Type | Path |
-|---|---|---|
-| [`syn74834225`](https://www.synapse.org/Synapse:syn74834225) | Folder | `2026_UTSW/` |
-| [`syn74834226`](https://www.synapse.org/Synapse:syn74834226) | Folder | `2026_UTSW/reference/` |
-| [`syn74834227`](https://www.synapse.org/Synapse:syn74834227) | File | `2026_UTSW/reference/tf_metadata.tsv` |
-| [`syn74834309`](https://www.synapse.org/Synapse:syn74834309) | File | `2026_UTSW/reference/experimental_metadata.tsv` |
-| [`syn74834518`](https://www.synapse.org/Synapse:syn74834518) | File | `2026_UTSW/reference/IGVFFI9573KOZR.gtf.gz` |
-| [`syn74834519`](https://www.synapse.org/Synapse:syn74834519) | File | `2026_UTSW/reference/IGVFFI8270UPKB.csv.gz` |
-| [`syn74834952`](https://www.synapse.org/Synapse:syn74834952) | Folder | `2026_UTSW/datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/crispr_pipeline/` (full bundle: pipeline_dashboard + pipeline_info + pipeline_outputs) |
-| [`syn74835010`](https://www.synapse.org/Synapse:syn74835010) | Folder | `2026_UTSW/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/crispr_pipeline/` (full bundle) |
+The full mapping (one Synapse path per dataset × output) lives in [`synapse_paths.tsv`](synapse_paths.tsv). The original snapshot is [`2026_05_07_state.png`](2026_05_07_state.png) / [`2026_05_07_state.tsv`](2026_05_07_state.tsv).
 
 ## Where the data lives
 
-- **Local repo:** `tf_perturb_seq/datasets/<dataset_name>/` holds per-dataset configs and metadata.
-- **HPC (UCSD nrnb):** `aklie@nrnb-login.ucsd.edu:/cellar/users/aklie/projects/tf_perturb_seq` — most processed outputs and intermediate files.
-- **GCS:** `gs://igvf-pertub-seq-pipeline-data/<dataset_name>/YYYY_MM_DD/outs/` — CRISPR pipeline outputs.
-- **Synapse:** **canonical store for jamboree-distributed artifacts.** We upload **directly from where the data lives** (HPC / GCS / IGVF portal) to Synapse as each artifact is ready — no full local mirror.
+| Tier | Location | What's there |
+|---|---|---|
+| **Local repo** | `tf_perturb_seq/datasets/<dataset>/` | Per-dataset configs, run scripts, simplified summaries, READMEs that point at Synapse. |
+| **HPC (UCSD nrnb)** | `aklie@nrnb-login.ucsd.edu:/cellar/users/aklie/projects/tf_perturb_seq` | Most processed outputs and intermediate files. Source of truth for cNMF + energy distance runs. |
+| **GCS** | `gs://igvf-pertub-seq-pipeline-data/<dataset>/<YYYY_MM_DD>/outs/<run>/` | CRISPR pipeline outputs (Nextflow target). |
+| **Synapse** | [`syn64423137`](https://www.synapse.org/Synapse:syn64423137) → `2026_UTSW/` | **Canonical store for jamboree-distributed artifacts.** |
 
-## Strategy: Synapse-as-we-go
+## Organizing principle: Synapse-as-we-go
 
-Rather than staging everything locally and then mirroring to Synapse at the end, we upload each artifact to Synapse as soon as it's ready, transferring directly from its source (HPC, GCS, IGVF portal). The final deliverable is `synapse_paths.tsv` plus the simplified / human-readable outputs that are small enough to live in this repo.
+We upload each artifact to Synapse **directly from where it lives** (HPC / GCS / IGVF portal) the moment it's ready, rather than staging everything locally first. Then we log the Synapse path in [`synapse_paths.tsv`](synapse_paths.tsv).
 
-Practical implications:
-- This local folder holds **only**: docs, the state TSV, the synapse path TSV, and small simplified outputs (e.g., `*_simplified.tsv` files in `reference/`).
-- Bulky artifacts (MuData, GTFs, cNMF outputs, kallisto indexes) are **not** copied locally — they go straight to Synapse.
-- The dataset-level analysis folders (`datasets/<name>/<analysis>/`) primarily hold READMEs that describe what's on Synapse and link to it.
+Practical rules:
+- **This local folder** holds only docs + small simplified outputs (e.g. `*_simplified.tsv` in [`reference/`](reference/)). No bulky artifacts.
+- **The dataset analysis folders** (`datasets/<name>/<analysis>/`) are mostly READMEs that describe what's on Synapse and link to it.
+- **Filename convention**: `<name>.tsv` is the comprehensive (machine-readable) form on Synapse; `<name>_simplified.tsv` is the human-readable summary that lives in the repo.
 
-## Folder layout
+### Folder layout
 
 ```
-2026_UTSW/
-├── README.md
-├── TODO.md
-├── 2026_05_07_state.{png,tsv}
-├── synapse_paths.tsv               # populated as artifacts are uploaded
-├── reference/                      # cross-dataset reference data
-│   ├── tf_metadata.tsv (or simplified-only — the full table goes to Synapse)
-│   ├── tf_metadata_simplified.tsv
-│   └── ...
+2026_UTSW/                            (mirrored on Synapse + this local folder)
+├── README.md                         (this file)
+├── TOPICS.md, WORKING_GROUPS.md      (jamboree scope)
+├── TODO.md                           (step-by-step prep plan)
+├── 2026_05_07_state.{png,tsv}        (initial state snapshot)
+├── synapse_paths.tsv                 (dataset × output → Synapse ID)
+├── schemas/                          (one JSON schema per output table)
+├── scripts/                          (generation + mirror scripts)
+├── reference/                        (cross-dataset simplified TSVs)
+├── portal_snapshots/                 (timestamped IGVF portal snapshots)
 └── datasets/
     └── <dataset_name>/
-        ├── README.md               # what's on Synapse for this dataset, with links
-        ├── crispr_pipeline/        # README + any small simplified summaries
+        ├── README.md                 (what's on Synapse for this dataset)
+        ├── crispr_pipeline/
         ├── cnmf/
         └── energy_distance/
 ```
 
-Each analysis directory (`crispr_pipeline/`, `cnmf/`, `energy_distance/`) may grow its own subdirectories as needed (e.g., per-run, per-version, per-replicate) — defined per-analysis as we go.
+## Outputs
 
-Within each subdir, **simplified** (human-readable) artifacts can live in this repo; the corresponding **detailed** (machine-readable) artifacts are on Synapse. Filename convention: `<name>_simplified.tsv` for the simplified version.
+Per-output, column-level documentation lives in [`schemas/`](schemas/) (see [`schemas/README.md`](schemas/README.md) for the index). Each subsection below points at its schema and gives the operational details.
 
-## Outputs to package for the jamboree
-
-Per-table column-level documentation lives in `schemas/` (one JSON file per output, plus a `schemas/README.md` index). The README below only summarizes each output and points to its schema file. For files distributed on the IGVF portal, we prefer linking to the portal URL over storing a local copy.
-
-### Reference
+### Reference data
 
 #### IGVF GTF
 
+Reference gene annotation used across all 5 production datasets. Single canonical version, no subsetting.
+
 | | |
 |---|---|
-| Filename | `IGVFFI9573KOZR.gtf.gz` |
-| Local | `reference/IGVFFI9573KOZR.gtf.gz` (54 MB) |
+| Filename | `IGVFFI9573KOZR.gtf.gz` (54 MB) |
+| Local | `reference/IGVFFI9573KOZR.gtf.gz` |
 | HPC | `/cellar/users/aklie/projects/tf_perturb_seq/ref/IGVFFI9573KOZR.gtf.gz` |
 | IGVF portal | https://data.igvf.org/reference-files/IGVFFI9573KOZR/ |
 | Synapse | [`syn74834518`](https://www.synapse.org/Synapse:syn74834518) |
-| Schema | _GTF format (standard); not in `schemas/` since it's an external standard._ |
-| Description | Reference gene annotation used across all 5 production datasets. Single canonical version, no subsetting. |
+| Schema | _GTF (external standard); not in `schemas/`_ |
 
 #### TF metadata
 
@@ -146,120 +107,127 @@ One row per unique TF target gene. Joins `target_genes.tsv` with the IGVF GTF, H
 
 | | |
 |---|---|
-| Generation script | `scripts/generate_tf_metadata.py` |
-| Comprehensive output | `reference/tf_metadata.tsv` (1,983 × 16) — also on Synapse [`syn74834227`](https://www.synapse.org/Synapse:syn74834227) |
-| Simplified output | `reference/tf_metadata_simplified.tsv` (1,983 × 8) |
+| Generation | `scripts/generate_tf_metadata.py` |
+| Comprehensive | `reference/tf_metadata.tsv` (1,983 × 16) — Synapse [`syn74834227`](https://www.synapse.org/Synapse:syn74834227) |
+| Simplified | `reference/tf_metadata_simplified.tsv` (1,983 × 8) |
 | Schema | [`schemas/tf_metadata.json`](schemas/tf_metadata.json), [`schemas/tf_metadata_simplified.json`](schemas/tf_metadata_simplified.json) |
 
-**Resolution priority (per `gene_symbol`)**: GTF direct → HGNC alias → harmonized guide file fallback.
-
-**Coverage (latest run)**: 1,983 unique target genes; all resolve to an Ensembl ID (1,946 GTF direct, 37 HGNC alias, 0 harmonized fallback). 1,868 in Lambert 2018 (94%); 774 with a JASPAR human entry (39%).
+Resolution priority (per `gene_symbol`): GTF direct → HGNC alias → harmonized guide file fallback. Latest run: 1,983 unique target genes, all resolve to an Ensembl ID; 1,868 in Lambert 2018 (94%); 774 with a JASPAR human entry (39%).
 
 #### Experimental metadata
 
-One row per production dataset. Lab / cell line / differentiation / IGVF accessions / pipeline parameters. Hand-curated from per-dataset documentation; chemistry-related fields are auto-extracted from each dataset's `*.config` file.
+One row per production dataset. Lab / cell line / differentiation / IGVF accessions / pipeline parameters. Hand-curated; chemistry-related fields auto-extracted from each dataset's `*.config`.
 
 | | |
 |---|---|
-| Generation script | `scripts/generate_experimental_metadata.py` |
-| Comprehensive output | `reference/experimental_metadata.tsv` (5 × 26) — also on Synapse [`syn74834309`](https://www.synapse.org/Synapse:syn74834309) |
-| Simplified output | `reference/experimental_metadata_simplified.tsv` (5 × 12) |
+| Generation | `scripts/generate_experimental_metadata.py` |
+| Comprehensive | `reference/experimental_metadata.tsv` (5 × 26) — Synapse [`syn74834309`](https://www.synapse.org/Synapse:syn74834309) |
+| Simplified | `reference/experimental_metadata_simplified.tsv` (5 × 12) |
 | Schema | [`schemas/experimental_metadata.json`](schemas/experimental_metadata.json), [`schemas/experimental_metadata_simplified.json`](schemas/experimental_metadata_simplified.json) |
 
-Marker conventions in the table: `?` = needs to be filled in; `-` = not applicable; numeric `0` = unknown.
+Marker conventions: `?` = needs to be filled in; `-` = not applicable; numeric `0` = unknown.
 
-#### Guide metadata
+#### Guide library
 
-The IGVF-released TF guide library (pools A-D), used **as-is** from the portal — no local generation, no simplified version. This file is what gets fed into all downstream guide-assignment / inference steps.
+The IGVF-released TF guide library (pools A-D). Used **as-is** from the portal — no local generation, no simplified version.
 
 | | |
 |---|---|
-| Filename | `IGVFFI8270UPKB.csv.gz` |
-| Local | `reference/IGVFFI8270UPKB.csv.gz` (340 KB) |
+| Filename | `IGVFFI8270UPKB.csv.gz` (340 KB; TSV gzipped despite the `.csv.gz` extension) |
+| Local | `reference/IGVFFI8270UPKB.csv.gz` |
 | IGVF portal | https://data.igvf.org/tabular-files/IGVFFI8270UPKB/ |
 | Synapse | [`syn74834519`](https://www.synapse.org/Synapse:syn74834519) |
-| Format | TSV (gzipped, despite the `.csv.gz` extension), 14,150 rows × 18 cols |
 | Schema | [`schemas/guide_metadata.json`](schemas/guide_metadata.json) |
-| Scope | **Pool A-D only.** Hon CM and Gersbach hepatocyte additionally use a pool F set in the actual experiment; that's tracked in the `guide_pools` column of `experimental_metadata.tsv` but not mirrored as a separate file. |
+| Scope | **Pool A-D only.** Hon CM and Gersbach hepatocyte additionally use a pool F set in the actual experiment; tracked in `experimental_metadata.tsv` `guide_pools` column, not mirrored separately. |
 
-### CRISPR pipeline (`datasets/<dataset_id>/crispr_pipeline/`)
+### CRISPR pipeline (`datasets/<dataset>/crispr_pipeline/`)
 
-The IGVF CRISPR FG pipeline's three terminal directories per dataset, mirrored as-is:
-
-- `pipeline_dashboard/` — dashboard.html, inference_mudata.h5mu, additional_qc/, evaluation_output/, figures/ (~40 GB / dataset)
-- `pipeline_info/` — params JSON + software-versions YAML (tiny)
-- `pipeline_outputs/` — final inference_mudata.h5mu + perturbo cis/trans per-element/per-guide TSVs (~23 GB / dataset)
+The IGVF CRISPR FG pipeline's three terminal directories per dataset, mirrored as-is.
 
 | | |
 |---|---|
 | Schema | [`schemas/crispr_pipeline.json`](schemas/crispr_pipeline.json) |
-| Mirror script | `scripts/mirror_pipeline_outputs.py` (GCS → Synapse, uses `gcloud storage rsync` + synapseclient) |
-| Bundle size | ~63 GB per dataset |
-| Source | GCS (per-dataset `gcs_output_path` in `experimental_metadata.tsv`) |
-| Synapse target | `2026_UTSW/datasets/<dataset_id>/crispr_pipeline/` |
+| Bundle size | ~63 GB / dataset (`pipeline_dashboard/` ~40 GB + `pipeline_outputs/` ~23 GB + `pipeline_info/` ~10 KB) |
+| Source | GCS (per-dataset `gcs_output_path` in `experimental_metadata.tsv`); for runs done on HPC, the local-on-HPC variant. |
+| Synapse target | `2026_UTSW/datasets/<dataset>/crispr_pipeline/` |
+| Mirror script (GCS source) | [`scripts/mirror_pipeline_outputs.py`](scripts/mirror_pipeline_outputs.py) |
+| Mirror script (HPC source) | [`scripts/mirror_pipeline_outputs_hpc.py`](scripts/mirror_pipeline_outputs_hpc.py) |
 
-**Per-dataset status (2026-05-07):**
+> **Mirroring constraint**: the bundle is too large for the laptop and for HPC `/tmp` (only 20 GB). Run the mirror from the HPC and point `--workdir` at `/cellar/users/aklie/scratch/...` (47 TB free). See [`docs/analysis/CRISPR_PIPELINE_OUTPUTS.md`](../../analysis/CRISPR_PIPELINE_OUTPUTS.md) for the recipe.
 
-| Dataset | Canonical run | Status |
-|---|---|---|
-| Hon WTC11 Cardiomyocyte | `2026_04_19_no_spacer` (Synapse name; differs from `initial_run` in metadata) | Already on Synapse [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) — has `dashboard/` + `pipeline_outputs/` but **no `pipeline_info/`**. Awaiting full bundle from Hon team. |
-| Huangfu HUES8 Definitive Endoderm | `muddy_penguin` | ✅ Mirrored to [`syn74834952`](https://www.synapse.org/Synapse:syn74834952) (full 3-folder bundle, 2026-05-07) |
-| Huangfu HUES8 Embryonic Stem Cell | `sceptre_v1` | ✅ Mirrored to [`syn74835010`](https://www.synapse.org/Synapse:syn74835010) (full 3-folder bundle, 2026-05-07) |
-| Gersbach WTC11 Hepatocyte | _various_ | Already on Synapse [`syn70518849`](https://www.synapse.org/Synapse:syn70518849) but **not in canonical 3-folder layout** — has `Perturbo_outputs/`, `cNMF_inputs/`, multiple MuData files. Awaiting full bundle from Gersbach team. |
-| Engreitz WTC11 Endothelial | — | No data yet |
+### cNMF (`datasets/<dataset>/cnmf/`)
 
-**Mirroring constraint**: per-bundle size (~63 GB) exceeds local free disk on the laptop, **and HPC `/tmp` is only 20 GB**. The recommended path is to run `scripts/mirror_pipeline_outputs.py` from the HPC and explicitly point `--workdir` at the `/cellar` filesystem (47 TB free):
+Per-dataset cNMF gene-program-discovery outputs from the torch-cNMF pipeline. Used by Working Groups 1 + 2 (gene programs as primary building blocks; cross-lineage program comparisons; regulators per program).
 
-```bash
-# from the HPC, in the project root, for each Huangfu dataset:
-gcloud config set account adamklie@igvf-pertub-seq-pipeline.iam.gserviceaccount.com
-.venv/bin/python docs/jamborees/2026_UTSW/scripts/mirror_pipeline_outputs.py \
-  --dataset Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq \
-  --workdir /cellar/users/aklie/scratch/jamboree_pipeline_staging/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq
-```
+| | |
+|---|---|
+| Schema | [`schemas/cnmf.json`](schemas/cnmf.json) |
+| Bundle size | ~5–7 GB / dataset |
+| Source | HPC: `/cellar/users/aklie/projects/tf_perturb_seq/datasets/<dataset>/PerturbNMF/Result/<run_name>/` |
+| Synapse target | `2026_UTSW/datasets/<dataset>/cnmf/<run_name>/` |
+| Runner | per-dataset `6_run_cnmf.sh` — see [`docs/analysis/cNMF.md`](../../analysis/cNMF.md) for the runbook |
+| Mirror script | _TBD_ — `scripts/mirror_cnmf_outputs.py`, deferred until first production run lands and a k is selected. |
 
-Run the long upload via `nohup ... &` so it survives the SSH session. The script downloads the three pipeline directories from GCS, uploads them under `2026_UTSW/datasets/<dataset_id>/crispr_pipeline/` on Synapse, and records the resulting Synapse folder ID in `synapse_paths.tsv`'s `crispr_pipeline` column. After both runs complete, rsync the updated `synapse_paths.tsv` back to the laptop.
+**Curation rule** (full schema in [`schemas/cnmf.json`](schemas/cnmf.json)):
 
-### cNMF (`datasets/<name>/cnmf/`)
+1. **Selected-k full data** for downstream analysis — integrated MuData, all loading variants, cell usages, full `Eval/<sel>_2_0/`, selected-k `Plot/`, `Annotation/`, `Interpretation/`.
+2. **Sweep-as-provenance** so the k decision is auditable without re-running cNMF — `k_selection.png` + stats, all-k clustering pngs, all-k `gene_spectra_score`, all-k `Eval/` TXT bundles, k-selection figure folder, `README.txt` with the selection rationale.
 
-_TBD — see step 3._
+The selected k is decided as a group ("clinical review board" style per [`docs/analysis/cNMF.md`](../../analysis/cNMF.md)). Per-k MuDatas + per-k usages + intermediate caches stay on HPC.
 
-### Energy distance (`datasets/<dataset_id>/energy_distance/`)
+### Energy distance (`datasets/<dataset>/energy_distance/`)
 
-Per-target energy distances + permutation p-values, plus diagnostic plots, from running steps 1, 2, and 2.1 of [`Chikara-Takeuchi/energy_dist_pipeline`](https://github.com/Chikara-Takeuchi/energy_dist_pipeline) on each dataset's inference MuData. Step 3 (target-by-target matrix + clustering) is run separately after picking cutoffs in `config3.json`.
+Per-target energy distances + permutation p-values + diagnostic plots, from steps 1, 2, and 2.1 of [`Chikara-Takeuchi/energy_dist_pipeline`](https://github.com/Chikara-Takeuchi/energy_dist_pipeline). Step 3 (target-by-target matrix + clustering) runs separately after picking cutoffs in `config3.json`.
 
 | | |
 |---|---|
 | Schema | [`schemas/energy_distance.json`](schemas/energy_distance.json) |
-| Mirror script | `scripts/mirror_edistance_outputs.py` (HPC → Synapse, uses synapseclient) |
-| Bundle size | ~few hundred MB per dataset (tables + configs + small PDFs; `inference_mudata.h5mu` is **not** included — already mirrored under `crispr_pipeline/`) |
-| Source | HPC: `/cellar/users/aklie/projects/tf_perturb_seq/datasets/<dataset_id>/results/energy_distance/<run_label>/` |
-| Synapse target | `2026_UTSW/datasets/<dataset_id>/energy_distance/` |
-| Runner | `scripts/run_energy_distance_pipeline.sh` (wrapped per-dataset by `5_run_energy_distance.sh`) |
+| Bundle size | a few hundred MB / dataset (tables + configs + small PDFs; `inference_mudata.h5mu` is **not** included — already mirrored under `crispr_pipeline/`) |
+| Source | HPC: `/cellar/users/aklie/projects/tf_perturb_seq/datasets/<dataset>/results/energy_distance/<run_label>/` |
+| Synapse target | `2026_UTSW/datasets/<dataset>/energy_distance/` |
+| Runner | per-dataset `5_run_energy_distance.sh`, wrapping `scripts/run_energy_distance_pipeline.sh` |
+| Mirror script | [`scripts/mirror_edistance_outputs.py`](scripts/mirror_edistance_outputs.py) (HPC → Synapse) |
 
-**Per-dataset status (2026-05-09):**
+> **⚠ Known issue (both Huangfu runs, 2026-05-09)**: p-values are anti-conservative — all 100 negative-control targets have `pval_mean=0` despite their distance distribution overlapping the targeting distribution. The permutation null is too tight relative to our distances vs the HTv2 reference (likely cause: PCA computed on all genes vs HVG subset). Use raw `distance_mean` as an effect-size proxy until calibration is fixed; do not threshold on the p-value alone.
 
-| Dataset | Run label | Status | Synapse |
-|---|---|---|---|
-| Hon WTC11 Cardiomyocyte | TBD | Not run — awaiting full `crispr_pipeline/` bundle from Hon team; source MuData [`syn74522725`](https://www.synapse.org/Synapse:syn74522725) | — |
-| Huangfu HUES8 Definitive Endoderm | `muddy_penguin` | ✅ Complete (9h 34m) — all validation layers PASS; ⚠ p-values mis-calibrated (see per-dataset README) | [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) |
-| Huangfu HUES8 Embryonic Stem Cell | `sceptre_v1` | ✅ Complete (10h 0m) — all validation layers PASS; ⚠ same calibration concern as DE | [`syn74883475`](https://www.synapse.org/Synapse:syn74883475) |
-| Gersbach WTC11 Hepatocyte | TBD | Not run — awaiting canonical run; source MuData [`syn74728027`](https://www.synapse.org/Synapse:syn74728027) | — |
-| Engreitz WTC11 Endothelial | — | Blocked — no inference MuData (not on portal yet) | — |
+## Operations
 
-**⚠ Known issue across both Huangfu runs**: p-values are anti-conservative — all 100 negative-control targets have `pval_mean=0` despite negative-control distance distribution overlapping the targeting distribution. The pipeline's permutation null is too tight relative to our ~1-2-orders-of-magnitude-larger distances vs the HTv2 verified reference (likely cause: we kept all genes for PCA, vs HTv2 which used HVG subset). Use raw `distance_mean` as an effect-size proxy until calibration is fixed; do not threshold on the p-value alone.
+### Portal snapshots
 
-**Mirror to Synapse (after each run completes):**
+[`scripts/query_igvf_portal.py`](scripts/query_igvf_portal.py) snapshots the TF Perturb-seq Project on the IGVF portal (excluding Benchmark) into `portal_snapshots/<utc-iso>/`. Each snapshot writes per-type JSON + TSV (MeasurementSet, AuxiliarySet, AnalysisSet, ConstructLibrarySet) and a `manifest.tsv`. A `portal_snapshots/latest` symlink always points to the newest.
 
 ```bash
-# from the HPC, in the project root, for each completed run:
-.venv/bin/python docs/jamborees/2026_UTSW/scripts/mirror_edistance_outputs.py \
-  --dataset Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq \
-  --source-dir /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/results/energy_distance/muddy_penguin
+.venv/bin/python docs/jamborees/2026_UTSW/scripts/query_igvf_portal.py
 ```
 
-The script uploads only the deliverable artifacts (tables, configs, `image/`) — not intermediates (`preprocessed.h5ad`, `gRNA_dict.pickle`, `pca_dataframe.pickle`), the cloned `energy_dist_pipeline/` source, or the downloaded `inference_mudata.h5mu`. After running on the HPC, rsync the updated `synapse_paths.tsv` back to the laptop.
+For a daily cron at 06:00 UTC:
+```cron
+0 6 * * * cd /Users/adamklie/Desktop/tfp3/tf_perturb_seq && .venv/bin/python docs/jamborees/2026_UTSW/scripts/query_igvf_portal.py >> docs/jamborees/2026_UTSW/portal_snapshots/cron.log 2>&1
+```
+
+> As of the first snapshot (2026-05-07), only Hon measurement sets appear under the `TF Perturb-seq Project` collection on the portal. Gersbach hepatocyte data is on the portal under a different collection; Engreitz endothelial isn't on the portal yet.
+
+### Mirror scripts
+
+| Script | Direction | What it does |
+|---|---|---|
+| [`scripts/mirror_pipeline_outputs.py`](scripts/mirror_pipeline_outputs.py) | GCS → Synapse | Downloads `pipeline_dashboard/` + `pipeline_info/` + `pipeline_outputs/` from GCS, uploads to `2026_UTSW/datasets/<dataset>/crispr_pipeline/`, records folder ID in `synapse_paths.tsv`. |
+| [`scripts/mirror_pipeline_outputs_hpc.py`](scripts/mirror_pipeline_outputs_hpc.py) | HPC → Synapse | Same target layout but reads from a local HPC run dir (used for runs that didn't land on GCS). |
+| [`scripts/mirror_edistance_outputs.py`](scripts/mirror_edistance_outputs.py) | HPC → Synapse | Uploads only deliverables (CSVs, configs, `image/`, `logs/`) — skips intermediates and the input MuData. |
+| _`scripts/mirror_cnmf_outputs.py`_ | _HPC → Synapse_ | _TBD; deferred until first production run lands._ |
+
+### Generation scripts
+
+| Script | What it builds |
+|---|---|
+| [`scripts/generate_tf_metadata.py`](scripts/generate_tf_metadata.py) | Comprehensive + simplified TF metadata tables. |
+| [`scripts/generate_experimental_metadata.py`](scripts/generate_experimental_metadata.py) | Comprehensive + simplified experimental metadata tables. |
+| [`scripts/upload_to_synapse.py`](scripts/upload_to_synapse.py) | Idempotent file uploader to the Synapse mirror. |
+
+## Working groups
+
+The scientific scope is in [`TOPICS.md`](TOPICS.md) (4 topics from primary building blocks → biological questions → modeling → catalog viz) and [`WORKING_GROUPS.md`](WORKING_GROUPS.md) (5 + 1 working groups, each tied to a topic + figure). Every output here is shaped to answer questions in those docs.
 
 ## Tracking
 
-Work for this jamboree is tracked on the [TFP3 GitHub Project](https://github.com/users/adamklie/projects/4) (milestones as drafts, tasks as issues).
+Work is tracked on the [TFP3 GitHub Project](https://github.com/users/adamklie/projects/4) — milestones as draft items, tasks as issues. The [`TODO.md`](TODO.md) in this folder is the step-by-step prep plan.

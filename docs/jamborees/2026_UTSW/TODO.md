@@ -2,6 +2,8 @@
 
 Prepare data and documentation for the 2026 UTSW jamboree. We are working with the 5 production datasets shown in `2026_05_07_state.png` (this directory).
 
+**Where we are (2026-05-09):** Steps 1, 2, 3 essentially done. We're deep into **Step 6** (Synapse uploads, in progress per output type) with simplified outputs from **Step 5** still being added per dataset. Still pending: cNMF runs on production datasets, the cross-dataset human-readable outputs in **Step 4**, and the **Step 7** Google-Sheet + agent-ready docs.
+
 # Process notes
 
 - **Always double-check paths before using them.** Confirm whether a path is local, on GCS, on Synapse, or on the HPC.
@@ -14,78 +16,130 @@ Prepare data and documentation for the 2026 UTSW jamboree. We are working with t
 
 # Steps
 
-## 1. Set up the jamboree folder in this repo
+## 1. Set up the jamboree folder in this repo ✅
 
 Working dir: `tf_perturb_seq/docs/jamborees/2026_UTSW/`
 
-- [ ] Build a TSV capturing the state shown in `2026_05_07_state.png` (one row per dataset, columns for each artifact/status).
-- [ ] Start a `README.md` in this folder that we extend as decisions get made in the steps below.
+- [x] Build a TSV capturing the state shown in `2026_05_07_state.png` → `2026_05_07_state.tsv`.
+- [x] Start a `README.md` in this folder that we extend as decisions get made → live in [`README.md`](README.md), kept up to date.
 
-## 2. Decide on local and cloud organization
+## 2. Decide on local and cloud organization ✅
 
-- [ ] Pick a local layout. Candidate: one folder per dataset, with each analysis as a subdirectory inside.
-- [ ] Decide on the matching layout on Synapse so the mirror is 1:1.
+- [x] Local layout: `datasets/<dataset>/<analysis>/` (per-analysis subdir per dataset).
+- [x] Matching Synapse layout: `syn64423137/2026_UTSW/datasets/<dataset>/<analysis>/`.
 
-## 3. Define the machine-readable outputs
+## 3. Define the machine-readable outputs ✅
 
-Outputs that computational collaborators and Claude instances will consume to run analyses and generate figures. Document each in the README.
+Schemas live in [`schemas/`](schemas/) (one JSON per output table; index in [`schemas/README.md`](schemas/README.md)). Documented in [`README.md`](README.md).
 
 **Reference data**
-- [ ] IGVF GTF file
-- [ ] TF metadata
-- [ ] Experimental metadata
-- [ ] Guide metadata
+- [x] IGVF GTF — single canonical file (no schema; standard format)
+- [x] TF metadata — [`schemas/tf_metadata.json`](schemas/tf_metadata.json)
+- [x] Experimental metadata — [`schemas/experimental_metadata.json`](schemas/experimental_metadata.json)
+- [x] Guide metadata — [`schemas/guide_metadata.json`](schemas/guide_metadata.json) (used as-is from the IGVF portal)
 
 **Perturb-seq outputs**
-- [ ] Inference MuData
+- [x] Inference MuData → covered as part of `crispr_pipeline/pipeline_dashboard/inference_mudata.h5mu` ([`schemas/crispr_pipeline.json`](schemas/crispr_pipeline.json))
 
 **cNMF outputs**
-- [ ] _TBD — fill in_
+- [x] [`schemas/cnmf.json`](schemas/cnmf.json) — curation rule = selected-k full data + sweep-as-provenance (revisitable without re-running)
 
 **Energy distance outputs**
-- [ ] _TBD — fill in_
+- [x] [`schemas/energy_distance.json`](schemas/energy_distance.json) — verified against HTv2 reference run ([`syn74381167`](https://www.synapse.org/Synapse:syn74381167))
 
 ## 4. Define the human-readable outputs
 
 Outputs aimed at general scientists — simpler artifacts for higher-level figures and exploration.
 
 **Reference data**
-- [ ] Simplified TF metadata
-- [ ] Simplified experimental metadata
-- [ ] Simplified guide metadata
+- [x] Simplified TF metadata → `reference/tf_metadata_simplified.tsv`
+- [x] Simplified experimental metadata → `reference/experimental_metadata_simplified.tsv`
+- [x] Simplified guide metadata → not needed (IGVF release used as-is)
 
 **Perturb-seq outputs**
-- [ ] _TBD — fill in_
+- [ ] Cross-dataset summary TSV (cell counts, mapping rates, n-significant-targets per dataset; see TODO in [`docs/analysis/CRISPR_PIPELINE_OUTPUTS.md`](../../analysis/CRISPR_PIPELINE_OUTPUTS.md))
 
-**cNMF outputs**
-- [ ] _TBD — fill in_
+**cNMF outputs** (deferred — depend on production cNMF runs)
+- [ ] Cross-dataset program-similarity heatmap (cosine similarity of `gene_spectra_score` across all 5 datasets at each dataset's selected k)
+- [ ] Per-dataset top-20-genes-per-program TSV
+- [ ] Per-dataset regulators-per-program TSV (from `Eval/<sel>_<dt>/<sel>_perturbation_association_results_*.txt`)
 
-**Energy distance outputs**
-- [ ] _TBD — fill in_
+**Energy distance outputs** (deferred — partial data so far)
+- [ ] Cross-dataset TFs-significant-by-FDR summary TSV (rolled up from `pval_edist_full.csv`)
+- [ ] Cross-dataset clustered heatmap of per-target energy distances (joins `target_by_target_matrix.csv` on shared targets)
 
-Storage considerations: _TBD — note size limits, where each lives (repo vs. Synapse vs. Drive)._
+Storage considerations: simplified TSVs (small, ~KB-MB) live in this repo under `reference/` or `datasets/<name>/<analysis>/`. Larger derived artifacts (heatmap PNGs, cross-dataset MuData) go to Synapse alongside the comprehensive outputs.
 
 ## 5. Stage simplified outputs locally
 
 Only the small, human-readable artifacts (e.g., `*_simplified.tsv` in `reference/`) live in this repo. Bulky files do not get staged locally — they go straight to Synapse.
 
-- [ ] Drop simplified reference tables (TF / experimental / guide metadata) into `reference/`.
+- [x] Drop simplified reference tables (TF / experimental) into `reference/`.
 - [ ] Add per-dataset READMEs under `datasets/<name>/` describing what's on Synapse and linking to it.
-- [ ] Add small simplified summaries per analysis where they make sense.
+  - [x] HTv2 testbed (`datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/crispr_pipeline/README.md`)
+  - [ ] Hon WTC11 Cardiomyocyte
+  - [ ] Huangfu HUES8 Definitive Endoderm
+  - [ ] Huangfu HUES8 Embryonic Stem Cell
+  - [ ] Gersbach WTC11 Hepatocyte
+  - [ ] Engreitz WTC11 Endothelial
+- [ ] Add small simplified summaries per analysis where they make sense (deferred — depends on Step 4 outputs landing).
 
 ## 6. Upload to Synapse as artifacts come in (interleaved with 3 & 4)
 
-Done iteratively, not at the end.
+Done iteratively, not at the end. Tracking lives in [`synapse_paths.tsv`](synapse_paths.tsv).
 
-- [ ] For each artifact defined in step 3 / 4: transfer directly from source (HPC / GCS / IGVF portal) to Synapse.
-- [ ] Log the result in `synapse_paths.tsv`:
-  - One row per dataset (or `_reference_` for cross-dataset refs)
-  - One column per output type (clear, shared column names)
-  - Each cell = the Synapse path
-- [ ] Keep `2026_05_07_state.tsv` checkboxes in sync with what's actually on Synapse.
+**Reference data** ✅
+- [x] TF metadata → [`syn74834227`](https://www.synapse.org/Synapse:syn74834227)
+- [x] Experimental metadata → [`syn74834309`](https://www.synapse.org/Synapse:syn74834309)
+- [x] IGVF GTF → [`syn74834518`](https://www.synapse.org/Synapse:syn74834518)
+- [x] Guide library → [`syn74834519`](https://www.synapse.org/Synapse:syn74834519)
+
+**CRISPR pipeline** (mirror script: [`scripts/mirror_pipeline_outputs.py`](scripts/mirror_pipeline_outputs.py) for GCS source, [`scripts/mirror_pipeline_outputs_hpc.py`](scripts/mirror_pipeline_outputs_hpc.py) for HPC source)
+- [ ] Hon WTC11 Cardiomyocyte — partial at [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) (`dashboard/` + `pipeline_outputs/`, no `pipeline_info/`). Awaiting the rest of the CRISPR outputs from **Weizhou** (Hon team).
+- [x] Huangfu HUES8 Definitive Endoderm → [`syn74834952`](https://www.synapse.org/Synapse:syn74834952)
+- [x] Huangfu HUES8 Embryonic Stem Cell → [`syn74835010`](https://www.synapse.org/Synapse:syn74835010)
+- [ ] Gersbach WTC11 Hepatocyte — non-canonical at [`syn70518849`](https://www.synapse.org/Synapse:syn70518849); awaiting canonical bundle from **Sara** (Gersbach team)
+- [ ] Engreitz WTC11 Endothelial — ☐ blocked: no data on the IGVF portal yet
+
+**cNMF** (mirror script: TBD `scripts/mirror_cnmf_outputs.py`, deferred until first production run lands and a k is selected)
+- [ ] HTv2 testbed (job 10577039 running) — verify pipeline structure end-to-end before launching production runs
+- [ ] Hon WTC11 Cardiomyocyte — gated on full CRISPR bundle from Hon team (Weizhou)
+- [ ] Huangfu HUES8 Definitive Endoderm — runnable now; awaits group k-selection
+- [ ] Huangfu HUES8 Embryonic Stem Cell — runnable now; awaits group k-selection
+- [ ] Gersbach WTC11 Hepatocyte — bug **Sara** to deliver in our format ([`schemas/cnmf.json`](schemas/cnmf.json)); Sara likely has a complete run, we just need it shaped to match our curation rule (selected-k bundle + sweep-as-provenance) and uploaded under `2026_UTSW/datasets/<id>/cnmf/`
+- [ ] Engreitz WTC11 Endothelial — blocked: no data
+- [ ] Group k-selection meeting per dataset (clinical-review-board style per [`docs/analysis/cNMF.md`](../../analysis/cNMF.md))
+
+**Energy distance** (mirror script: [`scripts/mirror_edistance_outputs.py`](scripts/mirror_edistance_outputs.py))
+- [ ] Hon WTC11 Cardiomyocyte — gated on full CRISPR bundle from Hon team (Weizhou)
+- [x] Huangfu HUES8 Definitive Endoderm → [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) ⚠ p-value calibration concern
+- [x] Huangfu HUES8 Embryonic Stem Cell → [`syn74883475`](https://www.synapse.org/Synapse:syn74883475) ⚠ same calibration concern
+- [ ] Re-run Huangfu DE + ESC with HVG-subset PCA to fix anti-conservative p-values, then re-mirror
+- [ ] Gersbach WTC11 Hepatocyte — bug **Sara** to deliver in our format ([`schemas/energy_distance.json`](schemas/energy_distance.json)). Sara likely has a complete run; we just need the deliverables shaped to match our schema and uploaded under `2026_UTSW/datasets/<id>/energy_distance/`.
+- [ ] Engreitz WTC11 Endothelial — ☐ blocked: no inference MuData
+
+**Tracking**
+- [x] Log Synapse paths in [`synapse_paths.tsv`](synapse_paths.tsv) as artifacts land (one row per dataset / `_reference_`, one column per output type)
+- [ ] Keep `2026_05_07_state.tsv` checkboxes in sync with what's actually on Synapse (or replace with a refreshed snapshot)
 
 ## 7. Final documentation
 
-- [ ] Create a Google Sheet capturing the same state (likely a friendlier view of the TSV from step 6).
+- [ ] Create a Google Sheet capturing the same state (likely a friendlier view of `synapse_paths.tsv`).
 - [ ] Link the jamboree planning doc to the Google Sheet.
-- [ ] Make sure this repo as a whole as up to date as possibe. We will make some skills and mds for the purposes of allowing folks in the jamboree to explore the data and run analyses with agents
+- [ ] Make sure this repo is up to date end-to-end. Build skills + MDs so jamboree participants can explore the data and run analyses with agents.
+
+# What's next (top 5)
+
+Each item below has a detailed report under [`issues/`](issues/) — that's the artifact to read before having the conversation, and the doc to hand to the relevant collaborator.
+
+In priority order:
+
+1. **Bug Weizhou** (Hon team) for the rest of the Hon CM CRISPR outputs — partial mirror at [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) is missing `pipeline_info/`. → [Issue 2](issues/hon-cm-crispr-bundle.md)
+2. **Bug Sara** (Gersbach team) to deliver Gersbach Hep `crispr_pipeline/`, `cnmf/`, and `energy_distance/` in our schema-defined formats. → [Issue 3](issues/gersbach-hep-deliverables.md)
+3. **Verify HTv2 cNMF testbed** (job 10577039) completes cleanly, then launch production cNMF on Huangfu DE + Huangfu ESC. → [Issue 5](issues/htv2-cnmf-testbed.md)
+4. **Fix energy-distance p-value calibration** — re-preprocess with HVG-subset PCA in `scripts/preprocess_mudata_local.py` and re-run on Huangfu DE + ESC. → [Issue 1](issues/edistance-calibration.md)
+5. **Per-dataset READMEs** under `datasets/<production-dataset>/`. → [Issue 6](issues/per-dataset-readmes.md)
+
+Plus the standing blocker: [Issue 4](issues/engreitz-no-data.md) — Engreitz endothelial data not on the IGVF portal yet.
+
+Index of all open issues: [`issues/README.md`](issues/README.md).

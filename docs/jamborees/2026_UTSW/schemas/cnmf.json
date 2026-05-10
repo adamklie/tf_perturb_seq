@@ -1,0 +1,230 @@
+{
+  "name": "cnmf",
+  "title": "cNMF run outputs (per-dataset bundle)",
+  "scope": "per-dataset",
+  "description": "Outputs of the torch-cNMF gene program inference pipeline (`external/cNMF_benchmarking/cNMF_benchmarking_pipeline/Inference/torch-cNMF/`). For each production dataset, the pipeline runs cNMF across a sweep of k values and density thresholds, the group selects a k for downstream analysis, and the bundle mirrored to Synapse contains both (1) the full output at the selected k and (2) enough sweep artifacts to revisit the k decision without re-running cNMF. Used by Working Group 1 (gene programs as primary building blocks; TOPICS.md Topic 1) and Working Group 2 (cross-lineage program loading similarity, regulators per program, lineage-specific enrichment; TOPICS.md Topic 2 / WG2 in WORKING_GROUPS.md).",
+  "_verification_status": "VERIFIED against the Hon WTC11 benchmark reference run on UCSD HPC (`/cellar/users/aklie/projects/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/PerturbNMF/Result/030726_20iter_5KHVG_torch_halsvar_batch_e7/`, 72 GB total). File names + per-(k,dt) sweep structure are confirmed for `gene_spectra_score`, `gene_spectra_tpm`, `spectra.consensus`, `starcat_spectra`, `usages.consensus`, `clustering.k_<X>.dt_<Y>.png`, `k_selection.png`, `k_selection_stats.df.npz`, `overdispersed_genes.txt`, and the 12-13 evaluation TXT files inside each `Eval/<k>_<dt>/` subdir. SAMPLED (column-level not yet enumerated) for `Annotation/<k>_<dt>.xlsx`, `Interpretation/Summary_table/<k>_<dt>/`, the integrated MuData (`adata/cNMF_<k>_<dt>.h5mu`) internal structure, and the `Plot/{Program_*,Perturb_gene_*,k_selection_*}/` PDF inventories. No production-dataset run has been mirrored to Synapse yet — first end-to-end verification will happen against the first production cNMF run that lands.",
+  "bundle_path_local": "datasets/<dataset_id>/cnmf/",
+  "bundle_path_synapse": "2026_UTSW/datasets/<dataset_id>/cnmf/<run_name>/",
+  "size_per_dataset_gb_approx": 6,
+  "source_pipeline": {
+    "runner": {
+      "wrapper": "scripts/run_cnmf_pipeline.sh (per-dataset entrypoint: datasets/<dataset_id>/6_run_cnmf.sh; SLURM-driven, GPU-accelerated)",
+      "based_on": "https://github.com/EngreitzLab/cNMF_benchmarking — `cNMF_benchmarking_pipeline/Inference/torch-cNMF/Slurm_Version` (see docs/analysis/cNMF.md)",
+      "submodules": {
+        "external/cNMF_benchmarking": "Pipeline repo with Slurm + Jupyter variants for inference, evaluation, k-selection, and plotting/Excel summarization."
+      },
+      "container": "docker://igvf/torch-cnmf:v01 (Apptainer .sif on HPC)",
+      "input": "AnnData built from the inference MuData by `Convert_file_adata.py` (gene mod becomes .X with raw counts; guide assignment, names, targets, X_PCA, X_umap moved into uns/obsm). Documented in docs/analysis/cNMF.md.",
+      "sweep": {
+        "iterations": 100,
+        "n_hvgs": 1000,
+        "k_values_benchmark": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 21, 23, 25, 27, 30, 35, 40, 45, 50, 55, 60, 70, 80, 90, 100, 150, 200],
+        "k_values_production": [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 19, 21, 23, 25, 27, 30, 35, 40, 45, 50, 55, 60, 70, 80, 90, 100, 150, 200, 250, 500],
+        "seed": 123,
+        "species": "human",
+        "use_GPU": true,
+        "density_thresholds_run": [0.01, 0.05, 2.0],
+        "density_threshold_for_downstream": 2.0,
+        "note": "Across all datasets we run with multiple density thresholds but `sel_thresh = 2.0` is the canonical downstream threshold (per docs/analysis/cNMF.md). The k-value sweep is the same across the production datasets (production list above)."
+      },
+      "k_selection_process": "Group decision (clinical-review-board style). Top 10-15 k values are picked from the stability-error plot, then the cNMF_k_selection notebook produces enrichment / perturbation-recovery / explained-variance summary plots. Final k is chosen by group consensus and recorded in the per-run README.txt and in this file's `production_runs_status` block."
+    }
+  },
+  "files": [
+    {
+      "name": "<run_name>.gene_spectra_score.k_<k>.dt_<dt>.txt",
+      "type": "tsv",
+      "scope": "selected_k + sweep",
+      "description": "Z-scored gene loadings: rows = programs (1..k), columns = genes (Ensembl IDs). Primary input for cross-lineage program-similarity comparisons (WG2). Mirrored at the selected k AND at every k in the sweep (one density threshold) so a reader can spot-check what programs would look like at an alternate k without re-running cNMF.",
+      "approx_size_per_file_mb": "1 to 38 (scales with k; k=200 is ~38 MB)"
+    },
+    {
+      "name": "<run_name>.gene_spectra_tpm.k_<sel>.dt_2_0.txt",
+      "type": "tsv",
+      "scope": "selected_k only",
+      "description": "TPM-normalized gene loadings. Same shape as `gene_spectra_score`; useful when ranking genes within a program by absolute (rather than normalized) contribution.",
+      "approx_size_per_file_mb": "0.6 to 11 at the selected k (depends on k)"
+    },
+    {
+      "name": "<run_name>.spectra.k_<sel>.dt_2_0.consensus.txt",
+      "type": "tsv",
+      "scope": "selected_k only",
+      "description": "Consensus W matrix (programs × genes) — direct cNMF output before z-scoring or TPM normalization. Mirrored at the selected k for downstream that wants the raw consensus."
+    },
+    {
+      "name": "<run_name>.starcat_spectra.k_<sel>.dt_2_0.txt",
+      "type": "tsv",
+      "scope": "selected_k only",
+      "description": "STARCAT-normalized spectra (programs × genes) — alternative normalization of the consensus W."
+    },
+    {
+      "name": "<run_name>.usages.k_<sel>.dt_2_0.consensus.txt",
+      "type": "tsv",
+      "scope": "selected_k only",
+      "description": "Cell × program usages (H matrix). Rows = cells, columns = programs (1..k). The cell-level program activations used by WG1 (which programs are affected per perturbation) and WG2 (program activations across cell states). NOT mirrored across the k sweep — too bulky (157 MB at k=200) and the selected-k version is the only one needed for downstream analyses.",
+      "approx_size_per_file_mb": "6 to 157 (selected-k file only)"
+    },
+    {
+      "name": "<run_name>.clustering.k_<X>.dt_<Y>.png",
+      "type": "png",
+      "scope": "all_k × both_dts",
+      "description": "Per-(k,dt) clustergram + local-density histogram (cNMF's built-in QC plot — shows program separation and consensus stability). Mirrored across the full sweep so a reader can visually inspect program separation at alternate k.",
+      "approx_size_per_file_kb": "150 to 3800"
+    },
+    {
+      "name": "<run_name>.k_selection.png",
+      "type": "png",
+      "scope": "run-level",
+      "description": "Stability-vs-error curve across the k sweep — the canonical visual used by the group to pick a k."
+    },
+    {
+      "name": "<run_name>.k_selection_stats.df.npz",
+      "type": "npz",
+      "scope": "run-level",
+      "description": "Raw stats array behind `k_selection.png` (one row per k value). Lets a reader re-plot or apply alternate k-selection criteria."
+    },
+    {
+      "name": "<run_name>.overdispersed_genes.txt",
+      "type": "txt",
+      "scope": "run-level",
+      "description": "List of HVGs (top-N by overdispersion) cNMF was run on. Required to interpret loadings and to re-run with the same gene set."
+    },
+    {
+      "name": "Eval/<k>_<dt>/",
+      "type": "directory",
+      "scope": "all_k × both_dts",
+      "description": "Per-(k,dt) evaluation output bundle (12-13 TXT files). Mirrored across the full sweep — these files are how the group evaluates which k to pick (they drive the `cNMF_k_selection` plots) and they're small (~50 MB total across all k). Keeping the full sweep here is what makes the k decision auditable.",
+      "files_per_subdir": [
+        {"name": "<k>_Explained_Variance.txt", "description": "Per-program explained variance."},
+        {"name": "<k>_Explained_Variance_Summary.txt", "description": "Cumulative explained variance summary at this k."},
+        {"name": "<k>_GO_term_enrichment.txt", "description": "GO term enrichment per program."},
+        {"name": "<k>_categorical_association_results.txt", "description": "Program-vs-categorical-covariate association tests (e.g., batch, sample)."},
+        {"name": "<k>_categorical_association_posthoc.txt", "description": "Post-hoc pairwise tests for the categorical associations above."},
+        {"name": "<k>_geneset_enrichment.txt", "description": "MSigDB / curated gene-set enrichment per program."},
+        {"name": "<k>_perturbation_association_results_<batch>.txt", "description": "Per-program perturbation association test results — one file per batch (e.g., `IGVFDS6244NAXC`, `IGVFDS8721BKRO`, ..., plus an aggregated `WTC` file in the Hon benchmark). Working Group 2 uses these to identify regulators of each program."},
+        {"name": "<k>_trait_enrichment.txt", "description": "GWAS trait enrichment per program."},
+        {"name": "<k>_fake_perturbation_association_calibration.txt", "description": "Optional. Negative-control perturbation calibration. Present at a subset of k values in the Hon benchmark (k = 10, 35, 40, 50, 80, 90)."}
+      ]
+    },
+    {
+      "name": "adata/cNMF_<sel>_2_0.h5mu",
+      "type": "mudata",
+      "scope": "selected_k only",
+      "description": "Integrated MuData at the selected k. Single canonical handoff for downstream: gene mod (cells × genes) + guide mod (cells × guides) + cNMF mod (cells × programs with `varm['loadings']` = programs × genes). The cNMF.md handbook documents the post-inference structure: `cNMF.X` = cell × program loadings, `cNMF.varm['loadings']` = program × gene loadings, `obsm`/`uns` mirrored from the gene mod for plotting (X_PCA, X_umap, guide_assignment, guide_names, guide_targets). NOT mirrored across the k sweep — this one file is the dominant chunk (~1.7 GB) so we only keep the selected-k version."
+    },
+    {
+      "name": "Annotation/<sel>_2_0.xlsx",
+      "type": "xlsx",
+      "scope": "selected_k only",
+      "description": "Per-(k,dt) annotated workbook integrating program loadings + top genes + enrichment summaries. Built by the Plotting / Excel-summarization step. Sampled-only (column-level inventory not yet documented).",
+      "verified": false
+    },
+    {
+      "name": "Interpretation/Summary_table/<sel>_2_0/",
+      "type": "directory",
+      "scope": "selected_k only",
+      "description": "Compiled summary tables (TSV/XLSX/TXT) integrating mdata + evaluation results at the selected k. Sampled-only; specific filenames not yet documented.",
+      "verified": false
+    },
+    {
+      "name": "Plot/Program_<sel>_<dt>/",
+      "type": "directory",
+      "scope": "selected_k only",
+      "description": "Program-QC PDFs at the selected k (program UMAP, program violin, loading correlations, top GO term plot, top loading genes, regulated-program volcano + dot + waterfall + bar plots). Folder is named by selected k, e.g., `Program_50_2_0/` in the Hon benchmark."
+    },
+    {
+      "name": "Plot/Perturb_gene_<sel>_<dt>/",
+      "type": "directory",
+      "scope": "selected_k only",
+      "description": "Perturbed-gene PDFs at the selected k (gene UMAP, guide UMAP, gene dotplot, gene loading correlations, top loading programs, regulated-program volcano + dot + waterfall + bar plots)."
+    },
+    {
+      "name": "Plot/k_selection_<run_id>/",
+      "type": "directory",
+      "scope": "run-level",
+      "description": "k-selection figure folder produced by `cNMF_k_selection.ipynb`: stability-error, GO/genesets/trait enrichment by k, perturbation sensitivity by k, explained variance by k, program dot plot by conditions. Mirrored as part of the sweep-as-provenance layer so the k decision is auditable."
+    },
+    {
+      "name": "config_*.yml",
+      "type": "yaml",
+      "scope": "run-level",
+      "description": "SLURM job configs captured at run time (one per submission). Reproducibility."
+    },
+    {
+      "name": "logs/",
+      "type": "directory",
+      "scope": "run-level",
+      "description": "SLURM `JOB_ID.err` / `JOB_ID.out` / `resource_monitor_JOB_ID.log` for each submission. Useful for wall-time / GPU-utilization auditing."
+    },
+    {
+      "name": "README.txt",
+      "type": "txt",
+      "scope": "run-level",
+      "description": "Per-run notes (per cNMF.md): (1) the density threshold used, (2) the k value selected for downstream and the reasoning, (3) any other run notes (failures, re-runs, parameter overrides). This is the human-readable record of why this k was picked — what lets a future reader decide if the pick still holds without re-running anything."
+    }
+  ],
+  "bundle_inclusion_rule": {
+    "purpose": [
+      "(1) Selected-k full data for downstream analysis (WG1 + WG2): the integrated MuData, all loading variants, cell usages, full Eval/, and the selected-k Plot + Annotation + Interpretation folders.",
+      "(2) Sweep-as-provenance: enough sweep artifacts that the k decision is auditable and revisitable without re-running cNMF — k_selection.png + stats, all-k clustering pngs, all-k gene_spectra_score loadings, all-k Eval TXT bundles, k_selection_<run_id>/ figure folder, README.txt with selection rationale."
+    ],
+    "include": {
+      "selected_k_only": [
+        "<run_name>.gene_spectra_tpm.k_<sel>.dt_2_0.txt",
+        "<run_name>.spectra.k_<sel>.dt_2_0.consensus.txt",
+        "<run_name>.starcat_spectra.k_<sel>.dt_2_0.txt",
+        "<run_name>.usages.k_<sel>.dt_2_0.consensus.txt",
+        "adata/cNMF_<sel>_2_0.h5mu",
+        "Annotation/<sel>_2_0.xlsx",
+        "Eval/<sel>_2_0/ (selected-k subdir is part of the full-Eval-sweep mirror, called out here for clarity)",
+        "Interpretation/Summary_table/<sel>_2_0/",
+        "Plot/Program_<sel>_<dt>/",
+        "Plot/Perturb_gene_<sel>_<dt>/"
+      ],
+      "all_k_sweep": [
+        "<run_name>.gene_spectra_score.k_<X>.dt_2_0.txt for every k in the sweep",
+        "<run_name>.clustering.k_<X>.dt_<Y>.png for every k × both density thresholds",
+        "Eval/<X>_<Y>/ for every k × both density thresholds (full TXT bundle per (k,dt))"
+      ],
+      "run_level": [
+        "<run_name>.k_selection.png",
+        "<run_name>.k_selection_stats.df.npz",
+        "<run_name>.overdispersed_genes.txt",
+        "Plot/k_selection_<run_id>/",
+        "config_*.yml",
+        "logs/",
+        "README.txt"
+      ]
+    },
+    "exclude": [
+      "cnmf_tmp/ — NPZ cache files, regeneratable from the spectra/usages outputs",
+      "Inference/ — empty / duplicate of cnmf_tmp",
+      "prog_data/NMF_<k>_<dt>.h5ad — duplicates info already in adata/cNMF_<k>_<dt>.h5mu",
+      "loading/cNMF_loadings_<k>_<dt>.txt — duplicate of the gene_spectra_* files",
+      "<run_name>.gene_spectra_tpm/spectra.consensus/starcat_spectra/usages.consensus for k != selected — same loadings as gene_spectra_score (other normalizations) or too bulky (usages); reader can re-derive if revisiting the k decision",
+      "adata/cNMF_<k>_<dt>.h5mu for k != selected — the dominant 70 GB of the run; selected-k MuData is sufficient",
+      "Evaluation/ legacy folder (mostly empty in the Hon benchmark)"
+    ],
+    "estimated_bundle_size_gb": "5-7 per dataset (selected-k MuData ~1.7 GB + per-k gene_spectra_score sweep ~600 MB + Eval TXT sweep ~100 MB + selected-k tabular outputs + clustering pngs + plot folders + run-level files)."
+  },
+  "production_runs_status": {
+    "Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq": "selected-k decision pending; cNMF run pending (gated on full crispr_pipeline bundle)",
+    "Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq": "selected-k decision pending; cNMF run pending",
+    "Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq": "selected-k decision pending; cNMF run pending",
+    "Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq": "selected-k decision pending; cNMF run pending",
+    "Engreitz_WTC11-endothelial-cells_TF-Perturb-seq": "blocked (no inference MuData yet; dataset not on IGVF portal)",
+    "as_of": "2026-05-09",
+    "reference_run": "Hon WTC11 benchmark (`/cellar/users/aklie/projects/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/PerturbNMF/Result/030726_20iter_5KHVG_torch_halsvar_batch_e7/`). Used to verify schema; not a production dataset for the jamboree but the structural template for production runs.",
+    "synapse_placeholder_folder": "TBD — not yet created under syn64423137 (unlike energy_distance which has syn74823521)",
+    "mirror_tool": "TBD — `docs/jamborees/2026_UTSW/scripts/mirror_cnmf_outputs.py` (deferred until first production run lands and a selected k is chosen)"
+  },
+  "known_issues": {
+    "selected_k_decision_pending": "All 5 production datasets need a selected k. The decision is group-level (clinical-review-board style per docs/analysis/cNMF.md line 119) and won't be made until the cNMF k-selection plots are reviewed jointly. Until then, the bundle's exact contents are parameterized by `<sel>` and can't be uploaded.",
+    "annotation_workbook_schema": "The Annotation/<k>_<dt>.xlsx workbook structure (sheet list, columns per sheet) hasn't been inventoried. Verify against the Hon benchmark when documenting the first production run."
+  },
+  "downstream_human_readable_outputs": {
+    "status": "deferred",
+    "plan": "Cross-dataset program-similarity heatmap (rows = programs, cols = programs; cell = cosine similarity of gene_spectra_score loadings; colored by lineage of origin) and a per-dataset top-20-genes-per-program TSV + regulators-per-program TSV (built from Eval/<sel>_<dt>/<sel>_perturbation_association_results_*.txt)."
+  }
+}

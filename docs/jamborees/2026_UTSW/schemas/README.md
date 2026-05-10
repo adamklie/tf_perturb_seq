@@ -9,6 +9,9 @@ JSON schemas for every output table mirrored to the jamboree, in a (Frictionless
 | `experimental_metadata.json` | Comprehensive experimental metadata | 5 | 26 |
 | `experimental_metadata_simplified.json` | Simplified experimental metadata | 5 | 12 |
 | `guide_metadata.json` | IGVF guide library file (pools A-D), used as-is from the portal | 14,150 | 18 |
+| `crispr_pipeline.json` | Per-dataset CRISPR pipeline output bundle (3 dirs mirrored as-is) | per-dataset | per-dataset |
+| `energy_distance.json` | Per-dataset energy-distance pipeline output bundle | per-dataset | per-dataset |
+| `cnmf.json` | Per-dataset cNMF run output bundle (selected-k + sweep-as-provenance) | per-dataset | per-dataset |
 
 ## Conventions
 
