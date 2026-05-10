@@ -225,6 +225,7 @@ For a daily cron at 06:00 UTC:
 | [`scripts/generate_experimental_metadata.py`](scripts/generate_experimental_metadata.py) | Comprehensive + simplified experimental metadata tables. |
 | [`scripts/upload_to_synapse.py`](scripts/upload_to_synapse.py) | Idempotent file uploader to the Synapse mirror. |
 | [`../../../scripts/cross_dataset_pipeline_summary.py`](../../../scripts/cross_dataset_pipeline_summary.py) | Aggregates per-dataset CRISPR pipeline metrics from Synapse → [`reference/cross_dataset_pipeline_summary.tsv`](reference/cross_dataset_pipeline_summary.tsv) (cell counts, UMI medians, knockdown stats, perturbo-significant counts). For WG1 data summarization. |
+| [`../../../scripts/cross_dataset_edistance_summary.py`](../../../scripts/cross_dataset_edistance_summary.py) | Aggregates per-dataset energy-distance results from Synapse → [`reference/cross_dataset_edistance_summary.tsv`](reference/cross_dataset_edistance_summary.tsv) (n_targets per type, distance medians, calibration-robust "targeting > NC max" counts, p-value diagnostics). For WG1 transcriptome-wide-significance summary. |
 
 ### Validators
 
