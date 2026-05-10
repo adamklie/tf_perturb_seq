@@ -298,6 +298,7 @@ def main() -> int:
     print(f"target Synapse folder: {target_root}")
 
     folder_cache: dict[str, str] = {"": target_root}
+    children_cache: dict[str, set[str]] = {}
 
     def folder_for(rel: str) -> str:
         if rel in folder_cache:
@@ -308,14 +309,32 @@ def main() -> int:
         folder_cache[rel] = new_id
         return new_id
 
+    def children_of(folder_id: str) -> set[str]:
+        if folder_id not in children_cache:
+            children_cache[folder_id] = {
+                c["name"] for c in syn.getChildren(folder_id)
+                if c["type"].endswith(".FileEntity")
+            }
+        return children_cache[folder_id]
+
+    n_skipped = 0
+    n_uploaded = 0
     for src_p, rel in uploads:
         if src_p.stat().st_size == 0:
             print(f"  skipped (empty) {rel}")
             continue
         parent_rel = "/".join(rel.split("/")[:-1])
         parent_id = folder_for(parent_rel)
+        # Idempotency: skip if a file with this name already exists in the target folder.
+        existing = children_of(parent_id)
+        if src_p.name in existing:
+            n_skipped += 1
+            continue
         syn.store(File(str(src_p), parent=parent_id))
+        children_cache.setdefault(parent_id, set()).add(src_p.name)
+        n_uploaded += 1
         print(f"  uploaded {rel}")
+    print(f"\nuploaded {n_uploaded}, skipped (already present) {n_skipped}")
 
     update_synapse_paths_tsv(args.dataset, target_root)
     print()
