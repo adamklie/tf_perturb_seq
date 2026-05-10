@@ -4,6 +4,8 @@ Prepare data and documentation for the 2026 UTSW jamboree. We are working with t
 
 **Where we are (2026-05-09):** Steps 1, 2, 3 essentially done. We're deep into **Step 6** (Synapse uploads, in progress per output type) with simplified outputs from **Step 5** still being added per dataset. Still pending: cNMF runs on production datasets, the cross-dataset human-readable outputs in **Step 4**, and the **Step 7** Google-Sheet + agent-ready docs.
 
+**Tomorrow's plan**: [`AGENDA_2026_05_10.md`](AGENDA_2026_05_10.md) — three queued items (energy-distance calibration fix, Huangfu DE/ESC cNMF launch, human-readable derivatives) with concrete commands + acceptance criteria.
+
 # Process notes
 
 - **Always double-check paths before using them.** Confirm whether a path is local, on GCS, on Synapse, or on the HPC.
