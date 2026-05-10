@@ -99,7 +99,9 @@ if [[ -z "$MUDATA_PATH" ]]; then
   elif [[ -n "$SYNAPSE_ID" ]]; then
     echo "[setup] downloading MuData from Synapse $SYNAPSE_ID -> $MUDATA_LOCAL"
     [[ -z "${SYNAPSE_AUTH_TOKEN:-}" ]] && { echo "ERROR: SYNAPSE_AUTH_TOKEN not set" >&2; exit 2; }
-    python -c "
+    # Use the project venv explicitly — bare `python` on a SLURM compute node
+    # may resolve to base conda without synapseclient.
+    /cellar/users/aklie/projects/tf_perturb_seq/.venv/bin/python -c "
 import os, shutil, synapseclient
 syn = synapseclient.Synapse(silent=True)
 syn.login(authToken=os.environ['SYNAPSE_AUTH_TOKEN'])

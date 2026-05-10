@@ -1,30 +1,40 @@
 # Huangfu HUES8 Embryonic Stem Cell — cNMF
 
-**Status**: ⏳ **Pre-staged, ready to launch.** SLURM script written + scp'd to HPC. Holding submission until the HTv2 testbed (job 10577039) verifies the pipeline structure cleanly. See [Issue 5](../../../issues/htv2-cnmf-testbed.md).
+**Status**: 🔄 Mirroring the existing `042926_huangfu_esc_torchcnmf_KskillA` run to Synapse (in flight 2026-05-10). Selected k = 200, density threshold = 2.0.
 
-## Pre-staged
+## What's being mirrored
 
 | | |
 |---|---|
-| Run name | `050926_HuangfuESC_20iter_5KHVG_torch_halsvar_batch` |
-| Input `.h5ad` | `/cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/PerturbNMF/Data/ESC_sceptre_v1_perturbnmf.h5ad` (897 MB; pre-converted from MuData) |
-| SLURM script | [`PerturbNMF/Script/050926_HuangfuESC_20iter_5KHVG_torch_halsvar_batch.sh`](../../../../../datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/PerturbNMF/Script/050926_HuangfuESC_20iter_5KHVG_torch_halsvar_batch.sh) |
-| Params | mirrors Hon's `030726_20iter_5KHVG_torch_halsvar_batch_e7` (halsvar / batch / 20 iter / 5K HVG / density thresholds 0.2 + 2.0 / `categorical_key=batch` / benchmark k list 5–200) |
+| Run name | `042926_huangfu_esc_torchcnmf_KskillA` |
+| Source | HPC: `/cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/PerturbNMF/Result/042926_huangfu_esc_torchcnmf_KskillA/` (27 GB) |
+| Selected k | **200** |
+| Density threshold | **2.0** (single — this run did not sweep dt=0.2 + 2.0) |
+| Mirror target | [`syn74893977`](https://www.synapse.org/Synapse:syn74893977) → `2026_UTSW/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/cnmf/042926_huangfu_esc_torchcnmf_KskillA/` |
+| Bundle size | ~9 GB after curation |
+| Log on HPC | `docs/jamborees/2026_UTSW/mirror_huangfu_esc_cnmf.log` |
 
-## To launch (when HTv2 testbed verifies)
+## ⚠ Layout deviations from the schema
 
-```bash
-ssh aklie@nrnb-login.ucsd.edu
-sbatch /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/PerturbNMF/Script/050926_HuangfuESC_20iter_5KHVG_torch_halsvar_batch.sh
-```
+Same as the DE sibling — older PerturbNMF tooling produces a layout that differs from the canonical schema. Mirror script auto-detects and uploads as-is:
 
-Time limit set to 72h (Huangfu ESC is ~6× larger than HTv2 testbed; expect ~24-48h actual wall time). Can run in parallel with the DE production run on a separate GPU node.
+- File prefix `Inference.` (instead of `<run_name>.`)
+- Flat files live in `Inference/` subdir
+- `Evaluation/` (instead of `Eval/`)
+- `Annotation/` at `Inference/Annotation/`
+- Single density threshold `dt_2_0` only
 
-## Synapse target (when run completes)
+K sweep matches DE: 30, 50, 60, 80, 100, 200, 250, 300.
 
-`2026_UTSW/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/cnmf/<run_name>/` — populated by [`scripts/mirror_cnmf_outputs.py`](../../../scripts/mirror_cnmf_outputs.py) (curation rule: `schemas/cnmf.json`).
+## Run parameters
+
+Identical to DE — see [`../Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/cnmf/README.md`](../../Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/cnmf/README.md) for the full table comparing the 042926 K-skill-A params to Hon's "guiding light" reference.
 
 ## Schema + walkthrough
 
 - Machine-readable schema: [`schemas/cnmf.json`](../../../schemas/cnmf.json)
 - Analysis-level walkthrough: [`docs/analysis/cNMF_OUTPUTS.md`](../../../../../analysis/cNMF_OUTPUTS.md), [`docs/analysis/cNMF.md`](../../../../../analysis/cNMF.md)
+
+## Pre-staged Hon-mirroring run (held)
+
+Same as DE — `050926_HuangfuESC_20iter_5KHVG_torch_halsvar_batch.sh` is pre-staged but held since the 042926 run is sufficient.

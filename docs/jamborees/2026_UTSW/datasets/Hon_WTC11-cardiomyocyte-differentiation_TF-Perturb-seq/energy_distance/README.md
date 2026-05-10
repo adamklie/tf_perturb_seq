@@ -6,9 +6,9 @@
 | Schema | [`../../../schemas/energy_distance.json`](../../../schemas/energy_distance.json) |
 | Run label | TBD (canonical CRISPR pipeline run is `2026_04_19_no_spacer` per Synapse `syn74520421`) |
 | Source MuData | Synapse [`syn74522725`](https://www.synapse.org/Synapse:syn74522725) (Hon Lab upload, 16.65 GB) |
-| Status | Not run yet — awaiting `pipeline_info/` from the Hon team to confirm run lineage before kicking off |
-| HPC output dir | `/cellar/users/aklie/projects/tf_perturb_seq/datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/results/energy_distance/<run>/` (TBD) |
-| Synapse | _not yet created_ |
+| Status | 🔄 RUNNING — SLURM job 10641046 launched 2026-05-10 (carter-gpu, ~10h estimated). Pulling MuData from Synapse `syn74522725`. |
+| HPC output dir | `/cellar/users/aklie/projects/tf_perturb_seq/datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/results/energy_distance/2026_04_19_no_spacer/` |
+| Synapse | _will populate after run completes via `mirror_edistance_outputs.py`_ |
 
 ## How to run (when ready)
 

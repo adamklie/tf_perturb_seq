@@ -64,6 +64,37 @@ JAMB = Path(__file__).resolve().parent.parent
 SYNAPSE_PATHS = JAMB / "synapse_paths.tsv"
 SYNAPSE_PARENT = "syn64423137"
 
+
+def detect_layout(src: Path) -> tuple[Path, str, str, str]:
+    """Detect run layout. Returns (search_root, prefix, eval_dirname, annotation_root).
+
+    Two layouts seen in the wild:
+      A) "Hon-style" — flat files at top-level with `<run_name>.` prefix,
+         Eval/ folder, Annotation/ at top-level.
+      B) "Huangfu-042926-style" — flat files inside Inference/ with
+         `Inference.` prefix, Evaluation/ folder, Annotation/ at
+         Inference/Annotation/.
+
+    We probe by looking for `*.k_selection.png` at top-level vs Inference/.
+    """
+    top_kspng = list(src.glob("*.k_selection.png"))
+    if top_kspng:
+        prefix = top_kspng[0].name[: -len(".k_selection.png")]
+        eval_dir = "Eval" if (src / "Eval").is_dir() else "Evaluation"
+        annot_root = src
+        return src, prefix, eval_dir, annot_root
+
+    inf_dir = src / "Inference"
+    inf_kspng = list(inf_dir.glob("*.k_selection.png")) if inf_dir.is_dir() else []
+    if inf_kspng:
+        prefix = inf_kspng[0].name[: -len(".k_selection.png")]
+        eval_dir = "Evaluation" if (src / "Evaluation").is_dir() else "Eval"
+        annot_root = inf_dir
+        return inf_dir, prefix, eval_dir, annot_root
+
+    # Fallback: assume Hon-style with prefix = src.name
+    return src, src.name, "Eval", src
+
 # Selected-k flat files (one per k, but only the chosen k goes here)
 SELECTED_K_FLAT_TEMPLATES = [
     "{run}.gene_spectra_tpm.k_{k}.dt_{dt}.txt",
@@ -107,33 +138,45 @@ def collect_uploads(src: Path, run: str, sel_k: int, dt: float) -> list[tuple[Pa
     sel_dt = fmt_dt(dt)
     uploads: list[tuple[Path, str]] = []
 
-    # Selected-k flat files
-    for tpl in SELECTED_K_FLAT_TEMPLATES:
-        f = src / tpl.format(run=run, k=sel_k, dt=sel_dt)
-        if f.is_file():
-            uploads.append((f, f.name))
+    # Detect layout — determines where flat files live and what their prefix is.
+    search_root, prefix, eval_dir_name, annot_root = detect_layout(src)
+    print(f"  layout: search_root={search_root.relative_to(src) if search_root != src else '.'}, prefix={prefix!r}, eval_dir={eval_dir_name}")
 
-    # All-k sweep flat files (gene_spectra_score for every k)
-    for f in sorted(src.iterdir()):
+    # Selected-k flat files (live in search_root)
+    for fname_tpl in SELECTED_K_FLAT_TEMPLATES:
+        # Replace {run} with the detected prefix
+        f = search_root / fname_tpl.format(run=prefix, k=sel_k, dt=sel_dt)
+        if f.is_file():
+            uploads.append((f, str(f.relative_to(src))))
+
+    # All-k sweep flat files (gene_spectra_score for every k, clustering pngs)
+    for f in sorted(search_root.iterdir()):
         if f.is_file() and SWEEP_FLAT_PATTERN.match(f.name):
-            uploads.append((f, f.name))
+            uploads.append((f, str(f.relative_to(src))))
         elif f.is_file() and SWEEP_CLUSTERING_PATTERN.match(f.name):
-            # All-k clustering pngs (sweep-as-provenance)
-            uploads.append((f, f.name))
+            uploads.append((f, str(f.relative_to(src))))
 
-    # Run-level flat files
+    # Run-level flat files (k_selection.png, stats.npz, overdispersed_genes.txt)
     for tpl in RUN_LEVEL_FILES:
-        f = src / tpl.format(run=run)
+        f = search_root / tpl.format(run=prefix)
         if f.is_file():
-            uploads.append((f, f.name))
-    for pattern in RUN_LEVEL_GLOB:
-        for f in sorted(src.glob(pattern)):
-            if f.is_file():
-                uploads.append((f, f.name))
+            uploads.append((f, str(f.relative_to(src))))
+    # Run-level globs (config_*.yml, README.txt) — try both top-level and search_root
+    for root in (src, search_root):
+        for pattern in RUN_LEVEL_GLOB:
+            for f in sorted(root.glob(pattern)):
+                if f.is_file():
+                    uploads.append((f, str(f.relative_to(src))))
 
-    # Selected-k folders / files
+    # Selected-k folders / files — paths anchored at top-level for adata/Plot/Interpretation,
+    # and at annot_root for Annotation
     for tpl in SELECTED_K_FOLDER_TEMPLATES:
-        target = src / tpl.format(k=sel_k, dt=sel_dt)
+        rel_path = tpl.format(k=sel_k, dt=sel_dt)
+        # Annotation may live at Inference/Annotation/<k>_<dt>.xlsx
+        if rel_path.startswith("Annotation/"):
+            target = annot_root / rel_path
+        else:
+            target = src / rel_path
         if target.is_file():
             uploads.append((target, str(target.relative_to(src))))
         elif target.is_dir():
@@ -141,8 +184,8 @@ def collect_uploads(src: Path, run: str, sel_k: int, dt: float) -> list[tuple[Pa
                 if sub.is_file():
                     uploads.append((sub, str(sub.relative_to(src))))
 
-    # All-k Eval/<k>_<dt>/ folders
-    eval_dir = src / EVAL_DIR_NAME
+    # All-k Eval/<k>_<dt>/ (or Evaluation/) folders
+    eval_dir = src / eval_dir_name
     if eval_dir.is_dir():
         for k_dt_dir in sorted(eval_dir.iterdir()):
             if not k_dt_dir.is_dir():
@@ -153,7 +196,7 @@ def collect_uploads(src: Path, run: str, sel_k: int, dt: float) -> list[tuple[Pa
                 if sub.is_file():
                     uploads.append((sub, str(sub.relative_to(src))))
 
-    # Plot/k_selection_*/
+    # Plot/k_selection_*/ (or Plot/k_selection/)
     plot_dir = src / "Plot"
     if plot_dir.is_dir():
         for sub in sorted(plot_dir.iterdir()):
@@ -162,21 +205,24 @@ def collect_uploads(src: Path, run: str, sel_k: int, dt: float) -> list[tuple[Pa
                     if f.is_file():
                         uploads.append((f, str(f.relative_to(src))))
 
-    # logs/
-    for d in ALWAYS_INCLUDE_DIRS:
-        d_path = src / d
-        if d_path.is_dir():
-            for f in d_path.rglob("*"):
-                if f.is_file():
-                    uploads.append((f, str(f.relative_to(src))))
+    # logs/ — top-level + Inference/logs/
+    for root in (src, search_root):
+        for d in ALWAYS_INCLUDE_DIRS:
+            d_path = root / d
+            if d_path.is_dir():
+                for f in d_path.rglob("*"):
+                    if f.is_file():
+                        uploads.append((f, str(f.relative_to(src))))
 
-    # Dedup (preserve order)
+    # Dedup (preserve order). Resolve paths through symlinks (Huangfu's adata/ symlinks
+    # to Inference/adata/ — same files, different paths).
     seen = set()
     deduped = []
     for src_p, rel in uploads:
-        if str(src_p) in seen:
+        key = str(src_p.resolve())
+        if key in seen:
             continue
-        seen.add(str(src_p))
+        seen.add(key)
         deduped.append((src_p, rel))
     return deduped
 
