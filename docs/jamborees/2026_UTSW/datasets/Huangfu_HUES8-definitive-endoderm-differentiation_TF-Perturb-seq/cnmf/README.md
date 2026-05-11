@@ -10,7 +10,7 @@
 | Source | HPC: `/cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/PerturbNMF/Result/042926_huangfu_de_torchcnmf_KskillA/` (37 GB) |
 | Selected k | **200** |
 | Density threshold | **2.0** (single — this run did not sweep dt=0.2 + 2.0) |
-| Mirror target | `2026_UTSW/datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/cnmf/042926_huangfu_de_torchcnmf_KskillA/` |
+| Mirror target | `2026_UTSW/datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/cnmf/` (no run_name nesting — only one run per dataset for the jamboree) |
 | Bundle size | ~9 GB after curation |
 | Mirror command | `nohup .venv/bin/python docs/jamborees/2026_UTSW/scripts/mirror_cnmf_outputs.py --dataset Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq --source-dir /cellar/.../042926_huangfu_de_torchcnmf_KskillA --selected-k 200 &` |
 | Log on HPC | `docs/jamborees/2026_UTSW/mirror_huangfu_de_cnmf.log` |

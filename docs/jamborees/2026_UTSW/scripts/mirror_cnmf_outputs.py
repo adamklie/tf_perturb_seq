@@ -265,6 +265,16 @@ def main() -> int:
     ap.add_argument("--selected-k", required=True, type=int, help="Group-selected k for downstream analysis")
     ap.add_argument("--density-threshold", type=float, default=2.0, help="Density threshold for selected-k bundle (default: 2.0)")
     ap.add_argument("--dry-run", action="store_true", help="List uploads without transferring")
+    ap.add_argument(
+        "--use-run-name",
+        action="store_true",
+        help=(
+            "Nest uploads under 2026_UTSW/datasets/<dataset>/cnmf/<run_name>/ (legacy "
+            "schema layout). Default (off) mirrors directly to cnmf/, which is the "
+            "current project convention — keeps the cnmf folder clean when there is "
+            "only one run per dataset."
+        ),
+    )
     args = ap.parse_args()
 
     if not args.source_dir.is_dir():
@@ -293,9 +303,11 @@ def main() -> int:
     syn = synapseclient.Synapse()
     syn.login(authToken=token, silent=True)
 
-    target_parts = ["2026_UTSW", "datasets", args.dataset, "cnmf", run_name]
+    target_parts = ["2026_UTSW", "datasets", args.dataset, "cnmf"]
+    if args.use_run_name:
+        target_parts.append(run_name)
     target_root = ensure_folder_path(syn, SYNAPSE_PARENT, target_parts)
-    print(f"target Synapse folder: {target_root}")
+    print(f"target Synapse folder: {target_root} ({'with' if args.use_run_name else 'no'} run_name nesting)")
 
     folder_cache: dict[str, str] = {"": target_root}
     children_cache: dict[str, set[str]] = {}

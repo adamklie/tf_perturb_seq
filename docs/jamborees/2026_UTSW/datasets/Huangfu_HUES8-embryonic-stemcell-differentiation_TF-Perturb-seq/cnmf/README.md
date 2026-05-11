@@ -10,7 +10,7 @@
 | Source | HPC: `/cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/PerturbNMF/Result/042926_huangfu_esc_torchcnmf_KskillA/` (27 GB) |
 | Selected k | **200** |
 | Density threshold | **2.0** (single — this run did not sweep dt=0.2 + 2.0) |
-| Mirror target | [`syn74893977`](https://www.synapse.org/Synapse:syn74893977) → `2026_UTSW/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/cnmf/042926_huangfu_esc_torchcnmf_KskillA/` |
+| Mirror target | [`syn74893846`](https://www.synapse.org/Synapse:syn74893846) → `2026_UTSW/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/cnmf/` (no run_name nesting — only one run per dataset for the jamboree) |
 | Bundle size | ~9 GB after curation |
 | Log on HPC | `docs/jamborees/2026_UTSW/mirror_huangfu_esc_cnmf.log` |
 
