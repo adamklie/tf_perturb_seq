@@ -26,22 +26,28 @@ From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
 
 > **⚠ Calibration caveat for everything ED-based**: the Huangfu DE/ESC `pval_mean` values are anti-conservative (see [`../../issues/edistance-calibration/`](../../issues/edistance-calibration/)). All WG1 derivatives above use `distance_mean > NC max` as the calibration-robust significance proxy. Raw `pval_mean<0.05` counts are included but flagged.
 
-### WG1-D first snapshot (2 datasets: Huangfu DE × Huangfu ESC, 2026-05-11)
+### WG1-D snapshot (3 datasets: Hon CM × Huangfu DE × Huangfu ESC, 2026-05-11)
 
 | classification | n_TFs |
 |---|---:|
-| convergent_significant (sig in both lineages) | **3** |
-| HuangfuDE-specific | 82 |
-| HuangfuESC-specific | 80 |
-| convergent_nonsignificant | 2132 |
+| **convergent_significant** (sig in all 3 lineages) | **3** |
+| discordant_partial (sig in 2 of 3 lineages) | 13 |
+| HonCM-specific | 154 |
+| HuangfuDE-specific | 123 |
+| HuangfuESC-specific | 68 |
+| convergent_nonsignificant | 2032 |
 
-The 3 convergent TFs are **TERF2** (Myb/SANT), **GTF2B**, **ZNF574** (C2H2 ZF). Out of 73 + 83 = 156 per-dataset significant calls, only 3 overlap — high cross-lineage discordance worth flagging in the WG1 calibration-debug discussion. Refresh this table once Hon CM ED + Gersbach Hep ED are wired in; convergent set may grow.
+**The 3 convergent_significant TFs survive the addition of Hon CM**: TERF2, GTF2B, ZNF574 are sig in *all three* lineages. Absolute distances vary wildly between lineages — e.g. TERF2 is 6.6 in Hon CM vs 638 in Huangfu ESC — but each clears its own dataset's NC_max threshold. These are the candidate "always wired" TFs across the perturb-seq library.
+
+**Discordant_partial pattern is striking**: 10 of the 13 discordant TFs are sig in Hon CM + Huangfu ESC but *not* Huangfu DE (NOC3L, RPF1, ZMAT2, ATF5, SRF, TAF1A, TAF11, SALL4, …). Huangfu DE is the selective lineage; Hon CM and Huangfu ESC respond to a broader set of TF perturbations. Worth digging into during the calibration-debug discussion (Issue 1).
+
+Hon CM dominates the lineage-specific list (154) — also has the highest per-lineage sig count overall (164 vs 73 DE / 83 ESC). Refresh again once Gersbach Hep ED + Engreitz Endo ED land; convergent set may shrink.
 
 ## Per-dataset companions (under `datasets/<dataset>/<analysis>/`)
 
 | Artifact | Path pattern | Status |
 |---|---|---|
-| WG1-B detail Per-TF significance + ranking | `datasets/<dataset>/energy_distance/wg1_significant_tfs.tsv` | ✅ ready for Huangfu DE + ESC (2273 rows × 16 cols each; joined with TF metadata) |
+| WG1-B detail Per-TF significance + ranking | `datasets/<dataset>/energy_distance/wg1_significant_tfs.tsv` | ✅ ready for Hon CM (2,036 rows; 164 sig) + Huangfu DE (2,273 rows; 73 sig) + Huangfu ESC (2,273 rows; 83 sig). Joined with TF metadata. |
 | WG1-E Trans-target counts (per perturbation) | `datasets/<dataset>/crispr_pipeline/wg1_trans_target_counts.tsv` | ✅ landed for Huangfu DE (1,741 perturbations, median 5 sig trans targets, max 4,361 = SOX17) + ESC (1,452 perturbations, median 2 sig trans, max 938 = STRAP). Hon CM blocked on CRISPR pipeline mirror; Gersbach/Engreitz blocked upstream. |
 
 ### WG1-E first snapshot (2 datasets: Huangfu DE × Huangfu ESC, 2026-05-11)
