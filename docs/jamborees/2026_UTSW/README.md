@@ -97,7 +97,7 @@ Reference gene annotation used across all 5 production datasets. Single canonica
 |---|---|
 | Filename | `IGVFFI9573KOZR.gtf.gz` (54 MB) |
 | Local | `reference/IGVFFI9573KOZR.gtf.gz` |
-| HPC | `/cellar/users/aklie/projects/tf_perturb_seq/ref/IGVFFI9573KOZR.gtf.gz` |
+| HPC | `/cellar/users/aklie/projects/tf_perturb_seq/ref/genome/IGVFFI9573KOZR.gtf.gz` |
 | IGVF portal | https://data.igvf.org/reference-files/IGVFFI9573KOZR/ |
 | Synapse | [`syn74834518`](https://www.synapse.org/Synapse:syn74834518) |
 | Schema | _GTF (external standard); not in `schemas/`_ |

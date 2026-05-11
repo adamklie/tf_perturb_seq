@@ -1,0 +1,6 @@
+dataset	lab	institution	biological_system	crispri	sgrna_delivery	sequencing_technology	expected_cells	contact
+Engreitz_WTC11-benchmark_TF-Perturb-seq	Engreitz	Stanford	WTC11 to iPSC	dCas9-KRAB CLYBL constitutive	Lentiviral vector	CC-Perturb-seq	200000	Tri Nguyen
+Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2	Gersbach	Duke	WTC11 to iPSC	dCas9-KRAB CLYBL constitutive	Lentiviral vector	10x 5' HT v2	80000	Boxun Li
+Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3	Gersbach	Duke	WTC11 to iPSC	dCas9-KRAB CLYBL constitutive	Lentiviral vector	10x 5' GEM-X v3	80000	Boxun Li
+Hon_WTC11-benchmark_TF-Perturb-seq	Hon	UT Southwestern	WTC11 to iPSC	dCas9-KRAB CLYBL constitutive	Lentiviral vector	10x 5' w/ HTO	210000	Chikara Takeuchi + Sushama Sivakumar
+Huangfu_WTC11-benchmark_TF-Perturb-seq	Huangfu	MSKCC	WTC11 to iPSC	dCas9-KRAB CLYBL constitutive	Lentiviral vector	10x 3'	190000	Nan Zhang

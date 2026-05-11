@@ -31,7 +31,7 @@ Run the [IGVF CRISPR Pipeline](https://github.com/IGVF/CRISPR_Pipeline) (Nextflo
 - GCP access to `igvf-pertub-seq-pipeline` project
 - Service account credentials
 - Pipeline config file (per-dataset, stored in `datasets/<name>/`)
-- Guide metadata file (from `ref/finalized_annotation_files/`)
+- Guide metadata file (from `ref/guide_libraries/harmonized/`)
 - Seqspec file (technology-specific)
 
 **Per-dataset scripts:**

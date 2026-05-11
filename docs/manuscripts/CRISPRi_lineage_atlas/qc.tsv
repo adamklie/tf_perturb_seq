@@ -1,0 +1,2 @@
+input	outdir	run_name
+/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/1_CRISPR_pipeline/2026_01_06/inference_mudata.h5mu	/cellar/users/aklie/data/datasets/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3/results/2_qc/2026_01_14	Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3

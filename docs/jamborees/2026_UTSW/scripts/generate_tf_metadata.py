@@ -3,13 +3,13 @@
 For each target gene in the perturb-seq library, build a comprehensive row of TF
 annotations by joining:
 
-  - `ref/target_genes.tsv`                                  -> target list +
+  - `ref/guide_libraries/target_genes.tsv`                                  -> target list +
                                                               n_promoter rows per gene
                                                               (continuation rows with NaN
                                                               `Gene` are mapped via the
                                                               promoter-ID prefix)
-  - `ref/IGVFFI9573KOZR.gtf.gz`                             -> ensembl_gene_id (current)
-  - `ref/finalized_annotation_files/...poolabcdf_ensg.tsv`  -> alias resolution for old
+  - `ref/genome/IGVFFI9573KOZR.gtf.gz`                             -> ensembl_gene_id (current)
+  - `ref/guide_libraries/harmonized/...poolabcdf_ensg.tsv`  -> alias resolution for old
                                                               symbols + ENSG fallback
   - Lambert et al. 2018 (humantfs.ccbr.utoronto.ca)         -> curated TF flag, DBD,
                                                               assessment (joined by ENSG
@@ -37,9 +37,9 @@ import requests
 REPO_ROOT = Path("/Users/adamklie/Desktop/tfp3/tf_perturb_seq")
 JAMB = REPO_ROOT / "docs/jamborees/2026_UTSW"
 
-TARGET_GENES = REPO_ROOT / "ref/target_genes.tsv"
-GTF = REPO_ROOT / "ref/IGVFFI9573KOZR.gtf.gz"
-HARMONIZED_GUIDES = REPO_ROOT / "ref/finalized_annotation_files/harmonized_guide_file_poolabcdf_ensg.tsv"
+TARGET_GENES = REPO_ROOT / "ref/guide_libraries/target_genes.tsv"
+GTF = REPO_ROOT / "ref/genome/IGVFFI9573KOZR.gtf.gz"
+HARMONIZED_GUIDES = REPO_ROOT / "ref/guide_libraries/harmonized/harmonized_guide_file_poolabcdf_ensg.tsv"
 JASPAR = JAMB / "jaspar_core_tf_metadata.tsv"
 LAMBERT_URL = "https://humantfs.ccbr.utoronto.ca/download/v_1.01/DatabaseExtract_v_1.01.csv"
 LAMBERT_REFERER = "https://humantfs.ccbr.utoronto.ca/download.php"

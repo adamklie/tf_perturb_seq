@@ -50,7 +50,7 @@ PerturbNMF/
 ├── README.md                                # this file
 ├── Data/
 │   ├── ESC_sceptre_v1_perturbnmf.h5ad     # inference input (raw counts)
-│   └── guide_annotation.tsv                 # built from ref/finalized_annotation_files/harmonized_guide_file_poolabcd.tsv with `guide_id` renamed to `guide_names`; required by U-test fake-test path
+│   └── guide_annotation.tsv                 # built from ref/guide_libraries/harmonized/harmonized_guide_file_poolabcd.tsv with `guide_id` renamed to `guide_names`; required by U-test fake-test path
 ├── Result/042926_huangfu_esc_torchcnmf_KskillA/
 │   ├── Inference/                           # Stage 1 output
 │   │   ├── adata/cNMF_<K>_2_0.h5mu          # ×8 K values
@@ -110,7 +110,7 @@ Upstream issues filed:
 For any TFP3 dataset post-Stage-1, before Stage 2/3 run cleanly:
 1. `prepare_h5mu_for_eval.py` — add `obs['sample']='all'` + remap NT `guide_targets` from `'nan'` → `'non-targeting'`.
 2. `inject_umap_into_h5mu.py` — gene-based UMAP on `mdata['rna']` (normalize_total → log1p → HVG → scale → PCA → neighbors → UMAP) written into both `mdata['rna'].obsm` and `mdata['cNMF'].obsm`.
-3. `Data/guide_annotation.tsv` — built from `ref/finalized_annotation_files/harmonized_guide_file_poolabcd.tsv` with `guide_id` renamed to `guide_names`.
+3. `Data/guide_annotation.tsv` — built from `ref/guide_libraries/harmonized/harmonized_guide_file_poolabcd.tsv` with `guide_id` renamed to `guide_names`.
 
 Going forward, UMAP should be computed once on the inference INPUT h5ad so the embedding propagates through cNMF naturally.
 
