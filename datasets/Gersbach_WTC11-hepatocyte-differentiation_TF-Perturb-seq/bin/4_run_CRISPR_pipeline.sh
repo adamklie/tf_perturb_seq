@@ -21,7 +21,7 @@ BASE_DIR=/Users/adamklie/Desktop/tfp3/tf_perturb_seq/datasets/${DATASET_NAME}
 DATA_DATE=2026_05_11  # CHANGE_ME after running 2_upload_to_gcp.sh
 
 # Sample metadata with GCS paths (patched = decompressed barcode_onlist, guide_design, seqspec)
-SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_${DATA_DATE}_patched.csv
+SAMPLE_METADATA=$BASE_DIR/samplesheets/sample_metadata_gcp_${DATA_DATE}_patched.csv
 
 # CRISPR Pipeline path
 PIPELINE_PATH=/Users/adamklie/Desktop/tfp3/CRISPR_Pipeline
@@ -30,7 +30,7 @@ PIPELINE_PATH=/Users/adamklie/Desktop/tfp3/CRISPR_Pipeline
 RUN_LABEL=cleanser_initial  # CHANGE_ME — pick a memorable codename per run
 
 # Dataset-specific config (adapted from Huangfu WTC11 benchmark)
-CONFIG=$BASE_DIR/${DATASET_NAME}_${RUN_LABEL}.config
+CONFIG=$BASE_DIR/configs/${DATASET_NAME}_${RUN_LABEL}.config
 
 # Output directory on GCS
 OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/${DATA_DATE}/outs/${RUN_LABEL}

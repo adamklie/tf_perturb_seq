@@ -23,9 +23,9 @@ BARCODE_ONLIST_FALLBACK=IGVFFI9487JPEN  # 10x v2 onlist (737K-august-2016) — m
 RNA_SEQSPEC=${BASE_DIR}/datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/seqspec/rna_seqspec.yml
 SGRNA_SEQSPEC=${BASE_DIR}/datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/seqspec/guide_seqspec.yml
 
-MS_LIST=${DATASET_DIR}/_samplesheets/hep_measurement_sets.txt
-AUX_MAP=${DATASET_DIR}/_samplesheets/hep_ms_aux_pairs.tsv
-OUTPUT=${DATASET_DIR}/sample_metadata.csv
+MS_LIST=${DATASET_DIR}/samplesheets/meta/hep_measurement_sets.txt
+AUX_MAP=${DATASET_DIR}/samplesheets/meta/hep_ms_aux_pairs.tsv
+OUTPUT=${DATASET_DIR}/samplesheets/sample_metadata.csv
 
 echo "=========================================="
 echo "Generate Hep Per-Sample Metadata (47 MS)"
