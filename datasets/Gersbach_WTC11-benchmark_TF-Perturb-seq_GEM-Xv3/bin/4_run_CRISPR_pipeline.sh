@@ -12,7 +12,7 @@ DATASET_NAME=Gersbach_WTC11-benchmark_TF-Perturb-seq_GEM-Xv3
 BASE_DIR=/Users/adamklie/Desktop/projects/tf_perturb_seq/datasets/${DATASET_NAME}
 
 # Sample metadata with GCS paths
-SAMPLE_METADATA=$BASE_DIR/sample_metadata_gcp_2026_02_15.csv
+SAMPLE_METADATA=$BASE_DIR/samplesheets/sample_metadata_gcp_2026_02_15.csv
 
 # CRISPR Pipeline path
 PIPELINE_PATH=/Users/adamklie/Desktop/projects/CRISPR_Pipeline
