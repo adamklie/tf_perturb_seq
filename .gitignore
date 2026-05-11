@@ -12,8 +12,11 @@ TODAY.md
 slurm-*.out
 datasets/*/logs/
 datasets/*/tmp/
+datasets/*/_scratch/
 **/HonLabInternal/
-**/sample_metadata.csv
+# Loose root-level samplesheets only — `datasets/<ds>/samplesheets/sample_metadata.csv`
+# is the canonical tracked location.
+datasets/*/sample_metadata.csv
 IMPLEMENTATION_GUIDE.md
 
 # PerturbNMF / cNMF outputs (large; HPC-only)
