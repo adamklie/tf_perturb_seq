@@ -22,7 +22,7 @@ From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
 | Artifact | Path pattern | Status |
 |---|---|---|
 | WG4-A TF→gene edge list (FDR 0.05) | `datasets/<dataset>/crispr_pipeline/wg4_tf_gene_edges_FDR05.tsv` | ✅ landed for **Hon CM** (GCS: `gs://igvf-pertub-seq-pipeline-data/.../2026_04_15/outs/seqspec_v3/pipeline_outputs/`) + Huangfu DE (Synapse syn74834952) + Huangfu ESC (syn74835010). Gersbach Hep + Engreitz Endo blocked. |
-| **Trans-DE results table** (folks-ready, IGVF-shaped) | `datasets/<dataset>/crispr_pipeline/trans_de_results.tsv.gz` | ✅ landed for all 3 datasets with full gene-symbol + chr/start/end/strand annotation. Modeled on IGVF's `global differential expression` files (e.g. IGVFFI5989UAVX). Hon CM: 219,587 rows (10.6 MB). Huangfu DE: 41,418 rows (2.1 MB). Huangfu ESC: 12,366 rows (644 KB). |
+| Calibrated DE tables (per dataset) | `datasets/<dataset>/crispr_pipeline/<prefix>_calibrated_*_results.tsv` | 🔴 deferred until Synapse mirror is filled out. Plan + draft implementation live at [`src/tf_perturb_seq/inference/calibrate.py`](../../../../src/tf_perturb_seq/inference/calibrate.py) — empirical p-values from NTC null (eCDF or t-fit) + BH on the discovery set, output schema matches plan.md `(a)–(d)` (all / direct_target / cis / trans-only). Drives the [Issue #11](https://github.com/adamklie/tf_perturb_seq/issues/11) cross-dataset DEG-discrepancy investigation. |
 
 ### WG4-A snapshot (3 datasets: Hon CM × Huangfu DE × Huangfu ESC, 2026-05-11)
 

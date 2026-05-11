@@ -45,7 +45,7 @@ For loading the underlying Synapse-mirrored bundles (CRISPR pipeline / cNMF / en
 | `energy_distance/wg1_significant_tfs.tsv` | ✅ Hon CM (2,036 / 164 sig) + Huangfu DE (2,273 / 73 sig) + Huangfu ESC (2,273 / 83 sig) | Per-target ED + ranking + significance flags joined with TF metadata |
 | `crispr_pipeline/wg4_tf_gene_edges_FDR05.tsv` | ✅ Hon CM (219,587) + Huangfu DE (41,418) + ESC (12,366) | TF→gene edges at per-TF BH FDR<0.05; joined with TF identity (symbol/family/DBD) |
 | `crispr_pipeline/wg1_trans_target_counts.tsv` | ✅ Hon CM (2,065 perts) + Huangfu DE (1,741) + ESC (1,452) | Per-perturbation trans-target counts; top targets list. Hon CM top: ISL1 (2,769). DE top: SOX17 (4,361). ESC top: STRAP (938) |
-| `crispr_pipeline/trans_de_results.tsv.gz` | ✅ Hon CM (219k rows) + Huangfu DE (41k) + ESC (12k) | **Folks-ready trans DE table** modeled on IGVF's `global differential expression` (e.g. IGVFFI5989UAVX). One row per (perturbation, target_gene) sig trans hit, with TF identity + target gene symbol/location + log2_fc + p_value + FDR. Open straight in pandas/Excel. |
+| `crispr_pipeline/<prefix>_calibrated_*_results.tsv` (calibrated DE tables) | 🔴 deferred | Per-dataset calibrated DE tables (NTC-based empirical p-values + BH; cis / direct_target / trans-only splits). Plan + draft code at [`src/tf_perturb_seq/inference/calibrate.py`](../../../../src/tf_perturb_seq/inference/calibrate.py). Will run once the Synapse mirror is filled out; output schema documented in `src/tf_perturb_seq/inference/plan.md`. Drives [Issue #11](https://github.com/adamklie/tf_perturb_seq/issues/11). |
 
 ### What you actually do with these
 
