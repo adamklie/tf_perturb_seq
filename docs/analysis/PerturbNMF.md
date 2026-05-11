@@ -55,11 +55,11 @@ upstream code work cleanly on our datasets:
 
 1. **Add `obs['sample'] = 'all'` + remap NT `guide_targets`** — `prepare_h5mu_for_eval.py`. The single-value sample column means perturbation tests are pooled across batches (not stratified). The NT remap fixes the `'nan'` → `'non-targeting'` convention so the U-test fake-test path can find reference guides.
 
-2. **Pre-compute UMAP from the gene matrix** — `inject_umap_into_h5mu.py`. Standard scanpy recipe (`normalize_total → log1p → HVG → scale → PCA → neighbors → UMAP`) on a copy of `mdata['rna']`, written into both `mdata['rna'].obsm` and `mdata['cNMF'].obsm`. Sidesteps Stage 3b's slow rna-PCA and Stage 3c's broken HVG call (upstream issue [#9](https://github.com/EngreitzLab/PerturbNMF/issues/9)).
+2. **Pre-compute UMAP from the gene matrix** — `inject_umap_into_h5mu.py`. Standard scanpy recipe (`normalize_total → log1p → HVG → scale → PCA → neighbors → UMAP`) on a copy of `mdata['rna']`, written into both `mdata['rna'].obsm` and `mdata['cNMF'].obsm`. Sidesteps Stage 3b's slow rna-PCA and Stage 3c's broken HVG call (upstream issue [#9](https://github.com/EngreitzLab/PerturbNMF/issues/9)). UMAP depends only on the rna matrix (identical across K), so for a given dataset you only need to inject the *selected K* h5mu — defer this step until Stage 3a K-selection has picked a k.
 
 3. **Generate `Data/guide_annotation.tsv`** — copy from `ref/finalized_annotation_files/harmonized_guide_file_poolabcd.tsv` with `guide_id` renamed to `guide_names`. Required by the U-test fake-test code path.
 
-**Going forward** — compute UMAP on the inference INPUT h5ad (before Stage 1) so the embedding propagates through cNMF naturally; that removes step 2.
+**Going forward (read this before the next dataset's Stage 1 run)** — compute UMAP on the inference INPUT (the h5ad / inference_mudata before Stage 1) so the embedding propagates through cNMF naturally and step 2 becomes unnecessary. `Convert_file_adata.py` (the per-dataset script that builds the cNMF AnnData input) now takes a `--compute_umap` flag that runs the same `normalize_total → log1p → HVG → scale → PCA → neighbors → UMAP` recipe on a temp copy and stashes `obsm['X_pca']` + `obsm['X_umap']` in the output AnnData. Stage 1 carries them through into every per-K h5mu's rna modality, so `inject_umap_into_h5mu.py` becomes a remediation-only tool for h5mu files produced before this convention. **Pass `--compute_umap` whenever you invoke Convert_file_adata.py for a new dataset.** Reference implementation: [`datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/PerturbNMF/Script/Convert_file_adata.py`](../../datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/PerturbNMF/Script/Convert_file_adata.py).
 
 ---
 
