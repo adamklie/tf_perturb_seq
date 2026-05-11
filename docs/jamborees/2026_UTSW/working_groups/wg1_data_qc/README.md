@@ -48,13 +48,14 @@ Hon CM dominates the lineage-specific list (154) — also has the highest per-li
 | Artifact | Path pattern | Status |
 |---|---|---|
 | WG1-B detail Per-TF significance + ranking | `datasets/<dataset>/energy_distance/wg1_significant_tfs.tsv` | ✅ ready for Hon CM (2,036 rows; 164 sig) + Huangfu DE (2,273 rows; 73 sig) + Huangfu ESC (2,273 rows; 83 sig). Joined with TF metadata. |
-| WG1-E Trans-target counts (per perturbation) | `datasets/<dataset>/crispr_pipeline/wg1_trans_target_counts.tsv` | ✅ landed for Huangfu DE (1,741 perturbations, median 5 sig trans targets, max 4,361 = SOX17) + ESC (1,452 perturbations, median 2 sig trans, max 938 = STRAP). Hon CM blocked on CRISPR pipeline mirror; Gersbach/Engreitz blocked upstream. |
+| WG1-E Trans-target counts (per perturbation) | `datasets/<dataset>/crispr_pipeline/wg1_trans_target_counts.tsv` | ✅ landed for **Hon CM** (2,065 perts, median 49 sig trans, max 2,769 = ISL1), Huangfu DE (1,741 perts, median 5, max 4,361 = SOX17), Huangfu ESC (1,452 perts, median 2, max 938 = STRAP). Gersbach/Engreitz blocked upstream. |
 
-### WG1-E first snapshot (2 datasets: Huangfu DE × Huangfu ESC, 2026-05-11)
+### WG1-E snapshot (3 datasets: Hon CM × Huangfu DE × Huangfu ESC, 2026-05-11)
 
-Per-perturbation count of significant trans-target genes at FDR<0.05 (per-TF BH; see WG4-A for the underlying edge list). Top-of-the-distribution TFs match the expected lineage masters:
+Per-perturbation count of significant trans-target genes at FDR<0.05 (per-TF BH; see WG4-A for the underlying edge list). Top hits match canonical lineage biology in each system:
 
-- **Huangfu DE**: SOX17 (4,361 sig trans targets — DE master), FOXH1 (3,862), SETDB1 (2,405), SMARCC1 (1,677), ARID1A (1,305), SOX11 (1,084), DBX1 (951), SOX4 (783), SMAD3 (765)
-- **Huangfu ESC**: STRAP (938), SETDB1 (712), RCOR2 (508), SALL4 (461), GRHL2 (365), POU5F1 / OCT4 (270), DNMT1 (186), KAT2A (198)
+- **Hon CM**: **ISL1 (2,769 — second-heart-field master)**, SOX11, TADA2B, SOX4, **TBX20 (1,859 — canonical cardiomyocyte differentiation TF)**, ZNF787, **MEF2C (1,743 — myocyte enhancer factor)**, RCOR2, **HAND1 (1,638 — heart-and-neural-crest-derivatives)**, CHAMP1. Beautifully cardiomyocyte-coherent.
+- **Huangfu DE**: SOX17 (4,361 — DE master), FOXH1 (3,862), SETDB1 (2,405), SMARCC1 (1,677), ARID1A (1,305), SOX11 (1,084), DBX1 (951), SOX4 (783), SMAD3 (765).
+- **Huangfu ESC**: STRAP (938), SETDB1 (712), RCOR2 (508), SALL4 (461), GRHL2 (365), POU5F1 / OCT4 (270), DNMT1 (186), KAT2A (198).
 
-41 TFs in DE and 15 in ESC drive >100 significant trans targets — these are the candidate "master regulator" perturbations for lineage-specific deep-dives. Tail is long: median is 5 (DE) / 2 (ESC) trans targets per perturbation, so most TFs have small trans footprints.
+TFs with >100 sig trans targets: **537 in Hon CM** (vs 41 DE / 15 ESC) — driven partly by Hon CM's much denser trans-effect signal (median 49 vs 5/2). Whether Hon CM's density reflects pure biology vs. technical factors (newer `seqspec_v3` pipeline, WTC11 vs HUES8) is open — see the harmonization caveat in WG4-A.
