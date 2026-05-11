@@ -22,6 +22,7 @@ From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
 | Artifact | Path pattern | Status |
 |---|---|---|
 | WG4-A TF→gene edge list (FDR 0.05) | `datasets/<dataset>/crispr_pipeline/wg4_tf_gene_edges_FDR05.tsv` | ✅ landed for **Hon CM** (GCS: `gs://igvf-pertub-seq-pipeline-data/.../2026_04_15/outs/seqspec_v3/pipeline_outputs/`) + Huangfu DE (Synapse syn74834952) + Huangfu ESC (syn74835010). Gersbach Hep + Engreitz Endo blocked. |
+| **Trans-DE results table** (folks-ready, IGVF-shaped) | `datasets/<dataset>/crispr_pipeline/trans_de_results.tsv.gz` | ✅ landed for all 3 datasets with full gene-symbol + chr/start/end/strand annotation. Modeled on IGVF's `global differential expression` files (e.g. IGVFFI5989UAVX). Hon CM: 219,587 rows (10.6 MB). Huangfu DE: 41,418 rows (2.1 MB). Huangfu ESC: 12,366 rows (644 KB). |
 
 ### WG4-A snapshot (3 datasets: Hon CM × Huangfu DE × Huangfu ESC, 2026-05-11)
 
@@ -35,7 +36,7 @@ Per-dataset edge list, filtered at per-TF Benjamini-Hochberg FDR<0.05. The per-T
 
 **Hon CM is the most responsive system by a wide margin**: 5× DE's edge count, 18× ESC's. Median 49 sig edges per TF (vs 5 DE / 2 ESC); 537 TFs have >100 sig edges (vs 41 / 15). Note that Hon CM's ED-significant count (164) is also higher than the Huangfu runs (73 / 83), so the two readouts agree on the direction even if trans-effect magnitudes are larger than ED would predict.
 
-> **Caveat**: Hon CM cells are WTC11 (vs Huangfu's HUES8) and CRISPR pipeline ran on a different (newer) `seqspec_v3` version. Some of the per-lineage difference may reflect technical/pipeline factors rather than pure biology — worth confirming with WG1's harmonization analysis.
+> **⚠ Trans-DEG count discrepancy across datasets** ([issue #11](https://github.com/adamklie/tf_perturb_seq/issues/11)): The same perturbation in matched WTC11 iPSC benchmarks shows trans DEG counts varying 3× across technologies (Engreitz ~1.4K vs Huangfu ~4.2K at FDR<0.1), while direct-target and cis hits are consistent. Candidate causes: reads/cell (11K–147K), cells/element, pipeline QC, calibration sensitivity, guide-assignment differences. Our 3-lineage spread is the same phenomenon but across production lineages — Hon CM's 5–18× density vs the Huangfu runs may partly reflect WTC11 vs HUES8 + newer `seqspec_v3` pipeline. Treat absolute counts cautiously; effect-size correlation across datasets (per-gene log2_fc) is the more comparable signal.
 
 DE has ~3× ESC's edge count, consistent with definitive-endoderm being a more transcriptionally responsive committed state vs. the buffered pluripotent ESC baseline. Top-out-degree TFs match lineage biology (SOX17 / FOXH1 in DE; POU5F1 / SALL4 in ESC — see WG1-E for per-TF counts).
 
