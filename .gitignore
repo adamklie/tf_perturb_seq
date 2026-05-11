@@ -184,13 +184,15 @@ dmypy.json
 cython_debug/
 
 # Large reference data files (downloadable on demand, not source-controlled)
-ref/weissman_guides_with_coordinates.tsv
-ref/OpenTargets_L2G_noQC.csv.gz
-ref/hg38.fa
-ref/hg38.fa.fai
-ref/hocomoco_meme.meme
-ref/motifs.meme
-ref/scE2G_links/
-ref/GO_Biological_Process_2023_human.json
-ref/Reactome_2022_human.json
-ref/OpenTargets_L2G_Filtered.csv.gz
+ref/genome/hg38.fa
+ref/genome/hg38.fa.fai
+ref/genome/Homo_sapiens.GRCh38.113.gtf
+ref/genome/IGVFFI9573KOZR.gtf.gz
+ref/guide_libraries/weissman_guides_with_coordinates.tsv
+ref/motifs/hocomoco_meme.meme
+ref/motifs/motifs.meme
+ref/enhancer_gene/scE2G_links/
+ref/gene_sets/GO_Biological_Process_2023_human.json
+ref/gene_sets/Reactome_2022_human.json
+ref/opentargets/OpenTargets_L2G_Filtered.csv.gz
+ref/opentargets/OpenTargets_L2G_noQC.csv.gz
