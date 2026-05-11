@@ -1,0 +1,2 @@
+n_guides_tested	n_targeting_guides	n_non_targeting_guides	median_significant_per_guide_targeting	mean_significant_per_guide_targeting	median_significant_per_guide_nt	mean_significant_per_guide_nt	total_significant_tests	median_genome_log2fc_targeting	median_genome_log2fc_nt	fdr_method	auroc	auprc	n_validated_links	n_eval_positives	n_eval_negatives
+416	386	30	83.0	242.45336787564767	71.0	288.2	102233	-0.012362046250000001	-0.012163624	fdr_bh			0	0	0

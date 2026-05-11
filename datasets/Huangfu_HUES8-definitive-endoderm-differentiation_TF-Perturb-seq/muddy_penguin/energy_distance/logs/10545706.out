@@ -1,0 +1,45 @@
+Job: 10545706 @ carter-gpu-02 Fri May  8 14:57:50 PDT 2026
+Fri May  8 14:57:50 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 565.57.01              Driver Version: 565.57.01      CUDA Version: 12.7     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A30                     On  |   00000000:C1:00.0 Off |                    0 |
+| N/A   34C    P0             30W /  165W |       1MiB /  24576MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+[setup] downloading MuData from gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/2026_04_09/outs/muddy_penguin/inference_mudata.h5mu -> /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/results/energy_distance/muddy_penguin/inference_mudata.h5mu
+[setup] MuData: /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/results/energy_distance/muddy_penguin/inference_mudata.h5mu (7.4G)
+[setup] container: /cellar/users/aklie/opt/containers/edist_pipeline.sif
+[setup] pipeline bin: /cellar/users/aklie/projects/tf_perturb_seq/external/energy_dist_pipeline/bin
+[setup] preprocess script: /cellar/users/aklie/projects/tf_perturb_seq/scripts/preprocess_mudata_local.py
+[setup] configs written to /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/results/energy_distance/muddy_penguin
+[step0] preprocessing MuData ...
+[preprocess] reading /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/results/energy_distance/muddy_penguin/inference_mudata.h5mu
+MuData object with n_obs × n_vars = 269491 × 23735
+  obs:	'batch'
+  uns:	'cis_per_element_results', 'cis_per_guide_results', 'trans_per_element_results', 'trans_per_guide_results'
+  2 modalities
+    gene:	269491 × 9584
+      obs:	'batch', 'batch_number', 'n_counts', 'log1p_n_genes_by_counts', 'total_gene_umis', 'log1p_total_counts', 'pct_counts_in_top_50_genes', 'pct_counts_in_top_100_genes', 'pct_counts_in_top_200_genes', 'pct_counts_in_top_500_genes', 'total_counts_mt', 'log1p_total_counts_mt', 'percent_mito', 'total_counts_ribo', 'log1p_total_counts_ribo', 'pct_counts_ribo'
+      var:	'symbol', 'mt', 'ribo', 'n_cells_by_counts', 'mean_counts', 'log1p_mean_counts', 'pct_dropout_by_counts', 'total_counts', 'log1p_total_counts', 'n_cells', 'gene_chr', 'gene_start', 'gene_end'
+    guide:	269491 × 14151
+      obs:	'batch', 'num_expressed_guides', 'total_guide_umis'
+      var:	'guide_id', 'spacer', 'targeting', 'type', 'guide_chr', 'guide_start', 'guide_end', 'strand', 'pam', 'genomic_element', 'intended_target_name', 'intended_target_chr', 'intended_target_start', 'intended_target_end', 'putative_target_genes', 'reporter', 'imperfect', 'gene_name', 'intended_target_key'
+      uns:	'capture_method', 'moi'
+      layers:	'guide_assignment'
+[preprocess] modality keys: rna=gene, guide=guide
+[preprocess] running PCA (n_comps=50)
+[preprocess] building gRNA -> cells dict
+[preprocess] building annotation table

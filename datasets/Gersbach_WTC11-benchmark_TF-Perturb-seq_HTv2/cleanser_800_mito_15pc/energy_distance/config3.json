@@ -1,0 +1,6 @@
+{
+  "cutoff": {
+    "pvalue_cutoff": 0.05,
+    "edist_cutoff": 0.5
+  }
+}

@@ -1,0 +1,33 @@
+[setup] wrote /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/results/energy_distance/sceptre_v1/config3.json with distance_cutoff=584.08 (and pval_cutoff=1.0 since our pvals are mis-calibrated)
+[step3] target-by-target distance + clustering
+--- Configuration Loaded ---
+{
+    "cutoff": {
+        "pval_cutoff": 1.0,
+        "distance_cutoff": 584.08
+    },
+    "clustering": {
+        "method": "Affinity"
+    }
+}
+--------------------------
+--- Processing PCA data ---
+Loading existing PCA file '/cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/results/energy_distance/sceptre_v1/pca_dataframe.pickle'.
+
+--- Processing gRNA dictionary ---
+Loading existing gRNA dictionary file '/cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/results/energy_distance/sceptre_v1/gRNA_dict.pickle'.
+gRNA dictionary loaded successfully. Found 14151 types of gRNAs.
+
+--- Processing finished ---
+Load csv formated annotation file
+annotation file loaded
+--------
+safe-targeting: 0 gRNAs
+non-targeting: 600 gRNAs
+targeting: 12934 gRNAs
+positive control: 19 gRNAs
+negative control: 598 gRNAs
+variant: 0 gRNAs
+[done] step3 complete: /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/results/energy_distance/sceptre_v1
+-rw-rw-r-- 1 aklie carter-users  13K May  9  2026 /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/results/energy_distance/sceptre_v1/edist_embedding_info.csv
+-rw-rw-r-- 1 aklie carter-users 608K May  9  2026 /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/results/energy_distance/sceptre_v1/target_by_target_matrix.csv

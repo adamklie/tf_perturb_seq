@@ -19,10 +19,22 @@ datasets/*/_scratch/
 datasets/*/sample_metadata.csv
 IMPLEMENTATION_GUIDE.md
 
-# PerturbNMF / cNMF outputs (large; HPC-only)
+# PerturbNMF / cNMF outputs (large; HPC-only). The capital-S/D/R subdir convention is
+# preserved when PerturbNMF/ moves to datasets/<ds>/<run>/cnmf/ — keep these ignored.
 **/PerturbNMF/Data/
 **/PerturbNMF/Result/
+**/cnmf/Data/
+**/cnmf/Result/
 external/PerturbNMF/
+
+# Per-run CRISPR pipeline outputs (large, regenerable from GCP).
+# Replaces the prior top-level `runs/` rule now that pipeline outputs live at
+# datasets/<ds>/<run>/crispr_pipeline/{pipeline_outputs,pipeline_dashboard,anndata,tf,work}/
+datasets/*/*/crispr_pipeline/pipeline_outputs/
+datasets/*/*/crispr_pipeline/pipeline_dashboard/
+datasets/*/*/crispr_pipeline/anndata/
+datasets/*/*/crispr_pipeline/tf/
+datasets/*/*/crispr_pipeline/work/
 
 # Jamboree mirror logs (HPC-only, ephemeral)
 docs/jamborees/**/mirror_*.log
@@ -196,3 +208,13 @@ ref/gene_sets/GO_Biological_Process_2023_human.json
 ref/gene_sets/Reactome_2022_human.json
 ref/opentargets/OpenTargets_L2G_Filtered.csv.gz
 ref/opentargets/OpenTargets_L2G_noQC.csv.gz
+
+# Per-run perturbo calibrated_all/trans full result TSVs (>100 MB, GitHub limit)
+**/crispr_pipeline/calibration/*_calibrated_all_results.tsv
+**/crispr_pipeline/calibration/*_calibrated_trans_results.tsv
+
+# Large pipeline output files (>50 MB; GitHub 100 MB limit)
+**/*.h5ad
+**/perturbo_*_per_*_output.tsv.gz
+**/pipeline_qc/trans/*_trans_results.tsv
+**/energy_distance/*.pickle

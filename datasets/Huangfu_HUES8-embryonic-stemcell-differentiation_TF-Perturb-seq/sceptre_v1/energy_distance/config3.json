@@ -1,0 +1,9 @@
+{
+  "cutoff": {
+    "pval_cutoff": 1.0,
+    "distance_cutoff": 584.08
+  },
+  "clustering": {
+    "method": "Affinity"
+  }
+}

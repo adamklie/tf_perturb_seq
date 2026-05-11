@@ -1,0 +1,2 @@
+n_guides_total	n_guides_tested	fc_threshold	log2fc_threshold	pval_threshold	n_strong_knockdowns	n_significant	n_strong_and_significant	frac_strong_knockdowns	frac_significant	frac_strong_and_significant	median_log2fc	mean_log2fc	auroc	auprc	n_eval_positives	n_eval_negatives
+14151	6259	0.4	-1.3219280948873622	0.05	1063	1998	962	0.16983543697076212	0.31922032273526124	0.15369867390957023	-0.39421198	-0.6104600316799205	0.6799861753955275	0.7383770763891261	6259	6259

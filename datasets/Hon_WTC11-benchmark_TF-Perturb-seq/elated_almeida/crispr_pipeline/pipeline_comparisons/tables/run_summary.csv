@@ -1,0 +1,12 @@
+batch_id,IGVFDS6244NAXC
+umi_n_cells,23272
+umi_n_guides,415
+umi_guide_total_corr,0.9994325839362455
+umi_cell_total_corr,0.9921150855909437
+assign_n_cells,18405
+assign_n_guides,415
+assign_frac_any_crispr,0.9989676718283075
+assign_frac_any_honlab,1.0
+assign_frac_exactly1_crispr,0.5856017386579734
+assign_frac_exactly1_honlab,0.6320021733224668
+assign_median_jaccard,0.945054945054945
