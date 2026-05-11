@@ -30,7 +30,7 @@ from pathlib import Path
 
 import pandas as pd
 
-JAMB = Path(__file__).resolve().parent.parent / "docs/jamborees/2026_UTSW"
+JAMB = Path(__file__).resolve().parent.parent
 RAW_PATH = JAMB / "reference/_cache/hpo_genes_to_disease.txt"
 OUTPUT = JAMB / "reference/gene_disease_associations.tsv"
 

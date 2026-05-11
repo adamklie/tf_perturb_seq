@@ -14,7 +14,7 @@
 #
 # Differences vs the upstream wrapper:
 #   - Reads MuData from local disk / GCS / Synapse (upstream is Synapse-only)
-#   - Uses our local scripts/preprocess_mudata_local.py (the Synapse-coupled
+#   - Uses our local src/tf_perturb_seq/crispr_pipeline/preprocess_mudata_local.py (the Synapse-coupled
 #     upstream preprocess_mudata.py is not used here; see external/.../preprocess_mudata.py
 #     if you want the canonical Synapse-source version)
 #   - Uses pinned submodule paths instead of cloning bin/ scripts at runtime
@@ -49,7 +49,7 @@ REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
 CONTAINER_PATH="${CONTAINER_PATH:-/cellar/users/aklie/opt/containers/edist_pipeline.sif}"
 PIPELINE_BIN="${PIPELINE_BIN:-${REPO_ROOT}/external/energy_dist_pipeline/bin}"
-PREPROCESS_LOCAL="${REPO_ROOT}/scripts/preprocess_mudata_local.py"
+PREPROCESS_LOCAL="${REPO_ROOT}/src/tf_perturb_seq/crispr_pipeline/preprocess_mudata_local.py"
 MUDATA_PATH=""
 GCS_MUDATA_PATH=""
 SYNAPSE_ID=""

@@ -11,7 +11,7 @@ NOTE: requires the Engreitz fork of `cnmf` (extra args like --algo). Pip-install
 The public PyPI `cnmf` package does NOT accept these args and will fail.
 
 Usage:
-    python scripts/perturbnmf/make_skcnmf_inference_slurm.py \
+    python src/tf_perturb_seq/cnmf/make_skcnmf_inference_slurm.py \
         --counts_fn datasets/<dataset>/PerturbNMF/Data/<file>.h5ad \
         --out_dir   datasets/<dataset>/PerturbNMF/Result \
         --script_dir datasets/<dataset>/PerturbNMF/Script \

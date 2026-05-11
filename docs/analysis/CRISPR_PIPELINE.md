@@ -314,7 +314,7 @@ The sample metadata CSV has incorrect format. Check:
 
 Validate paths before running:
 ```bash
-python scripts/validate_gcp_paths.py --input sample_metadata_gcp_*.csv
+python src/tf_perturb_seq/gcp/validate_gcp_paths.py --input sample_metadata_gcp_*.csv
 ```
 
 ### Nextflow Java Version Error

@@ -22,7 +22,7 @@ ACCESSION=IGVFDS9951KTRR
 # =============================================================================
 
 DATASET_DIR=${BASE_DIR}/datasets/${DATASET_NAME}
-SCRIPT=${BASE_DIR}/scripts/generate_per_sample.py
+SCRIPT=${BASE_DIR}/src/tf_perturb_seq/portal/generate_per_sample.py
 
 # =============================================================================
 # RUN

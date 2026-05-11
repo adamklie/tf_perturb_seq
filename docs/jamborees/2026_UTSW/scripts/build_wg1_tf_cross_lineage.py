@@ -23,7 +23,7 @@ from pathlib import Path
 
 import pandas as pd
 
-JAMB = Path(__file__).resolve().parent.parent / "docs/jamborees/2026_UTSW"
+JAMB = Path(__file__).resolve().parent.parent
 DATASETS_DIR = JAMB / "datasets"
 OUTPUT = JAMB / "working_groups/wg1_data_qc/tf_cross_lineage.tsv"
 

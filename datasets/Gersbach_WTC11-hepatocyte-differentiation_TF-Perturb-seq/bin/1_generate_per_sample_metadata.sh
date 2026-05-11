@@ -12,7 +12,7 @@ set -euo pipefail
 BASE_DIR=/carter/users/aklie/projects/tf_perturb_seq
 DATASET_NAME=Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq
 DATASET_DIR=${BASE_DIR}/datasets/${DATASET_NAME}
-SCRIPT=${BASE_DIR}/scripts/generate_per_sample_from_ms_list.py
+SCRIPT=${BASE_DIR}/src/tf_perturb_seq/portal/generate_per_sample_from_ms_list.py
 
 # Hep-specific portal references
 GUIDE_DESIGN=IGVFFI8270UPKB        # harmonized_guide_file_poolabcdf (47-MS link is library IGVFDS3299AXST)

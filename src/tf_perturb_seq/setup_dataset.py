@@ -6,10 +6,10 @@ This script creates the standard directory structure and copies template files
 for a new dataset, pre-filling configuration values where possible.
 
 Usage:
-    python scripts/setup_dataset.py --name "Lab_CellLine-differentiation_TF-Perturb-seq" --accession IGVFDSXXXXXX
+    python src/tf_perturb_seq/setup_dataset.py --name "Lab_CellLine-differentiation_TF-Perturb-seq" --accession IGVFDSXXXXXX
 
 Example:
-    python scripts/setup_dataset.py \
+    python src/tf_perturb_seq/setup_dataset.py \
         --name "Hon_H9-neuron-differentiation_TF-Perturb-seq" \
         --accession IGVFDS1234ABCD \
         --lab "Hon" \
@@ -168,10 +168,10 @@ def main():
         epilog="""
 Examples:
     # Basic usage
-    python scripts/setup_dataset.py --name "Hon_H9-neuron_TF-Perturb-seq" --accession IGVFDS1234ABCD
+    python src/tf_perturb_seq/setup_dataset.py --name "Hon_H9-neuron_TF-Perturb-seq" --accession IGVFDS1234ABCD
 
     # With metadata
-    python scripts/setup_dataset.py \\
+    python src/tf_perturb_seq/setup_dataset.py \\
         --name "Engreitz_WTC11-endothelial_TF-Perturb-seq" \\
         --accession IGVFDS5678EFGH \\
         --lab "Engreitz" \\

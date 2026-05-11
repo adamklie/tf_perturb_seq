@@ -29,7 +29,7 @@ GCS_BUCKET=igvf-pertub-seq-pipeline-data
 # =============================================================================
 
 DATASET_DIR=${BASE_DIR}/datasets/${DATASET_NAME}
-UPLOAD_SCRIPT=${BASE_DIR}/scripts/upload_to_gcp.py
+UPLOAD_SCRIPT=${BASE_DIR}/src/tf_perturb_seq/gcp/upload_to_gcp.py
 
 # Input sample metadata file (CSV format)
 INPUT_FILE=${DATASET_DIR}/samplesheets/sample_metadata.csv

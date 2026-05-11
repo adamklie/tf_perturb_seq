@@ -29,7 +29,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-JAMB = Path(__file__).resolve().parent.parent / "docs/jamborees/2026_UTSW"
+JAMB = Path(__file__).resolve().parent.parent
 SOURCE = JAMB / "working_groups/wg3_disease_gwas/disease_tf_activity.tsv"
 OUTPUT = JAMB / "working_groups/wg3_disease_gwas/tf_convergence_scorecard.tsv"
 

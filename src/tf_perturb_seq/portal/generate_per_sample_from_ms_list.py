@@ -4,7 +4,7 @@ For datasets without an analysis set (e.g. Gersbach Hep as of 2026-05), we
 build the samplesheet by enumerating the measurement sets directly and
 passing the guide library file accession explicitly.
 
-Same per-row schema as scripts/generate_per_sample.py:
+Same per-row schema as src/tf_perturb_seq/portal/generate_per_sample.py:
     R1_path, R2_path, file_modality, measurement_sets, sequencing_run,
     lane, seqspec, barcode_onlist, guide_design, barcode_hashtag_map
 

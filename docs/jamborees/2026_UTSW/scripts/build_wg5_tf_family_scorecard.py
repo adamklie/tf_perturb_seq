@@ -25,7 +25,7 @@ from pathlib import Path
 
 import pandas as pd
 
-JAMB = Path(__file__).resolve().parent.parent / "docs/jamborees/2026_UTSW"
+JAMB = Path(__file__).resolve().parent.parent
 TF_METADATA = JAMB / "reference/tf_metadata.tsv"
 GENE_DISEASE = JAMB / "reference/gene_disease_associations.tsv"
 DATASETS_DIR = JAMB / "datasets"

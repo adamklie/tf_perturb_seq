@@ -16,7 +16,7 @@ DATASET_NAME=Engreitz_WTC11-benchmark_TF-Perturb-seq
 # =============================================================================
 
 DATASET_DIR=${BASE_DIR}/datasets/${DATASET_NAME}
-PATCH_SCRIPT=${BASE_DIR}/scripts/patch_gcp_files.py
+PATCH_SCRIPT=${BASE_DIR}/src/tf_perturb_seq/gcp/patch_gcp_files.py
 
 # Input: the GCP samplesheet with .gz paths
 INPUT_FILE=${DATASET_DIR}/samplesheets/sample_metadata_gcp_2026_02_26.csv

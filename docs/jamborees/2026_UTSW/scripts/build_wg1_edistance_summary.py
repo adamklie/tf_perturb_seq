@@ -20,7 +20,7 @@ from pathlib import Path
 
 import pandas as pd
 
-JAMB = Path(__file__).resolve().parent.parent / "docs/jamborees/2026_UTSW"
+JAMB = Path(__file__).resolve().parent.parent
 ED_SUMMARY = JAMB / "reference/cross_dataset_edistance_summary.tsv"
 EXP_METADATA = JAMB / "reference/experimental_metadata_simplified.tsv"
 OUTPUT = JAMB / "working_groups/wg1_data_qc/edistance_summary.tsv"

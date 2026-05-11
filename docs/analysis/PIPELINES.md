@@ -19,9 +19,9 @@ Data producers upload raw fastqs and metadata to the [IGVF data portal](https://
 - Optionally, a second auxiliary set per measurement set for HTO-seq
 
 **Scripts:**
-- `scripts/generate_per_sample.py` — Query portal API for metadata
-- `scripts/upload_to_gcp.py` — Upload files to GCS
-- `scripts/validate_gcp_paths.py` — Verify uploads
+- `src/tf_perturb_seq/portal/generate_per_sample.py` — Query portal API for metadata
+- `src/tf_perturb_seq/gcp/upload_to_gcp.py` — Upload files to GCS
+- `src/tf_perturb_seq/gcp/validate_gcp_paths.py` — Verify uploads
 
 ## Stage 2: CRISPR Pipeline
 

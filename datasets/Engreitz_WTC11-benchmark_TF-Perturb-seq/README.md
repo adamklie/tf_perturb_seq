@@ -37,7 +37,7 @@ DRY_RUN=true bash datasets/Engreitz_WTC11-benchmark_TF-Perturb-seq/3_patch_gcp_f
 bash datasets/Engreitz_WTC11-benchmark_TF-Perturb-seq/3_patch_gcp_files.sh
 
 # 4. Validate GCS paths
-python3 scripts/validate_gcp_paths.py --input datasets/Engreitz_WTC11-benchmark_TF-Perturb-seq/sample_metadata_gcp_2026_02_26_patched.csv
+python3 src/tf_perturb_seq/gcp/validate_gcp_paths.py --input datasets/Engreitz_WTC11-benchmark_TF-Perturb-seq/sample_metadata_gcp_2026_02_26_patched.csv
 
 # 5. Run CRISPR pipeline
 RUN_IN_BACKGROUND=true bash datasets/Engreitz_WTC11-benchmark_TF-Perturb-seq/4_run_CRISPR_pipeline.sh

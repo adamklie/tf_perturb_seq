@@ -20,7 +20,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-JAMB = Path(__file__).resolve().parent.parent / "docs/jamborees/2026_UTSW"
+JAMB = Path(__file__).resolve().parent.parent
 DATASETS_DIR = JAMB / "datasets"
 OUTPUT = JAMB / "working_groups/wg4_grn_inference/network_structure_by_lineage.tsv"
 

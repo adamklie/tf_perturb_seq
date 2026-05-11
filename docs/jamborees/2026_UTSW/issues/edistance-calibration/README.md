@@ -98,7 +98,7 @@ Possibilities to consider — without picking a working hypothesis:
 
 **Wrapper**: [`scripts/run_energy_distance_pipeline.sh`](../../../../../scripts/run_energy_distance_pipeline.sh) (based on Chikara's [`external/energy_dist_TFperturb`](../../../../../external/energy_dist_TFperturb/) template).
 
-**Preprocess**: matches upstream `preprocess_mudata.py` step-for-step, in [`scripts/preprocess_mudata_local.py`](../../../../../scripts/preprocess_mudata_local.py):
+**Preprocess**: matches upstream `preprocess_mudata.py` step-for-step, in [`src/tf_perturb_seq/crispr_pipeline/preprocess_mudata_local.py`](../../../../../src/tf_perturb_seq/crispr_pipeline/preprocess_mudata_local.py):
 1. Take `gene` modality from MuData
 2. `sc.pp.filter_genes(min_counts=1)`
 3. `sc.pp.normalize_total`
@@ -124,15 +124,15 @@ After applying whatever fix Chikara recommends and re-running:
 - [ ] NC `distance_mean` median **less than** targeting `distance_mean` median by a meaningful margin
 - [ ] Volcano plot shows NCs separating from targeting (NCs near origin, targeting spread out)
 - [ ] Hon CM and HTv2 results unchanged (or, if the fix changes them, still calibrated)
-- [ ] All 4 layers of [`scripts/validate_edistance_outputs.py`](../../../../../scripts/validate_edistance_outputs.py) still PASS
+- [ ] All 4 layers of [`src/tf_perturb_seq/edistance/validate_edistance_outputs.py`](../../../../../src/tf_perturb_seq/edistance/validate_edistance_outputs.py) still PASS
 
 ## Pointers
 
 | Object | Path |
 |---|---|
-| Validator (4 layers: file presence, CSV schema, value-range sanity, schema-identity vs HTv2 reference) | [`scripts/validate_edistance_outputs.py`](../../../../../scripts/validate_edistance_outputs.py) |
+| Validator (4 layers: file presence, CSV schema, value-range sanity, schema-identity vs HTv2 reference) | [`src/tf_perturb_seq/edistance/validate_edistance_outputs.py`](../../../../../src/tf_perturb_seq/edistance/validate_edistance_outputs.py) |
 | Pipeline runner | [`scripts/run_energy_distance_pipeline.sh`](../../../../../scripts/run_energy_distance_pipeline.sh) |
-| Preprocess (the file we'd edit for any preprocess-side fix) | [`scripts/preprocess_mudata_local.py`](../../../../../scripts/preprocess_mudata_local.py) |
+| Preprocess (the file we'd edit for any preprocess-side fix) | [`src/tf_perturb_seq/crispr_pipeline/preprocess_mudata_local.py`](../../../../../src/tf_perturb_seq/crispr_pipeline/preprocess_mudata_local.py) |
 | Per-dataset entrypoints | `datasets/<dataset>/5_run_energy_distance.sh` |
 | Mirror script | [`scripts/mirror_edistance_outputs.py`](../../scripts/mirror_edistance_outputs.py) |
 | Schema | [`schemas/energy_distance.json`](../../schemas/energy_distance.json) |

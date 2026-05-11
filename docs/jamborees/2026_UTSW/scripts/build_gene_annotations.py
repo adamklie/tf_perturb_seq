@@ -19,7 +19,7 @@ from pathlib import Path
 
 import pandas as pd
 
-JAMB = Path(__file__).resolve().parent.parent / "docs/jamborees/2026_UTSW"
+JAMB = Path(__file__).resolve().parent.parent
 GTF = JAMB / "reference/IGVFFI9573KOZR.gtf.gz"
 OUTPUT = JAMB / "reference/gene_annotations.tsv"
 

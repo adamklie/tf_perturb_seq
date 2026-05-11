@@ -23,7 +23,7 @@ Mapping:
 Validates with the perturbNMF-runner skill's `validate_data.py` after writing.
 
 Usage:
-    python scripts/h5mu_to_perturbnmf_h5ad.py \
+    python src/tf_perturb_seq/cnmf/h5mu_to_perturbnmf_h5ad.py \
         --in_h5mu  datasets/<dataset>/runs/<run>/pipeline_outputs/inference_mudata.h5mu \
         --out_h5ad datasets/<dataset>/PerturbNMF/Data/<dataset>_<run>_perturbnmf.h5ad
 """

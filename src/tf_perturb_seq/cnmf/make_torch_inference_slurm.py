@@ -13,7 +13,7 @@ Carter-specific defaults:
   - PYTHONPATH adds external/PerturbNMF/src
 
 Usage:
-    python scripts/perturbnmf/make_torch_inference_slurm.py \
+    python src/tf_perturb_seq/cnmf/make_torch_inference_slurm.py \
         --counts_fn datasets/<dataset>/PerturbNMF/Data/<file>.h5ad \
         --out_dir   datasets/<dataset>/PerturbNMF/Result \
         --script_dir datasets/<dataset>/PerturbNMF/Script \

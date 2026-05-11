@@ -59,7 +59,7 @@ Outputs aimed at general scientists — simpler artifacts for higher-level figur
 - [x] Simplified guide metadata → not needed (IGVF release used as-is)
 
 **Perturb-seq outputs**
-- [x] Cross-dataset summary TSV (cell counts, UMI medians, knockdown stats, perturbo significance counts) → [`reference/cross_dataset_pipeline_summary.tsv`](reference/cross_dataset_pipeline_summary.tsv) (3 datasets so far: Hon CM, Huangfu DE, Huangfu ESC; Gersbach Hep skipped because of non-canonical Synapse layout). Generator: [`scripts/cross_dataset_pipeline_summary.py`](../../../scripts/cross_dataset_pipeline_summary.py). Re-run when more datasets get canonical bundles.
+- [x] Cross-dataset summary TSV (cell counts, UMI medians, knockdown stats, perturbo significance counts) → [`reference/cross_dataset_pipeline_summary.tsv`](reference/cross_dataset_pipeline_summary.tsv) (3 datasets so far: Hon CM, Huangfu DE, Huangfu ESC; Gersbach Hep skipped because of non-canonical Synapse layout). Generator: [`src/tf_perturb_seq/crispr_pipeline/cross_dataset_pipeline_summary.py`](../../../src/tf_perturb_seq/crispr_pipeline/cross_dataset_pipeline_summary.py). Re-run when more datasets get canonical bundles.
 
 **cNMF outputs** (deferred — depend on production cNMF runs)
 - [ ] Cross-dataset program-similarity heatmap (cosine similarity of `gene_spectra_score` across all 5 datasets at each dataset's selected k)
@@ -134,7 +134,7 @@ In priority order:
 1. **Bug Weizhou** (Hon team) for the rest of the Hon CM CRISPR outputs — partial mirror at [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) is missing `pipeline_info/`. → [Issue 2](issues/hon-cm-crispr-bundle.md)
 2. **Bug Sara** (Gersbach team) to deliver Gersbach Hep `crispr_pipeline/`, `cnmf/`, and `energy_distance/` in our schema-defined formats. → [Issue 3](issues/gersbach-hep-deliverables.md)
 3. **Verify HTv2 cNMF testbed** (job 10577039) completes cleanly, then launch production cNMF on Huangfu DE + Huangfu ESC. → [Issue 5](issues/htv2-cnmf-testbed.md)
-4. **Fix energy-distance p-value calibration** — re-preprocess with HVG-subset PCA in `scripts/preprocess_mudata_local.py` and re-run on Huangfu DE + ESC. → [Issue 1](issues/edistance-calibration.md)
+4. **Fix energy-distance p-value calibration** — re-preprocess with HVG-subset PCA in `src/tf_perturb_seq/crispr_pipeline/preprocess_mudata_local.py` and re-run on Huangfu DE + ESC. → [Issue 1](issues/edistance-calibration.md)
 5. **Per-dataset READMEs** under `datasets/<production-dataset>/`. → [Issue 6](issues/per-dataset-readmes.md)
 
 Plus the standing blocker: [Issue 4](issues/engreitz-no-data.md) — Engreitz endothelial data not on the IGVF portal yet.

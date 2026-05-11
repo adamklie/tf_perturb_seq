@@ -15,7 +15,7 @@ echo "Job: $SLURM_JOB_ID @ $(hostname) $(date)"
 
 source /cellar/users/aklie/projects/tf_perturb_seq/.venv/bin/activate
 
-python -u /cellar/users/aklie/projects/tf_perturb_seq/scripts/h5mu_to_perturbnmf_h5ad.py \
+python -u /cellar/users/aklie/projects/tf_perturb_seq/src/tf_perturb_seq/cnmf/h5mu_to_perturbnmf_h5ad.py \
     --in_h5mu  /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/runs/sceptre_v1/pipeline_outputs/inference_mudata.h5mu \
     --out_h5ad /cellar/users/aklie/projects/tf_perturb_seq/datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/PerturbNMF/Data/ESC_sceptre_v1_perturbnmf.h5ad
 
