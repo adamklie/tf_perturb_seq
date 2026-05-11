@@ -14,12 +14,27 @@ From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
 
 | ID | File | Status | What it answers | Source data |
 |---|---|---|---|---|
-| WG3-A | `disease_tf_activity.tsv` | ✅ ready (Mondo) | Per-TF: is it a disease gene (Mondo), and how strongly does its perturbation alter the transcriptome in each lineage? | `tf_metadata.tsv` + per-dataset `pval_edist_full.csv` + Mondo Disease Ontology |
+| WG3-A | `disease_tf_activity.tsv` | ✅ landed (2 lineages so far) | Per-TF: is it a disease gene (Mondo/OMIM via HPO), and how strongly does its perturbation alter the transcriptome in each lineage? Auto-widens as more datasets land. | `tf_metadata.tsv` + per-dataset `wg1_significant_tfs.tsv` + HPO genes_to_disease (MONDO + OMIM) cached at `reference/gene_disease_associations.tsv` |
 | WG3-B | `tf_convergence_scorecard.tsv` | 🟡 partial | For disease-relevant TFs with data in ≥2 lineages: convergent_high / convergent_low / divergent classification | WG3-A + cross-lineage ED join |
 | WG3-C | `gwas_variants_near_tfs.tsv` | 🔴 blocked | Per-TF GWAS variants in its locus or upstream regulatory elements | External GWAS catalog (not yet in repo) |
 
 ## Source choices
 
-- **Disease-gene list**: [Mondo Disease Ontology](https://mondo.monarchinitiative.org/) (open, comprehensive). Pulled fresh from the public OBO/JSON release whenever the script runs. WG3-A's `mondo_disease_ids` column carries the matched Mondo IDs per TF for downstream filtering.
+- **Gene-disease associations**: HPO's `genes_to_disease.txt` (https://hpo.jax.org/, released alongside the HPO ontology). Provides per-gene disease IDs across MONDO + OMIM (the agreed Mondo-based sources). Pulled fresh via [`scripts/fetch_hpo_gene_disease.py`](../../../../scripts/fetch_hpo_gene_disease.py); cached at [`../../reference/gene_disease_associations.tsv`](../../reference/gene_disease_associations.tsv). 5,090 unique gene symbols → 512 overlap with our TF library.
 
-> **⚠ Calibration caveat for ED-based fields**: same as WG1 — `distance_mean` is the trustworthy signal; `pval_mean` is anti-conservative for the Huangfu runs (see [`../../issues/edistance-calibration.md`](../../issues/edistance-calibration.md)).
+> **⚠ Calibration caveat for ED-based fields**: same as WG1 — `distance_mean` is the trustworthy signal; `pval_mean` is anti-conservative for the Huangfu runs (see [`../../issues/edistance-calibration/`](../../issues/edistance-calibration/)).
+
+## WG3-A first snapshot (2 lineages: Huangfu DE × Huangfu ESC, 2026-05-11)
+
+- **512 of 1,983 TFs** in the library have HPO disease associations (~26%)
+- Cross-lineage classification within disease-TFs:
+
+| classification | n_TFs |
+|---|---:|
+| convergent_significant (sig in both lineages) | **0** |
+| HuangfuESC-specific | 21 |
+| HuangfuDE-specific | 16 |
+| no_data (gene absent from ED runs) | 5 |
+| convergent_nonsignificant | 470 |
+
+Top ESC-specific disease TFs (sorted by distance): **MEF2A** (rank 1926 → rank 4 across lineages — striking shift), **DNAJC21**, **RB1**, **SMARCB1**, **MYCN**, **CREB3L3**, **TNXB**, **GZF1**, **KMT2B**. Top DE-specific: covered in the TSV. Notably none of the WG1-D convergent_significant trio (TERF2 / GTF2B / ZNF574) are HPO-disease-flagged — they're real TFs but lack curated disease associations in the HPO release; worth a manual scan against ClinVar / GWAS Catalog when WG3 meets.
