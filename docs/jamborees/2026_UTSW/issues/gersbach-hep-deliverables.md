@@ -63,7 +63,7 @@ If Sara's existing run has different parameters (e.g., different k sweep, differ
 | Synapse target | `2026_UTSW/datasets/Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq/energy_distance/` |
 | Reference example | Huangfu DE [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) — has steps 1 + 2 + 2.1 only (no step 3 yet) |
 
-**Calibration concern (see [Issue #1](edistance-calibration.md))**: Sara should be aware that our Huangfu DE/ESC runs had anti-conservative p-values (all NCs `pval_mean=0`). If Sara's Gersbach Hep run was set up similarly (all-genes PCA, large NC pool), it may have the same issue. Worth a sanity check on her end before delivering.
+**Calibration concern (see [Issue #1](edistance-calibration/))**: our Huangfu DE/ESC runs had anti-conservative p-values (all NCs `pval_mean=0`); our Hon CM run, same library + same wrapper + same config, came out calibrated. Cause unresolved. Sara's Gersbach Hep run is a useful third comparison point — a quick `pval_mean` distribution check on her output (NC subset specifically) would tell us if it falls in the calibrated bucket or the broken bucket, and would help triangulate the cause.
 
 ## Practical paths
 

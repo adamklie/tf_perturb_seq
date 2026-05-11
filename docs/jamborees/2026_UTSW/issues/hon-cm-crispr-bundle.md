@@ -36,8 +36,12 @@ That's a 2-of-3 canonical bundle. The folder naming (`dashboard/` vs `pipeline_d
 ## Evidence the gap blocks downstream
 
 - [`docs/jamborees/2026_UTSW/schemas/crispr_pipeline.json`](../schemas/crispr_pipeline.json) requires the 3-folder layout.
-- [`docs/jamborees/2026_UTSW/schemas/energy_distance.json`](../schemas/energy_distance.json) → `production_runs_status.Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq` says `not run yet (awaiting full crispr_pipeline bundle from Hon team; source MuData syn74522725)`.
+- Blocks cNMF and a proper QC pass on Hon CM production data. Does **not** block energy distance — that already ran (sourced from `syn74522725`) and is mirrored at [`syn74897350`](https://www.synapse.org/Synapse:syn74897350).
 - [`docs/analysis/CRISPR_PIPELINE_OUTPUTS.md`](../../../analysis/CRISPR_PIPELINE_OUTPUTS.md) → `pipeline_info/` (`params_*.json` + `nf_core_pipeline_software_versions.yml`) is the only place we capture the actual run config; without it we can't reproduce or audit the run.
+
+## Parallel work in flight (so we're not just blocked on Weizhou)
+
+We're also re-running the upstream Nextflow CRISPR pipeline ourselves on GCP from [`datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/4_run_CRISPR_pipeline.sh`](../../../../datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/4_run_CRISPR_pipeline.sh) (`-profile google`). Recent fix in commit `04e42ce`: bumped `PreprocessAnnData`'s machine type to `n2-highmem-32` (the shared `withName` block had it locked at `n2-highmem-16` = 128 GiB, which couldn't fit retry #3 at 150 GiB). Run is resumed via Nextflow `-resume`. If/when that completes cleanly we'd have a `pipeline_info/` of our own and could fall back to it; until then Weizhou's bundle is still the simpler path.
 
 ## What we want from Weizhou
 

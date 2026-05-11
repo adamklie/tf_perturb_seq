@@ -1,34 +1,60 @@
-# Energy distance p-value calibration concern — Huangfu DE + ESC
+# Energy-distance p-value calibration concern
+
+**Status**: ⚠ Huangfu DE + ESC runs complete on Synapse, p-values are anti-conservative (every negative-control target gets `pval_mean = 0`). Hon CM run also complete and shows healthy calibration. HTv2 benchmark also healthy. Need a fix recommendation before re-running Huangfu.
+
+**Owner of fix**: us (apply whatever preprocess change Chikara recommends, re-run on HPC) ± Chikara Takeuchi (upstream guidance on what produces calibrated p-values for the affected datasets).
 
 ## TL;DR
 
-Both Huangfu production runs (DE + ESC) on 2026-05-09 produce `pval_mean = 0` for all 100 negative-control targets, which is anti-conservative — negative controls should have a uniform p-value distribution. After investigating, the cause appears to be **scale-driven** (the size of the non-targeting pool, ~600 gRNAs in production vs ~30 in the HTv2 benchmark, gives a much tighter permutation null), **not** a pipeline bug, config deviation, or guide-metadata labeling difference. Our pipeline matches Chikara's HTv2 reference run bit-perfect.
+We ran the energy-distance pipeline on five Gersbach/Hon/Huangfu runs. Three are calibrated, two are not:
 
-We are using raw `distance_mean` as an effect-size proxy in the meantime. **Open question for Chikara: what is the recommended way to recover calibrated p-values at production scale?**
+- **Calibrated**: Gersbach HTv2 benchmark (both Chikara's reference and our re-run), Hon WTC11 cardiomyocyte production
+- **Anti-conservative**: Huangfu HUES8 definitive-endoderm production, Huangfu HUES8 embryonic-stem-cell production
 
-## The phenomenon
+Same wrapper, same container, same parameters, same library, same scale of cell counts and target counts across the production runs — but the two Huangfu runs come out broken and the Hon CM run does not.
 
-| Run | Targets | distance_mean median | NC distance_mean median | NC vs targeting ratio | NC pval_mean=0 |
-|---|---|---|---|---|---|
-| HTv2 reference (Chikara, [syn74381183](https://www.synapse.org/Synapse:syn74381183)) | 64 | 1.78 | (no explicit NC class) | — | (no NCs) |
-| HTv2 our rerun (`cleanser_800_mito_15pc`) | 65 | 19.46 | (no explicit NC class) | — | (no NCs) |
-| Our Huangfu DE | 2267 | 93.21 | 91.70 | 1.02× | **100/100** |
-| Our Huangfu ESC | 2267 | 527.33 | 528.25 | 1.00× | **100/100** |
+## Observations
 
-Negative controls have essentially the same energy distance as targeting gRNAs in the Huangfu runs, and **all 100 NC targets in each run get pval_mean=0**.
+### Distribution numbers per run
 
-## Plots
+Numbers from each run's `pval_edist_full.csv` (schema in [`schemas/energy_distance.json`](../../schemas/energy_distance.json)):
 
-- `01_pval_mean_by_type.png` — histogram of pval_mean by type per dataset. NCs piled at 0 in our Huangfu runs.
-- `02_distance_mean_by_type.png` — distance_mean histograms. NC and targeting distributions overlap near-perfectly in Huangfu.
-- `03_volcano_by_type.png` — distance vs -log10(p) scatter. Huangfu NCs (blue) sit at the top of the volcano next to targeting (red).
-- `04_distance_scale_comparison.png` — log-scale comparison of distance_mean across HTv2 reference vs Huangfu. 1-2 orders of magnitude scale difference.
+| Run | Targets | Cells/target (median) | Targeting `distance_mean` median | NC `distance_mean` median | NC vs targeting ratio | `pval_mean` median | NCs with `pval_mean=0` |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| HTv2 verified reference (Chikara, [`syn74381183`](https://www.synapse.org/Synapse:syn74381183)) | 64 | 2000 | 1.78 | _no NC class in run_ | — | (healthy) | _n/a_ |
+| HTv2 our rerun (`cleanser_800_mito_15pc`, 2026-05-10) | 65 | 2000 | 19.46 | _no NC class in run_ | — | 0.0316 | _n/a_ |
+| **Hon WTC11 cardiomyocyte** ([`syn74897350`](https://www.synapse.org/Synapse:syn74897350)) | **2030** | up to 2000 (range 5-2000) | **1.30** | (calibrated) | (calibrated) | **0.339** ✅ | (calibrated) |
+| Huangfu HUES8 DE ([`syn74883327`](https://www.synapse.org/Synapse:syn74883327)) | 2267 | 2000 | 93.21 | 91.70 | 1.02× | **0** | **100 / 100** |
+| Huangfu HUES8 ESC ([`syn74883475`](https://www.synapse.org/Synapse:syn74883475)) | 2267 | 2000 | 527.33 | 528.25 | 1.00× | **0** | **100 / 100** |
 
-## What we ruled out
+Side observation worth flagging: in both Huangfu runs, positive controls have *lower* median distance than NCs (DE: pos-ctrl 77 vs NC 92; ESC: pos-ctrl 500 vs NC 528).
 
-### 1. Pipeline / preprocess deviation (ruled out 2026-05-10)
+### Plots (Huangfu DE + ESC vs HTv2 reference)
 
-Adam reran the e-distance pipeline on Gersbach HTv2 benchmark with our wrapper (`cleanser_800_mito_15pc`, 65 targets) and compared bit-for-bit against Chikara's HTv2 run on Synapse [syn74895081](https://www.synapse.org/Synapse:syn74895081):
+#### `pval_mean` distribution by target type
+![pval_mean by type](01_pval_mean_by_type.png)
+
+NC bars pile at 0 in both Huangfu runs.
+
+#### `distance_mean` distribution by target type
+![distance_mean by type](02_distance_mean_by_type.png)
+
+NC and targeting `distance_mean` distributions overlap near-perfectly in the Huangfu runs.
+
+#### Volcano: `distance_mean` vs `−log10(pval_mean)`
+![volcano by type](03_volcano_by_type.png)
+
+NCs (blue) sit at the top of the volcano next to targeting (red) in the Huangfu runs.
+
+#### Cross-run distance scale comparison
+![distance scale comparison](04_distance_scale_comparison.png)
+
+Huangfu distances are 1-2 orders of magnitude larger than HTv2 reference. Hon CM distances are in the same regime as HTv2.
+
+## What we have ruled out
+
+### Pipeline / wrapper / preprocess deviation
+We re-ran the e-distance pipeline on Gersbach HTv2 benchmark with our wrapper (`cleanser_800_mito_15pc`, 65 targets) and compared bit-for-bit against Chikara's HTv2 run on Synapse [`syn74895081`](https://www.synapse.org/Synapse:syn74895081):
 
 ```
 65/65 targets overlap, 0 unique to either side
@@ -37,62 +63,87 @@ Pearson pval correlation:     1.0000
 Per-target abs diff:          median 0, max 0
 ```
 
-Identical results: same shape (65 × 46), same distance range [2.71, 79], same pval median (0.0316), same frac p<0.05 (58%). **Our wrapper reproduces Chikara's runs bit-perfect at benchmark scale**, ruling out preprocess / config / submodule / annotation differences as the cause.
+### Wrong background source
+Step 2 (`2_e_distance_nontargeting.py`, line 55) reads non-targeting outliers explicitly: `clear_nt_sgRNA_list = nontargeting_outlier_df[nontargeting_outlier_df["pval_outlier"]>0.05].index.tolist()`. The permutation null is built from `non-targeting`-typed gRNAs only. Negative controls are tested as targets, not used as background.
 
-### 2. Wrong background source (ruled out 2026-05-10)
+### Guide-metadata labeling
+Both libraries use OR (olfactory receptor) gene-targeting gRNAs as the de-facto negative-control class — just labeled differently:
 
-Step 2 (`2_e_distance_nontargeting.py`) explicitly uses `non-targeting`-typed gRNAs as the permutation background (line 55: `clear_nt_sgRNA_list = nontargeting_outlier_df[nontargeting_outlier_df["pval_outlier"]>0.05].index.tolist()`). Negative controls are tested as targets, not used as background. Verified.
-
-### 3. Guide-metadata labeling difference (ruled out 2026-05-10)
-
-Both libraries use **OR (olfactory receptor) gene-targeting gRNAs as the de-facto negative control class**, just labeled differently:
-
-| Library | "Negative control" labeling | OR-targeting gRNAs | OR pval_mean median | OR frac p<0.05 |
+| Library | NC labeling | OR-targeting gRNAs | OR pval_mean median | OR frac p<0.05 |
 |---|---|---|---|---|
 | HTv2 (416 gRNAs) | Class doesn't exist | 54, labeled `type=targeting` | 0.0654 | 44% |
-| Huangfu DE (14k gRNAs) | Explicit `type=negative control` | 592 of 598 NCs match `^OR[digit]` | **0.0** | **100%** |
+| Huangfu DE (14k gRNAs) | Explicit `type=negative control` | 592 of 598 NCs match `^OR[digit]` | 0 | 100% |
 
-The labeling difference doesn't affect the test mechanically — the cells go through the same comparison either way. The fact that HTv2 OR-targeting (44% sig) sits below HTv2 real targeting (63% sig) shows calibration works at HTv2's scale even without an explicit NC class. The Huangfu NC class breakdown is a different phenomenon.
+The labeling difference doesn't affect the test mechanically (cells go through the same comparison either way). HTv2's OR-targeting subset (44% sig) sits below HTv2 real targeting (63% sig), showing calibration works there even without an explicit NC class.
 
-## What's left as the cause: cell-state heterogeneity, NOT scale (updated 2026-05-10 — Hon CM finished)
+### Scale alone
+Earlier we suspected the breakdown was driven by the larger non-targeting pool in Huangfu (600 NT gRNAs vs HTv2's 30) creating a tighter permutation null. Hon CM has the same 600 NT gRNAs, the same 14k gRNA library, the same ~2k unique target groups, ~270k cells — i.e. matched scale to Huangfu — and is calibrated. So scale alone is not the cause.
 
-The "non-targeting pool size" hypothesis below was the working theory through 2026-05-09, but the Hon CM run finishing changes the picture. Hon CM is the same library scale as Huangfu (~2000 targets, ~270k cells, 600 NT gRNAs) but **has calibrated p-values**:
+## Open question
 
-| Run | Cell state | Targets | distance_mean median | pval_mean median | NC pval_mean=0 |
-|---|---|---|---|---|---|
-| HTv2 reference | iPSC (benchmark) | 64 | 1.78 | 0.068 | (no NCs) |
-| HTv2 our rerun | iPSC (benchmark) | 65 | 19.5 | 0.032 | (no NCs) |
-| **Hon CM** (carter-gpu, 8h step2) | **WTC11 cardiomyocyte** | **2030** | **1.30** | **0.339** ✅ | calibrated |
-| Huangfu DE | HUES8 def. endoderm | 2267 | 93.21 | 0 ⚠️ | 100/100 |
-| Huangfu ESC | HUES8 embryonic stem | 2267 | 527.33 | 0 ⚠️ | 100/100 |
+Three calibrated runs (HTv2 Chikara, HTv2 our rerun, Hon CM) and two broken runs (Huangfu DE, Huangfu ESC) using the same pipeline, same wrapper, same params, and (between Hon CM and Huangfu) the same library. **What's different about the Huangfu data that breaks the test?**
 
-Hon CM (full production scale) keeps distance_mean in the same regime as HTv2 (1-19), and p-values are calibrated. The **scale hypothesis is wrong**.
-
-**New hypothesis: cell-state heterogeneity drives the breakdown.** Cardiomyocytes (terminally differentiated, transcriptomically stable) and HTv2-iPSCs (homogeneous) both give small baseline distances and clean calibration. Huangfu's definitive-endoderm and embryonic-stem-cell populations are mid/early differentiation states with more variable transcriptional programs, producing 50-500× larger baseline distances that swamp the perturbation signal regardless of NC labeling or pool size.
-
-If true, a fix at the preprocess level may help — e.g., regress out cell-cycle / differentiation-state covariates before PCA, or restrict to a more homogeneous subpopulation (single Leiden cluster) before running the test. Worth Chikara's input before re-running.
-
-### Earlier hypothesis (kept for record): non-targeting pool size
-
-Through 2026-05-09 we believed the breakdown was driven by Huangfu's 600 non-targeting gRNAs (20× more than HTv2's 30) creating a very tight permutation null. Hon CM has exactly the same 600 NT gRNAs but doesn't break, so this can't be the primary cause.
+Possibilities to consider — without picking a working hypothesis:
+- Cell-state heterogeneity across batches / differentiation timepoints (Huangfu is HUES8-derived definitive endoderm + embryonic stem cells; Hon is WTC11 cardiomyocyte, terminally differentiated)
+- Cell-cycle / lineage gradient variance dominating the PCA at this scale
+- A QC / filtering threshold mismatch upstream of the e-distance preprocess
+- Something specific to how Huangfu's `inference_mudata.h5mu` was constructed (kallisto / sceptre version, MOI, batch effects)
+- Something else Chikara has seen at production scale
 
 ## Setup details
 
-- Container: `docker.io/takechikara/energy_distance_env:latest` (apptainer .sif)
-- Pipeline: `energy_dist_pipeline` @ `5821450a1eacfddb3c83be8c69fd593eaf76a61c` (post-downsampling-fix main)
-- Preprocess: matches upstream `preprocess_mudata.py` exactly (modality `gene` → `filter_genes(min_counts=1)` → `normalize_total` → `log1p` → `scale` → `tl.pca(n_comps=50)`); only structural deviation is reading MuData from local disk instead of Synapse
-- Step-1/2/2.1 config — identical to upstream `energy_dist_pipeline/config.json` defaults: `threshold_gRNA_num=6`, `combi_count=4`, `total_permute_disco=1000`, `combi_cell_num_max=1000`, `batch_num_basic=120` (filtering); `permute_per_bg=1000`, `num_of_bg=20`, `non_target_pick=2000`, `target_cell_num_max=2000`, `batch_num_basic=200`, `use_matched_bg=false` (permutation)
-- Inputs (Huangfu DE/ESC, IGVF `IGVFFI8270UPKB` library pools A-D): 12,934 targeting + 600 non-targeting + 19 positive controls + 598 negative controls (99% OR-targeting). After grouping by `intended_target_promoter`, 2267 unique target regions
+**Container**: `docker.io/takechikara/energy_distance_env:latest` (apptainer .sif at `/cellar/users/aklie/opt/containers/edist_pipeline.sif`).
 
-## Open questions for Chikara
+**Pipeline**: [`external/energy_dist_pipeline`](../../../../../external/energy_dist_pipeline/) submodule pinned at `5821450a1eacfddb3c83be8c69fd593eaf76a61c` (post-downsampling-fix main).
 
-1. **What's the recommended way to recover calibrated p-values at production scale?** Concretely: should we cap the non-targeting pool size (subsample to ~30 like HTv2)? Switch to `use_matched_bg=true`? Use a variance-correction in the null?
-2. Do you have any internal benchmarks at production scale (~2000 targets, ~600 non-targeting gRNAs) where calibration is known good?
-3. Is there a known scaling regime where the current default permutation parameters are validated?
+**Wrapper**: [`scripts/run_energy_distance_pipeline.sh`](../../../../../scripts/run_energy_distance_pipeline.sh) (based on Chikara's [`external/energy_dist_TFperturb`](../../../../../external/energy_dist_TFperturb/) template).
+
+**Preprocess**: matches upstream `preprocess_mudata.py` step-for-step, in [`scripts/preprocess_mudata_local.py`](../../../../../scripts/preprocess_mudata_local.py):
+1. Take `gene` modality from MuData
+2. `sc.pp.filter_genes(min_counts=1)`
+3. `sc.pp.normalize_total`
+4. `sc.pp.log1p`
+5. `sc.pp.scale`
+6. `sc.tl.pca(n_comps=50)`
+
+The only structural deviations from upstream:
+- We read MuData from local disk (Huangfu MuData isn't on Synapse) rather than via `--synapse-id`
+- The annotation table writes the promoter-format string `<ENSG>|<chr>:<start>-<end>` into `intended_target_name` (rather than into a separate `intended_target_promoter` column), with config `concatenate_key="intended_target_name"`. Same effective grouping as upstream.
+
+**Step-1/2/2.1 config** — identical to upstream `external/energy_dist_pipeline/config.json` defaults:
+- gRNA filtering: `threshold_gRNA_num=6`, `combi_count=4`, `total_permute_disco=1000`, `combi_cell_num_max=1000`, `batch_num_basic=120`
+- Permutation: `permute_per_bg=1000`, `num_of_bg=20`, `non_target_pick=2000`, `target_cell_num_max=2000`, `batch_num_basic=200`, `use_matched_bg=false`
+
+**Inputs (Huangfu DE/ESC, Hon CM)**: 12,934 targeting + 600 non-targeting + 19 positive controls + 598 negative controls (all from IGVF library `IGVFFI8270UPKB`, pools A-D). After grouping by `intended_target_promoter`, ~2k unique target regions per dataset.
+
+## Acceptance criteria for the fix
+
+After applying whatever fix Chikara recommends and re-running:
+
+- [ ] NC `pval_mean` distribution roughly uniform on [0, 1] (not piled at 0) for Huangfu DE and ESC
+- [ ] NC `distance_mean` median **less than** targeting `distance_mean` median by a meaningful margin
+- [ ] Volcano plot shows NCs separating from targeting (NCs near origin, targeting spread out)
+- [ ] Hon CM and HTv2 results unchanged (or, if the fix changes them, still calibrated)
+- [ ] All 4 layers of [`scripts/validate_edistance_outputs.py`](../../../../../scripts/validate_edistance_outputs.py) still PASS
+
+## Pointers
+
+| Object | Path |
+|---|---|
+| Validator (4 layers: file presence, CSV schema, value-range sanity, schema-identity vs HTv2 reference) | [`scripts/validate_edistance_outputs.py`](../../../../../scripts/validate_edistance_outputs.py) |
+| Pipeline runner | [`scripts/run_energy_distance_pipeline.sh`](../../../../../scripts/run_energy_distance_pipeline.sh) |
+| Preprocess (the file we'd edit for any preprocess-side fix) | [`scripts/preprocess_mudata_local.py`](../../../../../scripts/preprocess_mudata_local.py) |
+| Per-dataset entrypoints | `datasets/<dataset>/5_run_energy_distance.sh` |
+| Mirror script | [`scripts/mirror_edistance_outputs.py`](../../scripts/mirror_edistance_outputs.py) |
+| Schema | [`schemas/energy_distance.json`](../../schemas/energy_distance.json) |
+| Analysis-level walkthrough | [`docs/analysis/ENERGY_DISTANCE.md`](../../../../analysis/ENERGY_DISTANCE.md), [`docs/analysis/ENERGY_DISTANCE_OUTPUTS.md`](../../../../analysis/ENERGY_DISTANCE_OUTPUTS.md) |
+| Upstream pipeline | [`external/energy_dist_pipeline/`](../../../../../external/energy_dist_pipeline/) (pinned to `5821450`) |
+| Upstream wrapper | [`external/energy_dist_TFperturb/`](../../../../../external/energy_dist_TFperturb/) (Chikara's template) |
 
 ## Synapse links
 
-- Huangfu DE bundle: [syn74883327](https://www.synapse.org/Synapse:syn74883327)
-- Huangfu ESC bundle: [syn74883475](https://www.synapse.org/Synapse:syn74883475)
-- HTv2 reference (Chikara, newer, used for bit-perfect reproducibility check): [syn74895081](https://www.synapse.org/Synapse:syn74895081)
-- HTv2 reference (Chikara, older, used for schema cross-check): [syn74381167](https://www.synapse.org/Synapse:syn74381167)
+- Huangfu DE bundle: [`syn74883327`](https://www.synapse.org/Synapse:syn74883327)
+- Huangfu ESC bundle: [`syn74883475`](https://www.synapse.org/Synapse:syn74883475)
+- Hon CM bundle (calibrated reference): [`syn74897350`](https://www.synapse.org/Synapse:syn74897350)
+- HTv2 reference (Chikara, newer, used for bit-perfect reproducibility check): [`syn74895081`](https://www.synapse.org/Synapse:syn74895081)
+- HTv2 reference (Chikara, older, used for schema cross-check): [`syn74381167`](https://www.synapse.org/Synapse:syn74381167)
