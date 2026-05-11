@@ -54,15 +54,27 @@ Both libraries use **OR (olfactory receptor) gene-targeting gRNAs as the de-fact
 
 The labeling difference doesn't affect the test mechanically — the cells go through the same comparison either way. The fact that HTv2 OR-targeting (44% sig) sits below HTv2 real targeting (63% sig) shows calibration works at HTv2's scale even without an explicit NC class. The Huangfu NC class breakdown is a different phenomenon.
 
-## What's left as the cause: non-targeting pool size
+## What's left as the cause: cell-state heterogeneity, NOT scale (updated 2026-05-10 — Hon CM finished)
 
-| | HTv2 | Huangfu DE/ESC |
-|---|---|---|
-| Total non-targeting gRNAs | 30 | 600 (20× more) |
-| Non-targeting cells fed to permutation null | small pool | 20× larger |
-| Permutation null variance | broad | tight (variance ~ 1/√N) |
+The "non-targeting pool size" hypothesis below was the working theory through 2026-05-09, but the Hon CM run finishing changes the picture. Hon CM is the same library scale as Huangfu (~2000 targets, ~270k cells, 600 NT gRNAs) but **has calibrated p-values**:
 
-With a much tighter permutation null in Huangfu, **any observed distance lands in the null tail** — including distances from genuine negative controls that should look indistinguishable from background. This is structural to the test under the current configuration; pre-bottleneck the test by limiting the NT pool, or move to a matched-background scheme (`use_matched_bg=true`?), and calibration may recover.
+| Run | Cell state | Targets | distance_mean median | pval_mean median | NC pval_mean=0 |
+|---|---|---|---|---|---|
+| HTv2 reference | iPSC (benchmark) | 64 | 1.78 | 0.068 | (no NCs) |
+| HTv2 our rerun | iPSC (benchmark) | 65 | 19.5 | 0.032 | (no NCs) |
+| **Hon CM** (carter-gpu, 8h step2) | **WTC11 cardiomyocyte** | **2030** | **1.30** | **0.339** ✅ | calibrated |
+| Huangfu DE | HUES8 def. endoderm | 2267 | 93.21 | 0 ⚠️ | 100/100 |
+| Huangfu ESC | HUES8 embryonic stem | 2267 | 527.33 | 0 ⚠️ | 100/100 |
+
+Hon CM (full production scale) keeps distance_mean in the same regime as HTv2 (1-19), and p-values are calibrated. The **scale hypothesis is wrong**.
+
+**New hypothesis: cell-state heterogeneity drives the breakdown.** Cardiomyocytes (terminally differentiated, transcriptomically stable) and HTv2-iPSCs (homogeneous) both give small baseline distances and clean calibration. Huangfu's definitive-endoderm and embryonic-stem-cell populations are mid/early differentiation states with more variable transcriptional programs, producing 50-500× larger baseline distances that swamp the perturbation signal regardless of NC labeling or pool size.
+
+If true, a fix at the preprocess level may help — e.g., regress out cell-cycle / differentiation-state covariates before PCA, or restrict to a more homogeneous subpopulation (single Leiden cluster) before running the test. Worth Chikara's input before re-running.
+
+### Earlier hypothesis (kept for record): non-targeting pool size
+
+Through 2026-05-09 we believed the breakdown was driven by Huangfu's 600 non-targeting gRNAs (20× more than HTv2's 30) creating a very tight permutation null. Hon CM has exactly the same 600 NT gRNAs but doesn't break, so this can't be the primary cause.
 
 ## Setup details
 
