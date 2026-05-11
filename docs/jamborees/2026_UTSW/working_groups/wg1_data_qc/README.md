@@ -42,4 +42,13 @@ The 3 convergent TFs are **TERF2** (Myb/SANT), **GTF2B**, **ZNF574** (C2H2 ZF). 
 | Artifact | Path pattern | Status |
 |---|---|---|
 | WG1-B detail Per-TF significance + ranking | `datasets/<dataset>/energy_distance/wg1_significant_tfs.tsv` | ✅ ready for Huangfu DE + ESC (2273 rows × 16 cols each; joined with TF metadata) |
-| WG1-E Trans-target counts (per perturbation) | `datasets/<dataset>/crispr_pipeline/wg1_trans_target_counts.tsv` | ✅ ready to build for the 3 datasets with canonical CRISPR bundles (Huangfu DE/ESC, Hon CM via syn74520421) |
+| WG1-E Trans-target counts (per perturbation) | `datasets/<dataset>/crispr_pipeline/wg1_trans_target_counts.tsv` | ✅ landed for Huangfu DE (1,741 perturbations, median 5 sig trans targets, max 4,361 = SOX17) + ESC (1,452 perturbations, median 2 sig trans, max 938 = STRAP). Hon CM blocked on CRISPR pipeline mirror; Gersbach/Engreitz blocked upstream. |
+
+### WG1-E first snapshot (2 datasets: Huangfu DE × Huangfu ESC, 2026-05-11)
+
+Per-perturbation count of significant trans-target genes at FDR<0.05 (per-TF BH; see WG4-A for the underlying edge list). Top-of-the-distribution TFs match the expected lineage masters:
+
+- **Huangfu DE**: SOX17 (4,361 sig trans targets — DE master), FOXH1 (3,862), SETDB1 (2,405), SMARCC1 (1,677), ARID1A (1,305), SOX11 (1,084), DBX1 (951), SOX4 (783), SMAD3 (765)
+- **Huangfu ESC**: STRAP (938), SETDB1 (712), RCOR2 (508), SALL4 (461), GRHL2 (365), POU5F1 / OCT4 (270), DNMT1 (186), KAT2A (198)
+
+41 TFs in DE and 15 in ESC drive >100 significant trans targets — these are the candidate "master regulator" perturbations for lineage-specific deep-dives. Tail is long: median is 5 (DE) / 2 (ESC) trans targets per perturbation, so most TFs have small trans footprints.
