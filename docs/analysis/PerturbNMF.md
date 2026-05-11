@@ -76,7 +76,7 @@ Both are also pushed to [adamklie/PerturbNMF](https://github.com/adamklie/Pertur
 
 Open issues filed (no fix yet):
 - [#6](https://github.com/EngreitzLab/PerturbNMF/issues/6) — `<run>/adata` vs `Inference/adata` path mismatch — workaround: per-dataset `<run>/adata → Inference/adata` symlink
-- [#7](https://github.com/EngreitzLab/PerturbNMF/issues/7) — Stage 3b correlation precompute OOMs on real-scale datasets
+- [#7](https://github.com/EngreitzLab/PerturbNMF/issues/7) — Stage 3b infeasible at production scale (precompute OOM at full data; per-program plotting glacially slow even on a 10%-subsampled h5mu — ~30 min/program → ~5 days for K=200). Stage 3b deliberately skipped. Per-program view is covered by the Stage 3e Excel Summary sheet; per-TF view is covered by Stage 3c merged Perturb_gene PDF.
 - [#8](https://github.com/EngreitzLab/PerturbNMF/issues/8) — `merge_pdfs_in_folder` hangs on thousands of PDFs — workaround: `pdfunite`
 - [#9](https://github.com/EngreitzLab/PerturbNMF/issues/9) — Stage 3c HVG breaks on raw counts — workaround: pre-inject UMAP
 
