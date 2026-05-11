@@ -31,15 +31,15 @@ echo "Generate Per-Sample Metadata"
 echo "=========================================="
 echo "Dataset:    ${DATASET_NAME}"
 echo "Accession:  ${ACCESSION}"
-echo "Output:     ${DATASET_DIR}/sample_metadata.csv"
+echo "Output:     ${DATASET_DIR}/samplesheets/sample_metadata.csv"
 echo ""
 
 python3 ${SCRIPT} \
   --accession ${ACCESSION} \
-  --output ${DATASET_DIR}/sample_metadata.csv \
+  --output ${DATASET_DIR}/samplesheets/sample_metadata.csv \
   --hash_seqspec ${SEQSPEC_DIR}/hash_seqspec.yml \
   --rna_seqspec ${SEQSPEC_DIR}/rna_seqspec.yml \
   --sgrna_seqspec ${SEQSPEC_DIR}/guide_seqspec.yml
 
 echo ""
-echo "Done! Output: ${DATASET_DIR}/sample_metadata.csv"
+echo "Done! Output: ${DATASET_DIR}/samplesheets/sample_metadata.csv"
