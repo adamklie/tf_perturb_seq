@@ -20,7 +20,7 @@ From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
 | ID | File | Status | What it answers | Source data |
 |---|---|---|---|---|
 | WG1-A | `qc_summary.tsv` | ✅ landed | Per-dataset cell counts, library QC, knockdown stats — at-a-glance | `cross_dataset_pipeline_summary.tsv` + `experimental_metadata_simplified.tsv` |
-| WG1-B | `edistance_significance.tsv` | 🟡 partial (2/5 datasets) | n TFs called significant per dataset, under multiple thresholds incl. the calibration-robust `distance_mean > NC max` proxy | per-dataset `pval_edist_full.csv` on Synapse |
+| WG1-B | `edistance_summary.tsv` | 🟡 partial (2/5 datasets) | n TFs called significant per dataset, under multiple thresholds incl. the calibration-robust `distance_mean > NC max` proxy. Wide format, slide-deck-friendly. | `reference/cross_dataset_edistance_summary.tsv` + per-dataset placeholders |
 | WG1-C | `shared_tfs_upset.tsv` | 🟡 partial (need ≥3 datasets) | UpSet-ready table: per-TF boolean membership across datasets | WG1-B per-dataset significance lists |
 | WG1-D | `tf_distance_similarity_long.tsv` | 🟡 partial | Per-TF cross-lineage `distance_mean` comparison + divergence classification | per-dataset `pval_edist_full.csv` |
 
@@ -30,4 +30,5 @@ From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
 
 | Artifact | Path pattern | Status |
 |---|---|---|
+| WG1-B detail Per-TF significance + ranking | `datasets/<dataset>/energy_distance/wg1_significant_tfs.tsv` | ✅ ready for Huangfu DE + ESC (2273 rows × 16 cols each; joined with TF metadata) |
 | WG1-E Trans-target counts (per perturbation) | `datasets/<dataset>/crispr_pipeline/wg1_trans_target_counts.tsv` | ✅ ready to build for the 3 datasets with canonical CRISPR bundles (Huangfu DE/ESC, Hon CM via syn74520421) |
