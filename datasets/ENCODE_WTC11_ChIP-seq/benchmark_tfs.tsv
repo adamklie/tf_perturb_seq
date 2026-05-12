@@ -1,0 +1,47 @@
+Gene to perturb	Rationale	Expectation	Reference	Notes
+TFCP2L1	core transcriptional network	large transcriptional changes	Papasenko et al, Stem Cell Research, 2018	
+KLF4	core transcriptional network	large transcriptional changes	Papasenko et al, Stem Cell Research, 2018	
+c-MyC	core transcriptional network	large transcriptional changes	Papasenko et al, Stem Cell Research, 2018	
+POU5F1	core transcriptional network	large transcriptional changes	Papasenko et al, Stem Cell Research, 2018	
+SOX2	core transcriptional network	large transcriptional changes	Papasenko et al, Stem Cell Research, 2018	
+ESRRB	core transcriptional network	large transcriptional changes	Papasenko et al, Stem Cell Research, 2018	
+NANOG	core transcriptional network	large transcriptional changes	Papasenko et al, Stem Cell Research, 2018	
+SALL4	core transcriptional network	large transcriptional changes	Papasenko et al, Stem Cell Research, 2018	
+TBX3	core transcriptional network	large transcriptional changes	Papasenko et al, Stem Cell Research, 2018	
+JARID2	epigenetic factors (PRC)	large transcriptional changes, similar to other PRC2	Papasenko et al, Stem Cell Research, 2018	
+EZH2	epigenetic factors (PRC)	large transcriptional changes, similar to other PRC2	Papasenko et al, Stem Cell Research, 2018	
+EED	epigenetic factors (PRC)	large transcriptional changes, similar to other PRC2	Papasenko et al, Stem Cell Research, 2018	
+SUZ12	epigenetic factors (PRC)	large transcriptional changes, similar to other PRC2	Papasenko et al, Stem Cell Research, 2018	
+HIF1A	pathway (hypoxia)	medium transcriptional changes (similar to other hypoxia)		
+ARNT	pathway (hypoxia)	medium transcriptional changes (similar to other hypoxia)		
+CTNNB1	pathway (WNT)	medium transcriptional changes (similar to other WNT)		
+TCF7	pathway (WNT)	medium transcriptional changes (similar to other WNT)		
+LEF1	pathway (WNT)	medium transcriptional changes (similar to other WNT)		
+TCF7L1	pathway (WNT)	medium transcriptional changes (similar to other WNT)		
+TCF7L2	pathway (WNT)	medium transcriptional changes (similar to other WNT)		
+REST	worked with TF Perturb-Seq pilot in WTC11	large transcriptional changes		
+SMAD3	worked with TF Perturb-Seq pilot in WTC11	medium transcriptional changes (TGFB signalling)		
+SMAD4	worked with TF Perturb-Seq pilot in WTC11	medium transcriptional changes (protein folding pathway)		
+TCF12	worked with TF Perturb-Seq pilot in WTC11	medium transcriptional changes (differentiation)		
+NFIB	worked with TF Perturb-Seq pilot in WTC11	medium transcriptional changes		
+HDAC1	worked with TF Perturb-Seq pilot in WTC11	small transcriptional changes		
+AFF4	worked with TF Perturb-Seq pilot in WTC11	small transcriptional changes		
+KLF6	worked with TF Perturb-Seq pilot in WTC11	small transcriptional changes		
+HMGA2	worked with TF Perturb-Seq pilot in WTC11	small transcriptional changes		
+EP300	p300/CBP			
+CREBBP	p300/CBP			
+RUNX1	has tumor suppressor like activity in some cell lines			
+BATF				
+PAX5				
+ARID1A	SWI/SNF			
+ARID1B	SWI/SNF			
+SMARCA2	SWI/SNF			
+SMARCA4	SWI/SNF			
+SMARCC1	SWI/SNF			
+SMARCC2	SWI/SNF			
+SMARCD1	SWI/SNF			
+SMARCD2	SWI/SNF			
+SMARCD3	SWI/SNF			
+SMARCB1	SWI/SNF			
+CLOCK	circadian clock genes			
+BMAL1	circadian clock genes			

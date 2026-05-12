@@ -20,11 +20,12 @@ datasets/*/sample_metadata.csv
 IMPLEMENTATION_GUIDE.md
 
 # PerturbNMF / cNMF outputs (large; HPC-only). The capital-S/D/R subdir convention is
-# preserved when PerturbNMF/ moves to datasets/<ds>/<run>/cnmf/ — keep these ignored.
+# preserved when PerturbNMF/ moves to datasets/<ds>/<run>/cnmf/<cnmf_run>/ — keep these ignored.
+# Track Script/ + README.md + lightweight selection plots; ignore the bulk Data/ + Result/ trees.
 **/PerturbNMF/Data/
 **/PerturbNMF/Result/
-**/cnmf/Data/
-**/cnmf/Result/
+**/cnmf/**/Data/
+**/cnmf/**/Result/
 external/PerturbNMF/
 
 # Per-run CRISPR pipeline outputs (large, regenerable from GCP).
@@ -44,7 +45,6 @@ docs/jamborees/**/mirror_*.log
 *keypair*.json
 *.gtf
 *.gtf.gz
-datasets/ENCODE_WTC11_ChIP-seq/
 
 **/fastq_files/
 **/scratch/
