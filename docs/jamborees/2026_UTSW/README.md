@@ -2,7 +2,7 @@
 
 Working folder for preparing data and documentation ahead of the 2026 UTSW jamboree. This README is the single entry point — it tells you what we're packaging, where everything lives, and how the pieces fit together.
 
-For scientific scope (topics + working groups), see [`TOPICS.md`](TOPICS.md) and [`WORKING_GROUPS.md`](WORKING_GROUPS.md). For open problems and conversation-ready reports per blocker, see [`issues/`](issues/). New participants: start with [`GETTING_STARTED.md`](GETTING_STARTED.md). Today's plan: latest `AGENDA_<date>.md` in this folder.
+For scientific scope (topics + working groups), see [`TOPICS.md`](TOPICS.md) and [`WORKING_GROUPS.md`](WORKING_GROUPS.md). For open problems and conversation-ready reports per blocker, see [`issues/`](issues/). New participants: start with [`GETTING_STARTED.md`](GETTING_STARTED.md). Using Claude Code? Add [`CLAUDE_QUICKSTART.md`](CLAUDE_QUICKSTART.md). Today's plan: latest `AGENDA_<date>.md` in this folder.
 
 ## What we're packaging
 

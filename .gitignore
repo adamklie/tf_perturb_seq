@@ -9,6 +9,7 @@ _*/
 TODAY.md
 .claude/*
 !.claude/skills/
+!.claude/settings.json
 slurm-*.out
 datasets/*/logs/
 datasets/*/tmp/
