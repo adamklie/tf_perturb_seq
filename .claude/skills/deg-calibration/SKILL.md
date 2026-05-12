@@ -91,22 +91,69 @@ gsutil -m cp ${GCS}/perturbo_cis_per_element_output.tsv.gz ${LOCAL}/
 
 ## Step 2: Run calibration
 
-Default (t-fit, two-sided, 100 kb cis window):
+### Default path — submit as a SLURM job (recommended for production datasets)
+
+Calibration loads the full MuData (16–30 GB) + the 20M-row trans TSV into memory and runs single-process for 30 min–2 h. **Do not run inline in the foreground or as a background shell task** — the harness will reap it after ~15 s. Use `sbatch`:
 
 ```bash
-bash <REPO_ROOT>/scripts/run_calibration.sh \
-  --project-root <REPO_ROOT> \
-  --trans-results <BASE_DIR>/<RUN_LABEL>/crispr_pipeline/pipeline_outputs/perturbo_trans_per_element_output.tsv.gz \
-  --mudata        <BASE_DIR>/<RUN_LABEL>/crispr_pipeline/pipeline_outputs/inference_mudata.h5mu \
-  --outdir        <BASE_DIR>/<RUN_LABEL>/calibration \
-  --prefix        <DATASET>_<RUN_LABEL>
+DS=<DATASET>
+RUN=<RUN_LABEL>
+REPO=<REPO_ROOT>
+mkdir -p ${REPO}/scratch/calibration_logs
+mkdir -p ${REPO}/datasets/${DS}/${RUN}/calibration
+
+sbatch \
+    --job-name=calib_${RUN} \
+    --partition=carter-compute \
+    --cpus-per-task=8 \
+    --mem=256G \
+    --time=06:00:00 \
+    --output=${REPO}/scratch/calibration_logs/calib_${RUN}.%j.out \
+    --error=${REPO}/scratch/calibration_logs/calib_${RUN}.%j.err \
+    --wrap="bash ${REPO}/scripts/run_calibration.sh \
+      --project-root ${REPO} \
+      --trans-results ${REPO}/datasets/${DS}/${RUN}/crispr_pipeline/pipeline_outputs/perturbo_trans_per_element_output.tsv.gz \
+      --mudata        ${REPO}/datasets/${DS}/${RUN}/crispr_pipeline/pipeline_outputs/inference_mudata.h5mu \
+      --outdir        ${REPO}/datasets/${DS}/${RUN}/calibration \
+      --prefix        ${DS}_${RUN}"
 ```
 
-Dry-run first:
+Track progress: `squeue -u $USER` and `tail -f ${REPO}/scratch/calibration_logs/calib_${RUN}.<jobid>.out`.
+
+**Resource notes**:
+- `--mem=256G` — MuData read in full + pandas overhead on 20M+ row TSV. Lower mem can OOM mid-load.
+- `--cpus-per-task=8` — `calibrate.py` is mostly single-threaded but pandas/numpy spawn helper threads; over-allocating costs nothing.
+- `--time=06:00:00` — most runs land in 30 min–2 h; 6 h is a safety buffer.
+- `--partition=carter-compute` — CPU-only, no GPU needed.
+
+### Submit all production datasets at once
+
+When mirroring calibration across all 4 production datasets, loop over `(DATASET, RUN_LABEL)` pairs and `sbatch` each — independent jobs so they run in parallel:
 
 ```bash
-bash <REPO_ROOT>/scripts/run_calibration.sh ... --dry-run
+declare -a DATASETS=(
+  "Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq:muddy_penguin"
+  "Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq:sceptre_v1"
+  "Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq:2026_04_19_no_spacer"
+  "Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq:sara_synapse_syn74842722"
+)
+
+for entry in "${DATASETS[@]}"; do
+  DS="${entry%:*}"; RUN="${entry##*:}"
+  # sbatch ... --wrap="bash run_calibration.sh ..."   (as above)
+done
 ```
+
+### Fallback — direct shell (dev / dry-run only)
+
+```bash
+bash ${REPO}/scripts/run_calibration.sh \
+  --project-root ${REPO} \
+  --trans-results ... --mudata ... --outdir ... --prefix ... \
+  --dry-run    # always start with --dry-run; once happy, drop the flag
+```
+
+Inline foreground runs are fine for `--dry-run` validation but **not** for the real call — even a small dataset takes longer than the harness's bg-task reaper allows.
 
 ## Step 3: Run calibration with non-default options
 

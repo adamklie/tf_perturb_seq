@@ -1,10 +1,10 @@
 # Overview
 
-Prepare data and documentation for the 2026 UTSW jamboree. We are working with the 5 production datasets shown in `2026_05_07_state.png` (this directory).
+Prepare data and documentation for the 2026 UTSW jamboree. We are working with the 5 production datasets shown in `state/2026_05_07_state.png` (this directory).
 
-**Where we are (2026-05-09):** Steps 1, 2, 3 essentially done. We're deep into **Step 6** (Synapse uploads, in progress per output type) with simplified outputs from **Step 5** still being added per dataset. Still pending: cNMF runs on production datasets, the cross-dataset human-readable outputs in **Step 4**, and the **Step 7** Google-Sheet + agent-ready docs.
+**Where we are (2026-05-12, day before jamboree):** Steps 1, 2, 3 done. **Step 6** (Synapse uploads) covers 3 of 5 production datasets across CRISPR pipeline + energy distance + QC; Hon CM CRISPR awaits Weizhou's bundle, Gersbach Hep awaits Sara's deliverables, Engreitz blocked on portal. **Step 5** human-readable outputs landed for WG1 (qc / e-dist / tf_cross_lineage), WG3 (disease / convergence), WG4 (network structure / edges), WG5 (family scorecard) — see [`working_groups/`](working_groups/). cNMF cross-dataset outputs (WG2) still gated on production runs. **Step 7** (Google Sheet + final docs) still open.
 
-**Tomorrow's plan**: [`AGENDA_2026_05_10.md`](AGENDA_2026_05_10.md) — three queued items (energy-distance calibration fix, Huangfu DE/ESC cNMF launch, human-readable derivatives) with concrete commands + acceptance criteria.
+Old daily AGENDA notes archived under `scratch/2026_05_12/UTSW_Jamboree/`; the active plan now lives in this file + the [`issues/`](issues/) reports.
 
 # Process notes
 
@@ -22,7 +22,7 @@ Prepare data and documentation for the 2026 UTSW jamboree. We are working with t
 
 Working dir: `tf_perturb_seq/docs/jamborees/2026_UTSW/`
 
-- [x] Build a TSV capturing the state shown in `2026_05_07_state.png` → `2026_05_07_state.tsv`.
+- [x] Build a TSV capturing the state shown in `state/2026_05_07_state.png` → `state/2026_05_07_state.tsv`.
 - [x] Start a `README.md` in this folder that we extend as decisions get made → live in [`README.md`](README.md), kept up to date.
 
 ## 2. Decide on local and cloud organization ✅
@@ -117,13 +117,19 @@ Done iteratively, not at the end. Tracking lives in [`synapse_paths.tsv`](synaps
 - [x] Hon WTC11 Cardiomyocyte (our re-run on Weizhou's MuData) → [`syn74917453`](https://www.synapse.org/Synapse:syn74917453) (mirrored 2026-05-12)
 - [x] Huangfu HUES8 Definitive Endoderm → [`syn74918479`](https://www.synapse.org/Synapse:syn74918479) (mirrored 2026-05-12)
 - [x] Huangfu HUES8 Embryonic Stem Cell → [`syn74918600`](https://www.synapse.org/Synapse:syn74918600) (mirrored 2026-05-12)
-- [ ] Gersbach WTC11 Hepatocyte — not started; depends on Sara's canonical bundle
+- [x] Gersbach WTC11 Hepatocyte (our re-run on Sara's MuData) → [`syn74918946`](https://www.synapse.org/Synapse:syn74918946) (mirrored 2026-05-12)
 - [ ] Engreitz WTC11 Endothelial — blocked: no data
-- [ ] Engreitz WTC11 Endothelial — ☐ blocked: no inference MuData
+
+**Calibration** (DEG empirical-null calibration — `scripts/run_calibration.sh`; SLURM submission per `.claude/skills/deg-calibration`)
+- [x] Huangfu HUES8 Definitive Endoderm → [`syn74920615`](https://www.synapse.org/Synapse:syn74920615) (4 TSVs: all + cis + direct_target + trans; FDR<0.05 = 14,521; 2026-05-12)
+- [x] Huangfu HUES8 Embryonic Stem Cell → [`syn74920616`](https://www.synapse.org/Synapse:syn74920616) (4 TSVs, 2026-05-12)
+- [x] Hon WTC11 Cardiomyocyte (Weizhou's run) → [`syn74920617`](https://www.synapse.org/Synapse:syn74920617) (4 TSVs, 2026-05-12)
+- [ ] Gersbach WTC11 Hepatocyte — calibration running (SLURM 10847496); upload pending
+- [ ] Engreitz WTC11 Endothelial — blocked: no data
 
 **Tracking**
 - [x] Log Synapse paths in [`synapse_paths.tsv`](synapse_paths.tsv) as artifacts land (one row per dataset / `_reference_`, one column per output type)
-- [x] Refreshed snapshot at [`2026_05_09_state.tsv`](2026_05_09_state.tsv) (2026-05-09; original `2026_05_07_state.tsv` kept as historical). Refresh again whenever a major status change lands.
+- [x] Refreshed snapshot at [`state/2026_05_09_state.tsv`](state/2026_05_09_state.tsv) (2026-05-09; original `state/2026_05_07_state.tsv` kept as historical). Refresh again whenever a major status change lands.
 
 ## 7. Final documentation
 
