@@ -1,56 +1,42 @@
-# Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq
+# Huangfu HUES8 Definitive Endoderm TF Perturb-seq (DE)
 
-## Overview
+Production TF Perturb-seq from the Huangfu lab — HUES8 definitive endoderm differentiation. IGVF analysis set `IGVFDS5057HJKP`. Synapse mirror: [`syn74834952`](https://www.synapse.org/Synapse:syn74834952).
 
-| Property | Value |
-|----------|-------|
-| **Lab** | Huangfu |
-| **Cell Line** | HUES8 |
-| **Differentiation** | Definitive endoderm |
-| **IGVF Analysis Set** | [IGVFDS9951KTRR](https://data.igvf.org/analysis-sets/IGVFDS9951KTRR) |
-| **Status** | Uploading to GCP |
+## Layout
 
-## Data Description
+```
+setup/                          # Shared input generation
+├── scripts/                    # 1_–5_*.sh pipeline drivers
+├── configs/                    # Base Nextflow .config (muddy_penguin)
+└── samplesheets/               # Canonical sample_metadata.csv
+muddy_penguin/                  # Production CRISPR pipeline run
+├── crispr_pipeline/
+│   ├── pipeline_info/          # params_*.json + versions (TRACKED — small)
+│   └── pipeline_outputs/ / pipeline_dashboard/ / anndata/  (all gitignored)
+├── cnmf/042926_huangfu_de_torchcnmf_KskillA/   # cNMF Stage 1+ (Apr 2026, KskillA pattern)
+│   ├── Script/                 # TRACKED — Stage 1/2/3 wrappers
+│   └── Data/ / Result/         # gitignored (bulk)
+├── qc/                         # QC outputs (gitignored)
+└── energy_distance/            # ED outputs (configs TRACKED; results/logs/image gitignored)
+```
 
-Production TF Perturb-seq dataset from the Huangfu lab. HUES8 hESCs differentiated to definitive endoderm, with CRISPRi perturbation of the full TF library (~2000 targets). Pools ABCD.
+## Pipeline runs
 
-## Pipeline Status
+| Local run | Source | Notes |
+|---|---|---|
+| `muddy_penguin` | GCS `2026_04_09/outs/muddy_penguin/` | Production CRISPR + cNMF + ED + QC |
 
-- [x] Step 0: Analysis set created on IGVF portal: IGVFDS9951KTRR
-- [x] Step 1: Generate per-sample metadata (198 rows: 134 scRNA + 64 gRNA)
-- [ ] Step 2: Upload to GCP
-- [ ] Step 3: Patch compressed files
-- [ ] Step 4: Run CRISPR pipeline
-- [ ] Step 5: QC analysis
-- [ ] Step 6: Energy distance
-- [ ] Step 7: cNMF
+GCS canonical: `gs://igvf-pertub-seq-pipeline-data/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/2026_04_09/outs/muddy_penguin/`. An earlier `entertaining_hamster` run also exists on GCS but isn't mirrored locally.
 
-## Legacy Data (to be archived)
+cNMF run `042926_huangfu_de_torchcnmf_KskillA` is mirrored on Synapse at [`syn74893844`](https://www.synapse.org/Synapse:syn74893844).
 
-The following were from an earlier internal processing run and are **not** from the standardized CRISPR FG pipeline. They should be archived to `scratch/` once the new pipeline run is complete:
+## Reproduce
 
-- `mdata_filtered.h5mu` (3.8 GB, Mar 2025)
-- `Cell_Ranger_Output/`
-- `Perturbation_information/`
-- `Transcriptome_Analysis/`
-
-## Portal Status (audited 2026-03-25)
-
-Measurement sets (8) and auxiliary sets (8 gRNA) exist on the portal. Construct library set is IGVFDS3299AXST with guide file IGVFFI8270UPKB (released).
-
-**Blockers:**
-1. **No analysis set exists** — someone needs to create one grouping 8 MS + 8 aux sets
-2. **No seqspecs** on R1 files — need upload or fallback YAMLs
-
-Measurement sets: IGVFDS0788TUIL, IGVFDS1313VGHL, IGVFDS1403KZYV, IGVFDS1437XFJK, IGVFDS2129VHBD, IGVFDS2520ZEYH, IGVFDS3434HGEI, IGVFDS4079VXPX
-
-See `docs/DATA.md` for full MS-to-aux mapping.
-
-**ACTION:** Coordinate with Denis Torre / DACC to create analysis set and upload seqspecs.
-
-## Notes
-
-- Data was previously shared via Dropbox from the Huangfu lab
-- Raw fastqs are in `fastq/`
-- These datasets use 10x 3' v3 chemistry (same as benchmark)
-- Config can likely be adapted from `datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/Huangfu_WTC11-benchmark_TF-Perturb-seq_2026_03_11.config` but will need changes for the larger guide library and potentially different MOI
+```bash
+DS=datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq
+bash $DS/setup/scripts/1_generate_per_sample_metadata.sh
+bash $DS/setup/scripts/2_upload_to_gcp.sh
+bash $DS/setup/scripts/3_patch_gcp_files.sh
+bash $DS/setup/scripts/4_run_CRISPR_pipeline.sh
+bash $DS/setup/scripts/5_run_energy_distance.sh
+```
