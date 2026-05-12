@@ -1,12 +1,12 @@
-# Jamboree data — for experimentalists
+# Jamboree datasets — wet-lab status dashboard
 
-A 1-page map of the 5 production datasets in the 2026 UTSW jamboree, with one-click access to each output. Built for someone who wants to look at results without writing code.
+A 1-page status map of the 5 production datasets in the 2026 UTSW jamboree. Built for someone who wants to look at results without writing code.
 
-> **Status:** v0 draft (2026-05-11). Will fill out once more outputs land on Synapse.
+> **New here?** Read [`docs/for_experimentalists/`](../../../for_experimentalists/) first — that's the generic, jamboree-agnostic guide for reading CRISPRi Perturb-seq outputs (glossary, data formats, per-output interpretation, FAQ). This page is just the status dashboard for *this* event's datasets.
 
 ---
 
-## At-a-glance status
+## At-a-glance status (2026-05-12)
 
 | Dataset | CRISPR pipeline | cNMF | Energy distance |
 |---|:---:|:---:|:---:|
@@ -48,7 +48,7 @@ A 1-page map of the 5 production datasets in the 2026 UTSW jamboree, with one-cl
 |---|:---:|---|---|
 | CRISPR pipeline | ✅ | [`syn74834952`](https://www.synapse.org/Synapse:syn74834952) | `muddy_penguin` run (13 bp spacer_tag) |
 | cNMF | ✅ | [`syn74893844`](https://www.synapse.org/Synapse:syn74893844) | |
-| Energy distance | ⚠ calibration | [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) | **All 100 NCs have `pval_mean=0` — do not threshold on p-value alone.** Use `distance_mean` as effect-size proxy; the run is otherwise structurally valid. |
+| Energy distance | ⚠ calibration | [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) | **All 100 NCs have `pval_mean=0` — do not threshold on p-value alone.** Use `distance_mean` as effect-size proxy. See [calibration caveat](../../../for_experimentalists/UNDERSTAND_ENERGY_DISTANCE.md#-the-calibration-caveat-read-this). |
 
 ---
 
@@ -63,7 +63,7 @@ A 1-page map of the 5 production datasets in the 2026 UTSW jamboree, with one-cl
 |---|:---:|---|---|
 | CRISPR pipeline | ✅ | [`syn74835010`](https://www.synapse.org/Synapse:syn74835010) | `sceptre_v1` run |
 | cNMF | ✅ | [`syn74893846`](https://www.synapse.org/Synapse:syn74893846) | |
-| Energy distance | ⚠ calibration | [`syn74883475`](https://www.synapse.org/Synapse:syn74883475) | Same calibration caveat as the DE sibling above |
+| Energy distance | ⚠ calibration | [`syn74883475`](https://www.synapse.org/Synapse:syn74883475) | Same calibration caveat as the DE sibling above. |
 
 ---
 
@@ -99,11 +99,25 @@ A 1-page map of the 5 production datasets in the 2026 UTSW jamboree, with one-cl
 
 ## Where to go next
 
-- **Cross-dataset summary tables** (the most useful starting point if you want numbers fast):
-  - [`reference/cross_dataset_pipeline_summary.tsv`](reference/cross_dataset_pipeline_summary.tsv) — cell counts, UMI medians, knockdown stats per dataset
-  - [`reference/cross_dataset_edistance_summary.tsv`](reference/cross_dataset_edistance_summary.tsv) — target counts, distance medians, calibration-robust significance flags
-  - [`reference/tf_metadata_simplified.tsv`](reference/tf_metadata_simplified.tsv) — every TF in the library with HGNC + Lambert + JASPAR annotations
-  - [`reference/experimental_metadata_simplified.tsv`](reference/experimental_metadata_simplified.tsv) — per-dataset wet-lab metadata
-- **Browsing on Synapse**: click any of the `syn...` links above. Synapse will prompt you to log in; once you do you can browse the bundle in your browser and download files individually.
-- **If you want to know what each output means biologically** — [TBD section, will land once interpretation guide is written]
-- **If you're stuck or anything's confusing** — drop a comment on [Issue #26](https://github.com/adamklie/tf_perturb_seq/issues/26) (the master TODO) or ping Adam directly.
+### To read the data
+- **Foundational guides** (read these first): [`docs/for_experimentalists/README.md`](../../../for_experimentalists/README.md). The index points at:
+  - [`QUICK_START.md`](../../../for_experimentalists/QUICK_START.md) — 10-min on-ramp.
+  - [`UNDERSTAND_CRISPR_OUTPUTS.md`](../../../for_experimentalists/UNDERSTAND_CRISPR_OUTPUTS.md), [`UNDERSTAND_ENERGY_DISTANCE.md`](../../../for_experimentalists/UNDERSTAND_ENERGY_DISTANCE.md), [`UNDERSTAND_CNMF_OUTPUTS.md`](../../../for_experimentalists/UNDERSTAND_CNMF_OUTPUTS.md) — per-output interpretation.
+  - [`COMPLETE_DATASET_CONTENTS.md`](../../../for_experimentalists/COMPLETE_DATASET_CONTENTS.md) — what a full bundle should contain (cross-referenced against the DACC submission spec).
+  - [`GLOSSARY.md`](../../../for_experimentalists/GLOSSARY.md), [`FAQ.md`](../../../for_experimentalists/FAQ.md), [`CITATIONS.md`](../../../for_experimentalists/CITATIONS.md).
+
+### Cross-dataset summary tables (jamboree-specific, sized for slide decks)
+
+- [`reference/cross_dataset_pipeline_summary.tsv`](../reference/cross_dataset_pipeline_summary.tsv) — cell counts, UMI medians, knockdown stats per dataset
+- [`reference/cross_dataset_edistance_summary.tsv`](../reference/cross_dataset_edistance_summary.tsv) — target counts, distance medians, calibration-robust significance flags
+- [`reference/tf_metadata_simplified.tsv`](../reference/tf_metadata_simplified.tsv) — every TF in the library with HGNC + Lambert + JASPAR annotations
+- [`reference/experimental_metadata_simplified.tsv`](../reference/experimental_metadata_simplified.tsv) — per-dataset wet-lab metadata
+
+### Browsing on Synapse
+Click any of the `syn...` links above. Synapse will prompt you to log in; once you do you can browse the bundle in your browser and download files individually.
+
+### Working-group-specific outputs
+For cross-dataset roll-ups already shaped to each working group's questions, see [`working_groups/README.md`](../working_groups/README.md). Each WG has an `examples.py` showing the typical load/filter recipe.
+
+### When you're stuck
+Drop a comment on the relevant [`issues/`](../issues/) report or ping Adam directly. The full issue index lives at [`issues/README.md`](../issues/README.md).
