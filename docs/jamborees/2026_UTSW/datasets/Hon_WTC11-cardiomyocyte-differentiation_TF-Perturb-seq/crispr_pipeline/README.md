@@ -13,8 +13,10 @@ Two runs exist; Weizhou's is canonical for the jamboree (cNMF + ED were run on i
 ```
 syn74520421/
 ├── dashboard/         (syn74526301)   ← named "dashboard", not "pipeline_dashboard"
-└── pipeline_outputs/  (syn74520424)
+└── pipeline_outputs/  (syn74520424)   ← perturbo trans-results live here (calibration input)
 ```
+
+This is the canonical source for downstream analyses on Hon CM: the perturbo trans-results in `pipeline_outputs/` are the input to calibration; the MuData [`syn74522725`](https://www.synapse.org/Synapse:syn74522725) is the input to cNMF (Alexandra) and energy distance (done — Adam + Sara comparison runs).
 
 Outstanding: see [Issue: Hon CM CRISPR pipeline bundle gap](../../../issues/hon-cm-crispr-bundle.md).
 

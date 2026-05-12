@@ -91,7 +91,7 @@ Done iteratively, not at the end. Tracking lives in [`synapse_paths.tsv`](synaps
 - [x] Guide library → [`syn74834519`](https://www.synapse.org/Synapse:syn74834519)
 
 **CRISPR pipeline** (mirror script: [`scripts/mirror_pipeline_outputs.py`](scripts/mirror_pipeline_outputs.py) for GCS source, [`scripts/mirror_pipeline_outputs_hpc.py`](scripts/mirror_pipeline_outputs_hpc.py) for HPC source)
-- [ ] Hon WTC11 Cardiomyocyte — partial at [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) (`dashboard/` + `pipeline_outputs/`, no `pipeline_info/`). Awaiting the rest of the CRISPR outputs from **Weizhou** (Hon team).
+- [x] Hon WTC11 Cardiomyocyte — Weizhou added `pipeline_info/` to [`syn74520421`](https://www.synapse.org/Synapse:syn74520421); full bundle copied into jamboree `crispr_pipeline/` → [`syn74919102`](https://www.synapse.org/Synapse:syn74919102) (2026-05-12, flat layout matching DE/ESC).
 - [x] Huangfu HUES8 Definitive Endoderm → [`syn74834952`](https://www.synapse.org/Synapse:syn74834952)
 - [x] Huangfu HUES8 Embryonic Stem Cell → [`syn74835010`](https://www.synapse.org/Synapse:syn74835010)
 - [ ] Gersbach WTC11 Hepatocyte — non-canonical at [`syn70518849`](https://www.synapse.org/Synapse:syn70518849); awaiting canonical bundle from **Sara** (Gersbach team)
