@@ -219,4 +219,10 @@ ref/opentargets/OpenTargets_L2G_noQC.csv.gz
 **/*.h5ad
 **/perturbo_*_per_*_output.tsv.gz
 **/pipeline_qc/trans/*_trans_results.tsv
+
+# Energy distance: keep configs (.json) + scripts; ignore the result outputs
+**/energy_distance/*.csv
+**/energy_distance/*.tsv
 **/energy_distance/*.pickle
+**/energy_distance/image/
+**/energy_distance/logs/
