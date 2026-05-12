@@ -6,7 +6,6 @@ runs/
 ._*
 _*/
 **/_*/
-CLAUDE.md
 TODAY.md
 .claude/*
 !.claude/skills/

@@ -11,16 +11,18 @@ Status legend:
 - 🔴 **blocked** — upstream data missing (cNMF runs / collaborator deliveries / external resource)
 - 🤔 **discussion** — analysis choice needs human decision
 
-| WG | Folder | Topic / Figure | Lead questions |
-|---|---|---|---|
-| 1 | [`wg1_data_qc/`](wg1_data_qc/) | Topic 1 / Fig 1 | Guide detection & repression; transcriptome-wide significance; cross-lineage shared TFs; trans-target overlap; technical harmonization |
-| 2 | [`wg2_gene_programs/`](wg2_gene_programs/) | Topic 2.1 / Fig 2 | Cross-lineage program similarity; lineage-shared vs lineage-specific programs; regulators per program; bifurcation TFs |
-| 3 | [`wg3_disease_gwas/`](wg3_disease_gwas/) | Topic 2.2 / Fig 2 | Disease-gene TFs; convergent vs divergent activity across lineages; GWAS variants near TFs |
-| 4 | [`wg4_grn_inference/`](wg4_grn_inference/) | Topic 2.3 / Fig 3 | TF→gene network edge lists; cross-lineage network structure; multiome integration |
-| 5 | [`wg5_tf_family_case_studies/`](wg5_tf_family_case_studies/) | Topic 2.4 / Fig 4 | TF family activity scorecard; per-family pathway enrichment; family-specific case studies |
-| 6 | [`wg6_predictive_modeling/`](wg6_predictive_modeling/) | Topic 3 / Fig 5 | Model task spec; baseline model results |
+| WG | Folder | Topic / Figure | Lead questions | Runnable examples |
+|---|---|---|---|---|
+| 1 | [`wg1_data_qc/`](wg1_data_qc/) | Topic 1 / Fig 1 | Guide detection & repression; transcriptome-wide significance; cross-lineage shared TFs; trans-target overlap; technical harmonization | [`wg1_data_qc/examples.py`](wg1_data_qc/examples.py) ✅ |
+| 2 | [`wg2_gene_programs/`](wg2_gene_programs/) | Topic 2.1 / Fig 2 | Cross-lineage program similarity; lineage-shared vs lineage-specific programs; regulators per program; bifurcation TFs | [`wg2_gene_programs/examples.py`](wg2_gene_programs/examples.py) 🔴 gated on cNMF |
+| 3 | [`wg3_disease_gwas/`](wg3_disease_gwas/) | Topic 2.2 / Fig 2 | Disease-gene TFs; convergent vs divergent activity across lineages; GWAS variants near TFs | [`wg3_disease_gwas/examples.py`](wg3_disease_gwas/examples.py) ✅ |
+| 4 | [`wg4_grn_inference/`](wg4_grn_inference/) | Topic 2.3 / Fig 3 | TF→gene network edge lists; cross-lineage network structure; multiome integration | [`wg4_grn_inference/examples.py`](wg4_grn_inference/examples.py) ✅ |
+| 5 | [`wg5_tf_family_case_studies/`](wg5_tf_family_case_studies/) | Topic 2.4 / Fig 4 | TF family activity scorecard; per-family pathway enrichment; family-specific case studies | [`wg5_tf_family_case_studies/examples.py`](wg5_tf_family_case_studies/examples.py) ✅ |
+| 6 | [`wg6_predictive_modeling/`](wg6_predictive_modeling/) | Topic 3 / Fig 5 | Model task spec; baseline model results | [`wg6_predictive_modeling/task_spec_template.md`](wg6_predictive_modeling/task_spec_template.md) 🤔 brainstorm |
 
 Scientific scope: [`../TOPICS.md`](../TOPICS.md), [`../WORKING_GROUPS.md`](../WORKING_GROUPS.md). Onboarding: [`../GETTING_STARTED.md`](../GETTING_STARTED.md).
+
+Each WG's `examples.py` imports shared loaders from [`_lib.py`](_lib.py) (dataset paths, reference TSVs, per-dataset companion files, optional Synapse-auth). Run any example end-to-end from the jamboree folder root with `uv run python working_groups/wg<N>_*/examples.py`.
 
 ## Quick-reference: all pre-computed WG artifacts (2026-05-11)
 

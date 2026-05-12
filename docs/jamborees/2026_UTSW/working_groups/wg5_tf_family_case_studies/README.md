@@ -51,6 +51,18 @@ From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
 
 **Notable Hon CM-driven shifts**: Myb/SANT (4→11 sig), HMG/Sox (new top family), C2H2 ZF (26→46). These suggest cardiomyocyte differentiation engages a broader set of TF families than the ESC↔DE comparison alone shows. Three new candidate-for-deepdive families enter on Hon CM's contribution: HMG/Sox, MBD, POU domain factors.
 
+## Run the examples
+
+[`examples.py`](examples.py) walks the WG5 workflow:
+
+- §1 — `candidate_for_deepdive` families ranked by `n_sig_in_any_lineage`.
+- §2 — Pull family members from `reference/tf_metadata.tsv` (default pick: C2H2 ZF).
+- §3 — Per-landed-dataset edge counts for those members from `wg4_tf_gene_edges_FDR05.tsv`.
+- §4 — JASPAR motif lookup against `reference/jaspar_core_tf_metadata.tsv`.
+- §5 — GO-enrichment stub (gseapy).
+
+Run end-to-end: `uv run python working_groups/wg5_tf_family_case_studies/examples.py` from the jamboree folder root.
+
 ## Out of scope here
 
 - **ATAC-seq accessibility + motif analysis**: multiome stream (same as WG4-C).

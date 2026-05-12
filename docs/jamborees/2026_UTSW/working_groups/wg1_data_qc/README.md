@@ -59,3 +59,16 @@ Per-perturbation count of significant trans-target genes at FDR<0.05 (per-TF BH;
 - **Huangfu ESC**: STRAP (938), SETDB1 (712), RCOR2 (508), SALL4 (461), GRHL2 (365), POU5F1 / OCT4 (270), DNMT1 (186), KAT2A (198).
 
 TFs with >100 sig trans targets: **537 in Hon CM** (vs 41 DE / 15 ESC) — driven partly by Hon CM's much denser trans-effect signal (median 49 vs 5/2). Whether Hon CM's density reflects pure biology vs. technical factors (newer `seqspec_v3` pipeline, WTC11 vs HUES8) is open — see the harmonization caveat in WG4-A.
+
+## Run the examples
+
+[`examples.py`](examples.py) loads the artifacts above and prints quick views:
+
+- §1 — QC summary at-a-glance (cell counts, UMI medians, AUROC).
+- §2 — Energy-distance significance per dataset (calibration-robust + raw p-value).
+- §3 — Cross-lineage classification counts + the convergent_significant TF list.
+- §4 — UpSet-ready boolean matrix from `tf_cross_lineage.tsv`.
+- §5 — Per-dataset top-10 targets by `distance_mean`, joined with TF metadata.
+- §6 — Optional plot snippet (commented).
+
+Run end-to-end: `uv run python working_groups/wg1_data_qc/examples.py` from the jamboree folder root.

@@ -73,6 +73,19 @@ The TF→TF backbone fraction is similar (~8–10%) across all 3, suggesting the
 
 **Per-lineage degree-distribution shape**: Hon CM has the densest network (mean 106 out-degree, median 49) with the heaviest median gene in-degree (16). DE has the longest tail (max out-degree 4,361 = SOX17). ESC is sparse end-to-end. Hon CM's density may partly reflect the newer pipeline (`seqspec_v3`) — flag for harmonization.
 
+## Run the examples
+
+[`examples.py`](examples.py) walks the WG4 workflow:
+
+- §1 — Load `wg4_tf_gene_edges_FDR05.tsv` per landed dataset; report edge / node counts.
+- §2 — Per-lineage network structure summary from `network_structure_by_lineage.tsv`.
+- §3 — Build `nx.DiGraph` per dataset; print top-10 TFs by out-degree.
+- §4 — Pairwise edge-set Jaccard table (sanity check vs. §2).
+- §5 — Filter edges by TF family (C2H2 ZF example).
+- §6 — Multiome-integration placeholder note.
+
+Run end-to-end: `uv run python working_groups/wg4_grn_inference/examples.py` from the jamboree folder root.
+
 ## Out of scope here
 
 - **Multiome integration (WG4-C)**: E2G linking + ChromBPNet outputs are a separate analysis stream from TFP3. Pull those in once they exist; this folder won't track them.

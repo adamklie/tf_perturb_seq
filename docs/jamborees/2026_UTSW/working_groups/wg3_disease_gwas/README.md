@@ -60,3 +60,15 @@ Refines the WG3-A classification by combining sig-or-not with magnitude (75th-pe
 **Top divergent_HuangfuESC by max_distance** (real "ESC-on, DE-off" disease TFs): MEF2A, DNAJC21, RB1, PPP1R13L, IRF8, SMARCB1, MYCN, CREB3L3, TNXB, GZF1. **New top divergent_HonCM**: see the TSV (38 disease TFs sig in cardiomyocyte only — fresh deep-dive shortlist for WG3).
 
 **Top convergent_moderate by max_distance** (high-magnitude borderline — flag for re-check after calibration resolves): SPEN, ZNF750, PAX9, ATOH7, DLX4, FOXE1, ZIC2, HR, ALX3, MSX2.
+
+## Run the examples
+
+[`examples.py`](examples.py) walks the WG3 workflow:
+
+- §1 — Top-20 disease-flagged TFs by max distance across lineages.
+- §2 — Convergence-class counts.
+- §3 — Deep-dive on the top convergent TF: per-lineage downstream targets from `wg4_tf_gene_edges_FDR05.tsv`.
+- §4 — Disease-association lookup for that TF (from `reference/gene_disease_associations.tsv`).
+- §5 — Divergent TFs sorted by distance range.
+
+Run end-to-end: `uv run python working_groups/wg3_disease_gwas/examples.py` from the jamboree folder root.

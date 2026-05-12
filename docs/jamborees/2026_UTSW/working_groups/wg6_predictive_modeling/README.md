@@ -21,3 +21,7 @@ From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
 
 - WG6-A is a writeup deliverable agreed at the jamboree — not a derivative computation. The placeholder lives here so the folder has shape; participants fill it in during the session.
 - WG6-B is a prototype baseline (likely elastic-net or random forest on TF + gene features). Not the final model; mostly a feasibility demo.
+
+## Run the examples
+
+No runnable examples yet — WG6 is in brainstorm stage. Start by filling out [`task_spec_template.md`](task_spec_template.md) with the group, then drop the prototype baseline as `wg6_baseline.py` next to it.

@@ -36,3 +36,9 @@ From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
 - **Hon CM cNMF**: not run yet — production launch pre-staged but held; gated on validating the HTv2 testbed (`docs/jamborees/2026_UTSW/issues/htv2-cnmf-testbed.md`).
 - **Gersbach Hep cNMF**: awaiting Sara's deliverables (`docs/jamborees/2026_UTSW/issues/gersbach-hep-deliverables.md`).
 - **Engreitz cNMF**: blocked on portal data (`docs/jamborees/2026_UTSW/issues/engreitz-no-data.md`).
+
+## Run the examples
+
+[`examples.py`](examples.py) is currently **gated** — it prints the recipes for each step (load `gene_spectra_score`, build similarity matrix, classify programs, extract top-N genes, regulators per program) and points at the code to run once cNMF bundles are mirrored. Replace the `print(...)` blocks with the indented code as data lands.
+
+Run as-is: `uv run python working_groups/wg2_gene_programs/examples.py` — it'll print the recipes without computing anything.
