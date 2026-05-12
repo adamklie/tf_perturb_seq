@@ -107,11 +107,18 @@ Done iteratively, not at the end. Tracking lives in [`synapse_paths.tsv`](synaps
 - [ ] Group k-selection meeting per dataset (clinical-review-board style per [`docs/analysis/cNMF.md`](../../analysis/cNMF.md))
 
 **Energy distance** (mirror script: [`scripts/mirror_edistance_outputs.py`](scripts/mirror_edistance_outputs.py))
-- [ ] Hon WTC11 Cardiomyocyte — gated on full CRISPR bundle from Hon team (Weizhou)
-- [x] Huangfu HUES8 Definitive Endoderm → [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) ⚠ p-value calibration concern
-- [x] Huangfu HUES8 Embryonic Stem Cell → [`syn74883475`](https://www.synapse.org/Synapse:syn74883475) ⚠ same calibration concern
+- [x] Hon WTC11 Cardiomyocyte — both Adam's run → [`syn74897350`](https://www.synapse.org/Synapse:syn74897350) and Sara's comparison run → [`syn74910330`](https://www.synapse.org/Synapse:syn74910330) (`energy_distance_gersbach_comp/`), both on Weizhou's MuData
+- [x] Huangfu HUES8 Definitive Endoderm → [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) ⚠ p-value calibration concern; Sara comparison run → [`syn74910358`](https://www.synapse.org/Synapse:syn74910358)
+- [x] Huangfu HUES8 Embryonic Stem Cell → [`syn74883475`](https://www.synapse.org/Synapse:syn74883475) ⚠ same calibration concern; Sara comparison run → [`syn74910472`](https://www.synapse.org/Synapse:syn74910472)
 - [ ] Re-run Huangfu DE + ESC with HVG-subset PCA to fix anti-conservative p-values, then re-mirror
 - [ ] Gersbach WTC11 Hepatocyte — bug **Sara** to deliver in our format ([`schemas/energy_distance.json`](schemas/energy_distance.json)). Sara likely has a complete run; we just need the deliverables shaped to match our schema and uploaded under `2026_UTSW/datasets/<id>/energy_distance/`.
+
+**QC** (mirror script: in-place — `synapseclient` upload from `<run>/qc/`; intended_target + mapping_gene + mapping_guide subdirs)
+- [x] Hon WTC11 Cardiomyocyte (our re-run on Weizhou's MuData) → [`syn74917453`](https://www.synapse.org/Synapse:syn74917453) (mirrored 2026-05-12)
+- [x] Huangfu HUES8 Definitive Endoderm → [`syn74918479`](https://www.synapse.org/Synapse:syn74918479) (mirrored 2026-05-12)
+- [x] Huangfu HUES8 Embryonic Stem Cell → [`syn74918600`](https://www.synapse.org/Synapse:syn74918600) (mirrored 2026-05-12)
+- [ ] Gersbach WTC11 Hepatocyte — not started; depends on Sara's canonical bundle
+- [ ] Engreitz WTC11 Endothelial — blocked: no data
 - [ ] Engreitz WTC11 Endothelial — ☐ blocked: no inference MuData
 
 **Tracking**
