@@ -1,27 +1,28 @@
 # Energy distance — Hon WTC11 Cardiomyocyte
 
-| | |
-|---|---|
-| Dataset ID | `Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq` |
-| Schema | [`../../../schemas/energy_distance.json`](../../../schemas/energy_distance.json) |
-| Run label | TBD (canonical CRISPR pipeline run is `2026_04_19_no_spacer` per Synapse `syn74520421`) |
-| Source MuData | Synapse [`syn74522725`](https://www.synapse.org/Synapse:syn74522725) (Hon Lab upload, 16.65 GB) |
-| Status | 🔄 RUNNING — SLURM job 10641046 launched 2026-05-10 (carter-gpu, ~10h estimated). Pulling MuData from Synapse `syn74522725`. |
-| HPC output dir | `/cellar/users/aklie/projects/tf_perturb_seq/datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/results/energy_distance/2026_04_19_no_spacer/` |
-| Synapse | _will populate after run completes via `mirror_edistance_outputs.py`_ |
+Two ED runs on Synapse, **both run on the same source MuData** (Weizhou's, [`syn74522725`](https://www.synapse.org/Synapse:syn74522725)) — kept separate for cross-lab comparison.
 
-## How to run (when ready)
+| Bundle | Synapse | Owner | Completeness |
+|---|---|---|---|
+| `energy_distance/` | [`syn74897350`](https://www.synapse.org/Synapse:syn74897350) | Adam | Partial — result CSVs + plots + slurm logs. **Missing**: inference_mudata, pickles. |
+| `energy_distance_gersbach_comp/` | [`syn74910330`](https://www.synapse.org/Synapse:syn74910330) | Sara | Full — inference_mudata + pickles + result CSVs + plots. |
 
-The dataset doesn't yet have a `5_run_energy_distance.sh` — needs scaffolding once the canonical run label is settled. Template:
+Both ran against the `2026_04_19_no_spacer` MuData (Weizhou's CRISPR pipeline output). Run-label on local HPC: `2026_04_19_no_spacer/energy_distance/`.
+
+## How to reproduce
 
 ```bash
-# adapt scripts/run_energy_distance_pipeline.sh to point at the Hon CM MuData (Synapse syn74522725)
-sbatch /cellar/users/aklie/projects/tf_perturb_seq/datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/5_run_energy_distance.sh
+sbatch datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/2026_04_19_no_spacer/energy_distance/scripts/5_run_energy_distance.sh
 ```
 
-The runner accepts `--synapse-id syn74522725` if pulling directly from Synapse rather than GCS.
+The runner pulls Weizhou's MuData from Synapse (`--synapse-id syn74522725`).
+
+## Schema + walkthrough
+
+- Machine-readable schema: [`../../../schemas/energy_distance.json`](../../../schemas/energy_distance.json)
+- Analysis-level walkthrough: [`docs/analysis/ENERGY_DISTANCE_OUTPUTS.md`](../../../../../analysis/ENERGY_DISTANCE_OUTPUTS.md)
 
 ## Notes
 
-- Hon CM is the only dataset where the source MuData lives on Synapse (not GCS), because Hon Lab uploaded it directly. The runner script supports `--synapse-id` for this case.
-- The Synapse parent folder for this dataset's CRISPR pipeline is named `2026_04_19_no_spacer`, suggesting the run was done with **no `spacer_tag`** — worth confirming with the Hon team before running e-distance, since spacer config affects guide assignment quality and downstream e-distance interpretability.
+- Hon CM is the only production dataset where the source MuData lives on Synapse (not GCS), because Hon Lab uploaded it directly.
+- `2026_04_19_no_spacer` is named for the seqspec config used — `no_spacer` means the run was done without `spacer_tag`. Different from our local `seqspec_v3` run on GCS, which kept the spacer.

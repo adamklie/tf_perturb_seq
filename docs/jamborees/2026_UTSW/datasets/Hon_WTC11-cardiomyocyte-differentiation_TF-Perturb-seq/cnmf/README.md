@@ -1,21 +1,17 @@
 # Hon WTC11 Cardiomyocyte — cNMF
 
-**Status**: ⏳ Not run yet. Gated on the full CRISPR pipeline bundle from **Weizhou** (see [Issue 2](../../../issues/hon-cm-crispr-bundle.md)) — once `pipeline_info/` is added to the canonical bundle and the source MuData is settled, this can launch.
+**Status**: ⏳ Not on jamboree Synapse yet. Two efforts in flight:
 
-## Plan when unblocked
+| Effort | Owner | Source MuData | Status |
+|---|---|---|---|
+| `051126_honcm_torchcnmf_KskillA` | Adam | `seqspec_v3` (our GCS run) | ❌ Stage 1 Convert script **failed** with a numba JIT working-dir bug (see SLURM err `seqspec_v3/cnmf/Data/convert_10731567.err`). Held until fix or until Alexandra's run lands. |
+| (in parallel) | Alexandra | Weizhou's MuData (Synapse [`syn74522725`](https://www.synapse.org/Synapse:syn74522725)) | 🔄 Running on her side. Canonical target for jamboree — cNMF should be on Weizhou's data to stay consistent with the ED runs. |
 
-Once the CRISPR bundle is canonical, follow the HTv2 testbed pattern (see [Issue 5](../../../issues/htv2-cnmf-testbed.md) for the full recipe):
+Tracking: [Issue 20](https://github.com/adamklie/tf_perturb_seq/issues/20).
 
-1. Copy [`Convert_file_adata.py`](../../Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/cnmf/README.md) and `torch-cNMF_batch.sh` from the HTv2 testbed under `datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/PerturbNMF/Script/` to this dataset's `PerturbNMF/Script/` (HPC).
-2. Update paths + `RUN_NAME` (suggested: `<DATE>_HonCM_20iter_5KHVG_torch_halsvar_batch`).
-3. Set `--counts_fn` to the inference MuData (currently on Synapse [`syn74522725`](https://www.synapse.org/Synapse:syn74522725)).
-4. `sbatch`.
+## Plan once Alexandra delivers
 
-Use the same Hon-mirroring params (`halsvar` / `batch` / 20 iter / 5K HVG / density thresholds 0.2 + 2.0 / `categorical_key=batch` / benchmark k list).
-
-## Synapse target (when run completes)
-
-`2026_UTSW/datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/cnmf/<run_name>/` — populated by [`scripts/mirror_cnmf_outputs.py`](../../../scripts/mirror_cnmf_outputs.py) (curation rule: `schemas/cnmf.json` → `bundle_inclusion_rule`).
+Mirror her cNMF output to `2026_UTSW/datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/cnmf/<run_name>/` per the [`schemas/cnmf.json`](../../../schemas/cnmf.json) bundle inclusion rule. Use [`scripts/mirror_cnmf_outputs.py`](../../../scripts/mirror_cnmf_outputs.py).
 
 ## Schema + walkthrough
 

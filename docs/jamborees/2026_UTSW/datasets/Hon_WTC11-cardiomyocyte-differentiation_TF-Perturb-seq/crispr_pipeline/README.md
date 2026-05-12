@@ -1,10 +1,14 @@
 # Hon WTC11 Cardiomyocyte — CRISPR pipeline
 
-**Status**: ⚠ Partial canonical bundle on Synapse — has `dashboard/` + `pipeline_outputs/`, missing `pipeline_info/`. Awaiting the rest from **Weizhou** (Hon team).
+Two runs exist; Weizhou's is canonical for the jamboree (cNMF + ED were run on its MuData).
 
-## Synapse
+## Weizhou's run (canonical) — `2026_04_19_no_spacer`
 
-[`syn74520421`](https://www.synapse.org/Synapse:syn74520421) — folder named `2026_04_19_no_spacer`.
+| | |
+|---|---|
+| Synapse | [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) |
+| MuData | [`syn74522725`](https://www.synapse.org/Synapse:syn74522725) |
+| Status | ⚠ Partial bundle — `dashboard/` + `pipeline_outputs/` uploaded, **missing** `pipeline_info/`. |
 
 ```
 syn74520421/
@@ -12,11 +16,12 @@ syn74520421/
 └── pipeline_outputs/  (syn74520424)
 ```
 
-`pipeline_info/` (Nextflow params + software versions) is not yet present.
+Outstanding: see [Issue: Hon CM CRISPR pipeline bundle gap](../../../issues/hon-cm-crispr-bundle.md).
 
-## What's outstanding
+## Our `seqspec_v3` run (not canonical)
 
-See [Issue: Hon CM CRISPR pipeline bundle gap](../../../issues/hon-cm-crispr-bundle.md) for the full ask + reference example.
+GCS: `gs://igvf-pertub-seq-pipeline-data/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/2026_04_15/outs/seqspec_v3/`.
+Pulled locally (excl. h5mu) to `seqspec_v3/crispr_pipeline/` on 2026-05-12. Not mirrored to the jamboree Synapse folder — kept as a comparison run.
 
 ## Schema + walkthrough
 

@@ -1,7 +1,7 @@
 # Hon WTC11 Cardiomyocyte TF Perturb-seq (Hon CM)
 
 Production TF Perturb-seq from the Hon lab (cardiomyocyte differentiation).
-Synapse canonical: [`syn73582673`](https://www.synapse.org/Synapse:syn73582673) — Weizhou's local CRISPR pipeline run, locally mirrored as `weizhou_syn74520421/` (QC re-run only).
+Synapse canonical: [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) — Weizhou's CRISPR pipeline run, locally mirrored as `2026_04_19_no_spacer/` (QC + energy_distance re-runs).
 Production GCS run: `gs://igvf-pertub-seq-pipeline-data/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/2026_04_15/outs/seqspec_v3/` — mirrored locally as `seqspec_v3/`.
 
 ## Layout
@@ -22,10 +22,9 @@ seqspec_v3/                     # Production CRISPR pipeline run (GCS 2026_04_15
 └── cnmf/051126_honcm_torchcnmf_KskillA/   # cNMF Stage 1 (May 2026, KskillA pattern)
     ├── Script/                 # TRACKED — Stage 1 SLURM wrappers
     └── Data/ / Result/         # gitignored (bulk)
-weizhou_syn74520421/            # Weizhou's Synapse-imported h5mu run (QC-only on our side)
-└── qc/                         # QC outputs (gitignored)
-2026_04_19_no_spacer/           # Older energy-distance run (no associated CRISPR pipeline locally)
-└── energy_distance/            # ED outputs (config JSONs TRACKED; results gitignored)
+2026_04_19_no_spacer/           # Weizhou's CRISPR pipeline run (= Synapse syn74520421)
+├── qc/                         # our QC re-run on Weizhou's MuData (gitignored outputs)
+└── energy_distance/            # Adam's ED run on Weizhou's MuData (configs TRACKED; results gitignored)
 ```
 
 ## Pipeline runs
@@ -33,8 +32,7 @@ weizhou_syn74520421/            # Weizhou's Synapse-imported h5mu run (QC-only o
 | Local run | Source | Notes |
 |---|---|---|
 | `seqspec_v3` | GCS `2026_04_15/outs/seqspec_v3/` | New production run, May 2026 |
-| `weizhou_syn74520421` | Synapse [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) → Weizhou's [`syn73582673`](https://www.synapse.org/Synapse:syn73582673) | Canonical h5mu; QC-only locally |
-| `2026_04_19_no_spacer` | Older ED run | No CRISPR pipeline (no_spacer modality) |
+| `2026_04_19_no_spacer` | Weizhou's CRISPR pipeline run, Synapse [`syn74520421`](https://www.synapse.org/Synapse:syn74520421); MuData [`syn74522725`](https://www.synapse.org/Synapse:syn74522725) | **Canonical** — both ED and cNMF (Alexandra) run on its MuData |
 
 cNMF Stage 1 (`051126_honcm_torchcnmf_KskillA`) was kicked off against the new `seqspec_v3` h5mu — see issue [#20](https://github.com/adamklie/tf_perturb_seq/issues/20).
 

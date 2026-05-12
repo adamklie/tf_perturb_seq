@@ -18,30 +18,47 @@ Production dataset for the [2026 UTSW jamboree](../../README.md).
 | Multiplexing | HTO |
 | Measurement sets | 28 |
 
+## Two parallel CRISPR pipeline runs
+
+| Run | Source | Canonical for jamboree? |
+|---|---|---|
+| **`2026_04_19_no_spacer`** | Weizhou's local CRISPR pipeline run, mirrored to Synapse as [`syn74520421`](https://www.synapse.org/Synapse:syn74520421). MuData at [`syn74522725`](https://www.synapse.org/Synapse:syn74522725). | ✅ **YES** — cNMF + ED are run on this. |
+| `seqspec_v3` | Our own Apr–May 2026 GCS run at `gs://.../2026_04_15/outs/seqspec_v3/`. | No — kept as comparison / future canonical. |
+
 ## Status
 
 | Output | Status | Synapse |
 |---|---|---|
-| CRISPR pipeline | ⚠ partial — has `dashboard/` + `pipeline_outputs/`, no `pipeline_info/`. Bug **Weizhou**. | [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) |
-| cNMF | ⏳ run pending (gated on full CRISPR bundle) | — |
-| Energy distance | ⏳ run pending (gated on full CRISPR bundle) | — |
+| CRISPR pipeline (Weizhou) | ⏳ partial — `pipeline_dashboard/` + `pipeline_outputs/` uploaded by Weizhou, **missing** `pipeline_info/`. | [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) |
+| CRISPR pipeline (seqspec_v3) | ✓ complete on GCS; local pull in flight | n/a — not mirrored to jamboree |
+| Energy distance (Adam's run on Weizhou MuData) | ✓ uploaded — partial bundle (results + plots + logs) | [`syn74897350`](https://www.synapse.org/Synapse:syn74897350) |
+| Energy distance (Sara's run on Weizhou MuData) | ✓ uploaded — full bundle (h5mu + pickles + results + plots) | [`syn74910330`](https://www.synapse.org/Synapse:syn74910330) (`energy_distance_gersbach_comp/`) |
+| QC (Weizhou data, our re-run) | ✓ **mirrored 2026-05-12** | [`syn74917453`](https://www.synapse.org/Synapse:syn74917453) (`qc/`) |
+| cNMF | ⏳ Stage 1 against seqspec_v3 **failed** (numba JIT working-dir bug); **Alexandra** is running cNMF against Weizhou's MuData in parallel | — |
 
-Deeper status: [`crispr_pipeline/README.md`](crispr_pipeline/README.md). Open issue: [Hon CM CRISPR pipeline gap](../../issues/hon-cm-crispr-bundle.md).
+Open: [Hon CM CRISPR pipeline gap](../../issues/hon-cm-crispr-bundle.md), [Hon CM cNMF Stage 1](https://github.com/adamklie/tf_perturb_seq/issues/20).
 
-## Source data
+## Local layout (after merge of `2026_04_19_no_spacer` + `weizhou_syn74520421/` into one dir)
 
-- **HPC**: `/cellar/users/aklie/projects/tf_perturb_seq/datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/`
-- **GCS canonical**: `gs://igvf-pertub-seq-pipeline-data/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/2026_04_15/outs/initial_run` (incomplete — pipeline didn't reach dashboard / outputs stages)
-- **Inference MuData (cleaned)**: Synapse [`syn74522725`](https://www.synapse.org/Synapse:syn74522725) — Hon-team-supplied input for downstream cNMF + energy distance
+```
+datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/
+├── setup/                              # Adam's input-gen code (scripts/configs/samplesheets/seqspec)
+├── synapse_inference_mudata/           # Weizhou's MuData (syn74522725) on HPC (gitignored)
+├── HonLabInternal/                     # Hon lab's internal cNMF (gitignored)
+├── 2026_04_19_no_spacer/               # Weizhou's CRISPR pipeline run (= syn74520421)
+│   ├── qc/                             # our local QC re-run on Weizhou MuData
+│   └── energy_distance/                # Adam's ED run on Weizhou MuData
+└── seqspec_v3/                         # our own May 2026 GCS run
+    ├── crispr_pipeline/                # pulled from GCS 2026-05-12 (excl. h5mu)
+    ├── qc/                             # QC on seqspec_v3 output
+    └── cnmf/                           # Stage 1 setup; Convert failed; awaiting fix or Alexandra's run
+```
 
-## Pipeline configuration
-
-(from [`reference/experimental_metadata.tsv`](../../reference/experimental_metadata.tsv))
+## Pipeline configuration (from `reference/experimental_metadata.tsv`)
 
 | Param | Value |
 |---|---|
-| Canonical run label | `initial_run` |
-| Canonical config | `Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq_initial_run.config` |
+| Canonical run label | `2026_04_19_no_spacer` (Weizhou) |
 | Hashing | true |
 | 10x 3' v3 | false |
 | Reverse-complement guides | true |
@@ -53,5 +70,5 @@ Deeper status: [`crispr_pipeline/README.md`](crispr_pipeline/README.md). Open is
 
 ## Notes
 
-- Pipeline troubleshooting (Weizhou) — seqspec hash modality issues. Production yaml's HTO library_spec lacks a clean tag-region position. `seqspec_v2` run with stripped i7/i5 was abandoned.
-- Synapse mirror at `syn74520421` is named `2026_04_19_no_spacer` — different from the metadata's `initial_run` canonical label. Reconcile when full bundle arrives.
+- Pipeline troubleshooting (Weizhou) — seqspec hash modality issues. Production yaml's HTO library_spec lacks a clean tag-region position. `seqspec_v2` run with stripped i7/i5 was abandoned. `seqspec_v3` is our retry that succeeded on GCS.
+- The two ED bundles on Synapse (`energy_distance/` = Adam, `energy_distance_gersbach_comp/` = Sara) were both run against Weizhou's MuData (`2026_04_19_no_spacer`) — kept separate for cross-lab comparison.
