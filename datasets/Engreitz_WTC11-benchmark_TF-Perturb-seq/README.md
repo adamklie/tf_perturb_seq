@@ -1,6 +1,6 @@
 # Engreitz WTC11 Benchmark TF Perturb-seq
 
-WTC11 benchmark TF Perturb-seq from the Engreitz lab. IGVF analysis set `IGVFDS5057HJKP`; Synapse mirror [`syn73615563`](https://www.synapse.org/Synapse:syn73615563) (Sid's GCP run, downloaded 2026-02-17).
+WTC11 benchmark TF Perturb-seq from the Engreitz lab. IGVF analysis set `IGVFDS5057HJKP`.
 
 ## Layout
 

@@ -1,58 +1,47 @@
-# Huangfu_WTC11-benchmark_TF-Perturb-seq
+# Huangfu WTC11 Benchmark TF Perturb-seq
 
-## Dataset
+WTC11 benchmark TF Perturb-seq from the Huangfu lab (Gary, IGVF). IGVF analysis set `IGVFDS5057HJKP`. Synapse: [`syn72386406`](https://www.synapse.org/Synapse:syn72386406) (Stanford-side run, uploaded by Gary).
 
-WTC11 benchmark TF Perturb-seq dataset from the Huangfu lab.
+## Layout
 
-## Run Pipeline on GCP
-
-```bash
-cd $PROJECT_ROOT
-
-# Generate samplesheet
-bash datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/1_generate_per_sample_metadata.sh
-
-# Transfer to GCP -- dry run first
-DRY_RUN=true bash datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/2_upload_to_gcp.sh
-bash datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/2_upload_to_gcp.sh
-
-# Patch .tsv.gz files to unzipped versions (optional)
-bash datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/patch_files.sh
-
-# Run pipeline on GCP
-RUN_IN_BACKGROUND=true bash datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/3_run_CRISPR_pipeline.sh
-
-# Run QC pipeline
-bash datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq/4_run_qc_pipeline.sh
+```
+setup/                    # Shared input generation
+├── scripts/              # 1_–4_*.sh pipeline drivers
+├── configs/              # Base Nextflow .config
+└── samplesheets/         # Step 1 → 2 → 3 lineage:
+                          #   sample_metadata.csv → ..._gcp_2026_01_30.csv → ..._gcp_2026_01_30_patched.csv (+ _v2)
+<run>/                    # Per Lucas's parameter sweep
+├── crispr_pipeline/
+│   ├── pipeline_info/    # params_*.json + versions (TRACKED — small)
+│   └── pipeline_outputs/ / pipeline_dashboard/ / anndata/  (all gitignored)
+└── calibration/          # FDR-controlled TSVs (analysis tier; result TSVs gitignored)
+gary_syn72386406/         # Synapse provenance for the Stanford-side Yan Mo h5mu
+└── cnmf/                 # cNMF run on /oak/stanford/.../IGVF_Huangfu_WTC11/Data/inference_mudata.h5ad
+    ├── Script/           # TRACKED
+    └── RUN_NAME.txt      # 030726_20iter_5KHVG_torch_halsvar_batch_e7
+    └── Data/ / Result/   # gitignored (bulk)
 ```
 
+## Pipeline runs
 
+| Local run | Lucas's GCS source | scrublet | method |
+|---|---|---|---|
+| `cleanser_500_mito_15pc` | `Benchmark_cleanser_500_mito_15pc` | off | cleanser |
+| `cleanser_800_mito_15pc` | `Benchmark_cleanser_800_mito_15pc` | off | cleanser |
+| `cleanser_extremes_200_mito_15pc` | `Benchmark_cleanser_extremes_200_sceptre_mito_15pc` | off | sceptre |
+| `cleanser_extremes_2000_mito_15pc` | `Benchmark_cleanser_extremes_2000_sceptre_mito_15pc` | off | sceptre |
+| `cleanser_knee2_mito_15pc` | `Benchmark_cleanser_knee2_mito_15pc` | off | cleanser |
+| `scrublet_off_cleanser_800_mito_15pc` | `Benchmark_cleanser_800_mito_15pc` | off | cleanser |
+| `scrublet_on_sceptre_800_mito_15pc` | `REAL_SCRUBLETS_..._scrublet_sceptre_800_mito_15pc` | **on** | sceptre |
 
-## Sample Metadata
+Lucas's GCS root: `gs://igvf-pertub-seq-pipeline-data/scratch/bioinfolucas/<lucas_dir>/HuangFuDataset/`.
 
-| Version | File | Notes |
-|---------|------|-------|
-| Original | `sample_metadata_gcp_2026_01_30.csv` | Per-sample seqspecs from portal (gzipped `.yaml.gz`) |
-| Patched | `sample_metadata_gcp_2026_01_30_patched.csv` | Decompressed seqspec/barcode/guide files to `patch/` directory |
-| Patched v2 | `sample_metadata_gcp_2026_01_30_patched_v2.csv` | Updated barcode_onlist from `IGVFFI9487JPEN` to `IGVFFI4695IKAL` |
-| New seqspecs | `sample_metadata_gcp_2026_02_15.csv` | Replaced seqspec column with new shared seqspecs from `scratch/bioinfolucas/new_03_seqspec/` |
+## Reproduce
 
-### 2026-02-15: seqspec update
-- Based on `sample_metadata_gcp_2026_01_30_patched_v2.csv`
-- Replaced all seqspec paths:
-  - scRNA: `huangfu_IGVFDS1889TBEY_rna.yaml`
-  - gRNA: `huangfu_IGVFDS1889TBEY_guide.yaml`
-- All other columns (barcode_onlist, guide_design, etc.) preserved from patched_v2 version
-- Uploaded to `gs://igvf-pertub-seq-pipeline-data/Huangfu_WTC11-benchmark_TF-Perturb-seq/`
-
-### 2026-02-13: barcode_onlist update
-- Updated `barcode_onlist` from `IGVFFI9487JPEN` to `IGVFFI4695IKAL` across all rows in `sample_metadata.csv`
-- Uploaded `IGVFFI4695IKAL` to GCS and decompressed to `patch/IGVFFI4695IKAL.tsv`
-- Created `sample_metadata_gcp_2026_01_30_patched_v2.csv` with updated barcode_onlist paths
-
-## Pipeline run reference
-
-friendly_minksy -- my own run with an accompanying tower dashboard at friendly_minsky
-pipeline_dashboard -- Gary's latest run (https://www.synapse.org/Synapse:syn72299969)
-agitated_hoover -- my own run with an accompanying tower dashboard at agitated_hoover
-silver_otter -- downloaded from Synapse (syn72386406) on 2026-02-17
+```bash
+DS=datasets/Huangfu_WTC11-benchmark_TF-Perturb-seq
+bash $DS/setup/scripts/1_generate_per_sample_metadata.sh
+bash $DS/setup/scripts/2_upload_to_gcp.sh
+bash $DS/setup/scripts/3_patch_gcp_files.sh
+bash $DS/setup/scripts/4_run_CRISPR_pipeline.sh
+```
