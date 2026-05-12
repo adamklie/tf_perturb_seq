@@ -1,6 +1,6 @@
 # Huangfu HUES8 Definitive Endoderm — cNMF
 
-**Status**: 🔄 Mirroring the existing `042926_huangfu_de_torchcnmf_KskillA` run to Synapse (in flight 2026-05-10). Selected k = 200, density threshold = 2.0.
+**Status**: ✅ Complete on Synapse [`syn74893844`](https://www.synapse.org/Synapse:syn74893844) — `042926_huangfu_de_torchcnmf_KskillA`. Selected k = 200, density threshold = 2.0.
 
 ## What's being mirrored
 

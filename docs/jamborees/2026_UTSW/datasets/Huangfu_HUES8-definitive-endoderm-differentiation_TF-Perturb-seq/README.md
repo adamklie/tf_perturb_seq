@@ -23,10 +23,12 @@ Production dataset for the [2026 UTSW jamboree](../../README.md).
 | Output | Status | Synapse |
 |---|---|---|
 | CRISPR pipeline | ✅ canonical 3-folder bundle | [`syn74834952`](https://www.synapse.org/Synapse:syn74834952) |
-| cNMF | ⏳ run pending (HTv2 testbed verifying first) | — |
-| Energy distance | ✅ complete (⚠ p-value calibration concern) | [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) |
+| cNMF | ✅ complete (k=200, dt=2.0; Config + Inference + Evaluation across 8 K values + selected-k Plot/Interpretation + adata) | [`syn74893844`](https://www.synapse.org/Synapse:syn74893844) |
+| Energy distance (Adam) | ✅ complete (⚠ p-value calibration concern) | [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) |
+| Energy distance (Sara, comp) | ✅ complete | [`syn74910358`](https://www.synapse.org/Synapse:syn74910358) |
+| QC | ✅ **mirrored 2026-05-12** | [`syn74918479`](https://www.synapse.org/Synapse:syn74918479) |
 
-Deeper status: [`crispr_pipeline/README.md`](crispr_pipeline/README.md), [`energy_distance/README.md`](energy_distance/README.md). Calibration concern: [Issue 1](../../issues/edistance-calibration.md).
+Calibration concern: [Issue 1](../../issues/edistance-calibration.md). Deeper status: [`crispr_pipeline/README.md`](crispr_pipeline/README.md), [`cnmf/README.md`](cnmf/README.md), [`energy_distance/README.md`](energy_distance/README.md).
 
 ## Source data
 
