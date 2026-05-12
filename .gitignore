@@ -209,9 +209,11 @@ ref/gene_sets/Reactome_2022_human.json
 ref/opentargets/OpenTargets_L2G_Filtered.csv.gz
 ref/opentargets/OpenTargets_L2G_noQC.csv.gz
 
-# Per-run perturbo calibrated_all/trans full result TSVs (>100 MB, GitHub limit)
-**/crispr_pipeline/calibration/*_calibrated_all_results.tsv
-**/crispr_pipeline/calibration/*_calibrated_trans_results.tsv
+# Calibration result TSVs — regenerable, large (some >100MB). Calibration is its own
+# analysis tier (datasets/<ds>/<run>/calibration/), not inside crispr_pipeline/. Keep both
+# patterns during the migration in case any are still under the old path.
+**/calibration/*_calibrated_*_results.tsv
+**/crispr_pipeline/calibration/*_calibrated_*_results.tsv
 
 # Large pipeline output files (>50 MB; GitHub 100 MB limit)
 **/*.h5ad
