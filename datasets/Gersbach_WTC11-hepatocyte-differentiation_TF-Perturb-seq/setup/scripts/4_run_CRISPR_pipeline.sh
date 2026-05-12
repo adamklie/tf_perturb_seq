@@ -21,7 +21,7 @@ BASE_DIR=/Users/adamklie/Desktop/tfp3/tf_perturb_seq/datasets/${DATASET_NAME}
 DATA_DATE=2026_05_11  # CHANGE_ME after running 2_upload_to_gcp.sh
 
 # Sample metadata with GCS paths (patched = decompressed barcode_onlist, guide_design, seqspec)
-SAMPLE_METADATA=$BASE_DIR/sara_synapse_syn74842722/crispr_pipeline/inputs/sample_metadata_gcp_${DATA_DATE}_patched.csv
+SAMPLE_METADATA=$BASE_DIR/setup/samplesheets/sample_metadata_gcp_${DATA_DATE}_patched.csv
 
 # CRISPR Pipeline path
 PIPELINE_PATH=/Users/adamklie/Desktop/tfp3/CRISPR_Pipeline

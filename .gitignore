@@ -226,3 +226,9 @@ ref/opentargets/OpenTargets_L2G_noQC.csv.gz
 **/energy_distance/*.pickle
 **/energy_distance/image/
 **/energy_distance/logs/
+
+# QC analysis-tier outputs: scripts/configs stay tracked; plots + result tables are large
+**/qc/**/*.png
+**/qc/**/*.pdf
+**/qc/**/*.tsv
+**/qc/**/*.h5ad
