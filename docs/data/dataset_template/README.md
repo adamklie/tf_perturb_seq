@@ -19,7 +19,7 @@ datasets/{DATASET_NAME}/
     │   └── anndata/                   # gitignored
     ├── calibration/                   # FDR-controlled TSVs — gitignored
     ├── qc/                            # mapping_gene / mapping_guide / intended_target — gitignored
-    ├── cnmf/<cnmf_run_id>/            # Script/ tracked; Data/, Result/ gitignored
+    ├── cnmf/                          # Script/ tracked; Data/, Result/ gitignored
     └── energy_distance/               # configs tracked; image/, logs/, *.csv/.h5mu/.pickle gitignored
 ```
 
@@ -55,7 +55,7 @@ bash $DS/setup/scripts/4_run_CRISPR_pipeline.sh            # runs Nextflow on GC
 bash $DS/setup/scripts/5_run_energy_distance.sh            # production datasets only
 ```
 
-cNMF runs are kicked off separately under `<run>/cnmf/<cnmf_run_id>/Script/` — see [docs/analysis/cnmf/cNMF.md](../../analysis/cnmf/cNMF.md).
+cNMF runs are kicked off separately under `<run>/cnmf/Script/` — see [docs/analysis/cnmf/cNMF.md](../../analysis/cnmf/cNMF.md).
 
 ## Notes
 

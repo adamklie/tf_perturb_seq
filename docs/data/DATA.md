@@ -31,7 +31,7 @@ datasets/<Lab>_<CellLine>-<cond>_TF-Perturb-seq/
 │   │   └── anndata/           # h5mu/h5ad — gitignored
 │   ├── calibration/           # FDR-controlled TSVs (CRISPR FG outputs) — gitignored
 │   ├── qc/                    # mapping_gene / mapping_guide / intended_target / initial_qc — gitignored
-│   ├── cnmf/<cnmf_run_id>/    # cNMF / PerturbNMF (capital-S/D/R convention)
+│   ├── cnmf/                  # cNMF / PerturbNMF (capital-S/D/R convention)
 │   │   ├── Script/            # SLURM wrappers — TRACKED
 │   │   ├── Data/              # bulk inputs — gitignored
 │   │   └── Result/            # bulk results — gitignored
@@ -58,7 +58,7 @@ Numbered shell scripts under `setup/scripts/` drive the pipeline end-to-end. The
 | `4_run_CRISPR_pipeline.sh` | Launch the CRISPR FG Nextflow pipeline on GCP Batch | Outputs at `gs://igvf-pertub-seq-pipeline-data/<dataset>/<date>/outs/<run_name>/` |
 | `5_run_energy_distance.sh` | Launch the energy-distance pipeline (production datasets only) | `<run>/energy_distance/` |
 
-cNMF runs are kicked off separately via SLURM wrappers placed under `<run>/cnmf/<cnmf_run_id>/Script/` — there's no standardized `6_run_cnmf.sh`. See [analysis/cnmf/cNMF.md](../analysis/cnmf/cNMF.md) and [analysis/cnmf/PerturbNMF.md](../analysis/cnmf/PerturbNMF.md).
+cNMF runs are kicked off separately via SLURM wrappers placed under `<run>/cnmf/Script/` — there's no standardized `6_run_cnmf.sh`. See [analysis/cnmf/cNMF.md](../analysis/cnmf/cNMF.md) and [analysis/cnmf/PerturbNMF.md](../analysis/cnmf/PerturbNMF.md).
 
 Local QC and calibration are driven from [`scripts/`](../../scripts/) at the repo root (e.g., `qc_array.sh`, `run_calibration.sh`, `run_energy_distance_pipeline.sh`). Per memory [[feedback_dataset_local_scripts]], scripts in `scripts/` are frozen — when a dataset needs a patched variant, copy it into `datasets/<ds>/bin/` and edit there.
 
