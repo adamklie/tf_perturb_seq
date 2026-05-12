@@ -30,13 +30,13 @@ echo "Generate Per-Sample Metadata"
 echo "=========================================="
 echo "Dataset:    ${DATASET_NAME}"
 echo "Accession:  ${ACCESSION}"
-echo "Output:     ${DATASET_DIR}/cleanser_800_mito_15pc/crispr_pipeline/inputs/sample_metadata.csv"
+echo "Output:     ${DATASET_DIR}/setup/samplesheets/sample_metadata.csv"
 echo ""
 
 python3 ${SCRIPT} \
   --accession ${ACCESSION} \
-  --output ${DATASET_DIR}/cleanser_800_mito_15pc/crispr_pipeline/inputs/sample_metadata.csv \
+  --output ${DATASET_DIR}/setup/samplesheets/sample_metadata.csv \
   --rna_seqspec /Users/adamklie/Downloads/tf_50genes/all_GEX_sublibraries/IGVFDS2550EQNC.yaml
 
 echo ""
-echo "Done! Output: ${DATASET_DIR}/cleanser_800_mito_15pc/crispr_pipeline/inputs/sample_metadata.csv"
+echo "Done! Output: ${DATASET_DIR}/setup/samplesheets/sample_metadata.csv"

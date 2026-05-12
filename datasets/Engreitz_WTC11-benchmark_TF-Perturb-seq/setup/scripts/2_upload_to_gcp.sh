@@ -42,10 +42,10 @@ DATASET_DIR=${BASE_DIR}/datasets/${DATASET_NAME}
 UPLOAD_SCRIPT=${BASE_DIR}/src/tf_perturb_seq/gcp/upload_to_gcp.py
 
 # Input sample metadata file (CSV format)
-INPUT_FILE=${DATASET_DIR}/cleanser_800_mito_15pc/crispr_pipeline/inputs/sample_metadata.csv
+INPUT_FILE=${DATASET_DIR}/setup/samplesheets/sample_metadata.csv
 
 # Output file with updated GCS paths
-OUTPUT_FILE=${DATASET_DIR}/cleanser_800_mito_15pc/crispr_pipeline/inputs/sample_metadata_gcp_$(date +%Y_%m_%d).csv
+OUTPUT_FILE=${DATASET_DIR}/setup/samplesheets/sample_metadata_gcp_$(date +%Y_%m_%d).csv
 
 # GCS prefix/folder path within the bucket
 GCS_PREFIX=${DATASET_NAME}/$(date +%Y_%m_%d)/

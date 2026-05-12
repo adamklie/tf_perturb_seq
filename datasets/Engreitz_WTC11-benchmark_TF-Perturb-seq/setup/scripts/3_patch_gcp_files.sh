@@ -19,10 +19,10 @@ DATASET_DIR=${BASE_DIR}/datasets/${DATASET_NAME}
 PATCH_SCRIPT=${BASE_DIR}/src/tf_perturb_seq/gcp/patch_gcp_files.py
 
 # Input: the GCP samplesheet with .gz paths
-INPUT_FILE=${DATASET_DIR}/cleanser_800_mito_15pc/crispr_pipeline/inputs/sample_metadata_gcp_2026_02_26.csv
+INPUT_FILE=${DATASET_DIR}/setup/samplesheets/sample_metadata_gcp_2026_02_26.csv
 
 # Output: patched samplesheet with decompressed paths
-OUTPUT_FILE=${DATASET_DIR}/cleanser_800_mito_15pc/crispr_pipeline/inputs/sample_metadata_gcp_2026_02_26_patched.csv
+OUTPUT_FILE=${DATASET_DIR}/setup/samplesheets/sample_metadata_gcp_2026_02_26_patched.csv
 
 # =============================================================================
 # RUN
