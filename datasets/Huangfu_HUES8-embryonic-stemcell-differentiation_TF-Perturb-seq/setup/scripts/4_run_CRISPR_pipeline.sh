@@ -12,7 +12,7 @@ DATASET_NAME=Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq
 BASE_DIR=/data4/yyang117/tf_perturb_seq/datasets/${DATASET_NAME}
 
 # Sample metadata with GCS paths
-SAMPLE_METADATA=$BASE_DIR/samplesheets/sample_metadata_gcp_2026_04_13_patched.csv
+SAMPLE_METADATA=$BASE_DIR/setup/samplesheets/sample_metadata_gcp_2026_04_13_patched.csv
 
 # CRISPR Pipeline path
 # TODO: Update to the local clone of the CRISPR pipeline
