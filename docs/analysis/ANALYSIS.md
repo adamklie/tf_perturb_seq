@@ -57,7 +57,7 @@ RUN_IN_BACKGROUND=true bash datasets/<DATASET>/4_run_CRISPR_pipeline.sh
 - `cleanser` — Alternative assignment/inference
 - `perturbo` — Being evaluated (outputs confidence estimates)
 
-See [docs/analysis/CRISPR_PIPELINE.md](analysis/CRISPR_PIPELINE.md) for detailed instructions.
+See [`crispr_pipeline/CRISPR_PIPELINE.md`](crispr_pipeline/CRISPR_PIPELINE.md) for detailed instructions, and [`crispr_pipeline/CRISPR_PIPELINE_OUTPUTS.md`](crispr_pipeline/CRISPR_PIPELINE_OUTPUTS.md) for the output directory reference.
 
 ## Stage 3: QC Pipeline
 
@@ -101,25 +101,29 @@ Quantifies perturbation effects using energy distance metrics. Identifies signif
 4. **Visualization** — Diagnostic plots
 5. **Phenotype Clustering** — Affinity propagation clustering of significant perturbations
 
+See [`energy_dist/ENERGY_DISTANCE.md`](energy_dist/ENERGY_DISTANCE.md) and [`energy_dist/ENERGY_DISTANCE_OUTPUTS.md`](energy_dist/ENERGY_DISTANCE_OUTPUTS.md).
+
 ## Stage 5: Gene Program Discovery
 
-Unsupervised discovery of gene expression programs using cNMF.
+Unsupervised discovery of gene expression programs using **consensus non-negative matrix factorization (cNMF)**, wrapped by the [PerturbNMF](https://github.com/EngreitzLab/PerturbNMF) tool (supersedes the older `cNMF_benchmarking`).
 
-**External tools:** `external/cNMF_benchmarking/` (git submodule)
+**External tool:** `external/PerturbNMF/` (git submodule)
 
-**Per-dataset:** `bash datasets/<DATASET>/6_run_cnmf.sh`
+**Per-dataset run directory:** `datasets/<dataset>/<run>/cnmf/<run_name>/` — per-stage SLURM scripts in `Script/`, outputs in `Result/<run_name>/`.
 
-**Key steps:**
-1. **k-selection** — Run cNMF across range of k values (e.g., 50-300), evaluate by:
-   - Unique perturbations recovered (FDR cutoff based on safe-targeting genes)
-   - Unique pathways recovered
-2. **Program inference** — Run cNMF at selected k with many iterations (700k-1M)
-3. **GSEA** — Pathway enrichment for each program
-4. **TF-program assignment** — Map perturbations to programs
+**Pipeline stages:**
+1. **Stage 1 — Inference** (GPU torch-cNMF): 8-K sweep at `dt = 2.0`, ~10–20 iterations per K
+2. **Stage 2a — Evaluation**: perturbation association, GO / geneset / trait enrichment, explained variance (per K)
+3. **Stage 2b — U-test calibration**: fake-targeting null distribution for FDR calibration (per K)
+4. **Stage 3a — K-selection panel**: stability + EV + enrichment + perturbation-recovery vs K (group decision)
+5. **Stage 3c — Per-target PDFs**: one volcano + UMAP + per-program effect plot per perturbed TF
+6. **Stage 3e — Excel summary**: program-level + target-level + full perturbation-association tables
 
-**Runtime:** ~1 business week for k-selection + final run (parallelized, GPU-accelerated)
+Stage 3b (per-program PDFs) is currently deferred — see upstream [issue #7](https://github.com/EngreitzLab/PerturbNMF/issues/7).
 
-See [docs/analysis/cNMF.md](analysis/cNMF.md) for details.
+**Runtime:** Stage 1 takes 3–5 h GPU; full Stage 2/3 sequence runs in ~12–16 h CPU per dataset (see PerturbNMF.md compute-budget table).
+
+See [`cnmf/PerturbNMF.md`](cnmf/PerturbNMF.md) for the how-to-run conventions and [`cnmf/cNMF_OUTPUTS.md`](cnmf/cNMF_OUTPUTS.md) for the output directory reference.
 
 ## Standard preprocessing for integrative analysis
 

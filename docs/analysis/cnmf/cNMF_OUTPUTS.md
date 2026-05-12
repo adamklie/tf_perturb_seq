@@ -1,195 +1,203 @@
-# cNMF Output Directory Structure
+# cNMF / PerturbNMF — output directory reference
 
-Reference output paths:
+What's in a per-dataset PerturbNMF run directory, and which downstream consumer cares about each file. Pair with [`PerturbNMF.md`](PerturbNMF.md), which is the how-to-run companion.
 
-- **Reference run (verified)**: Hon WTC11 benchmark — `aklie@nrnb-login.ucsd.edu:/cellar/users/aklie/projects/tf_perturb_seq/datasets/Hon_WTC11-benchmark_TF-Perturb-seq/PerturbNMF/`. Run name: `030726_20iter_5KHVG_torch_halsvar_batch_e7`. Total run size: ~72 GB.
-- **Pipeline source**: `external/cNMF_benchmarking/cNMF_benchmarking_pipeline/` (Inference / Evaluation / Plotting subfolders).
-- **Production-dataset runs**: not yet generated as of 2026-05-09 (selected-k decisions pending — see status table below).
+**Reference runs** (both completed end-to-end through Stage 3e at K=200, 2026-05-09):
 
-> **Verification status — VERIFIED for the file inventory at the (k, density-threshold) level against the Hon benchmark run.** Names + per-(k,dt) sweep structure of `gene_spectra_score`, `gene_spectra_tpm`, `spectra.consensus`, `starcat_spectra`, `usages.consensus`, `clustering.<k>.<dt>.png`, `k_selection.png`, `k_selection_stats.df.npz`, `overdispersed_genes.txt`, and the 12-13 evaluation TXT filenames inside each `Eval/<k>_<dt>/` subdir are confirmed. **SAMPLED** (column-level not yet enumerated): `Annotation/<k>_<dt>.xlsx`, `Interpretation/Summary_table/<k>_<dt>/`, the integrated MuData (`adata/cNMF_<k>_<dt>.h5mu`) internal structure, and the `Plot/{Program_*,Perturb_gene_*,k_selection_*}/` PDF inventories.
+- DE: `datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/muddy_penguin/cnmf/042926_huangfu_de_torchcnmf_KskillA/`
+- ESC: `datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/sceptre_v1/cnmf/042926_huangfu_esc_torchcnmf_KskillA/`
 
-The output is organized to track the four pipeline stages from `docs/analysis/cNMF.md`. Each stage writes files into `Result/<run_name>/` (and into specific subdirectories within it). The sections below walk through the stages in order.
+Every run uses the **same K sweep** (8 values: 30, 50, 60, 80, 100, 200, 250, 300) and a **single density threshold** `dt = 2.0` (the canonical downstream value — multiple-dt sweeps from the legacy `cNMF_benchmarking` runs are no longer produced). Selected-K plots and tables use the suffix `<K>_2_0`.
 
 ## Top-level layout
 
 ```
-PerturbNMF/
-├── Data/                              # Inputs to cNMF
-│   ├── inference_mudata_cleaned.h5mu     # Source MuData (gene + guide + hashing) post CRISPR pipeline
-│   ├── inference_mudata_cleaned.h5ad     # Same data converted for cNMF (X = unnormalized counts)
-│   ├── inference_mudata_structure.txt    # Modality/key dump of the .h5mu (auto-generated)
-│   └── ensembl_to_symbol.csv             # Gene-id ↔ symbol map used in plotting
-├── Result/<run_name>/                 # All cNMF outputs (see stage breakdown below)
-└── Script/                            # Per-run shell + .py + .ipynb (Convert, k-selection, evaluation, plotting)
+datasets/<dataset>/<run>/cnmf/<run_name>/
+├── README.md                              # per-run summary (selected K, status table, K rationale)
+├── Data/                                  # inputs to cNMF
+│   ├── <dataset>_<run>_perturbnmf.h5ad    # inference input AnnData (X = raw counts; built by Convert_file_adata.py)
+│   └── guide_annotation.tsv               # guide_id renamed to guide_names; required by U-test calibration
+├── Script/                                # per-stage SLURM submission scripts + helper .py
+│   ├── <run_name>_inference.sh            # Stage 1
+│   ├── prepare_h5mu_for_eval.{py,sh}      # adds obs['sample']='all' + remaps NT targets
+│   ├── inject_umap_into_h5mu.{py,sh}      # pre-computes UMAP into h5mu (remediation only — see PerturbNMF.md)
+│   ├── cNMF_evaluation_pipeline.sh        # Stage 2a
+│   ├── cNMF_evaluation_trait_only.sh      # Stage 2a follow-up after OpenTargets is available
+│   ├── U-test_perturbation_calibration.sh # Stage 2b (needs fix/utest-oom-leak branch)
+│   ├── cNMF_k_selection.sh                # Stage 3a
+│   ├── cNMF_program_analysis_<K>_2_0.sh   # Stage 3b — currently OOMs (upstream #7)
+│   ├── cNMF_perturbed_gene_analysis_<K>_2_0.sh   # Stage 3c
+│   ├── cNMF_compile_excel_summary.{py,sh} # Stage 3e
+│   └── upload_to_synapse.py
+└── Result/<run_name>/                     # all outputs (see stage-by-stage breakdown below)
 ```
 
-## Stage 1: Inference (torch-cNMF across the k sweep)
+## Stage 1: Inference (torch-cNMF across the K sweep)
 
-Runner: `external/cNMF_benchmarking/cNMF_benchmarking_pipeline/Inference/torch-cNMF/Slurm_Version/` (per-dataset entrypoint `datasets/<dataset_id>/6_run_cnmf.sh`). Container: `docker://igvf/torch-cnmf:v01`.
+Runner: [`external/PerturbNMF/src/Stage1_Inference/`](../../../external/PerturbNMF/src/Stage1_Inference/) via per-run `Script/<run_name>_inference.sh`. Container: `docker://igvf/torch-cnmf:v01`.
 
-What runs: cNMF is run across a sweep of k values (benchmark: 30 values from 5..200; production: 32 values from 5..500) at multiple density thresholds (0.01, 0.05, 2.0). Each (k, dt) combination produces program loadings, cell usages, and consensus-clustering diagnostics.
+What runs: torch-cNMF is run across the 8-K sweep at `dt = 2.0`. Each (K, dt) yields program loadings, cell usages, and consensus-clustering diagnostics. Run-level diagnostics (stability/error across the full K sweep) are written once.
 
-**Per-(k, dt) flat outputs in `Result/<run_name>/`:**
-
-| File | Contents | Useful for |
-|------|----------|------------|
-| `<run_name>.gene_spectra_score.k_<X>.dt_<Y>.txt` | Z-scored gene loadings (programs × genes). Rows = programs (1..k), cols = Ensembl IDs. | **Primary loadings**. Cross-lineage program-similarity (WG2). Top-loaded genes per program. |
-| `<run_name>.gene_spectra_tpm.k_<X>.dt_<Y>.txt` | TPM-normalized gene loadings (programs × genes). Same shape as `gene_spectra_score`. | Ranking genes by absolute (rather than z-scored) contribution within a program. |
-| `<run_name>.spectra.k_<X>.dt_<Y>.consensus.txt` | Consensus W matrix (programs × genes) — direct cNMF output, no normalization. | Reproducibility / advanced re-analysis that wants raw W. |
-| `<run_name>.starcat_spectra.k_<X>.dt_<Y>.txt` | STARCAT-normalized spectra (alternative normalization of W). | Optional alternate loading scale. |
-| `<run_name>.usages.k_<X>.dt_<Y>.consensus.txt` | Cell × program usages (H matrix). Rows = cells, cols = programs. **Bulky** at high k (157 MB at k=200). | **Primary cell-level activations**. WG1 (which programs are affected per perturbation). WG2 (program activation across cell states). |
-| `<run_name>.clustering.k_<X>.dt_<Y>.png` | Per-(k,dt) clustergram + local-density histogram (cNMF's built-in QC). | Visual inspection of program separation and consensus stability. |
-
-**Per-(k, dt) outputs in `adata/`, `loading/`, `prog_data/`:**
+**Per-K outputs in `Result/<run_name>/Inference/`** (the file basename is the run-level `Inference.` prefix):
 
 | File | Contents | Useful for |
 |------|----------|------------|
-| `adata/cNMF_<k>_<dt>.h5mu` | Integrated MuData: gene mod + guide mod + cNMF mod (cells × programs, with `varm['loadings']` = programs × genes). ~1.7 GB each. | **Single canonical handoff for downstream**. WG1/WG2 read this directly to get loadings + usages + guide assignment together. |
-| `loading/cNMF_loadings_<k>_<dt>.txt` | Same loadings as `gene_spectra_score` in a slightly different format. | Duplicate of the spectra files; not mirrored. |
-| `prog_data/NMF_<k>_<dt>.h5ad` | Program-level AnnData (program × gene). | Duplicate of info already in `adata/cNMF_<k>_<dt>.h5mu`; not mirrored. |
+| `Inference.gene_spectra_score.k_<K>.dt_2_0.txt` | Z-scored gene loadings (programs × genes). | **Primary loadings.** Cross-lineage program similarity (WG2). Top-loaded genes per program. |
+| `Inference.gene_spectra_tpm.k_<K>.dt_2_0.txt` | TPM-normalized gene loadings (programs × genes). | Ranking genes by absolute (not z-scored) contribution. |
+| `Inference.spectra.k_<K>.dt_2_0.consensus.txt` | Consensus W matrix (programs × genes), raw cNMF output. | Reproducibility / advanced re-analysis. |
+| `Inference.starcat_spectra.k_<K>.dt_2_0.txt` | STARCAT-normalized spectra (alternate normalization of W). | Optional alternate loading scale. |
+| `Inference.usages.k_<K>.dt_2_0.consensus.txt` | Cell × program usages (H matrix). Rows = cells, cols = programs. **Bulky** at high K (~150 MB at K=200). | **Primary cell-level activations.** WG1 (programs affected per perturbation). WG2 (activations across cell states). |
+| `Inference.clustering.k_<K>.dt_2_0.png` | Per-(K, dt) clustergram + local-density histogram. | Visual inspection of program separation / consensus stability. |
 
-## Stage 2: Evaluation (per-(k, dt) statistical evaluation)
-
-Runner: `external/cNMF_benchmarking/cNMF_benchmarking_pipeline/Evaluation/cNMF_evaluation_pipeline.ipynb` / `Script/cNMF_evaluation_pipeline.sh`.
-
-What runs: For each (k, dt) combination, the evaluation step computes explained variance, GO/gene-set/trait enrichment per program, perturbation-association tests per program × per batch, and categorical-covariate associations.
-
-**Per-(k, dt) outputs land in `Eval/<k>_<dt>/`** (one subdirectory per (k, dt); 68 in the Hon benchmark = 34 k-values × 2 density thresholds):
-
-| File (inside `Eval/<k>_<dt>/`) | Contents | Useful for |
-|------|----------|------------|
-| `<k>_Explained_Variance.txt` | Per-program explained variance. | Program-level fit quality. |
-| `<k>_Explained_Variance_Summary.txt` | Cumulative explained variance summary at this k. | k-selection (one of the criteria). |
-| `<k>_GO_term_enrichment.txt` | GO term enrichment per program. | WG2: program biology annotation. |
-| `<k>_geneset_enrichment.txt` | MSigDB / curated gene-set enrichment per program. | WG2: program biology annotation. |
-| `<k>_trait_enrichment.txt` | GWAS trait enrichment per program. | WG3 (Disease / GWAS). |
-| `<k>_categorical_association_results.txt` | Program-vs-categorical-covariate association tests (e.g., batch, sample). | QC: programs that are batch-confounded. |
-| `<k>_categorical_association_posthoc.txt` | Post-hoc pairwise tests for the categorical associations. | QC follow-up. |
-| `<k>_perturbation_association_results_<batch>.txt` | Per-program perturbation-association test results — **one file per batch** (e.g., `IGVFDS6244NAXC`, `IGVFDS8721BKRO`, ..., plus an aggregated `WTC` file in the Hon benchmark). | **Primary regulators-per-program input** (WG2). |
-| `<k>_fake_perturbation_association_calibration.txt` | Optional. Negative-control perturbation calibration. Present at a subset of k values in the Hon benchmark (k = 10, 35, 40, 50, 80, 90). | Calibration / null check. |
-
-> Why every (k, dt) bundle is kept: these tables drive the k-selection figures (Stage 3). Mirroring the full sweep here is what makes the k decision auditable — a reader can re-derive enrichment-by-k or perturbation-recovery-by-k plots at any point.
-
-## Stage 3: k-selection
-
-Runner: `external/cNMF_benchmarking/cNMF_benchmarking_pipeline/Evaluation/cNMF_k_selection.ipynb` / `Script/cNMF_k_selection*.sh`.
-
-What runs: A reduced set of 10-15 candidate k values is chosen from the stability-error plot, and the k-selection notebook produces summary plots over those k values. The final k is chosen by group consensus ("clinical review board" style, per `cNMF.md`).
-
-**Run-level outputs:**
+**Run-level outputs in `Result/<run_name>/Inference/`:**
 
 | File | Contents | Useful for |
 |------|----------|------------|
-| `<run_name>.k_selection.png` | Stability-vs-error curve across the k sweep. | The canonical visual used to pick the top 10-15 candidate k values. |
-| `<run_name>.k_selection_stats.df.npz` | Raw stats array behind `k_selection.png` (one row per k). | Re-plot or apply alternate k-selection criteria without re-running cNMF. |
-| `<run_name>.overdispersed_genes.txt` | HVG list cNMF was run on (top-N by overdispersion). | Required to interpret loadings and to re-run with the same gene set. |
-| `Plot/k_selection_<run_id>/` | Folder of k-selection PDFs from `cNMF_k_selection.ipynb`: stability-error, GO/genesets/trait enrichment by k, perturbation sensitivity by k, explained variance by k, program dot plot by conditions. | **The k-decision evidence pack.** |
+| `Inference.k_selection.png` | Stability-vs-error curve across the full K sweep. | The canonical visual used to pick a defensible selected K. |
+| `Inference.k_selection_stats.df.npz` | Raw stats array behind `k_selection.png` (one row per K). | Re-plot or re-apply alternate selection criteria. |
+| `Inference.overdispersed_genes.txt` | HVG list cNMF was run on. | Required to interpret loadings or re-run on the same gene set. |
 
-**Group decision is recorded in `README.txt`** (one per run), per `cNMF.md`:
+**Subdirectories in `Result/<run_name>/Inference/`:**
 
-> A README.txt file with (1) the density threshold you used, (2) the k values you selected (below), and (3) any other notes.
+| Subdir | Contents | Mirrored to Synapse? |
+|--------|----------|----------------------|
+| `adata/` | `cNMF_<K>_2_0.h5mu` (×8 K values) — **integrated MuData**: rna mod + cNMF mod (cells × programs, with `varm['loadings']` = programs × genes). ~1.7 GB each. | Selected K only (~5–6 GB) |
+| `cnmf_tmp/` | NPZ cache from factorize/refit steps. Regeneratable. | No |
+| `loading/`, `prog_data/` | Duplicates of `gene_spectra_score` / per-K program data. | No (duplicates) |
+| `diagnosis_plots/` | Per-K clustering pngs + scatter plots. | All K (small) |
+| `Annotation/` | Auto-generated per-K xlsx workbooks. | No (superseded by Stage 3e Summary_table) |
 
-`README.txt` is the human-readable record of *why* this k was picked. It's what lets a future reader decide if the pick still holds without re-running anything.
+The `<run>/adata` symlink at the `Result/<run_name>/` level points to `Inference/adata/` — workaround for upstream PerturbNMF [issue #6](https://github.com/EngreitzLab/PerturbNMF/issues/6) (path mismatch between `<run>/adata` and `Inference/adata`).
 
-## Stage 4: Program plotting + Excel summarization (at the selected k)
+## Stage 2a: Evaluation (per-K statistical tests + enrichments)
 
-Runner: program-QC plotting + perturbed-gene plotting + Excel-summarization notebooks (`Script/cNMF_program_analysis_<sel>_<dt>.sh`, `Script/run_perturbed_gene_analysis_<sel>_<dt>.sh`, `Script/cNMF_compile_excel_table.ipynb`).
+Runner: [`external/PerturbNMF/src/Stage2_Evaluation/`](../../../external/PerturbNMF/src/Stage2_Evaluation/) via `Script/cNMF_evaluation_pipeline.sh`. Outputs land in `Result/<run_name>/Evaluation/<K>_2_0/`, one subdir per K.
 
-What runs: At the selected k, generate program-level QC figures, per-perturbed-gene figures, and an integrated Annotation Excel workbook + Summary Table.
-
-**Selected-k outputs:**
-
-| Path | Contents | Useful for |
+| File (per `<K>_2_0/` subdir) | Contents | Useful for |
 |------|----------|------------|
-| `Annotation/<sel>_<dt>.xlsx` | Annotated workbook integrating program loadings + top genes + enrichment summaries. | Human-readable per-program summary. (Sheet/column inventory not yet documented — see TODOs.) |
-| `Interpretation/Summary_table/<sel>_<dt>/` | Compiled summary tables (TSV / XLSX / TXT) integrating mdata + evaluation results at the selected k. | One-stop summary for the selected k. |
-| `Plot/Program_<sel>_<dt>/` | Program-QC PDFs: program UMAP, program violin, loading correlations, top GO term plot, top loading genes, regulated-program volcano + dot + waterfall + bar plots. | WG2: program biology figures. |
-| `Plot/Perturb_gene_<sel>_<dt>/` | Perturbed-gene PDFs: gene UMAP, guide UMAP, gene dotplot, gene loading correlations, top loading programs, regulated-program volcano + dot + waterfall + bar plots. | WG1: perturbation effect figures. |
+| `<K>_perturbation_association_results_all.txt` | Per-program perturbation-association test results — target × program × log2FC × q-value. **Single file** because the project convention sets `obs['sample']='all'` (pooled), so there's no per-batch stratification. | **Primary regulators-per-program input** (WG2). |
+| `<K>_geneset_enrichment.txt` | MSigDB / curated gene-set enrichment per program. | WG2 program biology annotation. |
+| `<K>_GO_term_enrichment.txt` | GO term enrichment per program. | WG2 program biology annotation. |
+| `<K>_trait_enrichment.txt` | GWAS trait enrichment per program. Requires OpenTargets resource at `external/PerturbNMF/src/Stage2_Evaluation/Resources/OpenTargets_L2G_Filtered.csv.gz` — added in a follow-up `cNMF_evaluation_trait_only.sh` pass. | WG3 disease / GWAS. |
+| `<K>_Explained_Variance.txt` | Per-program explained variance at this K. | Program-level fit quality. |
+| `<K>_Explained_Variance_Summary.txt` | Cumulative explained variance summary at this K. | One of the K-selection criteria. |
 
-The Hon benchmark example used `<sel>_<dt> = 50_2_0` so the folders are literally `Plot/Program_50_2_0/`, `Plot/Perturb_gene_50_2_0/`, etc. Production runs should rename the selected-k folder to match the chosen k.
+**Evaluations we deliberately skip** (project-specific):
+
+- **Categorical association** — skipped because `obs['sample']` is single-valued (`'all'`).
+- **Motif enrichment** — requires `hg38.fa` + cell-type-specific enhancer-gene links (e.g., scE2G); the latter is unavailable for HUES8 endoderm/ESC, so we skip.
+
+## Stage 2b: U-test fake-target calibration
+
+Runner: [`external/PerturbNMF/src/Stage2_Evaluation/`](../../../external/PerturbNMF/src/Stage2_Evaluation/) via `Script/U-test_perturbation_calibration.sh`. **Requires** the local `fix/utest-oom-leak` branch (see [PerturbNMF.md](PerturbNMF.md#required-fixes-local-branches-not-yet-merged-upstream)).
+
+| File (per `<K>_2_0/` subdir) | Contents | Useful for |
+|------|----------|------------|
+| `<K>_fake_perturbation_association_results.txt` | 50 fake-targeting iterations using random subsets of NT controls; per-program null distribution. | Calibrating the per-K FDR threshold — is the perturbation-hit set noise-distinguishable? |
+
+## Stage 3a: K-selection panel
+
+Runner: `Script/cNMF_k_selection.sh`. Outputs land in `Result/<run_name>/Plot/k_selection/`.
+
+| File | Contents | Useful for |
+|------|----------|------------|
+| `K-selection_panel_2.0.{png,svg}` | The canonical 6-panel summary used to pick selected K. | **Primary K-decision artifact.** |
+| `Stability_Error_{stability,error}.{png,svg}` | The two underlying stability + error curves. | Inputs to the panel. |
+| `Explained_Variance_2.0.{png,svg}` | Explained variance vs K curve. | One panel of the K-selection summary. |
+| `Enrichment_2.0_{genesets,go_terms,traits}.{png,svg}` | Per-metric enrichment-count vs K curve. | Enrichment panels. |
+| `Perturbation_2.0_{all_samples,per_sample}.{png,svg}` | Number of significant perturbations recovered vs K. | Perturbation-recovery panel. |
+| `Program_dotplot_<K>_2.0.png` | Program × condition dotplot, one per K. | Visual check of program-condition specificity per K. |
+
+K-selection is a group decision ("clinical review board" style historically). The rationale is captured in the run's `README.md`.
+
+## Stage 3b: Per-program PDFs — **currently deferred**
+
+Runner: `Script/cNMF_program_analysis_<K>_2_0.sh`. Target output dir: `Result/<run_name>/Plot/Program_<K>_2_0/`.
+
+**Status: skipped on all production runs.** OOMs in the pre-loop correlation precompute at full data and is glacially slow even on a 10% subsample (~30 min/program × K = days). Tracked upstream as [issue #7](https://github.com/EngreitzLab/PerturbNMF/issues/7). The per-program view is covered by the Stage 3e Summary sheet; the per-TF view is covered by Stage 3c.
+
+The `Plot/Program_<K>_2_0/` folder may exist but is empty. A `Program_<K>_2_0_thinned/` variant has been used as a 10%-subsample workaround on the DE run.
+
+## Stage 3c: Per-target (perturbed-gene) PDFs
+
+Runner: `Script/cNMF_perturbed_gene_analysis_<K>_2_0.sh`. Outputs land in `Result/<run_name>/Plot/Perturb_gene_<K>_2_0/`.
+
+| File | Contents | Useful for |
+|------|----------|------------|
+| `<TF>.pdf` (one per perturbed target) | Volcano + gene UMAP + guide UMAP + per-program log2FC + correlation waterfall for the knockdown. | WG1 — the canonical "what happens when this TF is knocked down" figure. |
+| `merged_perturbed_genes_<dataset>_K<K>.pdf` | All per-TF PDFs glued together (~580 MB for DE / ~888 MB for ESC at K=200). Built with `pdfunite` because upstream's PyPDF2 merge hangs on thousands of PDFs ([issue #8](https://github.com/EngreitzLab/PerturbNMF/issues/8)). | One-file skim across the whole library. |
+
+Occasional per-target PDFs fail to render in the parallel matplotlib pass (e.g., 7 empty PDFs on DE) — they're re-run single-threaded via `Script/cNMF_perturbed_gene_analysis_<K>_2_0_redo<N>.sh`.
+
+## Stage 3e: Excel summary
+
+Runner: `Script/cNMF_compile_excel_summary.sh`. Output lands in `Result/<run_name>/Interpretation/Summary_table/<K>_2_0/`.
+
+| File | Sheets | Useful for |
+|------|--------|------------|
+| `cNMF_<K>_2_0.xlsx` | **Summary** — one row per program: top loaded genes, top regulators, top GO / geneset / trait terms, explained variance. **Targets Summary** — one row per TF: which programs it most strongly regulates, expression baseline, cell count. **Perturbation Association** — full target × program × log2FC × q-value table (split across sheets when >1M rows). | **The primary human-readable per-program / per-target view of the whole run.** Review starts here. |
 
 ## Subdirectory inventory (full reference)
 
-| Subdirectory | What's in it | Stage | Mirrored? |
-|---|---|---|---|
-| `adata/` | `cNMF_<k>_<dt>.h5mu` per (k, dt) — integrated MuData | 1 | Selected k only |
-| `loading/` | `cNMF_loadings_<k>_<dt>.txt` per (k, dt) — duplicate of spectra | 1 | No (duplicate) |
-| `prog_data/` | `NMF_<k>_<dt>.h5ad` per (k, dt) — duplicate of MuData program info | 1 | No (duplicate) |
-| `Eval/` | `<k>_<dt>/` per (k, dt) — 12-13 evaluation TXTs | 2 | **All (k, dt)** |
-| `Evaluation/` | Alternative/legacy naming, mostly empty | 2 | No (legacy) |
-| `Plot/k_selection_<run_id>/` | k-selection figure folder | 3 | Yes |
-| `Plot/Program_<sel>_<dt>/` | Selected-k program-QC PDFs | 4 | Selected k only |
-| `Plot/Perturb_gene_<sel>_<dt>/` | Selected-k perturbed-gene PDFs | 4 | Selected k only |
-| `Annotation/` | `<k>_<dt>.xlsx` per (k, dt) — annotated workbooks | 4 | Selected k only |
-| `Interpretation/Summary_table/<k>_<dt>/` | Per-(k, dt) summary tables | 4 | Selected k only |
-| `cnmf_tmp/` | NPZ cache, regeneratable | 1 (intermediate) | No |
-| `Inference/` | Empty / duplicate of `cnmf_tmp` | 1 (legacy) | No |
-| `logs/` | SLURM `.err` / `.out` / `resource_monitor` | All | Yes (small, useful for audit) |
-| `config_*.yml` | SLURM job configs (~5 per run) | All | Yes (reproducibility) |
+| Subdirectory under `Result/<run_name>/` | Contents | Stage |
+|---|---|---|
+| `Inference/adata/` | `cNMF_<K>_2_0.h5mu` per K — integrated MuData | 1 |
+| `Inference/` (flat files) | Per-K spectra / usages / clustering + run-level k_selection / overdispersed_genes | 1 |
+| `Inference/{loading,prog_data}/` | Duplicate of spectra / per-K program data | 1 (intermediate) |
+| `Inference/cnmf_tmp/` | NPZ factorize/refit cache | 1 (intermediate) |
+| `Inference/diagnosis_plots/` | Per-K consensus diagnostics | 1 |
+| `Inference/Annotation/` | Auto-generated per-K annotated xlsx (superseded by Stage 3e) | 1 |
+| `adata -> Inference/adata` | Symlink — workaround for upstream issue [#6](https://github.com/EngreitzLab/PerturbNMF/issues/6) | 1 |
+| `Evaluation/<K>_2_0/` | Per-K eval TXTs (perturbation, geneset, GO, trait, EV, fake-test) | 2a + 2b |
+| `Plot/k_selection/` | K-selection panel + per-metric K curves + per-K program dotplots | 3a |
+| `Plot/Program_<K>_2_0/` | Selected-K per-program PDFs — currently deferred | 3b |
+| `Plot/Perturb_gene_<K>_2_0/` | Selected-K per-TF PDFs + merged combined PDF | 3c |
+| `Interpretation/Summary_table/<K>_2_0/` | Excel summary workbook | 3e |
+| `logs/`, `config_*.yml` | SLURM job logs + per-stage Hydra YAML configs | All (small, kept for audit) |
 
-## MuData shape after cNMF (Stage-1 output schema)
-
-The integrated MuData written by cNMF (one per (k, dt)):
+## MuData shape after Stage 1 (the integrated `cNMF_<K>_2_0.h5mu`)
 
 ```
 mdata
-├── rna/                                    # Mirror of the input gene mod
-│   ├── X (cells × genes, raw counts)
-│   ├── obs / cell_ID, sample, ...
-│   ├── var / gene_names (Ensembl IDs)
-│   ├── uns / guide_names, guide_targets
-│   └── obsm / guide_assignment, X_PCA, X_umap
+├── rna/                                    # mirror of the inference-input gene modality
+│   ├── X                                   # cells × genes, raw counts
+│   ├── obs                                 # cell_ID, sample (= 'all' after h5mu prep), ...
+│   ├── var                                 # gene_names (Ensembl IDs)
+│   ├── uns                                 # guide_names, guide_targets
+│   └── obsm                                # guide_assignment, X_PCA, X_umap
 └── cNMF/
-    ├── X (cells × programs)                # Cell-level usages (H matrix, k columns)
-    ├── obs (direct copy from rna.obs)
-    ├── obsm (direct copy from rna.obsm; guide_assignment, X_PCA, X_umap)
-    ├── uns (direct copy from rna.uns; guide_names, guide_targets)
-    ├── var_names (direct copy from rna.var_names)
-    └── varm / loadings (programs × genes)  # Gene-level loadings (W matrix)
+    ├── X                                   # cells × programs — cell usages (H matrix, K columns)
+    ├── obs / obsm / uns                    # copies from rna (incl. guide_assignment + UMAP)
+    ├── var_names                           # copy from rna.var_names
+    └── varm['loadings']                    # programs × genes — gene loadings (W matrix)
 ```
 
-The `<run_name>.spectra.k_<X>.dt_<Y>.consensus.txt` flat file is the same data as `cNMF.varm['loadings']`; the `<run_name>.usages.k_<X>.dt_<Y>.consensus.txt` flat file is the same as `cNMF.X`. The `gene_spectra_score` and `gene_spectra_tpm` files are post-hoc normalizations of `cNMF.varm['loadings']`.
+The flat `Inference.spectra.k_<K>.dt_2_0.consensus.txt` and `Inference.usages.k_<K>.dt_2_0.consensus.txt` files are the same data as `cNMF.varm['loadings']` and `cNMF.X` respectively. The `gene_spectra_score` and `gene_spectra_tpm` files are post-hoc normalizations of the loadings.
 
-### Required input for cNMF (Stage-1 input schema)
+### Stage-1 input schema (what `Convert_file_adata.py` produces)
 
-The `Convert_file_adata.py` script converts `inference_mudata.h5mu` → AnnData with:
+The script converts the project's `inference_mudata.h5mu` → an AnnData with:
 
 ```
 adata
-├── X (cells × genes, unnormalized counts; cNMF normalizes internally — TPM)
-├── obs / cell_ID, sample (sample is required even if there's only one condition)
-├── var / gene_names (Ensembl ID or symbol — must match var_names exactly)
-├── uns / guide_names, guide_targets
-└── obsm / guide_assignment, X_PCA, X_umap
+├── X                                       # cells × genes, raw counts (cNMF TPM-normalizes internally)
+├── obs                                     # cell_ID, sample (required even if single-valued)
+├── var                                     # gene_names — must match var_names exactly
+├── uns                                     # guide_names, guide_targets
+└── obsm                                    # guide_assignment, X_PCA, X_umap
 ```
 
-`X_PCA` and `X_umap` are required when running with `shuffle_cells=True` so cells stay aligned with their guide assignments and embeddings.
+`X_PCA` and `X_umap` are required when running with `shuffle_cells=True` so cells stay aligned with their guide assignments and embeddings — pass `--compute_umap` to populate them at this step (see [PerturbNMF.md](PerturbNMF.md#project-specific-h5mu-prep-convention)).
 
-## Bundle curation rule (for the 2026 UTSW jamboree)
+## Per-dataset run status (2026-05-12)
 
-The full per-(k, dt) sweep is ~72 GB per dataset (5 datasets × 72 GB exceeds what we can reasonably mirror to Synapse). The mirrored bundle has two purposes:
-
-1. **Selected-k full data for downstream analysis** (WG1 + WG2): the integrated MuData, all loading variants (score / tpm / consensus / starcat), cell usages, full Eval/<sel>/ TXT bundle, selected-k Plot + Annotation + Interpretation folders.
-2. **Sweep-as-provenance** so the k decision is auditable and revisitable without re-running cNMF: `k_selection.png` + raw stats, all-k clustering pngs, all-k `gene_spectra_score` loadings (small files, lets a reader spot-check programs at alternate k), all-k `Eval/<k>_<dt>/` TXT bundles, the `Plot/k_selection_<run_id>/` figure folder, and a `README.txt` with the selection rationale.
-
-Estimated mirrored size: **~5-7 GB per dataset**. Full schema lives in `docs/jamborees/2026_UTSW/schemas/cnmf.json`.
-
-## Per-dataset run status (2026-05-09)
-
-| Dataset | Selected k | Status | Synapse |
+| Dataset | Selected K | Status | Synapse |
 |---|---|---|---|
-| Hon WTC11 Cardiomyocyte | TBD | ⏳ cNMF not run yet (gated on full `crispr_pipeline/` bundle from Hon team) | — |
-| Huangfu HUES8 Definitive Endoderm | TBD | ⏳ cNMF not run yet | — |
-| Huangfu HUES8 Embryonic Stem Cell | TBD | ⏳ cNMF not run yet | — |
-| Gersbach WTC11 Hepatocyte | TBD | ⏳ cNMF not run yet (awaiting canonical run from Gersbach team) | — |
+| Huangfu HUES8 Definitive Endoderm | 200 (250 may be preferred) | ✅ Stage 1, 2a, 2b, 3a, 3c, 3e | [`syn74893844`](https://www.synapse.org/Synapse:syn74893844) |
+| Huangfu HUES8 Embryonic Stem Cell | 200 | ✅ Stage 1, 2a, 2b, 3a, 3c, 3e | [`syn74893846`](https://www.synapse.org/Synapse:syn74893846) |
+| Hon WTC11 Cardiomyocyte | TBD | ⏳ Setup only — Stage 1 not yet kicked off | — |
+| Gersbach WTC11 Benchmark HTv2 (testbed) | TBD | Stage 1 run; Stage 2/3 pending. Verifies the pipeline before launching remaining production runs. | — |
+| Gersbach WTC11 Hepatocyte | — | ☐ Blocked — awaiting canonical run from Gersbach team | — |
 | Engreitz WTC11 Endothelial | — | ☐ Blocked — no inference MuData (not on portal yet) | — |
-| Hon WTC11 benchmark (reference, not a production dataset) | 50 | ☑ Local at `/cellar/.../PerturbNMF/Result/030726_20iter_5KHVG_torch_halsvar_batch_e7/` (used to verify schema) | — |
 
-## TODOs
-
-- [ ] Hold the k-selection group review for each production dataset and record the selected k + rationale in each run's `README.txt`.
-- [ ] Document the `Annotation/<sel>_<dt>.xlsx` sheet/column structure (sample one workbook from the Hon benchmark).
-- [ ] Document the `Interpretation/Summary_table/<sel>_<dt>/` file inventory.
-- [ ] Build `docs/jamborees/2026_UTSW/scripts/mirror_cnmf_outputs.py` (HPC → Synapse) once the first production run lands.
-- [ ] Build a cross-dataset program-similarity TSV (cosine similarity of `gene_spectra_score` loadings across all datasets at each dataset's selected k).
-- [ ] Build a per-dataset top-20-genes-per-program TSV + regulators-per-program TSV (from `Eval/<sel>_<dt>/<sel>_perturbation_association_results_*.txt`).
+Stage 3b is skipped on all runs (upstream issue [#7](https://github.com/EngreitzLab/PerturbNMF/issues/7)). The Hon WTC11 and Huangfu WTC11 *benchmark* datasets each have an older `030726_20iter_5KHVG_torch_halsvar_batch_e7` run on disk; those used the predecessor `cNMF_benchmarking` tool with a 3-density-threshold sweep (`dt = 0.01, 0.05, 2.0`) — superseded for production work, retained for historical comparison.

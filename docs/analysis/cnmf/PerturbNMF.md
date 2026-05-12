@@ -1,8 +1,32 @@
-# PerturbNMF — Project conventions and run notes
+# PerturbNMF — project conventions and run notes
 
-This doc captures the project-specific conventions and known quirks for running [PerturbNMF](https://github.com/EngreitzLab/PerturbNMF) on TFP3 datasets. It complements the upstream README and skill docs.
+This is the **how-to-run** doc for cNMF gene program discovery on TFP3 datasets, and the companion to [`cNMF_OUTPUTS.md`](cNMF_OUTPUTS.md) (which describes what's *in* a run directory). It records the project-specific conventions, the local fixes we maintain, and the empirical compute budget. The upstream [PerturbNMF README](https://github.com/EngreitzLab/PerturbNMF) is the authoritative reference for the tool itself.
 
-PerturbNMF supersedes the older `cNMF_benchmarking` tool ([docs/analysis/cNMF.md](cNMF.md)). The repo is checked into this project at [external/PerturbNMF/](../../external/PerturbNMF/).
+PerturbNMF is the wrapper around torch-cNMF that runs inference + per-program evaluation + plotting. It supersedes the older [`cNMF_benchmarking`](https://github.com/EngreitzLab/cNMF_benchmarking) tool. The repo lives in this project as a git submodule at [`external/PerturbNMF/`](../../../external/PerturbNMF/).
+
+### Per-dataset run directory layout
+
+Every run lives under one inference flavor of one dataset:
+
+```
+datasets/<dataset>/<run>/cnmf/<run_name>/
+├── Data/                     # inference input h5ad + guide_annotation.tsv
+├── Script/                   # per-stage SLURM submission scripts + helper .py
+├── README.md                 # per-run summary (selected K + status table)
+└── Result/<run_name>/        # all outputs (see cNMF_OUTPUTS.md)
+    ├── Inference/            # Stage 1
+    ├── Evaluation/<K>_2_0/   # Stage 2a–b
+    ├── adata -> Inference/adata    # symlink workaround for upstream #6
+    ├── Plot/                 # Stage 3a + 3c
+    └── Interpretation/       # Stage 3e
+```
+
+Reference runs (both completed end-to-end at K=200, 2026-05-09):
+
+| Dataset | Run directory |
+|---|---|
+| DE  | `datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/muddy_penguin/cnmf/042926_huangfu_de_torchcnmf_KskillA/` |
+| ESC | `datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/sceptre_v1/cnmf/042926_huangfu_esc_torchcnmf_KskillA/` |
 
 ---
 
@@ -59,7 +83,7 @@ upstream code work cleanly on our datasets:
 
 3. **Generate `Data/guide_annotation.tsv`** — copy from `ref/guide_libraries/harmonized/harmonized_guide_file_poolabcd.tsv` with `guide_id` renamed to `guide_names`. Required by the U-test fake-test code path.
 
-**Going forward (read this before the next dataset's Stage 1 run)** — compute UMAP on the inference INPUT (the h5ad / inference_mudata before Stage 1) so the embedding propagates through cNMF naturally and step 2 becomes unnecessary. `Convert_file_adata.py` (the per-dataset script that builds the cNMF AnnData input) now takes a `--compute_umap` flag that runs the same `normalize_total → log1p → HVG → scale → PCA → neighbors → UMAP` recipe on a temp copy and stashes `obsm['X_pca']` + `obsm['X_umap']` in the output AnnData. Stage 1 carries them through into every per-K h5mu's rna modality, so `inject_umap_into_h5mu.py` becomes a remediation-only tool for h5mu files produced before this convention. **Pass `--compute_umap` whenever you invoke Convert_file_adata.py for a new dataset.** Reference implementation: [`datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/PerturbNMF/Script/Convert_file_adata.py`](../../datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/PerturbNMF/Script/Convert_file_adata.py).
+**Going forward (read this before the next dataset's Stage 1 run)** — compute UMAP on the inference INPUT (the h5ad / inference_mudata before Stage 1) so the embedding propagates through cNMF naturally and step 2 becomes unnecessary. `Convert_file_adata.py` (the per-dataset script that builds the cNMF AnnData input) now takes a `--compute_umap` flag that runs the same `normalize_total → log1p → HVG → scale → PCA → neighbors → UMAP` recipe on a temp copy and stashes `obsm['X_pca']` + `obsm['X_umap']` in the output AnnData. Stage 1 carries them through into every per-K h5mu's rna modality, so `inject_umap_into_h5mu.py` becomes a remediation-only tool for h5mu files produced before this convention. **Pass `--compute_umap` whenever you invoke Convert_file_adata.py for a new dataset.** Reference implementation: `datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/cleanser_800_mito_15pc/cnmf/050926_HTv2_20iter_5KHVG_torch_halsvar_batch/Script/Convert_file_adata.py`.
 
 ---
 
@@ -124,12 +148,16 @@ For **cross-dataset comparison** (e.g., DE vs ESC):
 
 ## Runs in flight / completed
 
-See per-dataset PerturbNMF READMEs:
+Each run has its own `README.md` with the selected-K rationale and a stage-status table. As of 2026-05-12:
 
-- DE: [datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/PerturbNMF/README.md](../../datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/PerturbNMF/README.md)
-- ESC: [datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/PerturbNMF/README.md](../../datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/PerturbNMF/README.md)
+| Dataset | Run dir | Selected K | Status |
+|---|---|---|---|
+| DE  | `datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/muddy_penguin/cnmf/042926_huangfu_de_torchcnmf_KskillA/` | 200 (250 may be preferred — see run README) | ✅ Stage 1, 2a, 2b, 3a, 3c, 3e — uploaded to Synapse `syn74893844` |
+| ESC | `datasets/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/sceptre_v1/cnmf/042926_huangfu_esc_torchcnmf_KskillA/` | 200 | ✅ Stage 1, 2a, 2b, 3a, 3c, 3e — uploaded to Synapse `syn74893846` |
+| Hon CM | `datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/seqspec_v3/cnmf/051126_honcm_torchcnmf_KskillA/` | TBD | Setup only (Script/, Data/) — Stage 1 not yet kicked off |
+| HTv2 (benchmark testbed) | `datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/cleanser_800_mito_15pc/cnmf/050926_HTv2_20iter_5KHVG_torch_halsvar_batch/` | TBD | Stage 1 run; Stage 2/3 pending — testbed for verifying production pipeline before launching remaining datasets |
 
-Both datasets have completed Stage 1, Stage 2a (5/9 metrics), Stage 2b U-test, Stage 3a K-selection, Stage 3c per-target PDFs at K=200. Stage 3b is deferred per upstream issue #7. Stage 3e Excel summary in progress.
+Stage 3b is deferred on all runs per upstream issue [#7](https://github.com/EngreitzLab/PerturbNMF/issues/7).
 
 ---
 
@@ -153,20 +181,21 @@ Empirical SLURM resource budgets for ~190–270k-cell datasets at K = {30,50,60,
 
 ## Synapse upload
 
-Per-dataset upload script: `<dataset>/PerturbNMF/Script/upload_to_synapse.py`. Synapse project id `syn64423137`, layout `<project>/PerturbNMF/<dataset>/<run_name>/`.
+Per-run upload script: `<dataset>/<run>/cnmf/<run_name>/Script/upload_to_synapse.py`. On Synapse, the destination is `<project>/2026_UTSW/datasets/<dataset>/cnmf/` (no `<run_name>` nesting in the uploaded layout — see [`docs/jamborees/2026_UTSW/schemas/cnmf.json`](../../jamborees/2026_UTSW/schemas/cnmf.json)).
 
 ```bash
 SYNAPSE_AUTH_TOKEN=...  # from ~/.bashrc or rotated PAT
-python <ds>/PerturbNMF/Script/upload_to_synapse.py --dataset DE --upload-only-k200-h5mu
+python <ds>/<run>/cnmf/<run_name>/Script/upload_to_synapse.py --dataset DE --upload-only-k200-h5mu
 # add --dry-run first to preview
 ```
 
-Per-K h5mu's are large (~5–6 GB at K=200; total ~30+ GB if all 8 K). The default skip-all-h5mu-except-K=200 mode keeps total upload to ~7–8 GB per dataset.
+Per-K h5mu's are large (~5–6 GB at K=200; total ~30+ GB if all 8 K). The default skip-all-h5mu-except-selected-K mode keeps total upload to ~7–8 GB per dataset.
 
 ---
 
 ## Related docs
 
-- [docs/analysis/cNMF.md](cNMF.md) — older `cNMF_benchmarking` instructions (predecessor of PerturbNMF)
-- [docs/data/DACC.md](../data/DACC.md) — IGVF DACC catalog file format requirements
-- [docs/REFERENCES.md](../REFERENCES.md) — external links (Synapse, Google Sheets, Slack)
+- [`cNMF_OUTPUTS.md`](cNMF_OUTPUTS.md) — what's in a run directory (file-by-file)
+- [`cNMF.md`](cNMF.md) — index / historical pointer for legacy `cNMF_benchmarking`
+- [`docs/data/DACC.md`](../../data/DACC.md) — IGVF DACC catalog file format requirements
+- [`docs/REFERENCES.md`](../../REFERENCES.md) — external links (Synapse, Google Sheets, Slack)
