@@ -45,7 +45,7 @@ gs://igvf-pertub-seq-pipeline-data/<DATASET>/<DATA_DATE>/outs/<RUN_LABEL>/
 └── downloadgtf/                  # GENCODE GTF
 ```
 
-For per-stage detail, see [docs/analysis/crispr_pipeline/CRISPR_PIPELINE_OUTPUTS.md](../../../docs/analysis/crispr_pipeline/CRISPR_PIPELINE_OUTPUTS.md).
+For per-stage detail, see [docs/analysis/crispr_pipeline/CRISPR_PIPELINE_OUTPUTS.md](../../../../docs/analysis/crispr_pipeline/CRISPR_PIPELINE_OUTPUTS.md).
 
 ## What to mirror locally
 

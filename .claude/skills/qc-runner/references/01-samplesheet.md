@@ -64,7 +64,7 @@ gsutil -m cp \
 
 You only need `inference_mudata.h5mu` for QC; perturbo TSVs are not consumed by the QC modules. (They're needed for DEG calibration — see `deg-calibration` skill.)
 
-For per-jamboree mirror conventions, also see [docs/jamborees/2026_UTSW/](../../../docs/jamborees/2026_UTSW/).
+For per-jamboree mirror conventions, also see [docs/jamborees/2026_UTSW/](../../../../docs/jamborees/2026_UTSW/).
 
 ## Common builder usage
 

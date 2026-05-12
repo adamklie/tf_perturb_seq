@@ -4,6 +4,10 @@ For everything except input conversion and the TFP3 prep steps, the **external**
 
 ## Where the external skill lives
 
+**Upstream (canonical):** https://github.com/EngreitzLab/PerturbNMF/tree/main/.claude/skills/perturbNMF-runner — always available, no clone required.
+
+**Local clone path (when present):**
+
 ```
 <REPO_ROOT>/external/PerturbNMF/.claude/skills/perturbNMF-runner/
 ├── SKILL.md
@@ -22,7 +26,26 @@ For everything except input conversion and the TFP3 prep steps, the **external**
     └── prepare_guide_data.py
 ```
 
-Read `external/PerturbNMF/.claude/skills/perturbNMF-runner/SKILL.md` for stage mechanics: each stage's `--stage` value, conda env, reference file, parameters, and SLURM resource estimation.
+**Important:** `external/PerturbNMF/` is **gitignored** in this repo — it doesn't ship with a clone. You need to clone it manually before invoking the skill or running anything that needs the upstream code:
+
+```bash
+# Clone from adamklie's fork (includes the required fix/utest-oom-leak branch)
+git clone https://github.com/adamklie/PerturbNMF external/PerturbNMF
+cd external/PerturbNMF
+git checkout fix/utest-oom-leak
+```
+
+(Note: `docs/analysis/cnmf/PerturbNMF.md` calls this a "submodule" but it isn't currently registered as one in `.gitmodules`. Treat it as a manually-maintained sibling clone.)
+
+If you only need to read the external skill's docs (not run the code), fetch them directly from upstream:
+
+```bash
+# E.g. via gh CLI without cloning:
+gh api repos/EngreitzLab/PerturbNMF/contents/.claude/skills/perturbNMF-runner/SKILL.md \
+  -H "Accept: application/vnd.github.raw"
+```
+
+Read the SKILL.md for stage mechanics: each stage's `--stage` value, conda env, reference file, parameters, and SLURM resource estimation.
 
 ## When to invoke which skill
 

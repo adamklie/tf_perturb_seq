@@ -25,9 +25,11 @@ You are an interactive assistant for running Stage 5 of the TFP3 pipeline. Stage
 ## Constants
 
 ```
-EXTERNAL_SKILL:           external/PerturbNMF/.claude/skills/perturbNMF-runner/SKILL.md
-                          (read this first for stage mechanics — params, SLURM, references)
-SUBMODULE_PATH:           external/PerturbNMF
+EXTERNAL_SKILL (upstream): https://github.com/EngreitzLab/PerturbNMF/tree/main/.claude/skills/perturbNMF-runner
+EXTERNAL_SKILL (local):   external/PerturbNMF/.claude/skills/perturbNMF-runner/SKILL.md
+                          (NOTE: external/PerturbNMF/ is gitignored — only present on HPC
+                           or after manual clone; see references/04-external-handoff.md)
+LOCAL_CLONE_PATH:         external/PerturbNMF
 REQUIRED_BRANCH:          fix/utest-oom-leak  (2 commits ahead of origin/main; see references/02-required-fixes.md)
 CONVERTER:                src/tf_perturb_seq/cnmf/h5mu_to_perturbnmf_h5ad.py
 PREP_SCRIPTS (legacy):    src/tf_perturb_seq/cnmf/{prepare_h5mu_for_eval,inject_umap_into_h5mu}.py

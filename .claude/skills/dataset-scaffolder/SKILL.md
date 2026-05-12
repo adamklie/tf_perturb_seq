@@ -1,6 +1,6 @@
 ---
 name: dataset-scaffolder
-description: Scaffold a new TFP3 dataset directory under datasets/&lt;Lab&gt;_&lt;CellLine&gt;-&lt;cond&gt;_TF-Perturb-seq/ with the canonical layout (setup/{scripts,configs,samplesheets}, README.md, dataset_config.yaml) and the Stage 1 driver scripts pre-filled with the IGVF accession and dataset name. Triggers on keywords like new dataset, scaffold dataset, onboard dataset, create dataset directory, dataset template, dataset_config.
+description: Scaffold a new TFP3 dataset directory under datasets/<Lab>_<CellLine>-<cond>_TF-Perturb-seq/ with the canonical layout (setup/{scripts,configs,samplesheets}, README.md, dataset_config.yaml) and the Stage 1 driver scripts pre-filled with the IGVF accession and dataset name. Triggers on keywords like new dataset, scaffold dataset, onboard dataset, create dataset directory, dataset template, dataset_config.
 user_invocable: true
 ---
 
