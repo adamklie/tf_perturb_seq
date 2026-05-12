@@ -11,11 +11,11 @@ These live under `.claude/skills/` in this repo, so they ship to every collabora
 | [`igvf-portal-staging`](igvf-portal-staging/) | done | Stage 1: IGVF portal query, S3→GCS upload, patch samplesheet |
 | [`crispr-pipeline-runner`](crispr-pipeline-runner/) | done | Stage 2: CRISPR Nextflow on GCP Batch (launch / resume / monitor / mirror outputs) |
 | [`deg-calibration`](deg-calibration/) | done | Empirical-null calibration of PerTurbo per-element DEG results (parallel to QC / energy distance / cNMF) |
-| `qc-runner` | planned | Stage 3: SLURM array QC (mapping_gene / mapping_guide / intended_target) |
-| `energy-distance-runner` | planned | Stage 4: energy_dist_pipeline submodule |
-| `cnmf-runner` | planned | Stage 5: project-specific wrapper around the external `perturbNMF-runner` skill |
-| `dataset-scaffolder` | planned | Scaffold a new `datasets/<Lab>_..._TF-Perturb-seq/` from template |
-| `synapse-jamboree-packaging` | planned | Package a run for `syn64423137/2026_UTSW/` upload |
+| [`qc-runner`](qc-runner/) | done | Stage 3: SLURM array QC (mapping_gene / mapping_guide / intended_target) on UCSD HPC |
+| [`energy-distance-runner`](energy-distance-runner/) | done | Stage 4: containerized energy-distance pipeline (Chikara's) via SLURM GPU on carter-gpu |
+| [`cnmf-runner`](cnmf-runner/) | done | Stage 5: project-specific wrapper around the external `perturbNMF-runner` skill |
+| [`dataset-scaffolder`](dataset-scaffolder/) | done | Scaffold a new `datasets/<Lab>_..._TF-Perturb-seq/` from template (delegates to Stage 1 scaffolder) |
+| [`synapse-jamboree-packaging`](synapse-jamboree-packaging/) | done | Mirror outputs to `syn64423137/2026_UTSW/` + build working-group summaries |
 
 ## How to use a skill
 
