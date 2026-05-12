@@ -232,3 +232,7 @@ ref/opentargets/OpenTargets_L2G_noQC.csv.gz
 **/qc/**/*.pdf
 **/qc/**/*.tsv
 **/qc/**/*.h5ad
+
+# Nextflow auto-generated pipeline_qc/ and pipeline_comparisons/ (alongside pipeline_outputs/)
+**/crispr_pipeline/pipeline_qc/
+**/crispr_pipeline/pipeline_comparisons/
