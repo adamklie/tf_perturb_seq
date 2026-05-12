@@ -22,9 +22,11 @@ Production dataset for the [2026 UTSW jamboree](../../README.md).
 
 | Output | Status | Synapse |
 |---|---|---|
-| CRISPR pipeline | ⚠ non-canonical layout exists; awaiting Sara | [`syn70518849`](https://www.synapse.org/Synapse:syn70518849) |
-| cNMF | ⏳ pending — Sara likely has a run; needs to be shaped to our schema | — |
-| Energy distance | ⏳ pending — same | — |
+| CRISPR pipeline | ⚠ Sara's non-canonical layout at `syn70518849` (top-level pipeline outputs flat instead of in `pipeline_outputs/`). Sara to reshape per DE/ESC template. | [`syn70518849`](https://www.synapse.org/Synapse:syn70518849), Sara's full bundle at [`syn74842722`](https://www.synapse.org/Synapse:syn74842722) |
+| cNMF | ⏳ pending — Sara to deliver per `schemas/cnmf.json` | — |
+| Energy distance | ✓ Sara uploaded into the jamboree (full bundle) | [`syn74902687`](https://www.synapse.org/Synapse:syn74902687) |
+| QC (our re-run on Sara's MuData) | ✅ **mirrored 2026-05-12** | [`syn74918946`](https://www.synapse.org/Synapse:syn74918946) (`qc/`) |
+| Calibration (our run on Sara's MuData) | ✅ **2026-05-12** — 4 TSVs (all + cis + direct_target + trans) | [`syn74920831`](https://www.synapse.org/Synapse:syn74920831) |
 
 Deeper status: [`crispr_pipeline/README.md`](crispr_pipeline/README.md), [`energy_distance/README.md`](energy_distance/README.md). Open issue: [Gersbach Hep deliverables](../../issues/gersbach-hep-deliverables.md).
 

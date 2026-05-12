@@ -29,11 +29,12 @@ Production dataset for the [2026 UTSW jamboree](../../README.md).
 
 | Output | Status | Synapse |
 |---|---|---|
-| CRISPR pipeline (Weizhou) | ⏳ partial — `pipeline_dashboard/` + `pipeline_outputs/` uploaded by Weizhou, **missing** `pipeline_info/`. | [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) |
-| CRISPR pipeline (seqspec_v3) | ✓ complete on GCS; local pull in flight | n/a — not mirrored to jamboree |
+| CRISPR pipeline (Weizhou) | ✅ Weizhou added `pipeline_info/`; copied into jamboree at flat layout matching DE/ESC | [`syn74919102`](https://www.synapse.org/Synapse:syn74919102) |
+| CRISPR pipeline (seqspec_v3) | ✓ pulled locally from GCS; kept as comparison run, not mirrored to jamboree | — |
 | Energy distance (Adam's run on Weizhou MuData) | ✓ uploaded — partial bundle (results + plots + logs) | [`syn74897350`](https://www.synapse.org/Synapse:syn74897350) |
 | Energy distance (Sara's run on Weizhou MuData) | ✓ uploaded — full bundle (h5mu + pickles + results + plots) | [`syn74910330`](https://www.synapse.org/Synapse:syn74910330) (`energy_distance_gersbach_comp/`) |
 | QC (Weizhou data, our re-run) | ✓ **mirrored 2026-05-12** | [`syn74917453`](https://www.synapse.org/Synapse:syn74917453) (`qc/`) |
+| Calibration (Weizhou's CRISPR run) | ✅ **2026-05-12** — 4 TSVs (all + cis + direct_target + trans) | [`syn74920617`](https://www.synapse.org/Synapse:syn74920617) |
 | cNMF | ⏳ Stage 1 against seqspec_v3 **failed** (numba JIT working-dir bug); **Alexandra** is running cNMF against Weizhou's MuData in parallel | — |
 
 Open: [Hon CM CRISPR pipeline gap](../../issues/hon-cm-crispr-bundle.md), [Hon CM cNMF Stage 1](https://github.com/adamklie/tf_perturb_seq/issues/20).

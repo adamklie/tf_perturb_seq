@@ -27,8 +27,9 @@ Production dataset for the [2026 UTSW jamboree](../../README.md).
 | Energy distance (Adam) | ✅ complete (⚠ p-value calibration concern) | [`syn74883327`](https://www.synapse.org/Synapse:syn74883327) |
 | Energy distance (Sara, comp) | ✅ complete | [`syn74910358`](https://www.synapse.org/Synapse:syn74910358) |
 | QC | ✅ **mirrored 2026-05-12** | [`syn74918479`](https://www.synapse.org/Synapse:syn74918479) |
+| Calibration | ✅ **2026-05-12** — 4 TSVs (all + cis + direct_target + trans); FDR<0.05 = 14,521 trans tests | [`syn74920615`](https://www.synapse.org/Synapse:syn74920615) |
 
-Calibration concern: [Issue 1](../../issues/edistance-calibration.md). Deeper status: [`crispr_pipeline/README.md`](crispr_pipeline/README.md), [`cnmf/README.md`](cnmf/README.md), [`energy_distance/README.md`](energy_distance/README.md).
+E-distance p-value calibration concern: [Issue 1](../../issues/edistance-calibration.md). Deeper status: [`crispr_pipeline/README.md`](crispr_pipeline/README.md), [`cnmf/README.md`](cnmf/README.md), [`energy_distance/README.md`](energy_distance/README.md).
 
 ## Source data
 

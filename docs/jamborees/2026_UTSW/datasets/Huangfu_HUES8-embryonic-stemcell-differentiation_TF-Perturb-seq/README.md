@@ -18,7 +18,7 @@ Production dataset for the [2026 UTSW jamboree](../../README.md).
 | Multiplexing | none |
 | Measurement sets | 8 |
 
-## Status — all 4 analysis tiers on jamboree Synapse ✅
+## Status — all 5 analysis tiers on jamboree Synapse ✅
 
 | Output | Status | Synapse |
 |---|---|---|
@@ -27,8 +27,9 @@ Production dataset for the [2026 UTSW jamboree](../../README.md).
 | Energy distance (Adam) | ✅ complete (⚠ p-value calibration concern) | [`syn74883475`](https://www.synapse.org/Synapse:syn74883475) |
 | Energy distance (Sara, comp) | ✅ complete | [`syn74910472`](https://www.synapse.org/Synapse:syn74910472) (`energy_distance_gersbach_comp/`) |
 | QC | ✅ mirrored 2026-05-12 | [`syn74918600`](https://www.synapse.org/Synapse:syn74918600) (`qc/`) |
+| Calibration | ✅ **2026-05-12** — 4 TSVs (all + cis + direct_target + trans) | [`syn74920616`](https://www.synapse.org/Synapse:syn74920616) |
 
-Calibration concern: [Issue 1](../../issues/edistance-calibration.md). Deeper status: [`crispr_pipeline/README.md`](crispr_pipeline/README.md), [`cnmf/README.md`](cnmf/README.md), [`energy_distance/README.md`](energy_distance/README.md).
+E-distance p-value calibration concern: [Issue 1](../../issues/edistance-calibration.md). Deeper status: [`crispr_pipeline/README.md`](crispr_pipeline/README.md), [`cnmf/README.md`](cnmf/README.md), [`energy_distance/README.md`](energy_distance/README.md).
 
 ## Source data
 
