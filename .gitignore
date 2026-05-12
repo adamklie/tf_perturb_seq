@@ -219,6 +219,10 @@ ref/opentargets/OpenTargets_L2G_noQC.csv.gz
 **/*.h5ad
 **/perturbo_*_per_*_output.tsv.gz
 **/pipeline_qc/trans/*_trans_results.tsv
+# Top-level Nextflow canonical outputs (cis/trans per element/guide) — same scale as the
+# perturbo outputs above but without the `perturbo_` prefix; e.g.
+# datasets/<ds>/<run>/crispr_pipeline/trans_per_guide_results.tsv.gz at 2.3 GB
+**/crispr_pipeline/*_per_*_results.tsv.gz
 
 # Energy distance: keep configs (.json) + scripts; ignore the result outputs
 **/energy_distance/*.csv
