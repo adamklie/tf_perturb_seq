@@ -1,71 +1,50 @@
-# Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq
+# Hon WTC11 Cardiomyocyte TF Perturb-seq (Hon CM)
 
-## Overview
+Production TF Perturb-seq from the Hon lab (cardiomyocyte differentiation).
+Synapse canonical: [`syn73582673`](https://www.synapse.org/Synapse:syn73582673) — Weizhou's local CRISPR pipeline run, locally mirrored as `weizhou_syn74520421/` (QC re-run only).
+Production GCS run: `gs://igvf-pertub-seq-pipeline-data/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/2026_04_15/outs/seqspec_v3/` — mirrored locally as `seqspec_v3/`.
 
-| Property | Value |
-|----------|-------|
-| **Lab** | Hon (UTSW) |
-| **Cell Line** | WTC11 (GM25256) |
-| **Differentiation** | Cardiomyocyte (cardiac muscle) |
-| **IGVF Analysis Set** | [IGVFDS6332VCTO](https://data.igvf.org/analysis-sets/IGVFDS6332VCTO) (released, 78 inputs) |
-| **Guide Library** | [IGVFDS3299AXST](https://data.igvf.org/construct-library-sets/IGVFDS3299AXST) (guide file: [IGVFFI8270UPKB](https://data.igvf.org/tabular-files/IGVFFI8270UPKB)) |
-| **Technology** | 10x (HTO multiplexed) |
-| **Scale** | 32 measurement sets, 26 scRNA lanes, 52 gRNA lanes, 26 HTO lanes _(see note below — current sample_metadata has 28 MS / 28 scRNA / 56 gRNA / 28 hash = 112 rows)_ |
-| **Status** | Prepping for CRISPR pipeline run (Lucas) |
-
-## Pipeline Status
-
-- [x] Step 0: Portal has analysis set, measurement sets, auxiliary sets
-- [x] Step 1: Sample metadata generated (exists on GCP)
-- [x] Step 2: Fastqs already on GCP
-- [ ] Step 3: Patch compressed files (seqspec, barcode_onlist, guide_design are .gz)
-- [ ] Step 4: Run CRISPR pipeline (Lucas to run on GCP)
-- [ ] Step 5: QC analysis
-- [ ] Step 6: Energy distance
-- [ ] Step 7: cNMF
-
-## GCP Data Location
+## Layout
 
 ```
-gs://igvf-pertub-seq-pipeline-data/WTC11_CM_TF_PerturbSeq/
-├── WTC11_CM_TF_PerturbSeq_per_sample_accessions.tsv  # Portal accession IDs
-├── WTC11_CM_TF_PerturbSeq_per_sample_paths.tsv        # GCS paths (104 rows + header)
-├── 2024/  # Fastqs and reference files
-└── 2025/  # Seqspecs
+setup/                          # Shared input generation (Adam's code)
+├── scripts/                    # 1_–5_*.sh + generate_per_sample.py + make_patched_metadata.py
+├── configs/                    # Base Nextflow .config (seqspec_v3 — the new prod run)
+└── samplesheets/               # Canonical sample_metadata.csv
+seqspec/                        # Hon lab seqspec yamls (rna/guide/hash) — legacy
+synapse_inference_mudata/       # Sara/Weizhou mudata download (gitignored)
+HonLabInternal/                 # Hon-internal cNMF results (gitignored entirely)
+seqspec_v3/                     # Production CRISPR pipeline run (GCS 2026_04_15)
+├── crispr_pipeline/
+│   ├── pipeline_info/          # params_*.json + versions (TRACKED — small)
+│   └── pipeline_outputs/ / pipeline_dashboard/ / anndata/ (all gitignored)
+├── qc/                         # QC re-run locally (results gitignored)
+└── cnmf/051126_honcm_torchcnmf_KskillA/   # cNMF Stage 1 (May 2026, KskillA pattern)
+    ├── Script/                 # TRACKED — Stage 1 SLURM wrappers
+    └── Data/ / Result/         # gitignored (bulk)
+weizhou_syn74520421/            # Weizhou's Synapse-imported h5mu run (QC-only on our side)
+└── qc/                         # QC outputs (gitignored)
+2026_04_19_no_spacer/           # Older energy-distance run (no associated CRISPR pipeline locally)
+└── energy_distance/            # ED outputs (config JSONs TRACKED; results gitignored)
 ```
 
-**Sample metadata TSV** (104 rows): 26 scRNA + 52 gRNA + 26 HTO lanes
-- Already has GCS paths for R1/R2, seqspec, barcode_onlist, guide_design
-- Columns: R1_path, R1_md5sum, R2_path, R2_md5sum, file_modality, file_set, measurement_sets, sequencing_run, lane, flowcell_id, index, seqspec, barcode_onlist, onlist_method, strand_specificity, guide_design, barcode_hashtag_map
+## Pipeline runs
 
-## What needs to happen
+| Local run | Source | Notes |
+|---|---|---|
+| `seqspec_v3` | GCS `2026_04_15/outs/seqspec_v3/` | New production run, May 2026 |
+| `weizhou_syn74520421` | Synapse [`syn74520421`](https://www.synapse.org/Synapse:syn74520421) → Weizhou's [`syn73582673`](https://www.synapse.org/Synapse:syn73582673) | Canonical h5mu; QC-only locally |
+| `2026_04_19_no_spacer` | Older ED run | No CRISPR pipeline (no_spacer modality) |
 
-1. **Regenerate sample metadata from portal** — The existing TSV on GCP (`WTC11_CM_TF_PerturbSeq_per_sample_paths.tsv`) is old (2024-2025) and may be stale. Run `1_generate_per_sample_metadata.sh` to generate fresh metadata from analysis set IGVFDS6332VCTO.
-2. **Check existing GCP fastqs** — `gs://igvf-pertub-seq-pipeline-data/WTC11_CM_TF_PerturbSeq/` has fastqs from a prior upload. Need to verify these are still current or if they should be cleaned up (check with Ian/Hon lab). Re-upload from portal if needed via `2_upload_to_gcp.sh`.
-3. **Patch .gz files** — seqspec (.yaml.gz), barcode_onlist (.tsv.gz), and guide_design (.csv.gz) need decompression for the pipeline.
-4. **Create pipeline config** — Adapt from Hon benchmark config. Key differences from benchmark: full TF library (~2000 targets vs ~50), HTO multiplexing, more lanes.
-5. **Hand off to Lucas** for GCP pipeline execution.
+cNMF Stage 1 (`051126_honcm_torchcnmf_KskillA`) was kicked off against the new `seqspec_v3` h5mu — see issue [#20](https://github.com/adamklie/tf_perturb_seq/issues/20).
 
-## Legacy Data
+## Reproduce
 
-`HonLabInternal/` contains outputs from the Hon lab's internal processing pipeline (Cell_Ranger_Output/, Perturbation_information/, Transcriptome_Analysis/). These are not from the standardized CRISPR FG pipeline and should be archived once the new run completes.
-
-## Open question — measurement set count discrepancy
-
-The "Scale" row above (32 MS / 26 scRNA / 52 gRNA / 26 HTO = 104 lanes) and the "Portal Details" table below (26 scRNA, 52 gRNA, 26 HTO) both predate the current `sample_metadata_gcp_2026_04_15_patched.csv`, which contains **28 unique measurement sets** and 112 rows (28 scRNA + 56 gRNA + 28 hash). It is unclear which number is correct — possibilities:
-- The portal added 2 measurement sets between 2026-03-25 and 2026-04-15
-- The earlier counts were wrong (32 was a guess; portal table aspirational)
-- The metadata regeneration on 2026-04-15 picked up MS that should not be included
-
-Verify against the IGVF analysis set IGVFDS6332VCTO before reading too much into pipeline outputs.
-
-## Portal Details (audited 2026-03-25)
-
-| Component | Count | Status |
-|-----------|:---:|--------|
-| Measurement sets (scRNA) | 26 | On portal, in TFP3 collection |
-| Auxiliary sets (gRNA) | 26 × 2 = 52 | On portal |
-| Auxiliary sets (HTO) | 26 | On portal |
-| Construct library set | 1 (IGVFDS3299AXST) | Released, guide file present |
-| Analysis set | 1 (IGVFDS6332VCTO) | Released, 78 inputs |
-| Seqspecs | Present (.yaml.gz on GCP) | Need decompression |
+```bash
+DS=datasets/Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq
+bash $DS/setup/scripts/1_generate_per_sample_metadata.sh
+bash $DS/setup/scripts/2_upload_to_gcp.sh
+bash $DS/setup/scripts/3_patch_gcp_files.sh
+bash $DS/setup/scripts/4_run_CRISPR_pipeline.sh
+bash $DS/setup/scripts/5_run_energy_distance.sh
+```

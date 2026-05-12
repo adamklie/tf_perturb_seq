@@ -24,7 +24,7 @@ DATA_DATE=2026_04_15
 # 112 rows = 28 measurement sets × (1 scRNA + 2 gRNA + 1 hash)
 # v3 = seqspec column points at patch_v3/ generic per-modality yamls
 #      (rna_seqspec.yml / guide_seqspec.yml / hash_seqspec.yml)
-SAMPLE_METADATA=$BASE_DIR/samplesheets/sample_metadata_gcp_${DATA_DATE}_patched_v3.csv
+SAMPLE_METADATA=$BASE_DIR/setup/samplesheets/sample_metadata_gcp_${DATA_DATE}_patched_v3.csv
 
 # CRISPR Pipeline path
 PIPELINE_PATH=/Users/adamklie/Desktop/tfp3/CRISPR_Pipeline
@@ -34,7 +34,7 @@ RUN_LABEL=seqspec_v3
 
 # Dataset-specific config (HTO multiplexed Hon production: ENABLE_DATA_HASHING=true,
 # reverse_complement_guides=true, spacer_tag="TAGCTCTTAAAC", is_10x3v3=false)
-CONFIG=$BASE_DIR/configs/${DATASET_NAME}_${RUN_LABEL}.config
+CONFIG=$BASE_DIR/seqspec_v3/crispr_pipeline/configs/${DATASET_NAME}_${RUN_LABEL}.config
 
 # Output directory on GCS
 OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/${DATA_DATE}/outs/${RUN_LABEL}
