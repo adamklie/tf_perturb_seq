@@ -124,7 +124,7 @@ Done iteratively, not at the end. Tracking lives in [`synapse_paths.tsv`](synaps
 - [x] Huangfu HUES8 Definitive Endoderm → [`syn74920615`](https://www.synapse.org/Synapse:syn74920615) (4 TSVs: all + cis + direct_target + trans; FDR<0.05 = 14,521; 2026-05-12)
 - [x] Huangfu HUES8 Embryonic Stem Cell → [`syn74920616`](https://www.synapse.org/Synapse:syn74920616) (4 TSVs, 2026-05-12)
 - [x] Hon WTC11 Cardiomyocyte (Weizhou's run) → [`syn74920617`](https://www.synapse.org/Synapse:syn74920617) (4 TSVs, 2026-05-12)
-- [ ] Gersbach WTC11 Hepatocyte — calibration running (SLURM 10847496); upload pending
+- [x] Gersbach WTC11 Hepatocyte → [`syn74920831`](https://www.synapse.org/Synapse:syn74920831) (4 TSVs, 2026-05-12; calibration run on Sara's `sara_synapse_syn74842722` inputs)
 - [ ] Engreitz WTC11 Endothelial — blocked: no data
 
 **Tracking**
