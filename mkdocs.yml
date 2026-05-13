@@ -1,0 +1,71 @@
+site_name: TF Perturb-seq analysis guide
+site_description: A participant guide for reading CRISPRi Perturb-seq outputs in the TF Perturb-seq Pillar Project (IGVF consortium).
+site_author: TF Perturb-seq team
+repo_url: https://github.com/adamklie/tf_perturb_seq
+repo_name: adamklie/tf_perturb_seq
+edit_uri: edit/main/docs/jamborees/2026_UTSW/guide/
+copyright: TF Perturb-seq team — IGVF consortium
+
+docs_dir: docs/jamborees/2026_UTSW/guide
+site_dir: site
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.action.edit
+    - toc.follow
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+
+nav:
+  - Home: README.md
+  - Reading outputs:
+      - CRISPR pipeline: UNDERSTAND_CRISPR_OUTPUTS.md
+      - Energy distance: UNDERSTAND_ENERGY_DISTANCE.md
+      - cNMF gene programs: UNDERSTAND_CNMF_OUTPUTS.md
+  - Reference:
+      - Complete dataset contents: COMPLETE_DATASET_CONTENTS.md
+      - Data formats: DATA_FORMATS.md
+      - Glossary: GLOSSARY.md
+      - FAQ: FAQ.md
+      - Citations: CITATIONS.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
