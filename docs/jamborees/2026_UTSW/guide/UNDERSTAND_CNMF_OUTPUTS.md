@@ -2,7 +2,7 @@
 
 cNMF (consensus non-negative matrix factorization) is the project's tool for discovering **gene programs** — groups of genes that vary together across cells. The outputs let you ask: *"What biological modules are active in my cell type, and which TFs disrupted which modules?"* Companion: [`UNDERSTAND_CRISPR_OUTPUTS.md`](UNDERSTAND_CRISPR_OUTPUTS.md), [`UNDERSTAND_ENERGY_DISTANCE.md`](UNDERSTAND_ENERGY_DISTANCE.md).
 
-For the technical pipeline reference, see [`docs/analysis/cnmf/cNMF_OUTPUTS.md`](../analysis/cnmf/cNMF_OUTPUTS.md). This doc is the **interpretation** layer.
+For the technical pipeline reference, see [`docs/analysis/cnmf/cNMF_OUTPUTS.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/analysis/cnmf/cNMF_OUTPUTS.md). This doc is the **interpretation** layer.
 
 ---
 
@@ -108,7 +108,7 @@ A row that has no value > ~0.5 in either dataset is lineage-specific.
 
 ---
 
-## What to look for (wet-lab takeaways)
+## What to look for (takeaways)
 
 1. **The handful of "core" programs** that the selected-k cNMF discovers. They tend to be: cell cycle, mitochondria, ribosome, stress-response — these recur across cell types. Annotating + naming them is a good first deliverable.
 2. **The lineage-defining program** — the program with cell-identity markers (e.g. SOX17/FOXA2 for endoderm; ISL1/HAND1 for cardiomyocytes). The TFs that regulate this program are the lineage masters.
@@ -128,6 +128,6 @@ A row that has no value > ~0.5 in either dataset is lineage-specific.
 
 ## Who to ask
 
-- **cNMF method / k-selection** — the cNMF / PerturbNMF maintainers (Engreitz Lab); also see [`docs/analysis/cnmf/PerturbNMF.md`](../analysis/cnmf/PerturbNMF.md).
+- **cNMF method / k-selection** — the cNMF / PerturbNMF maintainers (Engreitz Lab); also see [`docs/analysis/cnmf/PerturbNMF.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/analysis/cnmf/PerturbNMF.md).
 - **Program annotation / biology** — meeting-room decision; check the run's `README.txt` for the k-selection meeting notes.
-- **Project-specific context** — your dataset's lead in [`docs/TEAM.md`](../TEAM.md).
+- **Project-specific context** — your dataset's lead in [`docs/TEAM.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/TEAM.md).

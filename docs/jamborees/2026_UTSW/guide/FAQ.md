@@ -9,7 +9,7 @@ Common questions from people who've just opened a result file.
 A few possibilities:
 
 1. **Permutation p-values bottom out at the resolution of the permutations.** If you ran 1,000 permutations and none beat the observed value, the smallest reportable p is ~ 1/1000 — often reported as 0 in compressed output.
-2. **The test is anti-conservative.** If even the negative controls come out with p = 0, the null distribution is too tight relative to the real data. See the [calibration caveat](UNDERSTAND_ENERGY_DISTANCE.md#-the-calibration-caveat-read-this) for the energy-distance version of this. The fix is usually re-running with a different PCA basis (HVG-subset instead of all genes).
+2. **The test is anti-conservative.** If even the negative controls come out with p = 0, the null distribution is too tight relative to the real data. See the [calibration caveat](UNDERSTAND_ENERGY_DISTANCE.md#the-calibration-caveat-read-this) for the energy-distance version of this. The fix is usually re-running with a different PCA basis (HVG-subset instead of all genes).
 3. **The signal really is enormous.** For a positive control like *AARS* in a healthy run, p = 0 is the right answer.
 
 If the negative controls also have p = 0, **don't gate on p alone**; use an effect-size cutoff (`distance_mean > NC max`).
@@ -106,7 +106,7 @@ Three possible reasons:
 
 See [`CITATIONS.md`](CITATIONS.md). At minimum: cite the IGVF consortium, the CRISPR pipeline, perturbo (or sceptre, depending on the call), and the energy-distance method.
 
-If the data are pre-publication, please loop in the relevant dataset lead from [`docs/TEAM.md`](../TEAM.md) before using them externally.
+If the data are pre-publication, please loop in the relevant dataset lead from [`docs/TEAM.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/TEAM.md) before using them externally.
 
 ---
 

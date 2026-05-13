@@ -117,7 +117,7 @@ def _dataset_dir(dataset: str) -> Path:
             f"Unknown dataset '{dataset}'. Expected one of: "
             + ", ".join(DATASETS.keys())
         )
-    return JAMBOREE_ROOT / "datasets" / full
+    return JAMBOREE_ROOT / "data" / full
 
 
 def load_significant_tfs(dataset: str) -> pd.DataFrame:
@@ -188,5 +188,5 @@ def landed_datasets(scope: str) -> list[str]:
         raise KeyError(f"Unknown scope '{scope}'. Pick one of {list(rel)}.")
     return [
         short for short, full in DATASETS.items()
-        if (JAMBOREE_ROOT / "datasets" / full / rel[scope]).exists()
+        if (JAMBOREE_ROOT / "data" / full / rel[scope]).exists()
     ]

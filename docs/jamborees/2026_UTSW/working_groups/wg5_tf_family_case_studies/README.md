@@ -4,7 +4,7 @@
 
 ## Questions
 
-From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
+From [`../WORKING_GROUPS.md`](../WORKING_GROUPS.md):
 
 - Identify interesting TF families using outputs from Working Groups 1–3.
 - Pathway analysis of top gene programs for these TFs, with DEG fold-change overlays.

@@ -5,7 +5,7 @@ What a "fully baked" CRISPRi Perturb-seq dataset should contain when handed off 
 This doc cross-references three things:
 
 1. **Our internal CRISPR-pipeline outputs** — what the IGVF pipeline emits.
-2. **The IGVF DACC submission spec** — what we have to deliver back to the consortium. See [`docs/data/DACC.md`](../data/DACC.md) for the source-of-truth audit.
+2. **The IGVF DACC submission spec** — what we have to deliver back to the consortium. See [`docs/data/DACC.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/data/DACC.md) for the source-of-truth audit.
 3. **The reference IGVF analysis set [IGVFDS6332VCTO](https://data.igvf.org/analysis-sets/IGVFDS6332VCTO/)** — Gary Hon's WTC11 cardiomyocyte dataset; a fully released example showing what a finished submission looks like.
 
 ---
@@ -76,9 +76,9 @@ These don't come out of the pipelines directly — they're reformatted from upst
 
 | File | Format | What | Derived from | Status |
 |---|---|---|---|---|
-| `TF Universe` | `.tsv` | One row per unique TF whose promoter is in the guide library | Guide library (Layer 1) | ✅ generable now |
-| `Element Universe` | `.bed` | BED of every genomic element targeted by the library | Guide library | ✅ generable now |
-| `Gene Universe` | `.tsv` | Two cols: `gene` (ENSG), `gene_symbol`. The HVG list cNMF was fit on. | `overdispersed_genes.txt` | Needs cNMF run |
+| `TF Universe` | `.tsv` | One row per unique TF whose promoter is in the guide library | Guide library (Layer 1) | ✅ project-wide at [`../reference/tf_universe.tsv`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/jamborees/2026_UTSW/reference/tf_universe.tsv) (1,951 TFs) |
+| `Element Universe` | `.bed` | BED of every genomic element targeted by the library | Guide library | ✅ project-wide at [`../reference/element_universe.bed`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/jamborees/2026_UTSW/reference/element_universe.bed) (2,260 elements) |
+| `Gene Universe` | `.tsv` | Two cols: `gene` (ENSG), `gene_symbol`. The HVG list cNMF was fit on. | `overdispersed_genes.txt` | ✅ per-dataset at `../datasets/<dataset>/dacc/gene_universe.tsv` (Huangfu DE + ESC landed) |
 | `Gene Programs` | `.tsv` | Cols: `program_id`, `gene`, `gene_symbol`, `score` (+ optional annotation). One file per cell type. | `gene_spectra_score.k_<sel>.dt_2_0.txt` | Needs cNMF run + reformat |
 | `Gene Program Regulators` | `.tsv` | Cols: `program_id`, `gene` (ENSG of perturbed gene), `gene_symbol`, `log2FC`, `reference_group`, `test_statistic`, `p_nominal_nlog10`, `fdr_nlog10`, `fdr_method`. | `<k>_perturbation_association_results_all.txt` | Needs cNMF run + reformat |
 | `Global differential expression` | `.tsv` | Per-perturbation × per-gene log2FC + significance. Two specs exist: pySpade-flavor (the Hon lab default) and a generic CRISPR-pipeline-flavor. | `perturbo_trans_per_element.tsv.gz` | Needs reformat per spec |
@@ -139,6 +139,6 @@ Any unchecked box should be tracked as a known gap on the dataset's status page.
 
 ## See also
 
-- [`docs/data/DACC.md`](../data/DACC.md) — DACC file-format audit (what specs exist, what's validated, what's open).
-- [`docs/jamborees/<event>/schemas/`](../jamborees/) — per-event JSON schemas for the canonical pipeline outputs (CRISPR pipeline, energy distance, cNMF).
+- [`docs/data/DACC.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/data/DACC.md) — DACC file-format audit (what specs exist, what's validated, what's open).
+- [`data/schemas/`](https://github.com/adamklie/tf_perturb_seq/tree/main/docs/jamborees/2026_UTSW/data/schemas) — per-event JSON schemas for the canonical pipeline outputs (CRISPR pipeline, energy distance, cNMF).
 - [`UNDERSTAND_CRISPR_OUTPUTS.md`](UNDERSTAND_CRISPR_OUTPUTS.md), [`UNDERSTAND_ENERGY_DISTANCE.md`](UNDERSTAND_ENERGY_DISTANCE.md), [`UNDERSTAND_CNMF_OUTPUTS.md`](UNDERSTAND_CNMF_OUTPUTS.md) — interpretation guides for each output type.

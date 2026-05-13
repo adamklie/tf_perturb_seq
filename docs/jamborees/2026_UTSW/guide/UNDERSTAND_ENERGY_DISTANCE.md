@@ -2,7 +2,7 @@
 
 Energy distance is the headline statistic for "did knocking down this TF move the transcriptome." It collapses thousands of single-cell profiles into one number per perturbation. Companion: [`UNDERSTAND_CRISPR_OUTPUTS.md`](UNDERSTAND_CRISPR_OUTPUTS.md), [`UNDERSTAND_CNMF_OUTPUTS.md`](UNDERSTAND_CNMF_OUTPUTS.md).
 
-For the pipeline reference (run commands, intermediate files), see [`docs/analysis/energy_dist/ENERGY_DISTANCE_OUTPUTS.md`](../analysis/energy_dist/ENERGY_DISTANCE_OUTPUTS.md). This doc is the **interpretation** layer.
+For the pipeline reference (run commands, intermediate files), see [`docs/analysis/energy_dist/ENERGY_DISTANCE_OUTPUTS.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/analysis/energy_dist/ENERGY_DISTANCE_OUTPUTS.md). This doc is the **interpretation** layer.
 
 ---
 
@@ -126,7 +126,7 @@ Some energy-distance runs produce **anti-conservative** p-values: all of the neg
 
 ---
 
-## What to look for (wet-lab takeaways)
+## What to look for (takeaways)
 
 1. **The top-distance TFs** for the cell type — these are the master regulators. In endoderm: SOX17, FOXH1. In cardiomyocytes: ISL1, TBX20, MEF2C. In endothelium: ETV2 (when run).
 2. **The "always-on" TFs** — TFs significant in *every* lineage. These tend to be basic-cellular-machinery factors (transcription apparatus, telomere maintenance) rather than lineage-specific.
@@ -140,4 +140,4 @@ Some energy-distance runs produce **anti-conservative** p-values: all of the neg
 
 - **Pipeline / method questions** — Chikara Takeuchi (UTSW): <https://github.com/Chikara-Takeuchi/energy_dist_pipeline>.
 - **Calibration issues** — Adam Klie (`aklie@ucsd.edu`).
-- **Project-specific context** — your dataset's lead in [`docs/TEAM.md`](../TEAM.md).
+- **Project-specific context** — your dataset's lead in [`docs/TEAM.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/TEAM.md).

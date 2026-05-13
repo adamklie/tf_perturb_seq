@@ -8,7 +8,7 @@ GTF.
 Re-run when the upstream GTF (`reference/IGVFFI9573KOZR.gtf.gz`) changes.
 
 Usage:
-    python scripts/build_gene_annotations.py
+    python reference/build_gene_annotations.py
 """
 
 from __future__ import annotations

@@ -4,7 +4,7 @@
 
 ## Questions
 
-From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
+From [`../WORKING_GROUPS.md`](../WORKING_GROUPS.md):
 
 - Identify which TFs regulate disease/GWAS genes in each lineage.
 - For TFs that are disease genes in multiple lineages, assess whether their activity is convergent or divergent.
@@ -20,7 +20,7 @@ From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
 
 ## Source choices
 
-- **Gene-disease associations**: HPO's `genes_to_disease.txt` (https://hpo.jax.org/, released alongside the HPO ontology). Provides per-gene disease IDs across MONDO + OMIM (the agreed Mondo-based sources). Pulled fresh via [`scripts/fetch_hpo_gene_disease.py`](../../../../scripts/fetch_hpo_gene_disease.py); cached at [`../../reference/gene_disease_associations.tsv`](../../reference/gene_disease_associations.tsv). 5,090 unique gene symbols → 512 overlap with our TF library.
+- **Gene-disease associations**: HPO's `genes_to_disease.txt` (https://hpo.jax.org/, released alongside the HPO ontology). Provides per-gene disease IDs across MONDO + OMIM (the agreed Mondo-based sources). Pulled fresh via [`reference/fetch_hpo_gene_disease.py`](../../../../reference/fetch_hpo_gene_disease.py); cached at [`../../reference/gene_disease_associations.tsv`](../../reference/gene_disease_associations.tsv). 5,090 unique gene symbols → 512 overlap with our TF library.
 
 > **⚠ Calibration caveat for ED-based fields**: same as WG1 — `distance_mean` is the trustworthy signal; `pval_mean` is anti-conservative for the Huangfu runs (see [`../../issues/edistance-calibration/`](../../issues/edistance-calibration/)).
 

@@ -16,7 +16,7 @@ columns auto-widen as new datasets land).
 Output: `working_groups/wg5_tf_family_case_studies/family_activity_scorecard.tsv`
 
 Usage:
-    python scripts/build_wg5_tf_family_scorecard.py
+    python working_groups/wg5_tf_family_case_studies/build_wg5_tf_family_scorecard.py
 """
 
 from __future__ import annotations

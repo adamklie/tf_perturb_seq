@@ -4,7 +4,7 @@
 
 ## Questions
 
-From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
+From [`../WORKING_GROUPS.md`](../WORKING_GROUPS.md):
 
 - Identify which guides are detected and show target repression in each system (cis inference outputs).
 - Summarize and compare general statistics (cell counts, gRNA and scRNA MOI, etc.) and data quality metrics (%mito counts) across datasets.

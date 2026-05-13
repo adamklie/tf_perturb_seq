@@ -4,7 +4,7 @@
 
 ## Questions
 
-From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
+From [`../WORKING_GROUPS.md`](../WORKING_GROUPS.md):
 
 - Integrate multiome data (E2G linking, ChromBPNet models) with TF-gene regulatory networks from Perturb-seq.
 - Compare TF importance inferred from multiome vs Perturb-seq; identify which TFs act through direct binding vs indirect mechanisms.

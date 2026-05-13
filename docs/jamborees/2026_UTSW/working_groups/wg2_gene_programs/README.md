@@ -4,7 +4,7 @@
 
 ## Questions
 
-From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
+From [`../WORKING_GROUPS.md`](../WORKING_GROUPS.md):
 
 - Extract gene programs for each production dataset; create a heatmap of loading similarities across programs, labeled by lineage of origin.
 - Identify programs highly similar across lineages (expected basic cellular processes) and annotate them.

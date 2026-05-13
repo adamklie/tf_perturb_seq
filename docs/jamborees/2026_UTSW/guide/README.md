@@ -1,8 +1,8 @@
-# For experimentalists — reading our CRISPRi Perturb-seq data
+# Analysis guide — reading our CRISPRi Perturb-seq data
 
-Hi! You've been handed (or asked to look at) results from a CRISPRi Perturb-seq experiment from this project. This folder is a 1-stop reference for understanding what's in the bundle and how to read each output, **without writing any code**.
+A 1-stop reference for what's in a CRISPRi Perturb-seq dataset bundle and how to read each output. Written so anyone walking into the jamboree — whether you live in JupyterLab or at the bench — can navigate the results, spot what matters, and pull the numbers you need.
 
-> This is the **generic** guide — it does not assume any specific dataset or jamboree. If you're a participant in a specific event (e.g. the 2026 UTSW jamboree), there will also be an event-specific dashboard (`docs/jamborees/<event>/communications/FOR_EXPERIMENTALISTS.md`) that lists the status of *that event's* datasets. Read this guide first; then go to the dashboard.
+> Pair this with the per-dataset status dashboard at [`../data/DATASET_STATUS.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/jamborees/2026_UTSW/data/DATASET_STATUS.md), which lists what's mirrored to Synapse for each production dataset in this event.
 
 ---
 
@@ -28,7 +28,6 @@ Keep these in the back of your head as you read the outputs.
 |---|---|
 | [`GLOSSARY.md`](GLOSSARY.md) | Plain-English definitions: cis, trans, perturbo, sceptre, NTC, MOI, knockdown, FDR, calibration, energy distance, cNMF program. |
 | [`DATA_FORMATS.md`](DATA_FORMATS.md) | What a `.h5mu` / `.h5ad` / `.tsv.gz` is and how to open one. What "AnnData" / "MuData" mean. Synapse / GCS / IGVF portal basics. |
-| [`QUICK_START.md`](QUICK_START.md) | Step-by-step: where to download, how to peek at the first table without code, and how to load one in Python or R if you want to. |
 | [`UNDERSTAND_CRISPR_OUTPUTS.md`](UNDERSTAND_CRISPR_OUTPUTS.md) | The IGVF CRISPR pipeline outputs: the dashboard HTML, inference MuData, perturbo cis/trans TSVs. What columns mean and when to trust a result. |
 | [`UNDERSTAND_ENERGY_DISTANCE.md`](UNDERSTAND_ENERGY_DISTANCE.md) | Per-target energy distance + permutation p-values. How to read the volcano / cutoff plots. The calibration caveat in one paragraph. |
 | [`UNDERSTAND_CNMF_OUTPUTS.md`](UNDERSTAND_CNMF_OUTPUTS.md) | cNMF gene programs. What a "program" is, how to find which programs your TF altered, the k-selection plot, top-loaded genes per program. |
@@ -40,10 +39,10 @@ Keep these in the back of your head as you read the outputs.
 
 ## How to use this guide
 
-1. **First time?** Read [`QUICK_START.md`](QUICK_START.md) — 10 minutes, then you can poke at a result file without code.
+1. **First time?** The [jamboree homebase](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/jamborees/2026_UTSW/README.md) has the env-setup and "load my first dataset" snippet — start there.
 2. **Looking at a specific output?** Open the matching `UNDERSTAND_*` file — they each have a "What you'll see" section followed by a "How to read it" section.
 3. **Stuck on a term?** [`GLOSSARY.md`](GLOSSARY.md) is alphabetical.
 4. **Wondering if a file is missing?** Check [`COMPLETE_DATASET_CONTENTS.md`](COMPLETE_DATASET_CONTENTS.md) — it lists what a fully-baked dataset should have.
-5. **Need to talk to someone?** Each `UNDERSTAND_*` doc ends with a "Who to ask" section. If in doubt, check [`docs/REFERENCES.md`](../REFERENCES.md) for Slack + GitHub issue pointers.
+5. **Need to talk to someone?** Each `UNDERSTAND_*` doc ends with a "Who to ask" section. If in doubt, check [`docs/REFERENCES.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/REFERENCES.md) for Slack + GitHub issue pointers.
 
 If you find anything confusing, that's a doc bug — please flag it in a GitHub issue so we can fix the explanation for the next reader.

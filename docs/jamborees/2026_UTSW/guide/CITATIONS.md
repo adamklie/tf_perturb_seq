@@ -85,4 +85,4 @@ Established the QC framework adopted by IGVF.
 
 ## Project-specific resources
 
-See [`docs/REFERENCES.md`](../REFERENCES.md) for the full project resource map (Slack, Synapse, internal Google Docs, GitHub).
+See [`docs/REFERENCES.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/REFERENCES.md) for the full project resource map (Slack, Synapse, internal Google Docs, GitHub).

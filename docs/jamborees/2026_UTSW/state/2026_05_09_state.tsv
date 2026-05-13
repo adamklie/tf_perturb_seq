@@ -1,6 +1,0 @@
-dataset_id	dataset_name	igvf_uploaded	crispr_pipeline	cnmf_programs	energy_distance
-Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq	Hon WTC11 Cardiomyocyte	yes	partial	no	no
-Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq	Huangfu HUES8 Definitive Endoderm	yes	yes	no	yes
-Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq	Huangfu HUES8 Embryonic Stem Cell	yes	yes	no	yes
-Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq	Gersbach WTC11 Hepatocyte	yes	partial	no	no
-Engreitz_WTC11-endothelial-cells_TF-Perturb-seq	Engreitz WTC11 Endothelial	no	no	no	no

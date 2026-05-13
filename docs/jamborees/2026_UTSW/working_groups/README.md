@@ -20,13 +20,13 @@ Status legend:
 | 5 | [`wg5_tf_family_case_studies/`](wg5_tf_family_case_studies/) | Topic 2.4 / Fig 4 | TF family activity scorecard; per-family pathway enrichment; family-specific case studies | [`wg5_tf_family_case_studies/examples.py`](wg5_tf_family_case_studies/examples.py) ✅ |
 | 6 | [`wg6_predictive_modeling/`](wg6_predictive_modeling/) | Topic 3 / Fig 5 | Model task spec; baseline model results | [`wg6_predictive_modeling/task_spec_template.md`](wg6_predictive_modeling/task_spec_template.md) 🤔 brainstorm |
 
-Scientific scope: [`../TOPICS.md`](../TOPICS.md), [`../WORKING_GROUPS.md`](../WORKING_GROUPS.md). Onboarding: [`../GETTING_STARTED.md`](../GETTING_STARTED.md).
+Scientific scope: [`TOPICS.md`](TOPICS.md), [`WORKING_GROUPS.md`](WORKING_GROUPS.md). Onboarding: [`../README.md`](../README.md).
 
 Each WG's `examples.py` imports shared loaders from [`_lib.py`](_lib.py) (dataset paths, reference TSVs, per-dataset companion files, optional Synapse-auth). Run any example end-to-end from the jamboree folder root with `uv run python working_groups/wg<N>_*/examples.py`.
 
 ## Quick-reference: all pre-computed WG artifacts (2026-05-11)
 
-For loading the underlying Synapse-mirrored bundles (CRISPR pipeline / cNMF / energy distance), see [`../GETTING_STARTED.md`](../GETTING_STARTED.md). The artifacts below are derivative roll-ups — open them directly in `pandas` / a spreadsheet to skip the upstream pull-and-process work.
+For loading the underlying Synapse-mirrored bundles (CRISPR pipeline / cNMF / energy distance), see [`../README.md`](../README.md). The artifacts below are derivative roll-ups — open them directly in `pandas` / a spreadsheet to skip the upstream pull-and-process work.
 
 ### Cross-dataset roll-ups (sized for slide decks)
 
@@ -61,8 +61,8 @@ For loading the underlying Synapse-mirrored bundles (CRISPR pipeline / cNMF / en
 
 ## Refresh / extend
 
-Each TSV has a corresponding `scripts/build_<artifact>.py` that re-runs the build off the upstream sources. Add a new dataset by:
+Each TSV has a corresponding per-WG `build_*.py` (under each `working_groups/wg<N>/`) that re-runs the build off the upstream sources. Add a new dataset by:
 
-1. Mirror its CRISPR pipeline / ED output to Synapse (via the corresponding `scripts/mirror_*.py`).
+1. Mirror its CRISPR pipeline / ED output to Synapse (via the corresponding `data/mirror_*.py`).
 2. Drop the per-dataset derivative TSVs under `datasets/<new_id>/<analysis>/` (the per-dataset build scripts handle this).
 3. Re-run the cross-dataset scripts (`build_wg1_tf_cross_lineage.py`, `build_wg3_disease_tf_activity.py`, `build_wg3_tf_convergence_scorecard.py`, `build_wg4_network_structure_by_lineage.py`, `build_wg5_tf_family_scorecard.py`). They all auto-discover datasets by filesystem scan — no code edits needed when new datasets land.

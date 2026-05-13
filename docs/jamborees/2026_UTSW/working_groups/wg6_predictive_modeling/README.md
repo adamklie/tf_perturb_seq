@@ -4,7 +4,7 @@
 
 ## Questions
 
-From [`../../WORKING_GROUPS.md`](../../WORKING_GROUPS.md):
+From [`../WORKING_GROUPS.md`](../WORKING_GROUPS.md):
 
 - Brainstorm model architectures that capitalize on TFP3 data as a training source (e.g., predicting context-specific TF perturbation impact).
 - Specifically define inputs, outputs, task, and validation metrics, and potentially begin implementation.

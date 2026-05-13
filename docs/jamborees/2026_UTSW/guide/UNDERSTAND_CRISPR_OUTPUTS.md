@@ -2,7 +2,7 @@
 
 The IGVF CRISPR pipeline ([github](https://github.com/IGVF/CRISPR_Pipeline)) takes raw single-cell data + a guide library and emits a structured bundle of QC, MuData, and differential-expression files. This doc explains what's in the bundle and how to read each piece. Companion: [`UNDERSTAND_ENERGY_DISTANCE.md`](UNDERSTAND_ENERGY_DISTANCE.md), [`UNDERSTAND_CNMF_OUTPUTS.md`](UNDERSTAND_CNMF_OUTPUTS.md).
 
-For the deeply technical pipeline walkthrough (run commands, GCP config, intermediate directories), see [`docs/analysis/crispr_pipeline/CRISPR_PIPELINE_OUTPUTS.md`](../analysis/crispr_pipeline/CRISPR_PIPELINE_OUTPUTS.md). This doc is the **interpretation** layer.
+For the deeply technical pipeline walkthrough (run commands, GCP config, intermediate directories), see [`docs/analysis/crispr_pipeline/CRISPR_PIPELINE_OUTPUTS.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/analysis/crispr_pipeline/CRISPR_PIPELINE_OUTPUTS.md). This doc is the **interpretation** layer.
 
 ---
 
@@ -136,7 +136,7 @@ A newer pipeline version (e.g. `seqspec_v3`) or a different cell line can shift 
 
 ---
 
-## What to look for (the wet-lab takeaways)
+## What to look for (the takeaways)
 
 These are the panels and rankings most useful to highlight in a presentation:
 
@@ -152,4 +152,4 @@ These are the panels and rankings most useful to highlight in a presentation:
 
 - **Pipeline details** — slack `#tf-perturb-enhancer-tiger-team` or the CRISPR_Pipeline GitHub issues.
 - **Calibration / inference internals** — Adam Klie (`aklie@ucsd.edu`).
-- **Specific dataset questions** — the dataset's lead in [`docs/TEAM.md`](../TEAM.md).
+- **Specific dataset questions** — the dataset's lead in [`docs/TEAM.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/TEAM.md).
