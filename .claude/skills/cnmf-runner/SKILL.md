@@ -81,15 +81,42 @@ For the column-mapping spec (gene var must have `symbol`, guide var needs `guide
 
 **Going forward:** use `Convert_file_adata.py --compute_umap` (the per-dataset variant under `<run>/cnmf/<cnmf_run_name>/Script/`). This bakes a UMAP into the input AnnData so it propagates through Stage 1 inference; obviates the post-hoc `inject_umap_into_h5mu` prep step. Reference implementation: `datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/.../Script/Convert_file_adata.py`.
 
-## Step 2: Stage 1 inference (external skill)
+## Step 2: Stage 1 inference
+
+**Always start from a known-working SLURM script and adapt — don't compose one from the pipeline's `--help`.** The pipeline has footguns (CPU fallthrough on a wrong kwarg signature, prepare-only-no-factorize mode) that the canonical scripts already side-step.
+
+### Canonical reference scripts (use as templates)
+
+| Scale | Reference script | Notes |
+|---|---|---|
+| Production (~270 k cells, e.g. DE / ESC) | [`datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/muddy_penguin/cnmf/Script/050926_HuangfuDE_20iter_5KHVG_torch_halsvar_batch.sh`](../../../datasets/Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/muddy_penguin/cnmf/Script/050926_HuangfuDE_20iter_5KHVG_torch_halsvar_batch.sh) | 128 GB / 72 h / A30 |
+| Benchmark (~50–100 k cells) | [`datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/cleanser_800_mito_15pc/cnmf/Script/torch-cNMF_batch.sh`](../../../datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/cleanser_800_mito_15pc/cnmf/Script/torch-cNMF_batch.sh) | 128 GB / 48 h / GPU; produced consensus.txt May 10 2026 |
+| Large (1 M+ cells, e.g. Hon CM / Hep) | Adapt the production template; bump `--mem` to 256–384 GB and `--time` to 24–36 h. |
+
+### Required flag set (copy from the templates)
+
+The pipeline's CPU path uses a re-dispatched `run_nmf(...)` whose kwargs **do not** match what `prepare()` builds. Always pass `--use_gpu` plus the exact kwarg set the templates carry — they are not optional:
 
 ```
-/perturbNMF-runner  (or pass keywords: "run cNMF inference torch")
+--algo halsvar --mode batch
+--init random --tol 1e-7 --use_gpu
+--batch_max_epoch 1000 --batch_hals_max_iter 1000 --batch_hals_tol 0.005
+--numiter 20 --numhvgenes 5000
+--categorical_key batch --gene_names_key symbol
+--sel_thresh 2.0                      # production; HTv2 used `0.2 2.0`
+--K 30 50 60 80 100 200 250 300       # TFP3 production K sweep
+--run_factorize --run_refit --run_compile_annotation
 ```
 
-Tell it: `--stage inference-torch`, your run name (convention: `MMDDYY_<short>_torchcnmf_<rationale>`), K sweep (default for TFP3 production: 30,50,60,80,100,200,250,300), and the Data/.h5ad input. The external skill walks you through `generate_slurm.py` and submission.
+SLURM-side, mirror the templates: `--partition=carter-gpu --gres=gpu:a30:1 --cpus-per-task=4 --mem={128..384}G --time={12..72}h`, write logs to `<run>/cnmf/Result/<run_name>/Inference/logs/%j.{out,err}`.
 
-For the compute budget (Stage 1: 3–5 h on A30, 96–128 GB RAM) see `references/03-compute-budget.md`. For TFP3-specific torch-cNMF defaults (5K HVG, 20 iterations, halsvar, batch correction), see Huangfu DE / ESC reference runs.
+### Known footguns (each cost ~10–20 min of compute when triggered)
+
+1. **Missing `--use_gpu`** → `TypeError: run_nmf() got an unexpected keyword argument 'batch_max_epoch'` at the `factorize` step. The CPU path re-dispatches to the installed `nmf` package (PyPI nmf-torch 0.1.1, shimmed under `nmf_torch/`) whose `run_nmf` doesn't accept the kwargs `prepare()` saved. Do NOT try to fix this by reinstalling nmf-torch or editing the shim — add `--use_gpu`. See [[nmf-torch-env-regression]] memory for the full mis-diagnosis history.
+2. **Missing `--run_factorize --run_refit --run_compile_annotation`** → pipeline does prepare only, writes `Inference.norm_counts.h5ad` + `Inference.tpm.h5ad` + `cnmf_tmp/`, prints `Pipeline finished.` in ~8 min, no spectra. Add the three flags; prepare reruns idempotently.
+3. **Old pipeline path (`src/Inference/torch-cNMF/...`)** → `python: can't open file ...`. Upstream restructured to `src/Stage1_Inference/torch-cNMF/...` (May 2026). Patch: `sed -i 's|src/Inference/torch-cNMF|src/Stage1_Inference/torch-cNMF|g' <script>.sh`. Same restructure applies to Stage 2 (`src/Stage2_Evaluation/...`) and Stage 3 (`src/Stage3_Interpretation/...`).
+
+For the per-stage compute budget see `references/03-compute-budget.md`. After a successful submit, check `squeue` after ~30 min — if `Elapsed` < 15 min in `sacct -j <jobid>`, suspect footgun #1 or #2 above and re-check the script before assuming the run is fast.
 
 ## Step 3: h5mu prep (if you didn't run --compute_umap upstream)
 

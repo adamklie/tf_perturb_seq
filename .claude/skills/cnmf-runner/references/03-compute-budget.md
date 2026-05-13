@@ -1,8 +1,29 @@
 # Compute budget (empirical, TFP3 production scale)
 
-Empirical SLURM resource budgets for ~190–270 k cell datasets at K = {30, 50, 60, 80, 100, 200, 250, 300} and sel_thresh = 2.0. Measured on UCSD nrnb in May 2026.
+Empirical SLURM resource budgets at K = {30, 50, 60, 80, 100, 200, 250, 300} and sel_thresh = 2.0. Measured on UCSD nrnb in May 2026.
 
 For canonical reference, see project memory `project_perturbnmf_compute_budget.md`.
+
+## Size → resource lookup table
+
+The DE/ESC budget tables below assume **~270 k cells × ~9.5 k genes × ~76% sparsity** (Huangfu DE = canonical reference run). Larger / denser datasets need more — scale roughly with `n_cells × n_genes × (1 - sparsity)` = nnz. Empirical characterization of the four production MuDatas (2026-05-12, `scratch/cnmf_logs/characterize_mudata.10864127.out`):
+
+| Dataset | n_cells | n_genes | gene nnz | sparse mem | n_batches | Conv RAM | Stage 1 RAM | Stage 1 GPU |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Huangfu DE (ref) | 269 k | 9 584 | 627 M | 5.0 GB | 8 | 22 GB → 128 GB alloc | 11 GB → 128 GB | A30 24 GB ok |
+| Huangfu ESC (ref) | ~270 k | ~9 500 | similar | similar | similar | same as DE | same as DE | A30 24 GB ok |
+| Hon CM (Weizhou) | **1 004 k** | 7 260 | 1 239 M | 9.9 GB | **26** | 80 GB → **256 GB alloc** | 40 GB → **256 GB** | A30 24 GB tight; consider A100 |
+| Hep (Sara) | **1 054 k** | 11 138 | **3 778 M** | **45.3 GB** | **47** | 84 GB → **384 GB alloc** | 42 GB → **384 GB** | A30 24 GB risky; **prefer A100** |
+
+`Conv RAM` is `n_cells × 5K HVG × 4 bytes × 4× overhead` (the converter densifies the HVG subset for the cnmf pre-flight filter). `Stage 1 RAM` is `n_cells × 5K HVG × 2×` (held by torch-cNMF on CPU side).
+
+**Rule of thumb**:
+- ≤300 k cells, sparsity ≥70% — 128 GB / 12 h / A30
+- 300 k–700 k cells — 192 GB / 18 h / A30
+- ≥700 k cells, ≤80% dense — 256 GB / 24 h / A30 or A100
+- ≥700 k cells, ≥80% dense (e.g. Hep) — **384 GB / 36 h / A100**
+
+The dense-vs-sparse ratio matters more than n_cells alone — Hep has a smaller cell count than Hon CM but a 4× denser matrix, so its actual disk + RAM footprint is much larger.
 
 ## Per-stage table
 
