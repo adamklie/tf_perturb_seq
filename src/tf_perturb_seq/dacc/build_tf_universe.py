@@ -10,9 +10,9 @@ Columns produced:
     n_guides      — how many guides target this TF (across all elements)
 
 Usage:
-    python -m tf_perturb_seq.dacc.build_tf_universe \\
+    PYTHONPATH=src uv run python -m tf_perturb_seq.dacc.build_tf_universe \\
         --guides ref/guide_libraries/harmonized/harmonized_guide_file_poolabcdf_ensg.tsv \\
-        --out ref/dacc/tf_universe.tsv
+        --out docs/jamborees/2026_UTSW/reference/tf_universe.tsv
 """
 from __future__ import annotations
 

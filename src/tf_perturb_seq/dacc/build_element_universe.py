@@ -19,9 +19,9 @@ negative controls when they have valid coordinates (drops the synthetic
 chrPC/chrNC entries used in our library for positive/negative controls).
 
 Usage:
-    python -m tf_perturb_seq.dacc.build_element_universe \\
+    PYTHONPATH=src uv run python -m tf_perturb_seq.dacc.build_element_universe \\
         --guides ref/guide_libraries/harmonized/harmonized_guide_file_poolabcdf_ensg.tsv \\
-        --out ref/dacc/element_universe.bed
+        --out docs/jamborees/2026_UTSW/reference/element_universe.bed
 """
 from __future__ import annotations
 

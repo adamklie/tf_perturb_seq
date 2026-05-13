@@ -11,11 +11,11 @@ this generator surfaces those misses explicitly so they can be fixed before
 submission instead of after.
 
 Usage:
-    python -m tf_perturb_seq.dacc.build_gene_universe \\
+    PYTHONPATH=src uv run python -m tf_perturb_seq.dacc.build_gene_universe \\
         --hvg datasets/<ds>/<run>/cnmf/Result/Inference/Inference.overdispersed_genes.txt \\
         --gtf ref/genome/IGVFFI9573KOZR.gtf.gz \\
-        --out ref/dacc/<ds>_gene_universe.tsv \\
-        --misses-out ref/dacc/<ds>_gene_universe.misses.tsv
+        --out docs/jamborees/2026_UTSW/datasets/<ds>/dacc/gene_universe.tsv \\
+        --misses-out docs/jamborees/2026_UTSW/datasets/<ds>/dacc/gene_universe.misses.tsv
 
 The HVG file is a plain one-symbol-per-line text file (cNMF default output).
 """
@@ -71,28 +71,33 @@ def build_gene_universe(hvg_path: Path, gtf_path: Path) -> tuple[pd.DataFrame, p
         raise ValueError(f"No HVG symbols found in {hvg_path}.")
 
     gtf_map = parse_gtf_symbol_map(gtf_path)
+    # Build two lookups. Symbols can collide across multiple ENSGs — take the
+    # first occurrence (deterministic by GTF order) for reproducibility.
+    sym_to_gene = (gtf_map.drop_duplicates(subset=["gene_symbol"])
+                   .set_index("gene_symbol")["gene"].to_dict())
+    gene_to_sym = gtf_map.set_index("gene")["gene_symbol"].to_dict()
 
-    df = pd.DataFrame({"input": hvg_syms}).drop_duplicates()
+    rows: list[tuple[str, str]] = []
+    misses: list[str] = []
+    seen_inputs: set[str] = set()
+    for sym in hvg_syms:
+        if sym in seen_inputs:
+            continue
+        seen_inputs.add(sym)
+        if sym in sym_to_gene:
+            rows.append((sym_to_gene[sym], sym))
+            continue
+        # Try ENSG-with-version form
+        stripped = re.sub(r"\.\d+$", "", sym)
+        if stripped in gene_to_sym:
+            rows.append((stripped, gene_to_sym[stripped]))
+            continue
+        misses.append(sym)
 
-    # Path 1: input looks like a gene_symbol — match against GTF gene_symbol
-    by_symbol = df.merge(gtf_map, left_on="input", right_on="gene_symbol", how="left")
+    universe = pd.DataFrame(rows, columns=["gene", "gene_symbol"]).drop_duplicates()
+    misses_df = pd.DataFrame({"gene_symbol": misses})
 
-    # Path 2: input looks like an ENSG (possibly with version) — match against GTF gene
-    df["ensg_stripped"] = df["input"].str.replace(r"\.\d+$", "", regex=True)
-    by_ensg = df.merge(gtf_map, left_on="ensg_stripped", right_on="gene", how="left")
-
-    # Combine: symbol match wins; fall back to ENSG match
-    combined = by_symbol.copy()
-    fallback_mask = combined["gene"].isna() & by_ensg["gene"].notna()
-    combined.loc[fallback_mask, "gene"] = by_ensg.loc[fallback_mask, "gene"]
-    combined.loc[fallback_mask, "gene_symbol"] = by_ensg.loc[fallback_mask, "gene_symbol"]
-
-    misses = combined[combined["gene"].isna()][["input"]].rename(
-        columns={"input": "gene_symbol"}
-    )
-    universe = combined.dropna(subset=["gene"])[["gene", "gene_symbol"]].drop_duplicates()
-
-    return universe.reset_index(drop=True), misses.reset_index(drop=True)
+    return universe.reset_index(drop=True), misses_df.reset_index(drop=True)
 
 
 def main(argv: list[str] | None = None) -> int:
