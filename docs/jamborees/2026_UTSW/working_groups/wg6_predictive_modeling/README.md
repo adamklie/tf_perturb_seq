@@ -1,4 +1,4 @@
-# WG6 (optional) — Predictive modeling
+# WG6 — Predictive modeling
 
 Topic 3 / Figure 5. The goal is to design and prototype a model trained on the uniformly processed TFP3 outputs that can predict context-specific TF-perturbation impact. WG6 is mostly in discussion mode for this jamboree: end-of-jamboree deliverables are a written task specification (inputs, outputs, validation metrics) and, if time allows, a baseline prototype.
 
