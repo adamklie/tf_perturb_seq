@@ -1,6 +1,10 @@
 # User defined
 memory/
 results/
+# Override for WG1 jamboree pipeline_qc deliverables (figures + small summary tables)
+!docs/jamborees/2026_UTSW/working_groups/wg1_data_qc/pipeline_qc/results/
+# Skip large per-cell dumps (regenerable from h5mu)
+docs/jamborees/2026_UTSW/working_groups/wg1_data_qc/pipeline_qc/results/**/per_cell_summary.tsv.gz
 runs/
 .DS_Store
 ._*
