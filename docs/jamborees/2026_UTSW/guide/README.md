@@ -1,8 +1,4 @@
-# Analysis guide — reading our CRISPRi Perturb-seq data
-
-A 1-stop reference for what's in a CRISPRi Perturb-seq dataset directory and how to read each output. Written so anyone walking into the jamboree — whether you live in JupyterLab or at the bench — can navigate the outputs and pull the numbers they need.
-
-> Pair this with the per-dataset directory at [`../data/`](../data/), which lists what's mirrored to Synapse for each production dataset in this event.
+# Analysis guide for CRISPRi Perturb-seq data
 
 ---
 
