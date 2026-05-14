@@ -22,7 +22,7 @@ Per-dataset cards live under [`../../data/`](../../data/). The planning artifact
 
 ## Issues
 
-- *[FILL IN issue link]*: Task spec — discussion mode; the group needs to agree on inputs, outputs, and validation metrics before any prototype is meaningful.
+- *[FILL IN issue link]*: Task spec
 
 ## Working flow
 

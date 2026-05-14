@@ -23,8 +23,8 @@ Per-dataset cards live under [`../../data/`](../../data/).
 
 ## Issues
 
-- [Issue #11](https://github.com/adamklie/tf_perturb_seq/issues/11): cross-dataset DEG count discrepancy. Matched WTC11 iPSC benchmarks show trans DEG counts varying several-fold across technologies while direct-target and cis hits stay consistent. Candidate causes include reads per cell, cells per element, pipeline QC, calibration sensitivity, and guide-assignment differences. Treat absolute trans-edge counts cautiously across datasets; per-gene effect-size correlation is the more comparable signal.
-- *[FILL IN issue link]*: Calibrated DE tables (per dataset) are deferred — plan and draft implementation live at [`../../../../../src/tf_perturb_seq/inference/calibrate.py`](../../../../../src/tf_perturb_seq/inference/calibrate.py).
+- [Issue #11](https://github.com/adamklie/tf_perturb_seq/issues/11)
+- *[FILL IN issue link]*: Calibrated DE tables
 
 ## Working flow
 

@@ -22,8 +22,8 @@ Gene-disease associations come from HPO's `genes_to_disease.txt` (MONDO + OMIM),
 
 ## Issues
 
-- *[FILL IN issue link]*: ED calibration caveat — `distance_mean` is the trustworthy signal; `pval_mean` is anti-conservative for the Huangfu runs. Use `distance_mean > NC max` as the calibration-robust significance proxy.
-- *[FILL IN issue link]*: GWAS variant overlay relies on an external GWAS catalog not yet staged in the repo.
+- *[FILL IN issue link]*: ED calibration
+- *[FILL IN issue link]*: GWAS variant overlay
 
 ## Working flow
 

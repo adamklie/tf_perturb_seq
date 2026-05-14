@@ -23,8 +23,8 @@ Family taxonomy uses `jaspar_tf_family` (curated, preferred) with fallback to `l
 
 ## Issues
 
-- *[FILL IN issue link]*: ED calibration caveat — `distance_mean > NC max` is the calibration-robust significance proxy used for family scorecards.
-- *[FILL IN issue link]*: Per-family ATAC/motif analysis and GWAS SNP overlay depend on the multiome stream and external GWAS catalog, neither staged in this folder.
+- *[FILL IN issue link]*: ED calibration
+- *[FILL IN issue link]*: Per-family ATAC/motif and GWAS SNP overlay
 
 ## Working flow
 

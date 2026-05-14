@@ -25,7 +25,7 @@ Per-dataset cards live under [`../../data/`](../../data/).
 
 ## Issues
 
-- *[FILL IN issue link]*: `pval_mean` is anti-conservative for the Huangfu energy-distance runs. Use `distance_mean > NC max` as the calibration-robust significance proxy.
+- *[FILL IN issue link]*: ED calibration
 
 ## Working flow
 
