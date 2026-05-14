@@ -16,9 +16,9 @@ Plain-language definitions. Italicized cross-references like *[NTC]* point at ot
 
 **CRISPRi (CRISPR interference)** — A version of CRISPR that *suppresses* a gene's expression without cutting the DNA. Uses a catalytically-dead Cas9 ("dCas9") tethered to a transcriptional repressor (e.g. KRAB) and a guide RNA targeting the gene's promoter. Knockdown is typically 70–95%.
 
-**dataset bundle** — All the files we package for one experiment (one cell type × one perturbation library × one lab). See [`COMPLETE_DATASET_CONTENTS.md`](COMPLETE_DATASET_CONTENTS.md).
+**dataset** — All the files we package for one experiment (one cell type × one perturbation library × one lab). See [`COMPLETE_DATASET_CONTENTS.md`](COMPLETE_DATASET_CONTENTS.md).
 
-**energy distance** — A statistic that measures how different two distributions of single-cell profiles are. "How different are the cells with TF X knocked down vs. the non-targeting baseline?" — answered in one number per TF. Bigger = the perturbation moved the transcriptome more. The associated p-value tests "is this distance significantly larger than what you'd see by chance?" See [`UNDERSTAND_ENERGY_DISTANCE.md`](UNDERSTAND_ENERGY_DISTANCE.md).
+**energy distance** — A statistic that measures how different two distributions of single-cell profiles are. "How different are the cells with TF X knocked down vs. the non-targeting baseline?" — answered in one number per TF. Bigger = the perturbation moved the transcriptome more. The associated p-value tests "is this distance significantly larger than what you'd see by chance?" See [`ENERGY_DISTANCE.md`](ENERGY_DISTANCE.md).
 
 **ENSG / Ensembl gene ID** — A stable identifier for a human gene, like `ENSG00000164853`. Different gene-name databases use different symbols (HGNC, GENCODE, UCSC), but ENSGs are stable across them.
 
@@ -32,13 +32,13 @@ Plain-language definitions. Italicized cross-references like *[NTC]* point at ot
 
 **h5ad** — File extension for a saved *[AnnData]*.
 
-**h5mu / MuData** — File extension for a saved **MuData** — a multi-modal extension of AnnData that holds *both* the RNA modality (cells × genes) *and* the guide modality (cells × guides) in one object. This is the canonical CRISPR-pipeline output. See [`DATA_FORMATS.md`](DATA_FORMATS.md).
+**h5mu / MuData** — File extension for a saved **MuData** — a multi-modal extension of AnnData that holds *both* the RNA modality (cells × genes) *and* the guide modality (cells × guides) in one object. This is the headline CRISPR-pipeline output. See [`DATA_FORMATS.md`](DATA_FORMATS.md).
 
 **HVG (highly variable genes)** — The subset of genes whose expression varies the most across cells in a dataset. cNMF runs on the top ~2,000 HVGs (other genes are too noisy or uninformative).
 
-**inference MuData** — The final MuData a CRISPR pipeline emits, containing the QC-filtered RNA + guide modalities with one cell per row, ready for downstream analysis. The canonical file is `inference_mudata.h5mu`.
+**inference MuData** — The final MuData a CRISPR pipeline emits, containing the QC-filtered RNA + guide modalities with one cell per row, ready for downstream analysis. The standard file is `inference_mudata.h5mu`.
 
-**intended target** — The gene a guide is supposed to knock down. Stored in the guide annotation column `intended_target_name` (a symbol like `SOX17`) or `intended_target_ensembl` (the ENSG).
+**intended target** — The gene a guide is supposed to knock down. Stored in the guide annotation column `intended_target_name` (an HGNC symbol) or `intended_target_ensembl` (the ENSG).
 
 **knockdown efficiency** — How much a guide actually suppresses its target's transcript (typically expressed as % suppression vs. NTC cells). Computed as part of *[QC]*.
 
@@ -60,7 +60,7 @@ Plain-language definitions. Italicized cross-references like *[NTC]* point at ot
 
 **Perturb-seq** — Single-cell RNA-seq where each cell also carries a guide RNA. After sequencing, each cell has both a gene-expression profile and a "which guide did it have" label.
 
-**sceptre** — An alternative differential-expression caller used in the IGVF CRISPR pipeline (alongside perturbo). The pipeline runs both; perturbo trans-DE is the canonical output we report.
+**sceptre** — An alternative differential-expression caller used in the IGVF CRISPR pipeline (alongside perturbo). The pipeline runs both; perturbo trans-DE is the headline output we report.
 
 **spacer / protospacer** — The 19–20-nt sequence within a guide RNA that matches the target genomic site.
 

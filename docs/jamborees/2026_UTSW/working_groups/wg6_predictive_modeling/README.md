@@ -1,27 +1,39 @@
 # WG6 (optional) — Predictive modeling
 
-**Topic 3 / Figure 5.** Goal: design and prototype a model trained on the uniformly processed TFP3 outputs that can predict context-specific TF-perturbation impact.
+Topic 3 / Figure 5. The goal is to design and prototype a model trained on the uniformly processed TFP3 outputs that can predict context-specific TF-perturbation impact. WG6 is mostly in discussion mode for this jamboree: end-of-jamboree deliverables are a written task specification (inputs, outputs, validation metrics) and, if time allows, a baseline prototype.
 
 ## Questions
 
-From [`../WORKING_GROUPS.md`](../WORKING_GROUPS.md):
+- What model architectures best capitalize on TFP3 data as a training source (e.g., predicting context-specific TF perturbation impact)?
+- What are the inputs, outputs, task definition, and validation metrics? Can implementation begin during the jamboree?
+- Alternatively, which existing tools from member labs can be applied to this data source?
 
-- Brainstorm model architectures that capitalize on TFP3 data as a training source (e.g., predicting context-specific TF perturbation impact).
-- Specifically define inputs, outputs, task, and validation metrics, and potentially begin implementation.
-- Alternatively, apply existing tools from member labs to this data source.
+## Data
 
-## Artifacts in this folder
+| Dataset | CRISPR pipeline | cNMF | Energy distance |
+|---|:---:|:---:|:---:|
+| Hon WTC11 Cardiomyocyte | caveat | blocked | ready |
+| Huangfu HUES8 Definitive Endoderm | ready | ready | caveat |
+| Huangfu HUES8 Embryonic Stem Cell | ready | ready | caveat |
+| Gersbach WTC11 Hepatocyte | caveat | blocked | blocked |
+| Engreitz WTC11 Endothelial | blocked | blocked | blocked |
 
-| ID | File | Status | What it answers | Source data |
-|---|---|---|---|---|
-| WG6-A | `model_task_spec.md` | ✅ ready (writeup) | Task statement, inputs, outputs, validation metrics — agreed at the jamboree | group discussion |
-| WG6-B | `baseline_model_results.tsv` (+ figures) | 🟡 partial | Per-lineage CV R², feature-importance ranking, predictions vs observations | per-dataset `pval_edist_full.csv` + `tf_metadata.tsv` + (eventually) cNMF cell-state features |
+Per-dataset cards live under [`../../data/`](../../data/). The planning artifact is [`task_spec_template.md`](task_spec_template.md) — fill it in with the group during the session.
 
-## Notes
+## Issues
 
-- WG6-A is a writeup deliverable agreed at the jamboree — not a derivative computation. The placeholder lives here so the folder has shape; participants fill it in during the session.
-- WG6-B is a prototype baseline (likely elastic-net or random forest on TF + gene features). Not the final model; mostly a feasibility demo.
+- *[FILL IN issue link]*: Task spec — discussion mode; the group needs to agree on inputs, outputs, and validation metrics before any prototype is meaningful.
 
-## Run the examples
+## Working flow
 
-No runnable examples yet — WG6 is in brainstorm stage. Start by filling out [`task_spec_template.md`](task_spec_template.md) with the group, then drop the prototype baseline as `wg6_baseline.py` next to it.
+Three steps, in order:
+
+1. **Brainstorm** — agree on the task specification (inputs, outputs, validation metrics); fill in [`task_spec_template.md`](task_spec_template.md). Sketch any baseline figures or model architectures that come up.
+2. **Execute** — if time allows, prototype a baseline; commit code (notebooks, scripts, the filled task spec) to this folder on GitHub.
+3. **Share** — upload reusable outputs (filled task spec, slides, prototype code, results) to WG6's Synapse folder [`syn74954086`](https://www.synapse.org/Synapse:syn74954086) (mirrored `working_groups/wg6_predictive_modeling/` under [`syn64423137/2026_UTSW/`](https://www.synapse.org/Synapse:syn64423137)). Record the syn ID for each upload in the [Outputs](#outputs) table below so the next person can find it.
+
+## Outputs
+
+| Object | Syn ID | Description | Owner |
+|---|---|---|---|
+| *[FILL IN as outputs land]* | | | |

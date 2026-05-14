@@ -8,13 +8,13 @@
   "bundle_path_synapse": "2026_UTSW/datasets/<dataset_id>/energy_distance/",
   "source_pipeline": {
     "current_runner": {
-      "wrapper": "scripts/run_energy_distance_pipeline.sh (UCSD nrnb edition; SLURM-driven by datasets/<dataset_id>/5_run_energy_distance.sh)",
-      "based_on": "https://github.com/Chikara-Takeuchi/energy_dist_TFperturb (Sara's Duke-HPC variant, adapted for nrnb /cellar paths + GCS source + idempotency)",
+      "wrapper": "scripts/run_energy_distance_pipeline.sh (SLURM-driven by datasets/<dataset_id>/5_run_energy_distance.sh)",
+      "based_on": "https://github.com/Chikara-Takeuchi/energy_dist_TFperturb (Sara's HPC variant, adapted with GCS source + idempotency)",
       "submodules": {
         "external/energy_dist_TFperturb": "Canonical upstream wrapper (Synapse-source preprocess_mudata.py + run_all_energy_distance_pipeline.sh template)",
         "external/energy_dist_pipeline": "Pipeline bin scripts (steps 0/1/2/2.1/3); pinned to an Adam-fork commit that still has the upstream `1_filtereing_gRNA.py` typo. Bump if/when adopting upstream main's GPU-OOM fallback + sgRNA downsampling for non-targeting."
       },
-      "container": "docker.io/takechikara/energy_distance_env:latest (apptainer .sif at /cellar/users/aklie/opt/containers/edist_pipeline.sif)",
+      "container": "docker.io/takechikara/energy_distance_env:latest (cached locally as an apptainer .sif on HPC)",
       "input": "Local file (default), GCS path (gs://...), or Synapse ID — controlled via --mudata-path / --gcs-mudata-path / --synapse-id flags.",
       "preprocess_steps": "Filter genes (min_counts>=1), normalize_total, log1p, scale, PCA (n_comps=50). Builds annotation_table.csv with `intended_target_name|chr:start-end` promoter labels. Implemented in scripts/preprocess_mudata_local.py (the local-input variant of upstream preprocess_mudata.py).",
       "steps": [
@@ -131,7 +131,7 @@
     "validation_tool": "scripts/validate_edistance_outputs.py (4-layer: file presence, CSV schema, value-range sanity, schema-identity vs HTv2 reference syn74381183)",
     "scaffold_examples_available": [
       "tf_perturb_seq/external/energy_dist_pipeline/pipeline_output/ (local; pipeline-author example outputs — used to spec the schema in this doc)",
-      "/cellar/users/aklie/projects/tf_perturb_seq/datasets/Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2/results/energy_distance/2026_04_08_prelim/ (HPC; preliminary run on a benchmark dataset)"
+      "Gersbach_WTC11-benchmark_TF-Perturb-seq_HTv2 preliminary run on 2026-04-08 (HPC scratch; mirrored to Synapse syn74381167)"
     ]
   },
   "known_issues": {

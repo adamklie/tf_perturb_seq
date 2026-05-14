@@ -46,7 +46,7 @@
   "source_locations": {
     "gcs_pattern": "gs://igvf-pertub-seq-pipeline-data/<dataset_id>/<YYYY_MM_DD>/outs/<run_label>/{pipeline_dashboard,pipeline_info,pipeline_outputs}/",
     "per_dataset": "See `experimental_metadata.tsv` -> gcs_output_path for each dataset's canonical run prefix.",
-    "hpc_note": "Some intermediate artifacts may also exist on the UCSD HPC under /cellar/users/aklie/projects/tf_perturb_seq/. The canonical source for the jamboree is GCS."
+    "note": "GCS is the canonical source for the jamboree. Intermediate artifacts may also exist on local HPC scratch but should not be used."
   },
   "mirroring": {
     "tool": "scripts/mirror_pipeline_outputs.py",

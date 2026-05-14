@@ -1,0 +1,134 @@
+"""WG3 examples — disease/GWAS-gene TFs, convergent vs divergent activity.
+
+Run from the jamboree root:
+
+    uv run python working_groups/wg3_disease_gwas/examples/examples.py
+"""
+from __future__ import annotations
+
+from pathlib import Path
+
+import pandas as pd
+
+JAMBOREE_ROOT = Path(__file__).resolve().parents[3]
+
+DATASETS = {
+    "HonCM": "Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq",
+    "HuangfuDE": "Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq",
+    "HuangfuESC": "Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq",
+    "GersbachHep": "Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq",
+    "EngreitzEndo": "Engreitz_WTC11-endothelial-cells_TF-Perturb-seq",
+}
+
+
+def load_disease_tf_activity():
+    return pd.read_csv(
+        JAMBOREE_ROOT / "working_groups/wg3_disease_gwas/examples/disease_tf_activity.tsv", sep="\t"
+    )
+
+
+def load_tf_convergence_scorecard():
+    return pd.read_csv(
+        JAMBOREE_ROOT / "working_groups/wg3_disease_gwas/examples/tf_convergence_scorecard.tsv", sep="\t"
+    )
+
+
+def load_gene_disease_associations():
+    return pd.read_csv(JAMBOREE_ROOT / "reference/gene_disease_associations.tsv", sep="\t")
+
+
+def load_tf_gene_edges(dataset):
+    full = DATASETS.get(dataset, dataset)
+    return pd.read_csv(
+        JAMBOREE_ROOT / "data" / full / "crispr_pipeline" / "wg4_tf_gene_edges_FDR05.tsv", sep="\t"
+    )
+
+
+def landed_datasets(scope):
+    rel = {
+        "wg1_significant_tfs": "energy_distance/wg1_significant_tfs.tsv",
+        "wg1_trans_target_counts": "crispr_pipeline/wg1_trans_target_counts.tsv",
+        "wg4_tf_gene_edges": "crispr_pipeline/wg4_tf_gene_edges_FDR05.tsv",
+    }[scope]
+    return [
+        short for short, full in DATASETS.items()
+        if (JAMBOREE_ROOT / "data" / full / rel).exists()
+    ]
+
+
+# §1 — Disease-flagged TFs, sorted by max distance across lineages ------------
+print("\n§1 Top-20 disease-flagged TFs by max distance across lineages")
+dta = load_disease_tf_activity()
+sig_cols = [c for c in dta.columns if c.startswith("sig_dist_gt_NC_max_")]
+dta["max_distance"] = dta[
+    [c for c in dta.columns if c.startswith("distance_mean_")]
+].max(axis=1)
+print(dta.sort_values("max_distance", ascending=False).head(20)[
+    ["gene_symbol", "jaspar_tf_family", "n_disease_associations",
+     "n_datasets_significant", "max_distance"]
+].to_string(index=False))
+
+
+# §2 — Convergence-class breakdown -------------------------------------------
+print("\n§2 Convergence-class counts (refined classification)")
+sc = load_tf_convergence_scorecard()
+print(sc["convergence_class"].value_counts().to_string())
+
+
+# §3 — Deep-dive: pick a convergent TF that actually has edges --------------
+# `intended_target_name` in the edges file is an ENSG ID, so we filter via the
+# `tf_gene_symbol` column. Pick the convergent TF with the most edges across
+# datasets (avoids picking a high-distance TF that doesn't survive FDR<0.05).
+convergent = sc[sc["convergence_class"].str.startswith("convergent", na=False)]
+landed_wg4 = landed_datasets("wg4_tf_gene_edges")
+target_tf = None
+if not convergent.empty and landed_wg4:
+    convergent_symbols = set(convergent["gene_symbol"])
+    edge_count = pd.Series(dtype=int)
+    for short in landed_wg4:
+        edges = load_tf_gene_edges(short)
+        sub = edges[edges["tf_gene_symbol"].isin(convergent_symbols)]
+        c = sub.groupby("tf_gene_symbol").size()
+        edge_count = edge_count.add(c, fill_value=0)
+    if not edge_count.empty:
+        target_tf = edge_count.sort_values(ascending=False).index[0]
+
+if target_tf:
+    print(f"\n§3 Downstream targets for {target_tf} per dataset (FDR<0.05)")
+    for short in landed_wg4:
+        edges = load_tf_gene_edges(short)
+        sub = edges[edges["tf_gene_symbol"] == target_tf]
+        n_targets = sub["gene_id"].nunique()
+        n_up = (sub["log2_fc"] > 0).sum()
+        n_down = (sub["log2_fc"] < 0).sum()
+        print(f"   {short:14s}  {n_targets:5d} targets  ({n_up} up, {n_down} down)")
+else:
+    print("\n§3 No convergent TF with landed edges yet.")
+
+
+# §4 — Disease-gene lookup ---------------------------------------------------
+print("\n§4 Disease associations for the deep-dive TF")
+gda = load_gene_disease_associations()
+if target_tf:
+    rows = gda[gda["gene_symbol"] == target_tf].head(10)
+    if rows.empty:
+        print(f"   No disease associations for {target_tf}.")
+    else:
+        print(rows.to_string(index=False))
+else:
+    print("   Skipped (no §3 deep-dive target).")
+
+
+# §5 — Cross-lineage discordant TFs ------------------------------------------
+print("\n§5 Discordant TFs (sig in some lineages but not others)")
+disc = sc[sc["convergence_class"].astype(str).str.contains("divergent", na=False)]
+print(f"   {len(disc)} divergent TFs total")
+print(disc.sort_values("distance_range", ascending=False).head(10)[
+    ["gene_symbol", "convergence_class", "min_distance_across_datasets",
+     "max_distance_across_datasets", "distance_range", "distance_max_over_min"]
+].to_string(index=False))
+
+print("\nCalibration caveat: Huangfu DE/ESC p-values are anti-conservative. "
+      "All classifications use `distance_mean > NC max` as the proxy. "
+      "Most 'divergent_HuangfuDE' calls reflect lower absolute distance in DE, "
+      "not a lineage-specific effect. Tracked at *[FILL IN issue link]*.")

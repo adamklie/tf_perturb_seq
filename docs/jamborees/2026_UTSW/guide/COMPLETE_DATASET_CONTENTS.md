@@ -1,16 +1,16 @@
 # Complete dataset contents
 
-What a "fully baked" CRISPRi Perturb-seq dataset should contain when handed off to a collaborator. Use this to spot-check whether a bundle is missing something.
+What a "fully baked" CRISPRi Perturb-seq dataset should contain when handed off to a collaborator. Use this to spot-check whether a dataset is missing something.
 
 This doc cross-references three things:
 
 1. **Our internal CRISPR-pipeline outputs** — what the IGVF pipeline emits.
-2. **The IGVF DACC submission spec** — what we have to deliver back to the consortium. See [`docs/data/DACC.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/data/DACC.md) for the source-of-truth audit.
+2. **The IGVF DACC submission spec** — what we have to deliver back to the consortium. See [`../../../data/DACC.md`](../../../data/DACC.md) for the source-of-truth audit.
 3. **The reference IGVF analysis set [IGVFDS6332VCTO](https://data.igvf.org/analysis-sets/IGVFDS6332VCTO/)** — Gary Hon's WTC11 cardiomyocyte dataset; a fully released example showing what a finished submission looks like.
 
 ---
 
-## The complete bundle, layer by layer
+## The complete dataset, layer by layer
 
 ### Layer 1 — Reference data (shared across all datasets in a project)
 
@@ -29,7 +29,7 @@ This doc cross-references three things:
 | Filtered feature-barcode matrix | `.hdf5` | Sparse cell × feature counts post-filter (whitelist + min counts) | CellRanger / pipeline filter step | `Filtered feature barcode matrix` |
 | Sparse gene count matrix | `.h5ad` | AnnData with the QC-passed cells × genes | `preprocessanndata/` | `Sparse gene count matrix` |
 
-In our pipeline, these usually live inside `pipeline_dashboard/` (the figures/dashboard staging area) and `pipeline_outputs/`.
+In our pipeline, these usually live inside `pipeline_dashboard/` (the figures and dashboard staging area) and `pipeline_outputs/`.
 
 ### Layer 3 — Inference MuData + perturbo (per dataset)
 
@@ -76,9 +76,9 @@ These don't come out of the pipelines directly — they're reformatted from upst
 
 | File | Format | What | Derived from | Status |
 |---|---|---|---|---|
-| `TF Universe` | `.tsv` | One row per unique TF whose promoter is in the guide library | Guide library (Layer 1) | ✅ project-wide at [`../reference/tf_universe.tsv`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/jamborees/2026_UTSW/reference/tf_universe.tsv) (1,951 TFs) |
-| `Element Universe` | `.bed` | BED of every genomic element targeted by the library | Guide library | ✅ project-wide at [`../reference/element_universe.bed`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/jamborees/2026_UTSW/reference/element_universe.bed) (2,260 elements) |
-| `Gene Universe` | `.tsv` | Two cols: `gene` (ENSG), `gene_symbol`. The HVG list cNMF was fit on. | `overdispersed_genes.txt` | ✅ per-dataset at `../datasets/<dataset>/dacc/gene_universe.tsv` (Huangfu DE + ESC landed) |
+| `TF Universe` | `.tsv` | One row per unique TF whose promoter is in the guide library | Guide library (Layer 1) | project-wide at [`../reference/tf_universe.tsv`](../reference/tf_universe.tsv) (1,951 TFs) |
+| `Element Universe` | `.bed` | BED of every genomic element targeted by the library | Guide library | project-wide at [`../reference/element_universe.bed`](../reference/element_universe.bed) (2,260 elements) |
+| `Gene Universe` | `.tsv` | Two cols: `gene` (ENSG), `gene_symbol`. The HVG list cNMF was fit on. | `overdispersed_genes.txt` | per-dataset at `../datasets/<dataset>/dacc/gene_universe.tsv` (Huangfu DE + ESC landed) |
 | `Gene Programs` | `.tsv` | Cols: `program_id`, `gene`, `gene_symbol`, `score` (+ optional annotation). One file per cell type. | `gene_spectra_score.k_<sel>.dt_2_0.txt` | Needs cNMF run + reformat |
 | `Gene Program Regulators` | `.tsv` | Cols: `program_id`, `gene` (ENSG of perturbed gene), `gene_symbol`, `log2FC`, `reference_group`, `test_statistic`, `p_nominal_nlog10`, `fdr_nlog10`, `fdr_method`. | `<k>_perturbation_association_results_all.txt` | Needs cNMF run + reformat |
 | `Global differential expression` | `.tsv` | Per-perturbation × per-gene log2FC + significance. Two specs exist: pySpade-flavor (the Hon lab default) and a generic CRISPR-pipeline-flavor. | `perturbo_trans_per_element.tsv.gz` | Needs reformat per spec |
@@ -93,11 +93,11 @@ For comparison, the [IGVFDS6332VCTO](https://data.igvf.org/analysis-sets/IGVFDS6
 
 | IGVF accession | File format | Content type | Status |
 |---|---|---|---|
-| [`IGVFFI3617IJOW`](https://data.igvf.org/tabular-files/IGVFFI3617IJOW/) | hdf5 | Filtered feature barcode matrix | Released ✅ |
-| [`IGVFFI4735RXPI`](https://data.igvf.org/tabular-files/IGVFFI4735RXPI/) | pkl | Raw feature barcode matrix | Released ✅ |
-| [`IGVFFI7637STPX`](https://data.igvf.org/tabular-files/IGVFFI7637STPX/) | h5ad | Sparse gene count matrix | Released ✅ |
-| [`IGVFFI5989UAVX`](https://data.igvf.org/tabular-files/IGVFFI5989UAVX/) | csv | Global differential expression (pySpade) | Released ✅ |
-| [`IGVFFI7298IERA`](https://data.igvf.org/tabular-files/IGVFFI7298IERA/) | csv | Local differential expression | Released ✅ |
+| [`IGVFFI3617IJOW`](https://data.igvf.org/tabular-files/IGVFFI3617IJOW/) | hdf5 | Filtered feature barcode matrix | Released |
+| [`IGVFFI4735RXPI`](https://data.igvf.org/tabular-files/IGVFFI4735RXPI/) | pkl | Raw feature barcode matrix | Released |
+| [`IGVFFI7637STPX`](https://data.igvf.org/tabular-files/IGVFFI7637STPX/) | h5ad | Sparse gene count matrix | Released |
+| [`IGVFFI5989UAVX`](https://data.igvf.org/tabular-files/IGVFFI5989UAVX/) | csv | Global differential expression (pySpade) | Released |
+| [`IGVFFI7298IERA`](https://data.igvf.org/tabular-files/IGVFFI7298IERA/) | csv | Local differential expression | Released |
 | [`IGVFFI0830FXFI`](https://data.igvf.org/tabular-files/IGVFFI0830FXFI/) | csv | Global differential expression (second) | In progress |
 | [`IGVFFI6966LMRS`](https://data.igvf.org/tabular-files/IGVFFI6966LMRS/) | csv | Gene universe | In progress |
 | [`IGVFFI9218RTDZ`](https://data.igvf.org/tabular-files/IGVFFI9218RTDZ/) | csv | Gene program regulators | In progress |
@@ -107,7 +107,7 @@ Workflows attached: **Hon Perturb-seq Workflow** (IGVFWF0190YALU; released) + **
 
 ---
 
-## "Is my bundle complete?" — checklist
+## "Is my dataset complete?" — checklist
 
 Mark each box for your dataset:
 
@@ -139,6 +139,6 @@ Any unchecked box should be tracked as a known gap on the dataset's status page.
 
 ## See also
 
-- [`docs/data/DACC.md`](https://github.com/adamklie/tf_perturb_seq/blob/main/docs/data/DACC.md) — DACC file-format audit (what specs exist, what's validated, what's open).
-- [`data/schemas/`](https://github.com/adamklie/tf_perturb_seq/tree/main/docs/jamborees/2026_UTSW/data/schemas) — per-event JSON schemas for the canonical pipeline outputs (CRISPR pipeline, energy distance, cNMF).
-- [`UNDERSTAND_CRISPR_OUTPUTS.md`](UNDERSTAND_CRISPR_OUTPUTS.md), [`UNDERSTAND_ENERGY_DISTANCE.md`](UNDERSTAND_ENERGY_DISTANCE.md), [`UNDERSTAND_CNMF_OUTPUTS.md`](UNDERSTAND_CNMF_OUTPUTS.md) — interpretation guides for each output type.
+- [`../../../data/DACC.md`](../../../data/DACC.md) — DACC file-format audit (what specs exist, what's validated, what's open).
+- [`../data/schemas/`](../data/schemas/) — per-event JSON schemas for the agreed-on pipeline outputs (CRISPR pipeline, energy distance, cNMF).
+- [`CRISPR.md`](CRISPR.md), [`ENERGY_DISTANCE.md`](ENERGY_DISTANCE.md), [`CNMF.md`](CNMF.md) — interpretation guides for each output type.

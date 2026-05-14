@@ -2,6 +2,8 @@
 
 IGVF consortium project: CRISPRi Perturb-seq of ~2000 TFs across multiple human cell lineages.
 
+IMPORTANT NOTE: Always use this style guide when applicable: tf_perturb_seq/docs/STYLE_GUIDE.md
+
 ## Workflow
 
 **GitHub Project**: [TFP3](https://github.com/users/adamklie/projects/4) — milestones as draft items, issues as tasks

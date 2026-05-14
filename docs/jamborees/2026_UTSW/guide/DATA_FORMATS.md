@@ -76,7 +76,7 @@ with open("file.pkl", "rb") as f:
     obj = pickle.load(f)
 ```
 
-⚠ **Security note**: never `pickle.load` a file you don't trust — pickles can execute arbitrary code.
+**Security note**: never `pickle.load` a file you don't trust — pickles can execute arbitrary code.
 
 ---
 
@@ -98,7 +98,7 @@ A 3+ column tab-delimited format for genomic coordinates: `chrom`, `start`, `end
 
 ## GTF — Gene annotation
 
-Tab-delimited gene-coordinate file from GENCODE/Ensembl. Tells you where each gene's exons/transcripts live in the genome. We use a single canonical IGVF GTF across the project; you'll rarely need to crack it open.
+Tab-delimited gene-coordinate file from GENCODE/Ensembl. Tells you where each gene's exons/transcripts live in the genome. We use a single project-standard IGVF GTF; you'll rarely need to crack it open.
 
 **Open in Python:** `pyranges.read_gtf("file.gtf.gz")` or `pandas.read_csv` with `sep="\t"` and comment-line filtering.
 
@@ -142,6 +142,6 @@ Tab-delimited gene-coordinate file from GENCODE/Ensembl. Tells you where each ge
 | Per-perturbation × per-gene TSV (perturbo trans) | 1–10 GB | Millions of rows (n_perturbations × n_genes); reasonable to filter before downloading. |
 | `inference_mudata.h5mu` | 10–30 GB | All cells × all genes + guide matrix + dim-reductions. |
 | Pipeline dashboard | 30–60 GB | Includes raw count matrices + figures. |
-| cNMF bundle (selected k) | 5–7 GB | Integrated MuData + loadings + cell usages. |
+| cNMF run (selected k) | 5–7 GB | Integrated MuData + loadings + cell usages. |
 
 If a file isn't loading on your laptop, check the size first — it might be a server-side file you should subset before downloading.

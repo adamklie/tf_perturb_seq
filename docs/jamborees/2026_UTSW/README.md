@@ -1,9 +1,6 @@
-# 2026 UTSW Jamboree — start here
+# 2026 UTSW Jamboree
 
-CRISPRi Perturb-seq of ~2,000 TFs across five human cell lineages. We've packaged the data, mirrored everything to Synapse, written a participant guide, and rolled up cross-dataset summaries per working group. This page tells you where to go for what you need.
-
-> **Online docs**: published participant guide → [tf-perturb-seq.readthedocs.io](https://tf-perturb-seq.readthedocs.io/) *(URL active once the first RTD build completes)*.
-
+CRISPRi Perturb-seq of ~2,000 TFs across five human cell lineages. We've packaged the data, mirrored everything to Synapse, written a participant guide, and set up a GitHub + Synapse folder per working group. This page tells you where to go for what you need and how a typical WG runs at the jamboree.
 ---
 
 ## Logistics
@@ -20,34 +17,38 @@ CRISPRi Perturb-seq of ~2,000 TFs across five human cell lineages. We've package
 | **Synapse project root** | [`syn64423137/2026_UTSW/`](https://www.synapse.org/Synapse:syn64423137) |
 | **Day-of contact** | Adam Klie (`aklie@ucsd.edu`) |
 
+## How the jamboree works
+
+Each working group runs through the same three steps:
+
+1. **Brainstorm** — sketch the analyses the group wants to accomplish: example figures, summary tables, pseudocode. Capture this in a notebook, doc, or notes in your WG folder.
+2. **Execute** — run the analyses; commit code to your WG's GitHub folder under [`working_groups/wg<N>_*/`](working_groups/). Notebooks, scripts, and supporting docs all live there.
+3. **Share** — upload reusable objects (figures, tables, intermediate data) to your WG's Synapse folder, and record the syn ID in your WG README so the next person can find it. The [Synapse IDs at a glance](#synapse-ids-at-a-glance) table below has all the starting points.
+
 ## I want to…
 
 | …do this | …go here |
 |---|---|
 | Understand what the outputs mean | [`guide/`](guide/) — glossary, FAQ, per-output interpretation |
-| See what's available per dataset | [`data/DATASET_STATUS.md`](data/DATASET_STATUS.md) |
+| See what's available per dataset | [`data/README.md`](data/README.md) |
 | Pick a working group | [`working_groups/README.md`](working_groups/README.md) |
-| See the scientific scope | [`working_groups/TOPICS.md`](working_groups/TOPICS.md) + [`working_groups/WORKING_GROUPS.md`](working_groups/WORKING_GROUPS.md) |
 | Set up my environment + Synapse | [Set up your environment](#set-up-your-environment) below |
-| Use Claude Code with this repo | [`CLAUDE_QUICKSTART.md`](CLAUDE_QUICKSTART.md) |
-| Find Synapse IDs for every output | [`data/synapse_paths.tsv`](data/synapse_paths.tsv) |
-| Drill into a single dataset | [`data/<dataset>/`](data/) (per-dataset READMEs + per-analysis subdirs) |
-| Find DACC-spec deliverables | [`data/<dataset>/dacc/`](data/) for gene_universe; [`reference/tf_universe.tsv`](reference/tf_universe.tsv) + [`reference/element_universe.bed`](reference/element_universe.bed) for the library |
+| Drill into a single dataset | [`data/<dataset>/`](data/) (per-dataset READMEs) |
+| Find DACC-spec deliverables | [`reference/tf_universe.tsv`](reference/tf_universe.tsv) + [`reference/element_universe.bed`](reference/element_universe.bed) for the library; per-dataset gene_universe files live on Synapse |
+| Look up a Synapse ID | [Synapse IDs at a glance](#synapse-ids-at-a-glance) below |
 | Report a blocker / open question | [GitHub Issues](https://github.com/adamklie/tf_perturb_seq/issues) |
-| Know who works on what | [`docs/TEAM.md`](../../TEAM.md) |
-| See cross-dataset summaries (slide-deck-sized) | [`reference/cross_dataset_pipeline_summary.tsv`](reference/cross_dataset_pipeline_summary.tsv) + [`reference/cross_dataset_edistance_summary.tsv`](reference/cross_dataset_edistance_summary.tsv) |
 
 ## Datasets at a glance
 
 | Dataset | CRISPR pipeline | cNMF | Energy distance |
 |---|:---:|:---:|:---:|
-| Hon WTC11 Cardiomyocyte | ⚠ | ☐ | ✅ |
-| Huangfu HUES8 Definitive Endoderm | ✅ | ✅ | ⚠ |
-| Huangfu HUES8 Embryonic Stem Cell | ✅ | ✅ | ⚠ |
-| Gersbach WTC11 Hepatocyte | ⚠ | ☐ | ☐ |
-| Engreitz WTC11 Endothelial | ☐ | ☐ | ☐ |
+| Hon WTC11 Cardiomyocyte | ready | - | ready |
+| Huangfu HUES8 Definitive Endoderm | ready | ready | ready |
+| Huangfu HUES8 Embryonic Stem Cell | ready | ready | ready |
+| Gersbach WTC11 Hepatocyte | ready | - | ready |
+| Engreitz WTC11 Endothelial | - | - | - |
 
-✅ on Synapse, ready • ⚠ on Synapse with a known caveat • ☐ blocked. Full per-dataset cards: [`data/DATASET_STATUS.md`](data/DATASET_STATUS.md).
+Full per-dataset cards: [`data/README.md`](data/README.md) (and each dataset's own `README.md`).
 
 ## Working groups
 
@@ -60,13 +61,74 @@ CRISPRi Perturb-seq of ~2,000 TFs across five human cell lineages. We've package
 | 5 | [`wg5_tf_family_case_studies/`](working_groups/wg5_tf_family_case_studies/) | Topic 2.4 / Fig 4 | TF family activity scorecard; per-family deep-dives |
 | 6 (opt) | [`wg6_predictive_modeling/`](working_groups/wg6_predictive_modeling/) | Topic 3 / Fig 5 | Predictive model task spec |
 
-Each WG folder has its own README, pre-computed roll-up TSVs, and an `examples.py` showing how to load + filter the data.
+Each WG folder has its own README with scope, lead questions, dataset status, and the WG's Synapse output folder.
+
+## Synapse IDs at a glance
+
+Everything lives under the [`syn64423137`](https://www.synapse.org/Synapse:syn64423137) project root.
+
+**Project + jamboree folders**
+
+| Object | Syn ID |
+|---|---|
+| Project root (`tf_perturb_seq`) | [`syn64423137`](https://www.synapse.org/Synapse:syn64423137) |
+| 2026 UTSW jamboree folder | [`syn74834225`](https://www.synapse.org/Synapse:syn74834225) |
+| Working groups root | [`syn74954078`](https://www.synapse.org/Synapse:syn74954078) |
+
+**Working-group output folders** (upload your WG's deliverables here)
+
+| Working group | Syn ID |
+|---|---|
+| WG1 — data QC | [`syn74954079`](https://www.synapse.org/Synapse:syn74954079) |
+| WG2 — gene programs | [`syn74954081`](https://www.synapse.org/Synapse:syn74954081) |
+| WG3 — disease and GWAS | [`syn74954083`](https://www.synapse.org/Synapse:syn74954083) |
+| WG4 — GRN inference | [`syn74954084`](https://www.synapse.org/Synapse:syn74954084) |
+| WG5 — TF family case studies | [`syn74954085`](https://www.synapse.org/Synapse:syn74954085) |
+| WG6 — predictive modeling | [`syn74954086`](https://www.synapse.org/Synapse:syn74954086) |
+
+**Reference data**
+
+| Object | Syn ID |
+|---|---|
+| TF metadata (`tf_metadata.tsv`) | [`syn74834227`](https://www.synapse.org/Synapse:syn74834227) |
+| Experimental metadata (`experimental_metadata.tsv`) | [`syn74834309`](https://www.synapse.org/Synapse:syn74834309) |
+| Guide library (`IGVFFI8270UPKB.csv.gz`) | [`syn74834519`](https://www.synapse.org/Synapse:syn74834519) |
+TODO
+
+**Per-dataset CRISPR pipeline outputs**
+
+| Dataset | Syn ID |
+|---|---|
+| Huangfu HUES8 Definitive Endoderm | [`syn74834952`](https://www.synapse.org/Synapse:syn74834952) |
+| Huangfu HUES8 Embryonic Stem Cell | [`syn74835010`](https://www.synapse.org/Synapse:syn74835010) |
+| Hon WTC11 Cardiomyocyte | *[FILL IN]* |
+| Gersbach WTC11 Hepatocyte | *[FILL IN]* |
+| Engreitz WTC11 Endothelial | *[FILL IN]* |
+
+Per-dataset cards (with cNMF + energy-distance Synapse pointers as they land) are under [`data/<dataset>/README.md`](data/).
 
 ---
 
 ## Set up your environment
 
-### 1. Synapse access
+### 0. Install uv
+
+[`uv`](https://github.com/astral-sh/uv) is the Python package manager this project uses. Install it with `pip`, `brew`, or the official installer (see the [uv install docs](https://docs.astral.sh/uv/getting-started/installation/)):
+
+```bash
+pip install uv
+```
+
+### 1. Clone the repo + Python env
+
+```bash
+git clone https://github.com/adamklie/tf_perturb_seq.git
+cd tf_perturb_seq
+uv venv && source .venv/bin/activate
+uv pip install mudata anndata scanpy pandas synapseclient
+```
+
+### 2. Synapse access
 
 ```bash
 # Get a token at https://www.synapse.org/Profile:v/settings ("Personal Access Tokens")
@@ -78,15 +140,6 @@ export SYNAPSE_AUTH_TOKEN="<your-token>"
 import os, synapseclient
 syn = synapseclient.Synapse()
 syn.login(authToken=os.environ["SYNAPSE_AUTH_TOKEN"], silent=True)
-```
-
-### 2. Clone the repo + Python env
-
-```bash
-git clone https://github.com/adamklie/tf_perturb_seq.git
-cd tf_perturb_seq
-uv venv && source .venv/bin/activate
-uv pip install mudata anndata scanpy pandas synapseclient
 ```
 
 ### 3. Load reference data
@@ -108,21 +161,11 @@ guides = pd.read_csv(syn.get("syn74834519").path, sep="\t")
 
 ```python
 import mudata as md
-# Huangfu DE example — Synapse syn74834952 (find inference_mudata.h5mu under pipeline_dashboard/)
-mu_path = syn.get("syn-id-of-inference_mudata.h5mu").path
-mdata = md.read_h5mu(mu_path)
+# Huangfu DE example — Synapse syn74834952; find inference_mudata.h5mu under pipeline_dashboard/
+inf_id = "syn-id-of-inference_mudata.h5mu"  # syn ID of the .h5mu file inside pipeline_dashboard/
+mdata = md.read_h5mu(syn.get(inf_id).path)
 print(mdata.mod["gene"].shape)              # n_cells × n_genes
 print(mdata.mod["guide"].shape)             # n_cells × n_guides
 ```
 
-Deeper walkthroughs: [`guide/UNDERSTAND_CRISPR_OUTPUTS.md`](guide/UNDERSTAND_CRISPR_OUTPUTS.md), [`guide/UNDERSTAND_ENERGY_DISTANCE.md`](guide/UNDERSTAND_ENERGY_DISTANCE.md), [`guide/UNDERSTAND_CNMF_OUTPUTS.md`](guide/UNDERSTAND_CNMF_OUTPUTS.md).
-
----
-
-## Where to ask for help
-
-- **Slack**: `#tf-perturb-enhancer-tiger-team`
-- **GitHub Issues**: <https://github.com/adamklie/tf_perturb_seq/issues>
-- **Online docs**: [tf-perturb-seq.readthedocs.io](https://tf-perturb-seq.readthedocs.io/)
-- **Who works on what**: [`docs/TEAM.md`](../../TEAM.md)
-- **Day-of**: Adam Klie (`aklie@ucsd.edu`)
+See [Synapse IDs at a glance](#synapse-ids-at-a-glance) for the per-dataset Synapse IDs and what's landed so far. Deeper walkthroughs: [`guide/CRISPR.md`](guide/CRISPR.md), [`guide/ENERGY_DISTANCE.md`](guide/ENERGY_DISTANCE.md), [`guide/CNMF.md`](guide/CNMF.md).

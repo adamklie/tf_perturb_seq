@@ -1,44 +1,48 @@
-# WG2 — Gene program annotation & interpretation
+# WG2 — Gene program annotation and interpretation
 
-**Topic 2.1 / Figure 2.** Goal: biological questions about TF activity across lineages — which programs are conserved, which are lineage-specific, who regulates them.
+Topic 2.1 / Figure 2. The goal is to use cNMF gene programs to ask biological questions about TF activity across lineages: which programs are conserved, which are lineage-specific, and who regulates them. End-of-jamboree deliverables include a cross-lineage program similarity panel, a shortlist of annotated lineage-shared and lineage-specific programs, and per-program regulator summaries for the lineages with cNMF available.
 
 ## Questions
 
-From [`../WORKING_GROUPS.md`](../WORKING_GROUPS.md):
+- Extract gene programs per dataset and cluster them by loading similarity across lineages.
+- Identify programs that are highly similar across lineages (basic cellular processes) and annotate them.
+- Identify lineage-specific programs and ask whether they correspond to lineage-specific biology.
+- For shared programs, which perturbations alter program usage in the same direction? Which TFs contribute to lineage-agnostic vs lineage-specific programs?
+- Within each lineage, which TFs are the strongest regulators of each program?
+- Do shared programs share regulators or have distinct ones?
+- Do any TFs contribute to lineage bifurcations?
+- (Stretch) Map programs to in-vivo counterparts; apply Percoder to assess perturbation sensitivity of programs across lineages.
 
-- Extract gene programs for each production dataset; create a heatmap of loading similarities across programs, labeled by lineage of origin.
-- Identify programs highly similar across lineages (expected basic cellular processes) and annotate them.
-- Identify lineage-specific programs and assess whether they correspond to lineage-specific biological processes.
-- (Stretch) Assess whether gene programs can be mapped to in-vivo counterparts.
-- For programs shared across lineages: which perturbations alter program usage in the same direction? Which TFs contribute to lineage-agnostic vs. lineage-specific programs?
-- Within lineages: identify regulators of each program (barplot or heatmap of TF perturbations associated with each program).
-- For shared programs: do they share regulators, or have distinct ones? Pull out interesting case studies.
-- Assess whether any TFs contribute to lineage bifurcations.
-- Apply Percoder to assess perturbation sensitivity of programs across lineages.
+## Data
 
-## Artifacts in this folder
+WG2 is gated on cNMF availability.
 
-| ID | File | Status | What it answers | Source data |
-|---|---|---|---|---|
-| WG2-C | `program_similarity_matrix.tsv` (+ wide-form heatmap data) | 🟡 partial (DE × ESC only) | All-vs-all cosine similarity of program loadings across datasets | per-dataset `gene_spectra_score.k_<sel>.dt_2_0.txt` |
-| WG2-D | `program_classification.tsv` | 🟡 partial | Each program classified as lineage_shared / lineage_specific / cell_state_program | WG2-C similarity matrix |
-| WG2-E | `program_annotation_worksheet.tsv` | 🤔 discussion | Pre-filled worksheet for group hand-curation of program names + biology | WG2-A top-genes + GO enrichment |
+| Dataset | cNMF |
+|---|:---:|
+| Hon WTC11 Cardiomyocyte | blocked |
+| Huangfu HUES8 Definitive Endoderm | ready |
+| Huangfu HUES8 Embryonic Stem Cell | ready |
+| Gersbach WTC11 Hepatocyte | blocked |
+| Engreitz WTC11 Endothelial | blocked |
 
-## Per-dataset companions (under `datasets/<dataset>/cnmf/<run_name>/`)
+Per-dataset cards live under [`../../data/`](../../data/).
 
-| Artifact | Path pattern | Status |
-|---|---|---|
-| WG2-A Top-N genes per program | `datasets/<dataset>/cnmf/<run_name>/wg2_top_genes_per_program.tsv` | 🟡 ready for Huangfu DE/ESC (Synapse syn74895462 / syn74895475) |
-| WG2-B Regulators per program | `datasets/<dataset>/cnmf/<run_name>/wg2_regulators_per_program.tsv` | 🟡 ready for Huangfu DE/ESC (perturbation_association_results files exist) |
+## Issues
 
-## Blockers
+- *[FILL IN issue link]*: Hon CM cNMF not yet run — production launch pre-staged, gated on validating the HTv2 testbed.
+- *[FILL IN issue link]*: Gersbach Hep cNMF — awaiting Sara's deliverables.
+- *[FILL IN issue link]*: Engreitz Endo cNMF — blocked on portal data.
 
-- **Hon CM cNMF**: not run yet — production launch pre-staged but held; gated on validating the HTv2 testbed (`docs/jamborees/2026_UTSW/issues/htv2-cnmf-testbed.md`).
-- **Gersbach Hep cNMF**: awaiting Sara's deliverables (`docs/jamborees/2026_UTSW/issues/gersbach-hep-deliverables.md`).
-- **Engreitz cNMF**: blocked on portal data (`docs/jamborees/2026_UTSW/issues/engreitz-no-data.md`).
+## Working flow
 
-## Run the examples
+Three steps, in order:
 
-[`examples.py`](examples.py) is currently **gated** — it prints the recipes for each step (load `gene_spectra_score`, build similarity matrix, classify programs, extract top-N genes, regulators per program) and points at the code to run once cNMF bundles are mirrored. Replace the `print(...)` blocks with the indented code as data lands.
+1. **Brainstorm** — sketch example figures, summary tables, and pseudocode that answer the questions above. Capture this in a notebook, doc, or notes in this folder.
+2. **Execute** — run the analyses; commit code (notebooks, scripts, supporting docs) to this folder on GitHub.
+3. **Share** — upload reusable outputs (figures, tables, intermediate data) to WG2's Synapse folder [`syn74954081`](https://www.synapse.org/Synapse:syn74954081) (mirrored `working_groups/wg2_gene_programs/` under [`syn64423137/2026_UTSW/`](https://www.synapse.org/Synapse:syn64423137)). Record the syn ID for each upload in the [Outputs](#outputs) table below so the next person can find it.
 
-Run as-is: `uv run python working_groups/wg2_gene_programs/examples.py` — it'll print the recipes without computing anything.
+## Outputs
+
+| Object | Syn ID | Description | Owner |
+|---|---|---|---|
+| *[FILL IN as outputs land]* | | | |
