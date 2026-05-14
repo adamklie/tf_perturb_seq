@@ -29,8 +29,8 @@ Per-dataset cards live under [`../../data/`](../../data/).
 
 ## Issues
 
-- *[FILL IN issue link]*: Hon CM cNMF not yet run — production launch pre-staged, gated on validating the HTv2 testbed.
-- *[FILL IN issue link]*: Gersbach Hep cNMF — awaiting Sara's deliverables.
+- *[FILL IN issue link]*: Hon CM cNMF not yet run
+- *[FILL IN issue link]*: Gersbach Hep cNMF not yet run
 - *[FILL IN issue link]*: Engreitz Endo cNMF — blocked on portal data.
 
 ## Working flow
