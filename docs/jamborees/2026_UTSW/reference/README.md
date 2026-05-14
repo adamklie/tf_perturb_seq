@@ -17,26 +17,6 @@ Simpler `_simplified` variants of `tf_metadata` and `experimental_metadata` live
 | [`tf_universe.tsv`](tf_universe.tsv) | DACC-spec TF universe deliverable for the guide library | *[FILL IN]* | *[FILL IN]* |
 | [`element_universe.bed`](element_universe.bed) | DACC-spec element universe deliverable (BED4) for the guide library | *[FILL IN]* | *[FILL IN]* |
 
-## Cross-dataset summaries
-
-Small roll-ups sized to drop directly into slides. They summarize the 5 production datasets along one axis each.
-
-| File | Description |
-|---|---|
-| [`cross_dataset_pipeline_summary.tsv`](cross_dataset_pipeline_summary.tsv) | Per-dataset CRISPR pipeline output counts and run status |
-| [`cross_dataset_edistance_summary.tsv`](cross_dataset_edistance_summary.tsv) | Per-dataset energy-distance run summary (TFs profiled, calibration status) |
-
-Re-generation scripts for these summaries live with the working groups that produce them — *[FILL IN: pointer to wg roll-up script when wired up]*.
-
-## Reference inputs
-
-Raw inputs the generators consume. Kept in this folder so the generators are runnable from a single working copy.
-
-| File | Description | Consumer |
-|---|---|---|
-| [`jaspar_core_tf_metadata.tsv`](jaspar_core_tf_metadata.tsv) | JASPAR CORE 2024 snapshot (all species; human filtered by `tax_id == "9606"` at load time) | [`scripts/generate_tf_metadata.py`](scripts/generate_tf_metadata.py) |
-| [`IGVFFI8270UPKB.csv`](IGVFFI8270UPKB.csv) / [`.csv.gz`](IGVFFI8270UPKB.csv.gz) | IGVF portal snapshot of the shared guide file | reference only; not consumed by generators here |
-| [`IGVFFI9573KOZR.gtf.gz`](IGVFFI9573KOZR.gtf.gz) | IGVF reference genome annotation (GENCODE-based) | [`scripts/build_gene_annotations.py`](scripts/build_gene_annotations.py) |
 
 ## Scripts
 

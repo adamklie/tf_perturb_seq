@@ -1,4 +1,0 @@
-dataset_id	n_targets_total	n_targets_targeting	n_targets_negative_control	n_targets_positive_control	distance_mean_median_all	distance_mean_median_targeting	distance_mean_median_negative_control	distance_mean_median_positive_control	nc_distance_mean_max	n_targeting_above_nc_max	n_pval_eq_0	n_pval_lt_0p05	n_nc_pval_eq_0	cell_count_median	cell_count_min
-Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq	2030	1926	100	4	1.30107421875	1.3119659423828125	1.0836715698242188	22.81621551513672	4.780148315429687	162	32	275	0	2000.0	5
-Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq	2267	2163	100	4	93.13470458984376	93.20975952148436	91.70403137207032	77.00969543457032	109.90040283203123	69	2264	2267	100	2000.0	112
-Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq	2267	2163	100	4	527.3116394042969	527.3303070068359	528.2539962768556	499.57869720458984	602.3259094238281	83	2267	2267	100	2000.0	541
