@@ -12,11 +12,11 @@ Topic 3 / Figure 5. The goal is to design and prototype a model trained on the u
 
 | Dataset | CRISPR pipeline | cNMF | Energy distance |
 |---|:---:|:---:|:---:|
-| Hon WTC11 Cardiomyocyte | caveat | blocked | ready |
-| Huangfu HUES8 Definitive Endoderm | ready | ready | caveat |
-| Huangfu HUES8 Embryonic Stem Cell | ready | ready | caveat |
-| Gersbach WTC11 Hepatocyte | caveat | blocked | blocked |
-| Engreitz WTC11 Endothelial | blocked | blocked | blocked |
+| Hon WTC11 Cardiomyocyte | ready | - | ready |
+| Huangfu HUES8 Definitive Endoderm | ready | ready | ready |
+| Huangfu HUES8 Embryonic Stem Cell | ready | ready | ready |
+| Gersbach WTC11 Hepatocyte | ready | - | - |
+| Engreitz WTC11 Endothelial | - | - | - |
 
 Per-dataset cards live under [`../../data/`](../../data/). The planning artifact is [`task_spec_template.md`](task_spec_template.md) — fill it in with the group during the session.
 

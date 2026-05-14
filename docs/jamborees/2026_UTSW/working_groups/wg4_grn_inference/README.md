@@ -13,11 +13,11 @@ Topic 2.3 / Figure 3. The goal is to build causal and mechanistic gene regulator
 
 | Dataset | CRISPR pipeline |
 |---|:---:|
-| Hon WTC11 Cardiomyocyte | caveat |
+| Hon WTC11 Cardiomyocyte | ready |
 | Huangfu HUES8 Definitive Endoderm | ready |
 | Huangfu HUES8 Embryonic Stem Cell | ready |
-| Gersbach WTC11 Hepatocyte | caveat |
-| Engreitz WTC11 Endothelial | blocked |
+| Gersbach WTC11 Hepatocyte | ready |
+| Engreitz WTC11 Endothelial | - |
 
 Per-dataset cards live under [`../../data/`](../../data/).
 

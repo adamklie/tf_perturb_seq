@@ -13,11 +13,11 @@ Topic 2.4 / Figure 4. The goal is a deep dive into specific TF families (e.g., C
 
 | Dataset | CRISPR pipeline | Energy distance |
 |---|:---:|:---:|
-| Hon WTC11 Cardiomyocyte | caveat | ready |
-| Huangfu HUES8 Definitive Endoderm | ready | caveat |
-| Huangfu HUES8 Embryonic Stem Cell | ready | caveat |
-| Gersbach WTC11 Hepatocyte | caveat | blocked |
-| Engreitz WTC11 Endothelial | blocked | blocked |
+| Hon WTC11 Cardiomyocyte | ready | ready |
+| Huangfu HUES8 Definitive Endoderm | ready | ready |
+| Huangfu HUES8 Embryonic Stem Cell | ready | ready |
+| Gersbach WTC11 Hepatocyte | ready | - |
+| Engreitz WTC11 Endothelial | - | - |
 
 Family taxonomy uses `jaspar_tf_family` (curated, preferred) with fallback to `lambert_2018_dbd` (prefixed `DBD:`) — defined in [`../../reference/tf_metadata.tsv`](../../reference/tf_metadata.tsv). Per-dataset cards live under [`../../data/`](../../data/).
 

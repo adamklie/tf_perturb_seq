@@ -15,11 +15,11 @@ Topic 1 / Figure 1. The goal is to establish the primary building blocks for eve
 
 | Dataset | CRISPR pipeline | Energy distance |
 |---|:---:|:---:|
-| Hon WTC11 Cardiomyocyte | caveat | ready |
-| Huangfu HUES8 Definitive Endoderm | ready | caveat |
-| Huangfu HUES8 Embryonic Stem Cell | ready | caveat |
-| Gersbach WTC11 Hepatocyte | caveat | blocked |
-| Engreitz WTC11 Endothelial | blocked | blocked |
+| Hon WTC11 Cardiomyocyte | ready | ready |
+| Huangfu HUES8 Definitive Endoderm | ready | ready |
+| Huangfu HUES8 Embryonic Stem Cell | ready | ready |
+| Gersbach WTC11 Hepatocyte | ready | - |
+| Engreitz WTC11 Endothelial | - | - |
 
 Per-dataset cards live under [`../../data/`](../../data/).
 

@@ -12,11 +12,11 @@ Topic 2.2 / Figure 2. The goal is to connect TF regulatory activity to human dis
 
 | Dataset | CRISPR pipeline | Energy distance |
 |---|:---:|:---:|
-| Hon WTC11 Cardiomyocyte | caveat | ready |
-| Huangfu HUES8 Definitive Endoderm | ready | caveat |
-| Huangfu HUES8 Embryonic Stem Cell | ready | caveat |
-| Gersbach WTC11 Hepatocyte | caveat | blocked |
-| Engreitz WTC11 Endothelial | blocked | blocked |
+| Hon WTC11 Cardiomyocyte | ready | ready |
+| Huangfu HUES8 Definitive Endoderm | ready | ready |
+| Huangfu HUES8 Embryonic Stem Cell | ready | ready |
+| Gersbach WTC11 Hepatocyte | ready | - |
+| Engreitz WTC11 Endothelial | - | - |
 
 Gene-disease associations come from HPO's `genes_to_disease.txt` (MONDO + OMIM), cached at [`../../reference/gene_disease_associations.tsv`](../../reference/gene_disease_associations.tsv). Per-dataset cards live under [`../../data/`](../../data/).
 

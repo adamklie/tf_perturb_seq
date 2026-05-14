@@ -19,11 +19,11 @@ WG2 is gated on cNMF availability.
 
 | Dataset | cNMF |
 |---|:---:|
-| Hon WTC11 Cardiomyocyte | blocked |
+| Hon WTC11 Cardiomyocyte | - |
 | Huangfu HUES8 Definitive Endoderm | ready |
 | Huangfu HUES8 Embryonic Stem Cell | ready |
-| Gersbach WTC11 Hepatocyte | blocked |
-| Engreitz WTC11 Endothelial | blocked |
+| Gersbach WTC11 Hepatocyte | - |
+| Engreitz WTC11 Endothelial | - |
 
 Per-dataset cards live under [`../../data/`](../../data/).
 
