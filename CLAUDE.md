@@ -1,6 +1,6 @@
 # tf_perturb_seq
 
-IGVF consortium project: CRISPRi Perturb-seq of ~2000 TFs across multiple human cell lineages.
+IGVF consortium project: CRISPRi Perturb-seq of TFs across multiple human cell lineages.
 
 IMPORTANT NOTE: Always use this style guide when applicable: tf_perturb_seq/docs/STYLE_GUIDE.md
 
