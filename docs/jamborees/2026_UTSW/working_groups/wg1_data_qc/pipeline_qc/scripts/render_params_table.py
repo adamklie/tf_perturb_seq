@@ -2,6 +2,8 @@
 
 Highlights cells whose value is the outlier across the four datasets.
 """
+from __future__ import annotations
+
 from pathlib import Path
 
 import matplotlib.pyplot as plt
@@ -12,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 REPO = ROOT.parents[5]
 
-MANIFEST = ROOT / "manifests" / "manifest.tsv"
+MANIFEST = ROOT / "manifest.tsv"
 COLORS_YAML = REPO / "config" / "colors" / "production_TF-Perturb-seq.yaml"
 OUT_DIR = ROOT / "results" / "cross_dataset_metrics"
 

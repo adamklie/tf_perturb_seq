@@ -1,5 +1,5 @@
 dataset	short_name	n_cells	umi_median	genes_median	mito_median	guide_umi_median	guides_per_cell_median	frac_cells_with_guide	cells_per_guide_median
 Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq	Hon CM	1004091	2398.0	1426.0	3.5928144	303.0	2.0	0.9711400659900348	147.0
 Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq	Huangfu DE	269491	5818.0	3018.0	3.9790254	372.0	6.0	0.9053066707236976	94.0
-Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq	Huangfu ESC	189599	5961.0	2931.0	7.0435176	1479.0	7.0	0.9746675879092188	84.0
+Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq	Huangfu ESC	130789	7246.0	3360.0	7.597015	2449.0	10.0	0.998837822752678	71.0
 Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq	Gersbach Hep	1053820	10504.0	3623.0	2.646836	527.0	2.0	0.7978981230191114	103.0
