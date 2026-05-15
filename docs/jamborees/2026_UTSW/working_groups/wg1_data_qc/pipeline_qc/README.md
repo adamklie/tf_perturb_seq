@@ -131,10 +131,9 @@ order  = load_colors("production_TF-Perturb-seq", "dataset_order")
 
 ## Status / outstanding work
 
-- **Engreitz endothelial** is not yet onboarded — no `datasets/Engreitz_WTC11-endothelial-cells_TF-Perturb-seq/` directory exists. Notebooks should skip it gracefully until it lands.
-- **Gersbach hepatocyte** only has QC re-run locally over Sara's h5mu; there is no full local CRISPR pipeline run, and `per_guide_capture.tsv` may be absent — confirm before running notebook 3.
-- **Manifest TSV** (`manifests/<run-label>_qc_paths.tsv`) is not yet written; the next iteration ports it from the benchmark conventions.
-- **Notebooks** (1/2/3 above) are not yet written; they will be ported from [bin/2_qc/](../../../../../manuscripts/CRISPRi_tech_benchmark/bin/2_qc/).
+- **Engreitz endothelial** is not yet onboarded — no `datasets/Engreitz_WTC11-endothelial-cells_TF-Perturb-seq/` directory exists. Scripts skip it gracefully until it lands.
+- **Gersbach hepatocyte** only has QC re-run locally over Sara's h5mu; there is no full local CRISPR pipeline run, and `per_guide_capture.tsv` may be absent — confirm before running the cross-dataset distribution notebook. The upstream pipeline (0a–0d) does work for Gersbach Hep because we pull `dashboard.html` directly from Sara's Synapse upload.
+- **`dataset_summary_metrics.tsv`** uses the dashboard's rounded top-line `n_cells` (e.g. `1M`, not 1,053,820). Good enough for the upstream figures; use `gene_metrics.tsv` if you need exact final cell counts.
 
 ## Synapse outputs
 
