@@ -1,6 +1,10 @@
 [submodule "external/energy_dist_pipeline"]
 	path = external/energy_dist_pipeline
 	url = https://github.com/Chikara-Takeuchi/energy_dist_pipeline.git
+	# Upstream commits its bin/__pycache__/*.pyc; Python rewrites them on every import
+	# (same byte length, fresh embedded mtime), making `git status` perpetually dirty.
+	# `ignore = dirty` suppresses content churn but still surfaces commit-pointer bumps.
+	ignore = dirty
 [submodule "external/cNMF_benchmarking"]
 	path = external/cNMF_benchmarking
 	url = https://github.com/adamklie/cNMF_benchmarking.git
