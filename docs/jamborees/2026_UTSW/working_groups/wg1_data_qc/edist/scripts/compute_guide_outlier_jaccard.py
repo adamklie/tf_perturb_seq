@@ -4,16 +4,17 @@ Outlier gRNAs are guides with `pval_outlier < threshold` in the energy-distance
 pipeline's `targeting_outlier_table.csv` (lower pval → more outlier-like vs.
 its sibling guides).
 
-Input:  --datasets-root pointing at the `datasets/` directory; per-dataset
-        targeting_outlier_table.csv paths are hard-coded below since
-        run-label sub-paths differ across datasets.
+Input:  --datasets-root pointing at the `datasets/` directory. For each entry in
+        DATASETS, globs `<datasets_root>/<dataset_id>/*/energy_distance/targeting_outlier_table.csv`
+        — discovers the run-label automatically. If a dataset has multiple runs
+        with energy_distance outputs, pass --run-label to disambiguate.
 Output: symmetric Jaccard TSV (datasets × datasets), with set sizes on the
         diagonal-adjacent metadata rows.
 
 Usage:
     uv run python compute_guide_outlier_jaccard.py \\
         --datasets-root ../../../../../../datasets \\
-        --output ../results/guide_outlier_jaccard.tsv
+        --output ../results/guide_outlier_jaccard/guide_outlier_jaccard.tsv
 """
 from __future__ import annotations
 
@@ -22,11 +23,12 @@ from pathlib import Path
 
 import pandas as pd
 
-DATASET_PATHS = {
-    "HonCM": "Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq/2026_04_19_no_spacer/energy_distance/targeting_outlier_table.csv",
-    "HuangfuDE": "Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq/muddy_penguin/energy_distance/targeting_outlier_table.csv",
-    "HuangfuESC": "Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq/sceptre_v1/energy_distance/targeting_outlier_table.csv",
-    "GersbachHep": "Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq/sara_synapse_syn74842722/energy_distance/targeting_outlier_table.csv",
+# short_name -> dataset_id (folder under datasets/). Run-label is discovered via glob.
+DATASETS = {
+    "HonCM":       "Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq",
+    "HuangfuDE":   "Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq",
+    "HuangfuESC":  "Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq",
+    "GersbachHep": "Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq",
 }
 
 
@@ -36,28 +38,41 @@ def jaccard(a: set, b: set) -> float:
     return len(a & b) / len(a | b)
 
 
+def find_outlier_table(datasets_root: Path, dataset_id: str, run_label: str | None) -> Path | None:
+    pattern = f"{run_label}/energy_distance/targeting_outlier_table.csv" if run_label \
+              else "*/energy_distance/targeting_outlier_table.csv"
+    matches = sorted((datasets_root / dataset_id).glob(pattern))
+    if not matches:
+        return None
+    if len(matches) > 1:
+        print(f"  warning: {dataset_id} has {len(matches)} matches; using {matches[0].parent.parent.name}/")
+    return matches[0]
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--datasets-root", required=True, type=Path)
     ap.add_argument("--output", required=True, type=Path)
     ap.add_argument("--pval-threshold", type=float, default=0.05,
                     help="pval_outlier < threshold → outlier (default 0.05)")
+    ap.add_argument("--run-label", default=None,
+                    help="Filter to a specific run subdir (e.g. 'sceptre_v1'); default is glob over all runs.")
     args = ap.parse_args()
 
     outlier_sets: dict[str, set] = {}
     set_sizes: dict[str, int] = {}
     total_guides: dict[str, int] = {}
-    for short, rel in DATASET_PATHS.items():
-        p = args.datasets_root / rel
-        if not p.is_file():
-            print(f"  skip (missing) {short}: {p}")
+    for short, dataset_id in DATASETS.items():
+        p = find_outlier_table(args.datasets_root, dataset_id, args.run_label)
+        if p is None:
+            print(f"  skip (no targeting_outlier_table.csv): {short}")
             continue
         df = pd.read_csv(p, index_col=0)
         outliers = set(df.index[df["pval_outlier"] < args.pval_threshold])
         outlier_sets[short] = outliers
         set_sizes[short] = len(outliers)
         total_guides[short] = len(df)
-        print(f"  {short}: {len(outliers)} / {len(df)} outlier gRNAs")
+        print(f"  {short}: {len(outliers)} / {len(df)} outlier gRNAs  ({p.parent.parent.name}/)")
 
     if not outlier_sets:
         raise SystemExit("no targeting_outlier_table.csv files found")
