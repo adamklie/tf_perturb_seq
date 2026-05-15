@@ -12,7 +12,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 REPO = ROOT.parents[5]
 
-PARAMS_TSV = ROOT / "manifests" / "production_pipeline_params.tsv"
+PARAMS_TSV = ROOT / "manifests" / "production_manifest.tsv"
 COLORS_YAML = REPO / "config" / "colors" / "production_TF-Perturb-seq.yaml"
 OUT_DIR = ROOT / "results" / "cross_production_qc"
 

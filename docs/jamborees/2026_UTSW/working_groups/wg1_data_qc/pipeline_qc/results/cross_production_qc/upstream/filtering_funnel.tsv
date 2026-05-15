@@ -1,0 +1,22 @@
+dataset	short_name	stage_index	stage	cells	removed
+Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq	Hon CM	1	Concatenated scRNA anndata (unfiltered)	18393969	482065986
+Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq	Hon CM	2	Barcode filter (knee2)	2004197	16389772
+Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq	Hon CM	3	Mito filter (pct_counts_mt < 15.0%)	1872600	131597
+Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq	Hon CM	4	Intersection with hashing barcodes	1872316	284
+Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq	Hon CM	5	Demultiplex filter (HTO)	1004312	868004
+Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq	Hon CM	6	Intersection with guide barcodes	1004091	221
+Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq	Huangfu DE	1	Concatenated scRNA anndata (unfiltered)	19878833	113365315
+Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq	Huangfu DE	2	Barcode filter (knee)	2537053	17341780
+Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq	Huangfu DE	3	Mito filter (pct_counts_mt < 20.0%)	279308	2257745
+Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq	Huangfu DE	4	Intersection with guide barcodes	269491	9817
+Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq	Huangfu DE	5	Final cells in MuData	269491	0
+Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq	Huangfu ESC	1	Concatenated scRNA anndata (unfiltered)	15970619	87338553
+Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq	Huangfu ESC	2	Barcode filter (knee)	2634302	13336317
+Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq	Huangfu ESC	3	Mito filter (pct_counts_mt < 20.0%)	192596	2441706
+Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq	Huangfu ESC	4	Intersection with guide barcodes	189599	2997
+Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq	Huangfu ESC	5	Final cells in MuData	189599	0
+Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq	Gersbach Hep	1	Concatenated scRNA anndata (unfiltered)	101119270	1626717935
+Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq	Gersbach Hep	2	Min genes per cell (>= 2500)	1063666	100055604
+Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq	Gersbach Hep	3	Mito filter (pct_counts_mt < 15.0%)	1053824	9842
+Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq	Gersbach Hep	4	Intersection with guide barcodes	1053820	4
+Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq	Gersbach Hep	5	Final cells in MuData	1053820	0
