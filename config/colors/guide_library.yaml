@@ -1,0 +1,24 @@
+# Plotting conventions for guide-library categorical fields.
+# Loaded via `config.loader.load_colors("guide_library", subset=...)`.
+# Used for plots that summarize the IGVF production guide library
+# (IGVFFI8270UPKB) and per-dataset guide tables that follow the same schema.
+
+type_colors:
+  non-targeting:     "#7F7F7F"  # neutral gray — true NT controls
+  negative control:  "#BCBD22"  # olive — OR-gene non-expressed controls
+  positive control:  "#2CA02C"  # green — expected-effect controls
+  targeting:         "#1F77B4"  # blue — TF-targeting guides
+
+type_order:
+  - non-targeting
+  - negative control
+  - positive control
+  - targeting
+
+targeting_colors:
+  "TRUE":   "#1F77B4"
+  "FALSE":  "#7F7F7F"
+
+strand_colors:
+  "+": "#4C72B0"
+  "-": "#DD8452"

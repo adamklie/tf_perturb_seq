@@ -199,7 +199,7 @@ def main() -> int:
     for _, m in manifest.iterrows():
         dash = Path(m["dashboard_local"])
         if not dash.exists():
-            print(f"[skip] {m['short_name']}: {dash} not found (run 0a_sync_upstream_dashboards.py first)")
+            print(f"[skip] {m['short_name']}: {dash} not found (run 0a_sync_dashboards.py first)")
             continue
         print(f"[parse] {m['short_name']}  ({dash.stat().st_size/1e6:.1f} MB)")
         html = dash.read_text()

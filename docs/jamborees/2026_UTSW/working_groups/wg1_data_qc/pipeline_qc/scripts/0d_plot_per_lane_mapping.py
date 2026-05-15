@@ -23,7 +23,8 @@ import yaml
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-REPO = HERE.parents[6]
+REPO = ROOT.parents[5]
+
 COLORS_YAML = REPO / "config" / "colors" / "production_TF-Perturb-seq.yaml"
 MAPPING_TSV = ROOT / "results" / "cross_production_qc" / "upstream" / "per_lane_mapping_summary.tsv"
 OUT_DIR = ROOT / "results" / "cross_production_qc" / "upstream"
@@ -37,19 +38,13 @@ PANELS = [
 ]
 
 
-def load_colors() -> tuple[dict, list]:
-    with open(COLORS_YAML) as f:
-        cfg = yaml.safe_load(f)
-    return cfg["dataset_colors"], cfg["dataset_order"]
-
-
 def style_axes(ax: plt.Axes) -> None:
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
     ax.tick_params(axis="x", which="both", length=0)
 
 
-def plot_per_lane(df: pd.DataFrame, modality: str, colors: dict, order: list, out_prefix: str) -> None:
+def plot_per_lane(df, modality, colors, order, out_prefix):
     sub = df[df["modality"] == modality].copy()
     if sub.empty:
         print(f"  [skip] no rows for modality={modality}")
@@ -130,7 +125,7 @@ def plot_per_lane(df: pd.DataFrame, modality: str, colors: dict, order: list, ou
     plt.close(fig)
 
 
-def plot_aggregated(df: pd.DataFrame, modality: str, colors: dict, order: list, out_prefix: str) -> None:
+def plot_aggregated(df, modality, colors, order, out_prefix):
     sub = df[df["modality"] == modality].copy()
     if sub.empty:
         print(f"  [skip] no rows for modality={modality}")
@@ -202,7 +197,9 @@ def plot_aggregated(df: pd.DataFrame, modality: str, colors: dict, order: list, 
 
 def main() -> int:
     df = pd.read_csv(MAPPING_TSV, sep="\t")
-    colors, order = load_colors()
+    with open(COLORS_YAML) as f:
+        palette = yaml.safe_load(f)
+    colors, order = palette["dataset_colors"], palette["dataset_order"]
 
     for modality, mod_label in [("scRNA", "scrna"), ("Guide", "guide")]:
         print(f"== {modality} ==")

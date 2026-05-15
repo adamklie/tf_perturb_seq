@@ -20,7 +20,8 @@ from matplotlib.patches import Polygon
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-REPO = HERE.parents[6]  # scripts -> pipeline_qc -> wg1_data_qc -> working_groups -> 2026_UTSW -> jamborees -> docs -> repo
+REPO = ROOT.parents[5]
+
 COLORS_YAML = REPO / "config" / "colors" / "production_TF-Perturb-seq.yaml"
 FUNNEL_TSV = ROOT / "results" / "cross_production_qc" / "upstream" / "filtering_funnel.tsv"
 OUT_DIR = ROOT / "results" / "cross_production_qc" / "upstream"
@@ -60,12 +61,6 @@ def fmt_count(n: float) -> str:
     if n >= 1e3:
         return f"{n/1e3:.0f}K"
     return f"{int(n)}"
-
-
-def load_colors() -> tuple[dict, list]:
-    with open(COLORS_YAML) as f:
-        cfg = yaml.safe_load(f)
-    return cfg["dataset_colors"], cfg["dataset_order"]
 
 
 def draw_funnel(
@@ -138,7 +133,9 @@ def main() -> int:
     if funnel.empty:
         print("filtering_funnel.tsv is empty", file=sys.stderr)
         return 1
-    colors, order = load_colors()
+    with open(COLORS_YAML) as f:
+        palette = yaml.safe_load(f)
+    colors, order = palette["dataset_colors"], palette["dataset_order"]
 
     datasets = [d for d in order if d in funnel["dataset"].unique()]
     n_datasets = len(datasets)

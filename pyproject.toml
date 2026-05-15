@@ -43,3 +43,10 @@ dependencies = [
 
 [tool.uv.sources]
 torch-cnmf = { git = "https://github.com/ymo6/torch_based_cNMF.git" }
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.1.0",
+    "jupyter>=1.1.1",
+    "nbformat>=5.10.4",
+]

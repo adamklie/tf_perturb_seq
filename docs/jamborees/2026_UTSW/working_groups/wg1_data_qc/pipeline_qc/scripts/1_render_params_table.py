@@ -1,4 +1,4 @@
-"""Render production_pipeline_params.tsv as a visual table (PDF + PNG).
+"""Render the production_manifest.tsv pipeline-params columns as a visual table (PDF + PNG).
 
 Highlights cells whose value is the outlier across the four datasets.
 """
@@ -12,7 +12,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 REPO = ROOT.parents[5]
 
-PARAMS_TSV = ROOT / "manifests" / "production_manifest.tsv"
+MANIFEST = ROOT / "manifests" / "production_manifest.tsv"
 COLORS_YAML = REPO / "config" / "colors" / "production_TF-Perturb-seq.yaml"
 OUT_DIR = ROOT / "results" / "cross_production_qc"
 
@@ -46,18 +46,12 @@ CONTAINER_ALIASES = {
 
 
 def load_params() -> pd.DataFrame:
-    df = pd.read_csv(PARAMS_TSV, sep="\t", dtype=str).fillna("")
+    df = pd.read_csv(MANIFEST, sep="\t", dtype=str).fillna("")
     df["operator_platform"] = df["params_source"].str.extract(r"\(([^)]+)\)").fillna(df["params_source"])
     df["compute"] = df["max_cpus"] + " / " + df["max_memory_GB"] + " GB"
     df["spacer_tag"] = df["spacer_tag"].replace("", '""')
     df["base_container_short"] = df["base_container"].map(lambda v: CONTAINER_ALIASES.get(v, v))
     return df
-
-
-def load_palette() -> dict:
-    with open(COLORS_YAML) as f:
-        cfg = yaml.safe_load(f)
-    return cfg["dataset_colors"]
 
 
 def lighten(hex_color: str, alpha: float = 0.18) -> tuple:
@@ -75,7 +69,8 @@ def is_outlier(values: list[str]) -> list[bool]:
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     df = load_params()
-    palette = load_palette()
+    with open(COLORS_YAML) as f:
+        palette = yaml.safe_load(f)["dataset_colors"]
 
     datasets = df["dataset"].tolist()
     short_names = df["short_name"].tolist()
@@ -148,7 +143,7 @@ def main() -> None:
         0.5,
         0.02,
         "Highlighted cells differ from the majority of datasets for that parameter.  Source: "
-        "docs/jamborees/2026_UTSW/working_groups/wg1_data_qc/pipeline_qc/manifests/production_pipeline_params.tsv",
+        "docs/jamborees/2026_UTSW/working_groups/wg1_data_qc/pipeline_qc/manifests/production_manifest.tsv",
         ha="center",
         fontsize=8,
         style="italic",
@@ -157,12 +152,10 @@ def main() -> None:
 
     plt.subplots_adjust(left=0.16, right=0.99, top=0.94, bottom=0.06)
 
-    pdf_path = OUT_DIR / "pipeline_params_table.pdf"
-    png_path = OUT_DIR / "pipeline_params_table.png"
-    fig.savefig(pdf_path, bbox_inches="tight")
-    fig.savefig(png_path, bbox_inches="tight", dpi=200)
-    print(f"wrote {pdf_path}")
-    print(f"wrote {png_path}")
+    for ext in ("pdf", "png"):
+        out = OUT_DIR / f"pipeline_params_table.{ext}"
+        fig.savefig(out, bbox_inches="tight", dpi=200 if ext == "png" else None)
+        print(f"wrote {out.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":
