@@ -1,0 +1,66 @@
+# **Cross-Dataset CRISPRi Screening Analysis (WG1.ipynb)**
+
+This repository contains a comprehensive analysis pipeline for single-cell CRISPRi (Perturb-seq) data. The primary notebook, WG1.ipynb, focuses on integrating and comparing transcriptional regulatory networks across four distinct human cellular differentiation models.
+
+## **📊 Study Overview**
+
+The analysis utilizes high-throughput functional genomics data generated for the **IGVF Consortium (Jamboree 2026\)**. It investigates how specific genetic perturbations impact gene expression across different lineages:
+
+* **Hon:** WTC11-derived Cardiomyocyte differentiation.  
+* **Huangfu ES:** HUES8-embryonic stem cell state.  
+* **Huangfu DE:** HUES8-definitive endoderm differentiation.  
+* **Gersbach Hep:** WTC11-derived hepatocyte differentiation.
+
+## **🚀 Analytical Workflow**
+
+### **1\. Data Integration & Quality Control**
+
+* **Multi-dataset Loading:** Efficiently ingests large-scale .tsv result files containing differential expression statistics.  
+* **Significance Filtering:** Identifies robust regulatory hits using empirical adjusted p-values (![][image1]) and log2 fold-change (log2FC) thresholds.  
+* **Direct Target Mapping:** Distinguishes between "direct targets" (the gene being perturbed) and downstream distal effects.
+
+### **2\. Comparative Statistics**
+
+* **Intersection Analysis:** Uses **Venn Diagrams** and **UpSet Plots** to identify "universal" direct targets and shared regulatory edges across all four cell types.  
+* **Effect Size Correlation:** Analyzes the conservation of regulatory logic by correlating log2FC values across different biological systems.
+
+### **3\. Regulatory Convergence & Self-Regulation**
+
+* **Hypergeometric Testing:**  
+  * **Self-Regulation:** Statistical validation of whether perturbations successfully target their own source loci.  
+  * **Convergence:** Identifies "hub" genes that are differentially expressed in response to multiple independent perturbations, signaling key regulatory nodes.  
+* **Parameter Optimization:** Includes a "connectedness sweep" to find the optimal p-value and effect size cutoffs that maximize network quality and edge density.
+
+### **4\. Advanced Network Visualization**
+
+The notebook produces high-resolution circular network plots using networkx:
+
+* **Color Coding:** Orange nodes represent Perturbations; Green nodes represent Convergent Genes.  
+* **Edge Logic:** Red edges indicate up-regulation; Blue edges indicate down-regulation.  
+* **Fixed-Node Comparisons:** A specialized visualization that maintains a consistent set of perturbation nodes across all datasets to highlight lineage-specific downstream responses.
+
+## **🛠 Technical Requirements**
+
+### **Dependencies**
+
+The following Python packages are required to run the analysis:
+
+pip install pandas numpy scipy scikit-learn matplotlib seaborn   
+pip install networkx matplotlib-venn upsetplot mygene gseapy
+
+### **Biological Data Processing**
+
+* **ID Mapping:** Automatically translates Ensembl (ENSG) IDs to common Gene Symbols using the mygene API.  
+* **Gene Filtering:** Filters out mitochondrial (MT-) and ribosomal (RP\*) genes to focus on primary transcriptional regulators.  
+* **Ontology:** Performs Gene Ontology (GO) enrichment analysis on shared direct targets to identify biological pathways involved in differentiation.
+
+## **📂 Output Files**
+
+The notebook is configured to export processed summary tables, including:
+
+* significant\_direct\_targets\_all\_datasets.tsv: A unified table of direct hits across all lineages.  
+* Convergence results per dataset formatted for downstream network modeling.
+
+*Developed for the IGVF Jamboree 2026 Analysis.*
+
+[image1]: <data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEYAAAAYCAYAAABHqosDAAADE0lEQVR4Xu1XTYiNYRS+pqEUyc+l7t97f8rVxeomiaT8pBmFsSEiGxZkwUZWEkmKhY1iwUqJYjIRMiWLWTELyV9ZyDANFjINNRnPufe849zjfO53J3Lrfk+d3u8853nP+55zv/f7vhuLRYgQIUILIpPJHHDOfYP1w97BurQmCNAOwp7BhmEj5XJ5stYQ0un0IsTHstnsTR1rWtCGc7mc4+s35GuNBTR0AzWGrhOJxBwUfRd+j9KsBXeRcjZFY/L5/HzNWcBm+2jjinuEAh5KzgI3sE1zWHuG93GdoRH5Nv7XxmDxc7AhubkgsHYMv+pqxe/jogOB+BZLQxzsgubrNiaZTM6GYBCb2Uk+xhL5mHBVa8MC85dhfjfsZalUmqLjQcC8EW5MSfGbraIlMOeOpeHG/MbXbQyC33mkBKMQbiMf41H4X1Kp1KzaGcGAvovzdOhYGPgiUGRe8R1WcRIu4Fnkc2o+TGNu8Ugb2uF5TFjFEw//Ugeine440uOhuVIHw8IXgTWzkoe73ipOAvEPliZEY7p1LIYi5qGgmc64VeF3ctL7kpeIx+PTEB9AjktYYIGONwpfxATvmKeWxufUvG+M4xvDBIJPYF8l588sEuyVvAQ39TPGszhySR1vFMj1kRuzUPHmg1UC8WuWJkRjal7nNWDBEYN7HlOvPwtoylRo98NGcb1Yx8MCDTnP63ZKHv4hqzgJFLrV0hCHvDc0LxpzW8fGwZNXaA62XXL1gMV2Yc4PjEt1LAxwtNfxXvZIHtwZo+h26RSLxemGxtdWeeNK+MbQydCxCvg40JHZ7TlXPVovpK4RIOcazH8A64M7Scf/BMw5ARv2PnItp/058SPh+hNzjz3HPHHjfx/o24k4qfFAvZtYf0/HKqDnAwt6XPX/BV0f1LqJAhu4jHyvG/ye6YW9hV1x1TvwlIrTi6Ef/3eWSB5oIz3sOuwV1VIoFOZKAeo96arPsvewAbYh8qWOFqFEvTXkPwA2VNZcU4O6mlGf4C0P3IoJagz9E9Wxlgaachx2DHY6+xc+0CJEiBBB4CdE3BEG4xxVegAAAABJRU5ErkJggg==>
