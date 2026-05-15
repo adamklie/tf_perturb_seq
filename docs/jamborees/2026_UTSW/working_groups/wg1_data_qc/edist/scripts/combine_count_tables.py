@@ -5,8 +5,8 @@ Output: single combined TSV (one row per dataset).
 
 Usage:
     uv run python combine_count_tables.py \\
-        --input  ../results/per_dataset \\
-        --output ../results/significant_tf_counts.tsv
+        --input  ../results/significant_tf_counts/per_dataset \\
+        --output ../results/significant_tf_counts/significant_tf_counts.tsv
 """
 from __future__ import annotations
 

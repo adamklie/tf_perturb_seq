@@ -10,7 +10,7 @@ Output: single wide TSV. Identity columns (target_id, gene_symbol, …) on the
 Usage:
     uv run python build_wide_per_target_table.py \\
         --input  ../../../../data \\
-        --output ../results/per_target_wide.tsv
+        --output ../results/distance_heatmap/per_target_wide.tsv
 """
 from __future__ import annotations
 

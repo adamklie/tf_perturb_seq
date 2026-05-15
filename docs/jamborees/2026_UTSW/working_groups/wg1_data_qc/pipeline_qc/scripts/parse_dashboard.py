@@ -1,5 +1,5 @@
 """Parse each dataset's pipeline_dashboard/dashboard.html and emit three TSVs
-under results/cross_production_qc/upstream/:
+under results/upstream_mapping_and_filtering/:
 
   per_lane_mapping_summary.tsv
     dataset, short_name, modality, measurement_set,
@@ -28,7 +28,7 @@ import pandas as pd
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 MANIFEST = ROOT / "manifests" / "manifest.tsv"
-RESULTS = ROOT / "results" / "cross_production_qc" / "upstream"
+RESULTS = ROOT / "results" / "upstream_mapping_and_filtering"
 
 MODALITY_KEYS = {
     "Mapping scRNA": "scRNA",

@@ -6,7 +6,7 @@ Output: 1-row TSV with significance counts under both criteria.
 Usage:
     uv run python count_significant_tfs.py \\
         --input  ../../../data/<id>/energy_distance/wg1_significant_tfs.tsv \\
-        --output ../results/per_dataset/<id>.tsv
+        --output ../results/significant_tf_counts/per_dataset/<id>.tsv
 """
 from __future__ import annotations
 

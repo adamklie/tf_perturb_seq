@@ -14,7 +14,7 @@ REPO = ROOT.parents[5]
 
 MANIFEST = ROOT / "manifests" / "manifest.tsv"
 COLORS_YAML = REPO / "config" / "colors" / "production_TF-Perturb-seq.yaml"
-OUT_DIR = ROOT / "results" / "cross_production_qc"
+OUT_DIR = ROOT / "results" / "cross_dataset_metrics"
 
 # Param rows to display (in order) and a pretty label for each.
 ROWS = [

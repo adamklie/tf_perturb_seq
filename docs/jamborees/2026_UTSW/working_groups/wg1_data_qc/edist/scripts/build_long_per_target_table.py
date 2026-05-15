@@ -9,7 +9,7 @@ Tidy form, ready for seaborn / groupby / pivot.
 Usage:
     uv run python build_long_per_target_table.py \\
         --input  ../../../../data \\
-        --output ../results/per_target_long.tsv
+        --output ../results/pairwise_distance_scatter/per_target_long.tsv
 """
 from __future__ import annotations
 
