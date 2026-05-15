@@ -39,6 +39,7 @@ dependencies = [
     "torch-cnmf",
     "adjusttext>=1.3.0",
     "pillow>=12.1.0",
+    "upsetplot>=0.9.0",
 ]
 
 [tool.uv.sources]

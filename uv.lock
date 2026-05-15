@@ -4046,6 +4046,7 @@ dependencies = [
     { name = "torch" },
     { name = "torch-cnmf" },
     { name = "tqdm" },
+    { name = "upsetplot" },
     { name = "xarray", version = "2025.6.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
     { name = "xarray", version = "2026.4.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
 ]
@@ -4091,6 +4092,7 @@ requires-dist = [
     { name = "torch", specifier = ">=2.9.1" },
     { name = "torch-cnmf", git = "https://github.com/ymo6/torch_based_cNMF.git" },
     { name = "tqdm", specifier = ">=4.66.0" },
+    { name = "upsetplot", specifier = ">=0.9.0" },
     { name = "xarray", specifier = ">=2025.6.1" },
 ]
 
@@ -4351,6 +4353,16 @@ sdist = { url = "https://files.pythonhosted.org/packages/94/9a/a1e4a257a9aa979da
 wheels = [
     { url = "https://files.pythonhosted.org/packages/43/d2/fcf7192dd1cd8c090b6cfd53fa223c4fb2887a17c47e06bc356d44f40dfb/umap_learn-0.5.11-py3-none-any.whl", hash = "sha256:cb17adbde9d544ba79481b3ab4d81ac222e940f3d9219307bea6044f869af3cc", size = 90890, upload-time = "2026-01-12T20:44:46.511Z" },
 ]
+
+[[package]]
+name = "upsetplot"
+version = "0.9.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "pandas" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fb/63/a5a1628898729bcfb67ea785a152e424d78e0f57dfbba46213a652532d6a/UpSetPlot-0.9.0.tar.gz", hash = "sha256:95b76ac38c624c9dfb1eca1de1a37e30e07e83678b1c57839c943184247b8592", size = 23797, upload-time = "2023-12-31T01:07:59.185Z" }
 
 [[package]]
 name = "uri-template"

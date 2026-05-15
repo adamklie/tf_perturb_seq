@@ -41,10 +41,12 @@ The brainstorm tasks below also reference an "OR-gene" class. That class only ex
 
 ## Notebooks
 
-Each notebook reads from its matching `results/<name>/` subdir (intermediate TSVs are pre-built by the `.py` scripts under [`scripts/`](scripts/)) and writes its plots back into the same subdir.
+Aggregator notebooks read raw pipeline outputs under `datasets/<dataset_id>/<run_label>/energy_distance/` and write one combined long-form TSV; analysis notebooks read either those combined TSVs or per-dataset raw outputs and write their plots.
 
 | Notebook | What it does | Reads | Writes |
 |---|---|---|---|
+| [`aggregate_guide_outliers.ipynb`](aggregate_guide_outliers.ipynb) | Stack per-dataset `targeting_outlier_table.csv` + `non_targeting_outlier_table.csv` into one long TSV. | `datasets/<ds>/<run>/energy_distance/{targeting,non_targeting}_outlier_table.csv` | `results/aggregate_guide_outliers/guide_outliers_long.tsv` |
+| [`aggregate_pvals.ipynb`](aggregate_pvals.ipynb) | Stack per-dataset `pval_edist_full.csv` into one long TSV (preserves all 44 upstream columns). | `datasets/<ds>/<run>/energy_distance/pval_edist_full.csv` | `results/aggregate_pvals/pvals_long.tsv` |
 | [`significant_tf_counts.ipynb`](significant_tf_counts.ipynb) | Bar plot, two bars per dataset (`distance > NC max` vs `pval_mean < 0.05`); hatched bars where calibration is anti-conservative. | `results/significant_tf_counts/significant_tf_counts.tsv` | `results/significant_tf_counts/significant_tf_counts.{pdf,png}` |
 | [`pval_cutoff_sweep.ipynb`](pval_cutoff_sweep.ipynb) | Per-dataset, sweep p-value cutoffs and split hits into targeting vs NC; right panel = % NCs among hits. | `data/<dataset>/energy_distance/wg1_significant_tfs.tsv` | `results/pval_cutoff_sweep/cutoff_sweep_<short>.pdf` |
 | [`pairwise_distance_scatter.ipynb`](pairwise_distance_scatter.ipynb) | Headline pair (Hon CM vs Gersbach Hep) + all-pairs lower-triangle grid of `distance_mean` scatters. | `results/pairwise_distance_scatter/per_target_long.tsv` | `results/pairwise_distance_scatter/distance_scatter_*.pdf` |
@@ -59,8 +61,6 @@ Each script does one thing — single input, single output. Run from this folder
 |---|---|---|
 | [`scripts/count_significant_tfs.py`](scripts/count_significant_tfs.py) | Count significant TFs in one dataset under both criteria | `<wg1_significant_tfs.tsv>` → 1-row TSV |
 | [`scripts/combine_count_tables.py`](scripts/combine_count_tables.py) | Concatenate per-dataset count TSVs | directory of 1-row TSVs → combined TSV |
-| [`scripts/build_long_per_target_table.py`](scripts/build_long_per_target_table.py) | Stack per-dataset `wg1_significant_tfs.tsv` into one long table | `data/` dir → long TSV |
-| [`scripts/build_wide_per_target_table.py`](scripts/build_wide_per_target_table.py) | Pivot per-dataset `wg1_significant_tfs.tsv` into a wide table (one row per target, dataset stats side-by-side) | `data/` dir → wide TSV |
 | [`scripts/compute_guide_outlier_jaccard.py`](scripts/compute_guide_outlier_jaccard.py) | Pairwise Jaccard between per-dataset outlier-gRNA sets | per-dataset `targeting_outlier_table.csv` → Jaccard TSV |
 
 End-to-end for Task 1 (significant TF counts):
@@ -89,17 +89,21 @@ uv run python scripts/combine_count_tables.py \
 
 ```
 results/
+  aggregate_guide_outliers/             # aggregate_guide_outliers.ipynb
+    guide_outliers_long.tsv             #   one row per (dataset × gRNA), targeting + NTC
+  aggregate_pvals/                      # aggregate_pvals.ipynb
+    pvals_long.tsv                      #   one row per (dataset × target), all upstream cols preserved
   significant_tf_counts/                # significant_tf_counts.ipynb (+ count + combine .py)
     per_dataset/<dataset>.tsv           #   from count_significant_tfs.py
     significant_tf_counts.tsv           #   from combine_count_tables.py
     significant_tf_counts.{pdf,png}     #   from significant_tf_counts.ipynb
   pval_cutoff_sweep/                    # pval_cutoff_sweep.ipynb (reads from data/, no .py prereq)
     cutoff_sweep_<short>.pdf
-  pairwise_distance_scatter/            # pairwise_distance_scatter.ipynb (+ build_long_per_target_table.py)
+  pairwise_distance_scatter/            # pairwise_distance_scatter.ipynb
     per_target_long.tsv
     distance_scatter_HonCM_vs_GersbachHep.pdf
     distance_scatter_all_pairs.pdf
-  distance_heatmap/                     # distance_heatmap.ipynb (+ build_wide_per_target_table.py)
+  distance_heatmap/                     # distance_heatmap.ipynb
     per_target_wide.tsv
     distance_heatmap.pdf
   guide_outlier_jaccard/                # guide_outlier_jaccard.ipynb (+ compute_guide_outlier_jaccard.py)
