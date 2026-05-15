@@ -1,0 +1,5 @@
+dataset	short_name	n_cells	umi_median	mito_median	total_scrna_reads	scrna_pct_aligned	total_guide_reads	guide_pct_aligned	total_hto_reads	hto_pct_aligned	n_measurement_sets	reads_per_cell
+Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq	Hon CM	1000000.0	2398.0	3.59	13453000000.0	91.71188582472311	4290000000.0	82.85547785547786	1445100000.0	91.6753165870874	26	13453.0
+Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq	Huangfu DE	269000.0	5818.0	3.98	3526000000.0	90.13045944412933	756700000.0	38.046782080084576			8	13107.806691449814
+Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq	Huangfu ESC	190000.0	5961.0	7.04	2568000000.0	90.18691588785046	892700000.0	67.13341548112467			8	13515.78947368421
+Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq	Gersbach Hep	1050000.0	10504.0	2.65	56585000000.0	87.73349827692851	8344000000.0	76.5412272291467			47	53890.47619047619

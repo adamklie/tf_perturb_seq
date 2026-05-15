@@ -27,10 +27,10 @@ SAMPLE_METADATA=$BASE_DIR/setup/samplesheets/sample_metadata_gcp_${DATA_DATE}_pa
 PIPELINE_PATH=/Users/adamklie/Desktop/tfp3/CRISPR_Pipeline
 
 # Run label (Nextflow run name) — bump this per run
-RUN_LABEL=muddy_penguin
+RUN_LABEL=tall_monkey
 
 # Dataset-specific config (adapted from Huangfu WTC11 benchmark)
-CONFIG=$BASE_DIR/muddy_penguin/crispr_pipeline/configs/${DATASET_NAME}_${RUN_LABEL}.config
+CONFIG=$BASE_DIR/setup/configs/${DATASET_NAME}_${RUN_LABEL}.config
 
 # Output directory on GCS
 OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/${DATA_DATE}/outs/${RUN_LABEL}

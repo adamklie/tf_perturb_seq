@@ -18,7 +18,7 @@ Topic 1 / Figure 1. The goal is to establish the primary building blocks for eve
 | Hon WTC11 Cardiomyocyte | ready | ready |
 | Huangfu HUES8 Definitive Endoderm | ready | ready |
 | Huangfu HUES8 Embryonic Stem Cell | ready | ready |
-| Gersbach WTC11 Hepatocyte | ready | - |
+| Gersbach WTC11 Hepatocyte | ready | ready |
 | Engreitz WTC11 Endothelial | - | - |
 
 Per-dataset cards live under [`../../data/`](../../data/).

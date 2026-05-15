@@ -1,0 +1,6 @@
+type	n_guides	n_unique_intended_targets	n_unique_gene_names
+non-targeting	600	0	0
+negative control	598	100	100
+positive control	19	11	11
+targeting	12934	1950	1951
+ALL	14151	2061	2062

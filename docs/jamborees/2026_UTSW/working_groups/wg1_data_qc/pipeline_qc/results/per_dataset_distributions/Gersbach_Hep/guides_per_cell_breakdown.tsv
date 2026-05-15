@@ -1,0 +1,7 @@
+	n_cells_assigned	pct_assigned	n_cells_expressed_umi_gt_0	pct_expressed_umi_gt_0
+0	212979	20.21	0	0.0
+1	258968	24.57	15	0.0
+2	230959	21.92	42	0.0
+3	159449	15.13	120	0.01
+4	93220	8.85	279	0.03
+5+	98245	9.32	1053364	99.96

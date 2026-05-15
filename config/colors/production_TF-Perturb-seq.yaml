@@ -1,0 +1,13 @@
+dataset_colors:
+  Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq:           "#D7263D"  # cardiac red
+  Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq: "#F6BD16"  # endoderm gold
+  Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq:  "#1B998B"  # stem-cell teal
+  Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq:         "#7C3F98"  # royal purple
+  Engreitz_WTC11-endothelial-cells_TF-Perturb-seq:                  "#E36A9E"  # vascular pink
+
+dataset_order:
+  - Hon_WTC11-cardiomyocyte-differentiation_TF-Perturb-seq
+  - Huangfu_HUES8-definitive-endoderm-differentiation_TF-Perturb-seq
+  - Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq
+  - Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq
+  - Engreitz_WTC11-endothelial-cells_TF-Perturb-seq

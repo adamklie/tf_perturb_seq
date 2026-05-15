@@ -40,6 +40,10 @@ set -euo pipefail
 #     perturbo_trans_per_element_output.tsv.gz
 #     perturbo_trans_per_guide_output.tsv.gz
 #
+#   pipeline_info/                  (always downloaded — small, schema-required)
+#     params_<timestamp>.json
+#     nf_core_pipeline_software_versions.yml
+#
 #   tf/benchmark_output/benchmark_tables/  (if available on GCP)
 #     enrichment_all.tsv
 #     tf_order.tsv
@@ -86,6 +90,28 @@ LOCAL_DIR="${LOCAL_DIR%/}"
 
 GCP_DASHBOARD="${GCP_DATASET_URI}/pipeline_dashboard"
 GCP_OUTPUTS="${GCP_DATASET_URI}/pipeline_outputs"
+GCP_INFO="${GCP_DATASET_URI}/pipeline_info"
+
+###############################################
+# sync_pipeline_info — schema-required, ~3 KB.
+# Called from both dashboard and outputs modes.
+###############################################
+sync_pipeline_info() {
+  local dst="${LOCAL_DIR}/pipeline_info"
+  echo ""
+  echo "[SYNC] pipeline_info/ → ${dst}"
+  if [[ "${DRY_RUN}" -eq 1 ]]; then
+    echo "[DRY-RUN]  gsutil -m rsync -r ${GCP_INFO} ${dst}"
+  elif [[ "${FORCE}" -eq 0 && -d "${dst}" && -n "$(ls -A "${dst}" 2>/dev/null)" ]]; then
+    echo "[SKIP]     pipeline_info/ already present (use --force to re-sync)"
+  elif gsutil ls "${GCP_INFO}/" &>/dev/null; then
+    mkdir -p "${dst}"
+    gsutil -m rsync -r "${GCP_INFO}" "${dst}"
+    echo "[DONE]     pipeline_info/"
+  else
+    echo "[WARN]     pipeline_info/ not on GCP — skipping"
+  fi
+}
 
 ###############################################
 # Resolve mode
@@ -172,6 +198,8 @@ if [[ "${RESOLVED_MODE}" == "dashboard" ]]; then
   else
     echo "[SKIP]     tf/benchmark_output/benchmark_tables/ not on GCP"
   fi
+
+  sync_pipeline_info
 
   echo "============================================="
   echo " Sync complete: ${LOCAL_DIR}"
@@ -263,6 +291,8 @@ else
   echo "[WARN]     tf/benchmark_output/benchmark_tables/ not on GCP — skipping"
   WARNINGS=$((WARNINGS + 1))
 fi
+
+sync_pipeline_info
 
 echo "============================================="
 echo " Downloaded: ${DOWNLOADED}"

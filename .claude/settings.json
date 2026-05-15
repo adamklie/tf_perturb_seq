@@ -78,11 +78,11 @@
       "Bash(uv tree:*)",
       "Bash(uv pip list:*)",
 
-      "Bash(zsh -ic 'synapse list:*')",
-      "Bash(zsh -ic 'synapse get:*')",
-      "Bash(zsh -ic 'synapse show:*')",
-      "Bash(zsh -ic 'python:*')",
-      "Bash(zsh -ic 'python3:*')",
+      "Bash(zsh -ic 'synapse list *')",
+      "Bash(zsh -ic 'synapse get *')",
+      "Bash(zsh -ic 'synapse show *')",
+      "Bash(zsh -ic 'python *')",
+      "Bash(zsh -ic 'python3 *')",
 
       "Bash(echo:*)",
       "Bash(printf:*)",
