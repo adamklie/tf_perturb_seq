@@ -15,7 +15,7 @@ under results/cross_production_qc/upstream/:
   filtering_funnel.tsv
     dataset, short_name, stage_index, stage, cells, removed
 
-Source paths come from manifests/production_manifest.tsv (dashboard_local column).
+Source paths come from manifests/manifest.tsv (dashboard_local column).
 All numeric columns are raw (no "M" / "K" / "%"), suitable for direct plotting.
 """
 from __future__ import annotations
@@ -27,7 +27,7 @@ import pandas as pd
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
-MANIFEST = ROOT / "manifests" / "production_manifest.tsv"
+MANIFEST = ROOT / "manifests" / "manifest.tsv"
 RESULTS = ROOT / "results" / "cross_production_qc" / "upstream"
 
 MODALITY_KEYS = {
@@ -199,7 +199,7 @@ def main() -> int:
     for _, m in manifest.iterrows():
         dash = Path(m["dashboard_local"])
         if not dash.exists():
-            print(f"[skip] {m['short_name']}: {dash} not found (run 0a_sync_dashboards.py first)")
+            print(f"[skip] {m['short_name']}: {dash} not found")
             continue
         print(f"[parse] {m['short_name']}  ({dash.stat().st_size/1e6:.1f} MB)")
         html = dash.read_text()

@@ -1,4 +1,4 @@
-"""Render the production_manifest.tsv pipeline-params columns as a visual table (PDF + PNG).
+"""Render the manifest.tsv pipeline-params columns as a visual table (PDF + PNG).
 
 Highlights cells whose value is the outlier across the four datasets.
 """
@@ -12,7 +12,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 REPO = ROOT.parents[5]
 
-MANIFEST = ROOT / "manifests" / "production_manifest.tsv"
+MANIFEST = ROOT / "manifests" / "manifest.tsv"
 COLORS_YAML = REPO / "config" / "colors" / "production_TF-Perturb-seq.yaml"
 OUT_DIR = ROOT / "results" / "cross_production_qc"
 
@@ -143,7 +143,7 @@ def main() -> None:
         0.5,
         0.02,
         "Highlighted cells differ from the majority of datasets for that parameter.  Source: "
-        "docs/jamborees/2026_UTSW/working_groups/wg1_data_qc/pipeline_qc/manifests/production_manifest.tsv",
+        "docs/jamborees/2026_UTSW/working_groups/wg1_data_qc/pipeline_qc/manifests/manifest.tsv",
         ha="center",
         fontsize=8,
         style="italic",
