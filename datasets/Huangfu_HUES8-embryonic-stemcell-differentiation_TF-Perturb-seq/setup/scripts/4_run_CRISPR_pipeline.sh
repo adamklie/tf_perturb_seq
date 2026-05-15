@@ -19,10 +19,10 @@ SAMPLE_METADATA=$BASE_DIR/setup/samplesheets/sample_metadata_gcp_2026_04_13_patc
 PIPELINE_PATH=/data4/yyang117/CRISPR_Pipeline
 
 # Dataset-specific config (adapted from Huangfu WTC11 benchmark)
-CONFIG=$BASE_DIR/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq_2026_04_13.config
+CONFIG=$BASE_DIR/setup/configs/Huangfu_HUES8-embryonic-stemcell-differentiation_TF-Perturb-seq_2026_05_14.config
 
 # Output directory on GCS
-OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_04_13/outs/sceptre_v1
+OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/2026_04_13/outs/qc_barcode_filter_none
 
 # Log file with dataset name and timestamp
 LOG_FILE=$BASE_DIR/logs/${DATASET_NAME}_crispr_pipeline_$(date +%Y%m%d_%H%M%S).log
