@@ -214,8 +214,6 @@ ref/motifs/motifs.meme
 ref/enhancer_gene/scE2G_links/
 ref/gene_sets/GO_Biological_Process_2023_human.json
 ref/gene_sets/Reactome_2022_human.json
-ref/opentargets/OpenTargets_L2G_Filtered.csv.gz
-ref/opentargets/OpenTargets_L2G_noQC.csv.gz
 
 # Calibration result TSVs — regenerable, large (some >100MB). Calibration is its own
 # analysis tier (datasets/<ds>/<run>/calibration/), not inside crispr_pipeline/. Keep both
