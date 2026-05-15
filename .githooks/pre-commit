@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Reject commits that include any blob larger than LIMIT_MB.
+# Override with `git commit --no-verify` if intentional (e.g. one-off binary asset).
+#
+# Enable for this repo with: git config core.hooksPath .githooks
+set -euo pipefail
+
+LIMIT_MB=100
+LIMIT_BYTES=$((LIMIT_MB * 1024 * 1024))
+
+big=$(
+  git diff --cached --name-only --diff-filter=ACM -z |
+  while IFS= read -r -d '' f; do
+    [ -f "$f" ] || continue
+    size=$(stat -c%s "$f" 2>/dev/null || stat -f%z "$f")
+    if [ "$size" -gt "$LIMIT_BYTES" ]; then
+      printf '%s\t%s\n' "$size" "$f"
+    fi
+  done
+)
+
+if [ -n "$big" ]; then
+  echo "ERROR: refusing to commit files larger than ${LIMIT_MB} MB:" >&2
+  echo "$big" | awk -F'\t' '{ printf "  %.1f MB  %s\n", $1/1048576, $2 }' >&2
+  echo "" >&2
+  echo "Options:" >&2
+  echo "  - Add a .gitignore rule for the file/pattern" >&2
+  echo "  - Move the file out of the staging area (git reset HEAD <path>)" >&2
+  echo "  - Override with: git commit --no-verify  (for intentional large blobs)" >&2
+  exit 1
+fi
