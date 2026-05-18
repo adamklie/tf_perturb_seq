@@ -1,0 +1,41 @@
+# Meta-consensus across cNMF runs on separate datasets.
+# Each entry under `datasets` points to a per-dataset Inference directory
+# and the k of that dataset's cNMF run to use as input programs.
+
+datasets:
+  - name: Hon_CM
+    inference_dir: /oak/stanford/groups/engreitz/Users/ymo/Project/IGVF_Hon_CM/Result/050626_1M_CM_torch_halsvar_dataloader/Inference
+    k: 80
+    dt: "2_0"
+  - name: Huangfu_embryonic
+    inference_dir: /oak/stanford/groups/engreitz/Users/ymo/Project/IGVF_Huangfu_embryonic-stemcell/Result/Adam_run/Inference
+    k: 50
+    dt: "2_0"
+  - name: Huangfu_definitive
+    inference_dir: /oak/stanford/groups/engreitz/Users/ymo/Project/IGVF_Huangfu_definitive-endoderm/Result/Adam_run/Inference
+    k: 50
+    dt: "2_0"
+
+# Which Inference.<file_type>.k_{k}.dt_{dt}.txt to load per dataset.
+# gene_spectra_score is the z-scored consensus output (rows=programs, cols=genes).
+input_file_type: gene_spectra_score
+
+# Row normalization applied to the stacked program matrix before KMeans.
+# Options: l2 | row_zscore | row_sum | none
+normalization: l2
+
+# K values to test for the meta-consensus clustering.
+meta_k_list: [20, 30, 50, 60, 70, 80, 100]
+
+# Output root. Each k gets its own subdirectory.
+output_dir: /oak/stanford/groups/engreitz/Users/ymo/Testing_Scripts/Meta_program/Result/meta_consensus
+
+# KMeans config — mirrors torch_cnmf/cnmf.py:1588
+kmeans:
+  n_init: 10
+  random_state: 1
+
+# Optional: meta-cluster ids to render a zoomed figure for after the
+# main per-k plots. Applies to every k in meta_k_list (missing cluster
+# ids for a given k are skipped with a warning).
+zoom_clusters: [52]
