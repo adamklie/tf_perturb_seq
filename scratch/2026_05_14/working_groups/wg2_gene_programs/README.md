@@ -14,19 +14,6 @@ All results from the analyses below live under:
 
 Referred to below as `$META_RESULT`. Results are NOT mirrored into this repo — only paths are recorded here. Analysis scripts that produced them now live in [`scripts/`](scripts/).
 
-## Artifacts
-
-Coverage caveat for all C/D/E rows: built from 3 of 5 datasets (Hon_CM, Huangfu_definitive, Huangfu_embryonic). Gersbach_Hep and Engreitz_Endo are still upstream. Meta-clustering ran at `meta_k ∈ {20,30,50,60,70,80,100}`; **k=60 is the canonical k** (only k where Shared_GO is computed). Other k values live under `$META_RESULT/meta_consensus/k_<k>/`.
-
-| ID | File | Status | What it answers | Source data |
-|---|---|---|---|---|
-| WG2-C | `$META_RESULT/meta_consensus/k_60/cluster_summary.k_60.tsv` (+ `cluster_assignments.k_60.txt`, `meta_spectra.k_60.median.txt`, `clustering.k_60.png`) | caveat (3/5 datasets, k=60) | Meta-consensus clustering of programs across datasets: KMeans on l2-normalized stacked `gene_spectra_score` (rows = programs across datasets, k=60 meta-clusters). One row per meta-cluster with n_programs, n_datasets, member programs, category. | per-dataset `gene_spectra_score.k_<sel>.dt_2_0.txt` (Hon_CM k=80, Huangfu_definitive k=50, Huangfu_embryonic k=50) |
-| WG2-D | `$META_RESULT/meta_consensus/k_60/shared_vs_specific.k_60.tsv` | caveat (3/5 datasets, k=60) | Each program classified as `shared_all` / `shared_partial` / `specific_<dataset>` from its meta-cluster membership | WG2-C cluster assignments |
-| WG2-E | `$META_RESULT/Shared_GO/Shared_GO_summary.k_60.tsv` (also `.xlsx`, `_long.k_60.tsv`) | discussion (3/5 datasets, k=60) | Per-meta-cluster worksheet: top-10 genes + top-10 GO per member program, cross-dataset gene/GO Jaccard, intersections | WG2-C clusters + per-program top genes + Enrichr GO |
-
-Status legend: `ready` (built), `caveat` (partial coverage), `blocked` (upstream missing), `discussion` (needs human decision).
-
-Note: WG2-C was re-framed from "all-vs-all cosine similarity matrix" (original spec) to the meta-consensus KMeans clustering output — the clustering is the downstream artifact a similarity matrix would have been used to produce.
 
 ## Analyses
 
@@ -80,6 +67,20 @@ The analysis pipeline lives in [`scripts/`](scripts/) (moved here from `Testing_
 | [`scripts/CM_ED_SC_analysis/`](scripts/CM_ED_SC_analysis/) | 3-way regulator/expressed-gene overlap (CM × DE × ESC), Venn diagrams. | `Script/CM_ED_SC_overlap.py` (SLURM: `Script/run_CM_ED_SC_overlap.sh`) |
 
 Conda env: `NMF_Benchmarking`. The meta_consensus config (`scripts/meta_consensus/config.yaml`) hardcodes per-dataset Inference dirs and the output_dir — update those paths when onboarding new datasets.
+
+## Artifacts
+
+Coverage caveat for all C/D/E rows: built from 3 of 5 datasets (Hon_CM, Huangfu_definitive, Huangfu_embryonic). Gersbach_Hep and Engreitz_Endo are still upstream. Meta-clustering ran at `meta_k ∈ {20,30,50,60,70,80,100}`; **k=60 is the canonical k** (only k where Shared_GO is computed). Other k values live under `$META_RESULT/meta_consensus/k_<k>/`.
+
+| ID | File | Status | What it answers | Source data |
+|---|---|---|---|---|
+| WG2-C | `$META_RESULT/meta_consensus/k_60/cluster_summary.k_60.tsv` (+ `cluster_assignments.k_60.txt`, `meta_spectra.k_60.median.txt`, `clustering.k_60.png`) | caveat (3/5 datasets, k=60) | Meta-consensus clustering of programs across datasets: KMeans on l2-normalized stacked `gene_spectra_score` (rows = programs across datasets, k=60 meta-clusters). One row per meta-cluster with n_programs, n_datasets, member programs, category. | per-dataset `gene_spectra_score.k_<sel>.dt_2_0.txt` (Hon_CM k=80, Huangfu_definitive k=50, Huangfu_embryonic k=50) |
+| WG2-D | `$META_RESULT/meta_consensus/k_60/shared_vs_specific.k_60.tsv` | caveat (3/5 datasets, k=60) | Each program classified as `shared_all` / `shared_partial` / `specific_<dataset>` from its meta-cluster membership | WG2-C cluster assignments |
+| WG2-E | `$META_RESULT/Shared_GO/Shared_GO_summary.k_60.tsv` (also `.xlsx`, `_long.k_60.tsv`) | discussion (3/5 datasets, k=60) | Per-meta-cluster worksheet: top-10 genes + top-10 GO per member program, cross-dataset gene/GO Jaccard, intersections | WG2-C clusters + per-program top genes + Enrichr GO |
+
+Status legend: `ready` (built), `caveat` (partial coverage), `blocked` (upstream missing), `discussion` (needs human decision).
+
+Note: WG2-C was re-framed from "all-vs-all cosine similarity matrix" (original spec) to the meta-consensus KMeans clustering output — the clustering is the downstream artifact a similarity matrix would have been used to produce.
 
 ## Questions
 
