@@ -77,7 +77,11 @@ Portal search for all TF Perturb-seq datasets: [data.igvf.org &nearr;](https://d
 
 ## Technology benchmark datasets
 
-Cross-lab comparison using the same WTC11 iPSC line and shared ~50-gene guide library (see memory [[project_benchmark_guide_library]] for the 30 NT + 54 OR + 8 PC + 324 TF breakdown). All five benchmark datasets share an identical 7-run parameter sweep driven by Lucas Ferreira (`cleanser_500`, `cleanser_800`, `cleanser_extremes_200`, `cleanser_extremes_2000`, `cleanser_knee2`, `scrublet_off_cleanser_800`, `scrublet_on_sceptre_800`, all with `mito_15pc`). Per-dataset details in each README.
+Cross-lab comparison using the same WTC11 iPSC line and shared ~50-gene guide library (see memory [[project_benchmark_guide_library]] for the 30 NT + 54 OR + 8 PC + 324 TF breakdown). Per-dataset details in each README.
+
+**Canonical CRISPR-paper runs (current):** each dataset now has **two** canonical runs that differ *only* in `GUIDE_ASSIGNMENT_method` — a `basic_threshold_sceptre` run and a `basic_threshold_cleanser` run (all other params identical within a dataset). These supersede the earlier 7-run sweep and are the ones synced locally under `datasets/<bench>/basic_threshold_{sceptre,cleanser}/crispr_pipeline/`. Full provenance + parameters for all 10 runs are in [docs/manuscripts/CRISPRi_tech_benchmark/docs/pipeline_runs.tsv](../manuscripts/CRISPRi_tech_benchmark/docs/pipeline_runs.tsv). Two gotchas (always confirm via `pipeline_info/params_*.json`, per memory [[feedback_verify_run_params_from_pipeline_info]]): the cleanser Engreitz run lives in a misleadingly-named GCS folder `Engreitz_200umi_total_ccPerturb_20mito` (its params are min_genes=800/mito=15pc, same as sceptre), and the **cleanser Gersbach_HTv2 run is incomplete** (stalled after guide assignment, no `inference_mudata.h5mu`).
+
+The earlier **7-run parameter sweep** driven by Lucas (`cleanser_500`, `cleanser_800`, `cleanser_extremes_200`, `cleanser_extremes_2000`, `cleanser_knee2`, `scrublet_off_cleanser_800`, `scrublet_on_sceptre_800`, all `mito_15pc`) is retained in each dataset dir but is superseded for paper analyses.
 
 | Dataset | Lab | Technology | Portal Accession |
 |---|---|---|---|

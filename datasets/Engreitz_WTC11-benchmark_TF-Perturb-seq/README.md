@@ -17,6 +17,19 @@ setup/                    # Shared input generation
 └── calibration/          # FDR-controlled TSVs (analysis tier; result TSVs gitignored)
 ```
 
+## Canonical runs (CRISPR paper)
+
+As of 2026-06-04, the canonical runs for Figure 1 are **one `cleanser` + one `sceptre` run**, differing *only* in `GUIDE_ASSIGNMENT_method` (all other params identical). Synced locally to `basic_threshold_{cleanser,sceptre}/crispr_pipeline/` — the three terminal folders `pipeline_dashboard/`, `pipeline_info/`, `pipeline_outputs/`. Full registry (params, sizes, lab/contact): [pipeline_runs.tsv](../../docs/manuscripts/CRISPRi_tech_benchmark/docs/pipeline_runs.tsv).
+
+| Local run | GUIDE_ASSIGNMENT | GCS source (under `scratch/bioinfolucas/`) | Local status |
+|---|---|---|---|
+| `basic_threshold_sceptre` | sceptre | `Benchmark_basic_run_threshold/Engreitz_ccPerturb/` | ✓ synced |
+| `basic_threshold_cleanser` | cleanser | `Benchmark_basic_run_threshold_cleanser/Engreitz_200umi_total_ccPerturb_20mito/` | ✓ synced |
+
+> The cleanser GCS folder is misleadingly named `Engreitz_200umi_total_ccPerturb_20mito`, but its params are `min_genes=800 / mito=15` (NOT 200 UMI / 20% mito) — verified from `pipeline_info/params_*.json`.
+
+These supersede the 7-run parameter sweep below (retained but no longer canonical).
+
 ## Pipeline runs
 
 | Local run | Lucas's GCS source | scrublet | method |

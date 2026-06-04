@@ -34,13 +34,27 @@ IMPLEMENTATION_GUIDE.md
 external/PerturbNMF/
 
 # Per-run CRISPR pipeline outputs (large, regenerable from GCP).
-# Replaces the prior top-level `runs/` rule now that pipeline outputs live at
-# datasets/<ds>/<run>/crispr_pipeline/{pipeline_outputs,pipeline_dashboard,anndata,tf,work}/
+# Policy: under datasets/<ds>/<run>/crispr_pipeline/, ONLY pipeline_info/ is tracked
+# (small params/versions for provenance); everything else is bulk and ignored.
+# The catch-all below also covers non-standard full-run mirror dirs (additional/,
+# evaluation/, mergedresults/, ...) when a whole GCS run dir is synced instead of
+# just the three canonical folders (pipeline_dashboard/, pipeline_info/, pipeline_outputs/).
+datasets/*/*/crispr_pipeline/*
+!datasets/*/*/crispr_pipeline/pipeline_info/
+# (legacy explicit entries kept for clarity; subsumed by the catch-all above)
 datasets/*/*/crispr_pipeline/pipeline_outputs/
 datasets/*/*/crispr_pipeline/pipeline_dashboard/
 datasets/*/*/crispr_pipeline/anndata/
 datasets/*/*/crispr_pipeline/tf/
 datasets/*/*/crispr_pipeline/work/
+
+# Post-pipeline filtering outputs (large, regenerable). Generated calibration/QC
+# result trees under datasets/<ds>/basic_threshold_{cleanser,sceptre}/.
+datasets/*/basic_threshold_cleanser/
+datasets/*/basic_threshold_sceptre/
+
+# Nested external clone, not a registered submodule (tracked in its own repo).
+external/crispr_validator/
 
 # Jamboree mirror logs (HPC-only, ephemeral)
 docs/jamborees/**/mirror_*.log

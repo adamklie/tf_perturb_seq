@@ -2,7 +2,7 @@
 
 **Goal:** distribute the raw, unfiltered scRNA-seq h5ad for each benchmark dataset to its source lab so each lab can run QC locally and propose appropriate filter parameters. Once labs converge on params, the CRISPR pipeline runs end-to-end with those fixed — saving compute cost and turnaround.
 
-The pointer table is in [per_lab_qc_inputs.tsv](per_lab_qc_inputs.tsv).
+The per-dataset run registry (canonical run prefixes, params, lab/contact/expected_cells) now lives in [docs/pipeline_runs.tsv](docs/pipeline_runs.tsv) — it replaced the former `per_lab_qc_inputs.tsv`. The unfiltered scRNA h5ad for each dataset is at `<output_uri>/anndata/concatenated_adata.h5ad` (use the `output_uri` column for the GCS run prefix); the gene+guide MuData is at `<output_uri>/createmudata/mudata.h5mu`.
 
 ---
 
@@ -65,7 +65,9 @@ sc.pp.calculate_qc_metrics(a, qc_vars=['mt', 'ribo'], inplace=True, percent_top=
 
 ## Source pipeline run
 
-All paths are taken from the canonical `Benchmark_cleanser_800_mito_15pc` run on GCS. The upstream `anndata/concatenated_adata.h5ad` stage is functionally identical across the parameter-sweep configs since the cell-calling / mito / scrublet differences happen later in the pipeline.
+> **Note (2026-06-04):** The canonical benchmark runs are now Lucas's `Benchmark_basic_run_threshold` (sceptre) and `Benchmark_basic_run_threshold_cleanser` (cleanser) sweeps — one `cleanser` + one `sceptre` run per dataset, registered in [docs/pipeline_runs.tsv](docs/pipeline_runs.tsv) and synced locally under `datasets/<dataset>/basic_threshold_{cleanser,sceptre}/crispr_pipeline/`. These supersede the earlier `Benchmark_cleanser_*_mito_15pc` parameter sweep referenced in the verified-paths examples below. The upstream `anndata/concatenated_adata.h5ad` stage is functionally identical across configs (cell-calling / mito / scrublet differences happen later), so the QC-distribution workflow here still applies — just pull from the new `output_uri`.
+
+The historical paths below were taken from the `Benchmark_cleanser_800_mito_15pc` run; the upstream `anndata/concatenated_adata.h5ad` stage is functionally identical across the parameter-sweep configs since the cell-calling / mito / scrublet differences happen later in the pipeline.
 
 ## Why this matters
 

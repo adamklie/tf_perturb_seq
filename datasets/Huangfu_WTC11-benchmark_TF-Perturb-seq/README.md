@@ -22,6 +22,17 @@ gary_syn72386406/         # Synapse provenance for the Stanford-side Yan Mo h5mu
     └── Data/ / Result/   # gitignored (bulk)
 ```
 
+## Canonical runs (CRISPR paper)
+
+As of 2026-06-04, the canonical runs for Figure 1 are **one `cleanser` + one `sceptre` run**, differing *only* in `GUIDE_ASSIGNMENT_method` (all other params identical). Synced locally to `basic_threshold_{cleanser,sceptre}/crispr_pipeline/` — the three terminal folders `pipeline_dashboard/`, `pipeline_info/`, `pipeline_outputs/`. Full registry (params, sizes, lab/contact): [pipeline_runs.tsv](../../docs/manuscripts/CRISPRi_tech_benchmark/docs/pipeline_runs.tsv).
+
+| Local run | GUIDE_ASSIGNMENT | GCS source (under `scratch/bioinfolucas/`) | Local status |
+|---|---|---|---|
+| `basic_threshold_sceptre` | sceptre | `Benchmark_basic_run_threshold/HuangFuDataset/` | ✓ synced |
+| `basic_threshold_cleanser` | cleanser | `Benchmark_basic_run_threshold_cleanser/HuangFuDataset/` | ✓ synced |
+
+These supersede the 7-run parameter sweep below (retained but no longer canonical).
+
 ## Pipeline runs
 
 | Local run | Lucas's GCS source | scrublet | method |

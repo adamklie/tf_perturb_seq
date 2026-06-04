@@ -20,6 +20,19 @@ setup/                    # Shared input generation
     └── Data/ / Result/   # gitignored (bulk)
 ```
 
+## Canonical runs (CRISPR paper)
+
+As of 2026-06-04, the canonical runs for Figure 1 are **one `cleanser` + one `sceptre` run**, differing *only* in `GUIDE_ASSIGNMENT_method` (all other params identical). Synced locally to `basic_threshold_{cleanser,sceptre}/crispr_pipeline/` — the three terminal folders `pipeline_dashboard/`, `pipeline_info/`, `pipeline_outputs/`. Full registry (params, sizes, lab/contact): [pipeline_runs.tsv](../../docs/manuscripts/CRISPRi_tech_benchmark/docs/pipeline_runs.tsv).
+
+| Local run | GUIDE_ASSIGNMENT | GCS source (under `scratch/bioinfolucas/`) | Local status |
+|---|---|---|---|
+| `basic_threshold_sceptre` | sceptre | `Benchmark_basic_run_threshold/Gersbach_HTV2/` | ✓ synced |
+| `basic_threshold_cleanser` | cleanser | `Benchmark_basic_run_threshold_cleanser/Gersbach_HTV2/` | incomplete — not synced |
+
+> **The cleanser run is INCOMPLETE** — it stopped after guide mapping (3/4 lanes) on GCS and never produced `inference_mudata.h5mu` or inference results, so only `basic_threshold_sceptre/` is synced locally. Re-run cleanser before using it.
+
+These supersede the 7-run parameter sweep below (retained but no longer canonical).
+
 ## Pipeline runs
 
 | Local run | Lucas's GCS source | scrublet | method |
