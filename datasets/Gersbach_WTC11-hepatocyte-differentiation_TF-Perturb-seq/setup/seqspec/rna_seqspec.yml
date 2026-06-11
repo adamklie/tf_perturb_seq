@@ -4,7 +4,7 @@ assay_id: 'IGVF_ASSAY_001'
 name: 'crispr_assay'
 doi: ''
 date: '3 June 2026'
-description: 'Generic 10x Chromium 5'' HT v2 RNA seqspec for Gersbach Hep (TFP3). Verified against 3 validated portal seqspecs on IGVFDS9999JYTY (all say UMI=10). R1=26 structural (16 BC + 10 UMI); physical R1 reads are 28 bp with 2 bp over-cycle/dark at the 3'' tail which kallisto truncates. R2=90. Onlist IGVFFI1697XAXI (shared with Gersbach GEM-Xv3 benchmark; same 16-bp BC). Used as fallback for the MS sequence files whose portal seqspecs are still upload_status=pending or invalidated (27/47 as of 2026-06-04).'
+description: '10x Chromium 5'' HT v2 RNA seqspec for Gersbach Hep (TFP3). Corrected 2026-06-10: UMI=12 (per Adam — the 10-vs-12 call is borderline and the chemistry is 12), so R1=28 (16 BC + 12 UMI = full 28-bp physical read; no over-cycle truncation). R2=90. Validated against reads: barcode R1 0-15, UMI R1 16-27, cDNA R2 0-89. Onlist IGVFFI1697XAXI (shared with Gersbach GEM-Xv3 benchmark; same 16-bp BC). Fallback seqspec for MS sequence files whose portal seqspecs are still upload_status=pending or invalidated.'
 modalities:
 - 'rna'
 lib_struct: ''
@@ -22,8 +22,8 @@ sequence_spec:
   name: 'dummy_rna_R1.fq'
   modality: 'rna'
   primer_id: 'r1_primer'
-  min_len: 26
-  max_len: 26
+  min_len: 28
+  max_len: 28
   strand: 'pos'
   files:
   - !File
@@ -91,9 +91,9 @@ library_spec:
     region_type: 'umi'
     name: 'umi'
     sequence_type: 'random'
-    sequence: 'XXXXXXXXXX'
-    min_len: 10
-    max_len: 10
+    sequence: 'XXXXXXXXXXXX'
+    min_len: 12
+    max_len: 12
     onlist: null
     regions: null
   - !Region

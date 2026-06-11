@@ -1,19 +1,19 @@
 !Assay
 seqspec_version: '0.3.0'
-assay_id: 'IGVF_ASSAY_001'
+assay_id: '10XCRISPR5prime'
 name: 'crispr_assay'
 doi: ''
-date: '3 June 2026'
-description: 'Generic 10x Chromium 5'' HT v2 CRISPR (gRNA) seqspec for Gersbach Hep (TFP3). Matched to validated portal RNA seqspecs (UMI=10). R1=26 structural (16 BC + 10 UMI); physical R1=28 with 2 bp dark/over-cycle. R2=90 (verified via portal mean_read_length on 3 aux sets). Onlist IGVFFI1697XAXI. Used as fallback for all 47 aux gRNA rows (only 4/47 aux have portal seqspecs and even those are upload_status=pending as of 2026-06-04).'
+date: '10 June 2026'
+description: 'Gersbach Hep (TFP3) CRISPR (gRNA) seqspec. Corrected 2026-06-10 to match the actual fastqs: read structure mirrors the portal 10x 5'' HT v2 CRISPR construct (IGVFFI0021APSA) so the protospacer lands at R2 reverse 63-82 (validated against reads — predictor 63-81, close_enough), with barcode R1 0-15 and UMI R1 16-27 (UMI=12; R1 physical=28bp = 16 BC + 12 UMI). The guide region is kept as region_id=guide so it is recognized as a guide (the portal seqspec types it region_type=cdna, which mislabels it as rna). Onlists left null; barcode whitelist + guide design come from the samplesheet columns. Guide assignment in the pipeline anchors on spacer_tag=TAGCTCTTAAAC (revcomp of the sgrna_scaffold start GTTTAAGAGCTA), so it is robust to exact guide position regardless.'
 modalities:
 - 'crispr'
-lib_struct: ''
+lib_struct: 'https://teichlab.github.io/scg_lib_structs/methods_html/10xChromium5vdjfb.html'
 library_protocol:
 - !LibProtocol
-  protocol_id: 'Custom'
+  protocol_id: "Chromium Next GEM Single Cell 5' HT Reagent Kits v2 (Dual Index) (10x Genomics)"
   name: 'Library Protocol'
   modality: 'crispr'
-library_kit: 'Custom'
+library_kit: '10XCRISPR5prime'
 sequence_protocol: 'Custom'
 sequence_kit: 'Custom'
 sequence_spec:
@@ -21,9 +21,9 @@ sequence_spec:
   read_id: 'dummy_guide_R1.fq'
   name: 'dummy_guide_R1.fq'
   modality: 'crispr'
-  primer_id: 'r1_primer'
-  min_len: 26
-  max_len: 26
+  primer_id: 'truseq_read1'
+  min_len: 28
+  max_len: 28
   strand: 'pos'
   files:
   - !File
@@ -38,7 +38,7 @@ sequence_spec:
   read_id: 'dummy_guide_R2.fq'
   name: 'dummy_guide_R2.fq'
   modality: 'crispr'
-  primer_id: 'r2_primer'
+  primer_id: 'truseq_read2'
   min_len: 90
   max_len: 90
   strand: 'neg'
@@ -65,13 +65,13 @@ library_spec:
   regions:
   - !Region
     parent_id: 'crispr'
-    region_id: 'r1_primer'
-    region_type: 'custom_primer'
-    name: 'r1_primer'
+    region_id: 'truseq_read1'
+    region_type: 'truseq_read1'
+    name: 'truseq_read1'
     sequence_type: 'fixed'
-    sequence: ''
-    min_len: 0
-    max_len: 0
+    sequence: 'ACACTCTTTCCCTACACGACGCTCTTCCGATCT'
+    min_len: 33
+    max_len: 33
     onlist: null
     regions: null
   - !Region
@@ -91,9 +91,20 @@ library_spec:
     region_type: 'umi'
     name: 'umi'
     sequence_type: 'random'
-    sequence: 'XXXXXXXXXX'
-    min_len: 10
-    max_len: 10
+    sequence: 'XXXXXXXXXXXX'
+    min_len: 12
+    max_len: 12
+    onlist: null
+    regions: null
+  - !Region
+    parent_id: 'crispr'
+    region_id: 'tso'
+    region_type: 'linker'
+    name: 'tso'
+    sequence_type: 'fixed'
+    sequence: 'TTTCTTATATGGG'
+    min_len: 13
+    max_len: 13
     onlist: null
     regions: null
   - !Region
@@ -109,23 +120,34 @@ library_spec:
     regions: null
   - !Region
     parent_id: 'crispr'
-    region_id: 'common'
+    region_id: 'sgrna_scaffold'
     region_type: 'linker'
-    name: 'common'
+    name: 'sgrna_scaffold'
     sequence_type: 'fixed'
-    sequence: 'TAGCTCTTAAAC'
-    min_len: 12
-    max_len: 12
+    sequence: 'GTTTAAGAGCTAAGCTGGAAACAGCATAGCAAGTTTA'
+    min_len: 37
+    max_len: 37
     onlist: null
     regions: null
   - !Region
     parent_id: 'crispr'
-    region_id: 'r2_primer'
+    region_id: 'feature_primer'
     region_type: 'custom_primer'
-    name: 'r2_primer'
+    name: 'feature_primer'
     sequence_type: 'fixed'
-    sequence: ''
-    min_len: 0
-    max_len: 0
+    sequence: 'AATAAGGCTAGTCCGTTATCAACTTG'
+    min_len: 26
+    max_len: 26
+    onlist: null
+    regions: null
+  - !Region
+    parent_id: 'crispr'
+    region_id: 'truseq_read2'
+    region_type: 'truseq_read2'
+    name: 'truseq_read2'
+    sequence_type: 'fixed'
+    sequence: 'AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC'
+    min_len: 34
+    max_len: 34
     onlist: null
     regions: null
