@@ -18,7 +18,7 @@ DATASET_NAME=Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq
 BASE_DIR=/Users/adamklie/Desktop/tfp3/tf_perturb_seq/datasets/${DATASET_NAME}
 
 # Data date (GCS subfolder under the dataset — matches sample_metadata_gcp_<DATA_DATE>.csv)
-DATA_DATE=2026_05_11  # CHANGE_ME after running 2_upload_to_gcp.sh
+DATA_DATE=2026_06_10  # matches Stage 1 upload (sample_metadata_gcp_2026_06_10_patched.csv)
 
 # Sample metadata with GCS paths (patched = decompressed barcode_onlist, guide_design, seqspec)
 SAMPLE_METADATA=$BASE_DIR/setup/samplesheets/sample_metadata_gcp_${DATA_DATE}_patched.csv
@@ -29,8 +29,8 @@ PIPELINE_PATH=/Users/adamklie/Desktop/tfp3/CRISPR_Pipeline
 # Run label (Nextflow run name) — bump this per run
 RUN_LABEL=cleanser_initial  # CHANGE_ME — pick a memorable codename per run
 
-# Dataset-specific config (adapted from Huangfu WTC11 benchmark)
-CONFIG=$BASE_DIR/sara_synapse_syn74842722/crispr_pipeline/configs/${DATASET_NAME}_${RUN_LABEL}.config
+# Dataset-specific config (canonical location: setup/configs/)
+CONFIG=$BASE_DIR/setup/configs/${DATASET_NAME}_${RUN_LABEL}.config
 
 # Output directory on GCS
 OUTDIR=gs://igvf-pertub-seq-pipeline-data/${DATASET_NAME}/${DATA_DATE}/outs/${RUN_LABEL}
@@ -45,19 +45,27 @@ RUN_IN_BACKGROUND=${RUN_IN_BACKGROUND:-false}
 # RUN PIPELINE
 # =============================================================================
 
-# Create logs directory if it doesn't exist
 mkdir -p $BASE_DIR/logs
-
 cd $PIPELINE_PATH
 
-# Build the nextflow command
 NF_CMD="nextflow run main.nf \
     -profile google \
     -c $CONFIG \
     --input $SAMPLE_METADATA \
     --outdir $OUTDIR \
-    -with-tower \
-    -resume"
+    -resume \
+    -with-tower"
+
+echo "============================================="
+echo " Gersbach hepatocyte CRISPR pipeline launch"
+echo "============================================="
+echo " Dataset:           $DATASET_NAME"
+echo " Sample metadata:   $SAMPLE_METADATA"
+echo " Config:            $CONFIG"
+echo " RUN_LABEL:         $RUN_LABEL"
+echo " OUTDIR (GCS):      $OUTDIR"
+echo " Pipeline path:     $PIPELINE_PATH"
+echo "============================================="
 
 if [ "$RUN_IN_BACKGROUND" = true ]; then
     echo "Running CRISPR pipeline in background..."

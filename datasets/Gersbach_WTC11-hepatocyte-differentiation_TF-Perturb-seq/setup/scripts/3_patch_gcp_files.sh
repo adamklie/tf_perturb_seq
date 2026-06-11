@@ -27,9 +27,9 @@ set -euo pipefail
 # =============================================================================
 # CONFIGURATION
 # =============================================================================
-BASE_DIR=/carter/users/aklie/projects/tf_perturb_seq
+BASE_DIR=/Users/adamklie/Desktop/tfp3/tf_perturb_seq
 DATASET=Gersbach_WTC11-hepatocyte-differentiation_TF-Perturb-seq
-DATE=2026_06_03   # CHANGE_ME — must match Step 2's GCS_PREFIX date
+DATE=2026_06_10   # CHANGE_ME — must match Step 2's GCS_PREFIX date
 BUCKET=gs://igvf-pertub-seq-pipeline-data
 PATCH_DIR=${BUCKET}/${DATASET}/${DATE}/patch
 INPUT_SHEET=${BASE_DIR}/datasets/${DATASET}/setup/samplesheets/sample_metadata_gcp_${DATE}.csv
