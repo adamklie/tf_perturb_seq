@@ -300,42 +300,52 @@ def upload_igvf_files(
     results = {}
     gcs_dest = f"gs://{gcs_bucket}/{gcs_prefix}"
 
+    # Google Storage Transfer Service caps objectConditions.includePrefixes at 1000
+    # entries per transfer spec. Datasets with >1000 files in a single source bucket
+    # (e.g. 47-sub-pool Perturb-seq) must be split across multiple jobs, otherwise the
+    # job is rejected (or, worse, silently truncated). A ~1000-prefix command line is
+    # also comfortably under the OS arg-length limit.
+    MAX_INCLUDE_PREFIXES = 1000
+
     for bucket, files in by_bucket.items():
         s3_src = f"s3://{bucket}/"
+        n_chunks = (len(files) + MAX_INCLUDE_PREFIXES - 1) // MAX_INCLUDE_PREFIXES
 
-        # Create include prefixes for all files from this bucket
-        include_prefixes = [f.s3_prefix for f in files]
+        for ci in range(n_chunks):
+            chunk = files[ci * MAX_INCLUDE_PREFIXES:(ci + 1) * MAX_INCLUDE_PREFIXES]
+            include_prefixes = [f.s3_prefix for f in chunk]
 
-        print(f"\nCreating transfer job from s3://{bucket}/ ({len(files)} files)...")
+            part = f" part {ci + 1}/{n_chunks}" if n_chunks > 1 else ""
+            print(f"\nCreating transfer job from s3://{bucket}/{part} ({len(chunk)} files)...")
 
-        # Create a unique job name
-        job_name = f"igvf-upload-{bucket}-{int(time.time())}"
+            # Create a unique job name (include chunk index so parts don't collide)
+            job_name = f"igvf-upload-{bucket}-{int(time.time())}-{ci}"
 
-        cmd = [
-            "gcloud", "transfer", "jobs", "create",
-            s3_src, gcs_dest,
-            f"--name=transferJobs/{job_name}",
-            f"--description=IGVF Portal upload - {len(files)} files",
-            f"--source-creds-file={role_arn_file}",
-            f"--include-prefixes={','.join(include_prefixes)}",
-            "--overwrite-when=never",
-        ]
+            cmd = [
+                "gcloud", "transfer", "jobs", "create",
+                s3_src, gcs_dest,
+                f"--name=transferJobs/{job_name}",
+                f"--description=IGVF Portal upload - {len(chunk)} files{part}",
+                f"--source-creds-file={role_arn_file}",
+                f"--include-prefixes={','.join(include_prefixes)}",
+                "--overwrite-when=never",
+            ]
 
-        if dry_run:
-            print(f"  [DRY RUN] Would run: {' '.join(cmd)}")
-            for f in files:
-                results[f.original_ref] = True
-        else:
-            try:
-                print(f"  Running transfer job...")
-                subprocess.run(cmd, check=True, capture_output=True, text=True)
-                print(f"  Transfer job created successfully")
-                for f in files:
+            if dry_run:
+                print(f"  [DRY RUN] Would run: {' '.join(cmd)}")
+                for f in chunk:
                     results[f.original_ref] = True
-            except subprocess.CalledProcessError as e:
-                print(f"  ERROR: {e.stderr}")
-                for f in files:
-                    results[f.original_ref] = False
+            else:
+                try:
+                    print(f"  Running transfer job...")
+                    subprocess.run(cmd, check=True, capture_output=True, text=True)
+                    print(f"  Transfer job created successfully")
+                    for f in chunk:
+                        results[f.original_ref] = True
+                except subprocess.CalledProcessError as e:
+                    print(f"  ERROR: {e.stderr}")
+                    for f in chunk:
+                        results[f.original_ref] = False
 
     return results
 
