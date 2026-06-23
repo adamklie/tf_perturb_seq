@@ -35,12 +35,17 @@ import os
 import sys
 from typing import Literal, Optional
 
-import mudata
+import h5py
 import numpy as np
 import pandas as pd
 from scipy import stats
 from scipy.sparse import issparse
 from statsmodels.stats.multitest import multipletests
+
+try:  # anndata >= 0.10
+    from anndata.io import read_elem
+except ImportError:  # older anndata
+    from anndata.experimental import read_elem
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -181,16 +186,27 @@ def load_guide_metadata(mdata_path: str, guide_mod_key: str = "guide"):
     n_cells_per_element : pd.Series
         Number of cells assigned to each element (intended_target_name).
     """
-    logger.info(f"Loading MuData from {mdata_path}")
-    mdata_obj = mudata.read_h5mu(mdata_path)
+    # Disk-backed read: pull only the .var tables and the guide_assignment
+    # layer via read_elem. The .h5mu can be tens of GB, but that weight is all
+    # in the X matrices, which calibration never needs — read_elem touches only
+    # the requested HDF5 groups, so memory stays at a few hundred MB.
+    logger.info(f"Reading var metadata (disk-backed) from {mdata_path}")
+    with h5py.File(mdata_path, "r") as f:
+        mod = f["mod"]
+        if guide_mod_key not in mod:
+            raise KeyError(f"Guide modality '{guide_mod_key}' not found in {mdata_path}")
+        guide_grp = mod[guide_mod_key]
+        guide_var = read_elem(guide_grp["var"])
 
-    guide = mdata_obj.mod[guide_mod_key]
-    guide_var = guide.var.copy()
+        assignment = None
+        if "layers" in guide_grp and "guide_assignment" in guide_grp["layers"]:
+            assignment = read_elem(guide_grp["layers"]["guide_assignment"])
+
+        gene_var = read_elem(mod["gene"]["var"]) if "gene" in mod else pd.DataFrame()
 
     # Compute n_cells per element from guide_assignment layer
     # Group by (intended_target_name, chr, start, end) to get per-promoter counts
-    if "guide_assignment" in guide.layers:
-        assignment = guide.layers["guide_assignment"]
+    if assignment is not None:
         if issparse(assignment):
             cells_per_guide = np.array((assignment > 0).sum(axis=0)).flatten()
         else:
@@ -216,9 +232,6 @@ def load_guide_metadata(mdata_path: str, guide_mod_key: str = "guide"):
     else:
         logger.warning("guide_assignment layer not found; n_cells will be NaN")
         n_cells_per_element = pd.Series(dtype=float)
-
-    # Gene metadata for symbol lookup
-    gene_var = mdata_obj.mod["gene"].var.copy() if "gene" in mdata_obj.mod else pd.DataFrame()
 
     logger.info(f"  {len(guide_var)} guides, {guide_var['intended_target_name'].nunique()} elements")
     if "type" in guide_var.columns:
@@ -327,23 +340,33 @@ def annotate_cis(
         logger.warning("No gene coordinate columns found in gene.var; cannot annotate cis")
         return pd.Series(False, index=trans_df.index)
 
-    gene_coords["gene_id"] = gene_var.index.values
-    gene_coords = gene_coords.reset_index(drop=True)
+    # Deduplicate on gene_id BEFORE building lookups. A non-unique gene.var
+    # index (e.g. PAR genes, concatenated .var) would otherwise expand the
+    # join and silently misalign the returned flag with trans_df's rows.
+    # gene_coords already carries gene.var's index (= gene_id) from the copy above.
+    gene_coords = gene_coords[~gene_coords.index.duplicated(keep="first")]
+    n_dup = len(gene_var) - len(gene_coords)
+    if n_dup:
+        logger.warning(f"  gene.var had {n_dup:,} duplicate gene_ids; kept first occurrence")
     logger.info(f"  Gene coordinates available for {len(gene_coords):,} genes")
 
-    # Merge gene coords onto trans results
-    merged = trans_df[["gene_id", "intended_target_chr", "intended_target_start", "intended_target_end"]].reset_index(drop=True).merge(
-        gene_coords, on="gene_id", how="left",
-    )
+    # Attach gene coords by mapping on gene_id. Unlike merge(), .map() is a
+    # strict per-row lookup keyed on gene_id, so the result is always aligned
+    # to trans_df row-for-row and never changes row count or order.
+    g_chr = trans_df["gene_id"].map(gene_coords["gene_chr"])
+    g_start = trans_df["gene_id"].map(gene_coords["gene_start"])
+    g_end = trans_df["gene_id"].map(gene_coords["gene_end"])
 
     # Cis = same chromosome AND within window
-    same_chr = merged["intended_target_chr"] == merged["gene_chr"]
-    # Distance: closest point of element to closest point of gene
-    elem_mid = (merged["intended_target_start"] + merged["intended_target_end"]) / 2
-    gene_mid = (merged["gene_start"] + merged["gene_end"]) / 2
-    distance = (elem_mid - gene_mid).abs()
+    same_chr = trans_df["intended_target_chr"].values == g_chr.values
+    # Distance: midpoint of element to midpoint of gene
+    elem_mid = (trans_df["intended_target_start"] + trans_df["intended_target_end"]) / 2
+    gene_mid = (g_start + g_end) / 2
+    distance = (elem_mid.values - gene_mid.values)
+    distance = np.abs(distance)
 
-    is_cis = same_chr & (distance <= cis_window)
+    is_cis = pd.Series(same_chr & (distance <= cis_window), index=trans_df.index)
+    is_cis = is_cis.fillna(False).astype(bool)
     logger.info(f"  {is_cis.sum():,} cis pairs (within {cis_window/1000:.0f}kb)")
 
     return is_cis
